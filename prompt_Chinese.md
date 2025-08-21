@@ -1052,7 +1052,7 @@ subQuestion的content可以只写答题区域，而不需要重复抄写question
 {
   "question": {
     "content": "<p>五、写作（50分）</p><p>从下面两个题目中任选一题，按要求作答。不少于600字。将题目抄写在答题卡上。</p><p><strong>题目一：</strong>请以“那一刻，我长大了”为题，写一篇记叙文。</p><p>要求：</p><p>①内容具体，有真情实感；</p><p>②除诗歌外，文体不限；</p><p>③不少于600字；</p><p>④凡涉及真实的人名、校名、地名，一律用A、B、C等英文大写字母代替。</p><p><strong>题目二：</strong>有人说，青春是一首歌，歌声里有欢笑也有眼泪；有人说，青春是一幅画，画面里有色彩也有线条。请以“青春”为话题，自拟题目，写一篇文章。</p><p>要求：</p><p>①除诗歌外，文体不限，写议论文或记叙文；</p><p>②不少于600字；</p><p>③凡涉及真实的人名、校名、地名，一律用A、B、C等英文大写字母代替。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"15\" data-punctuation=\"\" data-first-line-width=\"600\"></full-line-blank></p>",
-    "type": "作文题",
+    "type": "简答",
     "answer": { 
       "answer": "<p>学生可以选择题目一或题目二中的任意一个进行作答，评分标准按照语文作文评分要求执行。</p>" 
     },
@@ -1073,4 +1073,3 @@ subQuestion的content可以只写答题区域，而不需要重复抄写question
   ]
 }
 ```
-
