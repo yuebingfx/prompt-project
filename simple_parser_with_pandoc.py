@@ -568,7 +568,7 @@ def main():
     if len(sys.argv) > 1:
         word_file_path = sys.argv[1]
     else:
-        word_file_path = "精品解析：2025年山东省临沂市中考英语真题（解析版）.docx"  # 默认文件路径
+        word_file_path = "Chinese/精品解析：2025年甘肃省兰州市中考语文真题（解析版）.docx"  # 默认文件路径
      
     output_format = "markdown"  # 可选: markdown, plain, html
     prompt_template_path = "prompt_Chinese.md"

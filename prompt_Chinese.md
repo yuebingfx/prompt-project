@@ -138,13 +138,20 @@
   ```
 
 **填空格式要求（重要修正）**：
-- **必须使用标准HTML标签**：pandoc转换出的`[_____]{.underline}`类似格式必须替换为HTML形式
 - **下划线填空**：使用 `<input size="X" readonly="readonly" type="underline">` 标签
 - **禁止保留pandoc的中括号填空格式**：
   * ❌ 禁止保留：`[_____]{.underline}`
   * ❌ 禁止保留：`[___1___]{.underline}`
+  * ❌ 禁止保留：`[甲]{.underline}`、`[乙]{.underline}`等变量形式
 - **正确替换格式示例**：
   * 下划线填空：`<input size="8" readonly="readonly" type="underline">`
+- **常见错误转换示例**：
+  * ❌ 错误：`古梨树 [甲]{.underline} （星罗棋布/浩如烟海）`
+  * ✅ 正确：`古梨树 <input size="8" readonly="readonly" type="underline" placeholder="甲"> （星罗棋布/浩如烟海）`
+- **标识符保留规则**：
+  * 如果原文是 `[甲]{.underline}`，转换为 `<input size="8" readonly="readonly" type="underline" placeholder="甲">`
+  * 如果原文是 `[乙]{.underline}`，转换为 `<input size="8" readonly="readonly" type="underline" placeholder="乙">`
+  * 如果原文是 `[____]{.underline}`，转换为 `<input size="8" readonly="readonly" type="underline">`
 - **size设置规则**：
   * 单词填空：size="8-12"
   * 短语填空：size="15-20"
