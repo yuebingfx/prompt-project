@@ -1,100 +1,12 @@
 ## 语文学科试卷解析系统
+**核心说明**
+一套试卷有三级结构，1. 题组名（分题型/类型的大模块） 2.题目 3. 子题（可能有，可能没有）。你需要解析和拆分出试卷中的每一道题。
+试卷中题组名、题目和子题的关系阐述如下：
+1.题组名和题目是1对n的关系：一个题组名可能对应一道题目，也可能对应多道题目，如果对应一道题目，则题组名通常被放在对应的题目的题干（content）中去，如果对应的是多道题目，且每个题目之间相对独立（例如题组名是“三、阅读理解”，题组名下包含若干篇相对独立的阅读理解题目），则每道题目都需要被拆分成一道题，此时题组名一般不需要放在题目的题干（content）中去，除非题组名对做题有影响，则需要放在每个题目的题干（content）中去。
+2.题目可能有子题，也可能没有子题：有的题目是嵌套结构，则包含子题，如完形填空、阅读题、m选n题等，有的题目则没有子题。后面有关于子题的详细判断标准供你参考。
+3.你的重要工作就是从试卷中识别和判断出题组名、题目和子题，根据要求和实际情况判断其是什么题型、是否包含子题，保证题目的结构拆解正确。
 
-一套试卷有三级结构，1. 分题型/类型的大模块 2.完整的一道题 3. 完整的一道题中的多个小题。你需要解析后两级结构。
-
-**🎯 语文学科特色题型识别**：
-语文试卷通常包含以下特色题型，需要特别注意处理方式：
-- **语文综合运用题**：有统一主题背景，包含多个资料和多个小题，**必须使用subQuestions结构**
-- **字音字形题**：通常为选择题形式，考查拼音标注的正误
-- **默写填空题**：需要填入准确的诗句或文言文语句
-- **古诗文阅读题**：包含古诗理解、文言文翻译、实词虚词解释等
-- **现代文阅读题**：包含文学类、说明文、议论文等不同文体
-- **名著阅读题**：考查对经典作品人物、情节、主题的理解
-- **语言文字运用题**：包含成语使用、病句修改、句式变换等
-- **作文题**：通常为命题作文或材料作文，可能提供多个题目供选择
-
-**⚠️ 题目完整性和独立性要求（最重要）**：
-- **核心原则**：拆出来的每一道题必须能独立完成，不能有缺漏信息
-- **材料依赖性题目处理**：
-  * 如果题目需要依赖某段材料才能回答，必须在题目content中包含完整的相关材料
-  * **绝对禁止**将题目与其依赖的材料分离
-  * 材料标题（如"资料一"、"材料二"）可以保留，因为这不是题目序号
-- **语文学科常见材料依赖题型**：
-  * **字音题**：必须包含材料，学生需要看到拼音标注才能判断正误
-  * **成语使用题**：必须包含语境材料，学生需要看到成语的使用语境
-  * **病句修改题**：必须包含需要修改的原句
-  * **词语填空题**：必须包含完整的语境材料
-  * **文言文词义题**：必须包含文言文原文
-- **常见错误示例**：
-  * ❌ 字音题只写"下列加点字读音标注不正确的一项是"，不包含材料内容
-  * ❌ 成语使用题只写"下列成语使用不恰当的一项是"，不包含语境材料
-  * ❌ 病句题只写"文段中的画线句存在问题，请你修改"，不包含原句
-- **正确处理示例**：
-  * ✅ 字音题包含：完整材料内容 + 题目要求 + 选项
-  * ✅ 成语题包含：完整语境材料 + 题目要求 + 选项
-  * ✅ 病句题包含：完整原文 + 画线句标注 + 修改要求
-
-
-**⚠️ 最重要要求 - 题号处理**：
-- **绝对禁止**在JSON中保留任何题目序号！
-- **必须删除**所有题目前面的序号，如"1."、"2."、"8."、"12."等
-- **必须删除**解析和答案中的题号，如"31."、"32."、"33."等
-- **错误示例**：`<p>8. 这篇文章的主旨是什么？</p>`
-- **正确示例**：`<p>这篇文章的主旨是什么？</p>`
-- **错误示例**：`<p>31. 句意：让我们一起探寻它的过去与现在吧。</p>`
-- **正确示例**：`<p>句意：让我们一起探寻它的过去与现在吧。</p>`
-- **说明**：无论题目是阅读理解题、文言文阅读题、作文题还是其他题型，都必须删除题号，只保留题目内容本身。解析和答案中的题号也必须删除。
-
-**🚨 序号重新映射要求（重要）**：
-- **问题描述**：原始试卷中的"第6段材料"、"第12小题"等序号在拆分后的独立题目中需要重新编号
-- **重新映射规则**：
-  * 原文"第6段材料" → 在当前题目中应改为"第1段材料"（如果是该题的第1段）
-  * 原文"第12小题" → 在当前题目中应改为"第1小题"（如果是subQuestions[0]）
-  * 原文"第25题" → 在当前题目中应改为"第1题"（如果是该题的第1个小题）
-- **适用场景**：
-  * 阅读理解题：重新编号子题序号
-  * 文言文阅读题：重新编号段落和小题序号
-  * 现代文阅读题：重新编号段落和小题序号
-  * 综合题：重新编号小题序号
-  * 任何包含内部序号引用的题目
-- **处理原则**：确保题目内部的序号表述与实际的subQuestions顺序对应
-- **示例**：
-  * ❌ 错误：`<p>根据第6段材料，选择正确答案</p>` （在独立题目中）
-  * ✅ 正确：`<p>根据第1段材料，选择正确答案</p>` （重新映射后）
-  * ❌ 错误：`<p>第12小题考查的是...</p>` （在solution中）
-  * ✅ 正确：`<p>第1小题考查的是...</p>` （重新映射后）
-
-**🚨 表格处理特别说明（最重要）**：
-- **⚠️ 关键原则：必须保留表格结构！绝对不能将表格内容转换为连续段落！**
-- **表格结构保留**：对于任何表格，必须保持表格的行列结构
-- **表格转换规则**：
-  * **必须保持**原始表格的行列布局
-  * **必须使用**HTML表格标签：`<table>`, `<tr>`, `<td>`, `<th>`
-  * **不能拆解**表格内容为独立段落
-  * 每个原始表格单元格对应一个`<td>`或`<th>`标签
-- **具体处理要求**：
-  * 表格内的文本保持在对应单元格内：`<td>文本内容</td>`
-  * 表格内的图片保持在对应单元格内：`<td><img src="..." alt="..." /></td>`
-  * 表格内的格式化文本使用相应HTML标签：`<td><strong>粗体</strong></td>`
-- **❌ 绝对禁止的错误做法**：
-  * 将表格内容转换为连续的`<p>`段落
-  * 破坏原始表格的行列对应关系
-  * 将表格的不同单元格内容混合在一起
-- **✅ 正确示例**：
-  ```html
-  <table>
-    <tr>
-      <td><strong>LOST!</strong><br/><img src="media/image3.png" alt="钢笔"/><br/>Lost: My pen</td>
-      <td><strong>Thank you!</strong><br/><img src="media/image4.png" alt="钱包"/><br/>Please help me find my wallet!</td>
-    </tr>
-    <tr>
-      <td><strong>LOST PET</strong><br/><img src="media/image5.png" alt="泰迪犬"/></td>
-      <td><strong>Have You Seen This Mug</strong><br/><img src="media/image6.png" alt="保温杯"/></td>
-    </tr>
-  </table>
-  ```
-
-**⚠️ 学科和学段信息处理要求（重要）**：
+**学科和学段信息处理要求**：
 - **必须为每个题目JSON添加两个参数**：`subjectId` 和 `phaseId`
 - **学科信息（subjectId）**：根据试卷内容分析确定学科类型
   * 语文：1
@@ -131,9 +43,101 @@
     ]// 子题（不一定有）
   }
   ```
-- **⚠️ 重要**：每个题目对象都必须包含这两个参数，不能遗漏
+- **重要**：每个题目对象都必须包含这两个参数，不能遗漏
 
-**⚠️ 填空格式要求（重要修正）**：
+**语文学科特色题型识别**：
+语文试卷通常包含以下特色题型，需要特别注意处理方式：
+- **语文综合运用题**：有统一主题背景，包含多个资料和多个小题，**必须使用subQuestions结构**
+- **字音字形题**：通常为选择题形式，考查拼音标注的正误
+- **默写填空题**：需要填入准确的诗句或文言文语句
+- **古诗文阅读题**：包含古诗理解、文言文翻译、实词虚词解释等
+- **现代文阅读题**：包含文学类、说明文、议论文等不同文体
+- **名著阅读题**：考查对经典作品人物、情节、主题的理解
+- **语言文字运用题**：包含成语使用、病句修改、句式变换等
+- **作文题**：通常为命题作文或材料作文，可能提供多个题目供选择
+
+**题目完整性和独立性要求（最重要）**：
+- **核心原则**：拆出来的每一道题必须能独立完成，不能有缺漏信息
+- **材料依赖性题目处理**：
+  * 如果题目需要依赖某段材料才能回答，必须在题目content中包含完整的相关材料
+  * **绝对禁止**将题目与其依赖的材料分离
+  * 材料标题（如"资料一"、"材料二"）可以保留，因为这不是题目序号
+- **语文学科常见材料依赖题型**：
+  * **字音题**：必须包含材料，学生需要看到拼音标注才能判断正误
+  * **成语使用题**：必须包含语境材料，学生需要看到成语的使用语境
+  * **病句修改题**：必须包含需要修改的原句
+  * **词语填空题**：必须包含完整的语境材料
+  * **文言文词义题**：必须包含文言文原文
+- **常见错误示例**：
+  * ❌ 字音题只写"下列加点字读音标注不正确的一项是"，不包含材料内容
+  * ❌ 成语使用题只写"下列成语使用不恰当的一项是"，不包含语境材料
+  * ❌ 病句题只写"文段中的画线句存在问题，请你修改"，不包含原句
+- **正确处理示例**：
+  * ✅ 字音题包含：完整材料内容 + 题目要求 + 选项
+  * ✅ 成语题包含：完整语境材料 + 题目要求 + 选项
+  * ✅ 病句题包含：完整原文 + 画线句标注 + 修改要求
+
+
+**重要要求 - 题号处理**：
+- **绝对禁止**在JSON中保留任何题目序号！
+- **必须删除**所有题目前面的序号，如"1."、"2."、"8."、"12."等
+- **必须删除**解析和答案中的题号，如"31."、"32."、"33."等
+- **错误示例**：`<p>8. 这篇文章的主旨是什么？</p>`
+- **正确示例**：`<p>这篇文章的主旨是什么？</p>`
+- **错误示例**：`<p>31. 句意：让我们一起探寻它的过去与现在吧。</p>`
+- **正确示例**：`<p>句意：让我们一起探寻它的过去与现在吧。</p>`
+- **说明**：无论题目是阅读理解题、文言文阅读题、作文题还是其他题型，都必须删除题号，只保留题目内容本身。解析和答案中的题号也必须删除。
+
+**序号重新映射要求**：
+- **问题描述**：原始试卷中的"第6段材料"、"第12小题"等序号在拆分后的独立题目中需要重新编号
+- **重新映射规则**：
+  * 原文"第6段材料" → 在当前题目中应改为"第1段材料"（如果是该题的第1段）
+  * 原文"第12小题" → 在当前题目中应改为"第1小题"（如果是subQuestions[0]）
+  * 原文"第25题" → 在当前题目中应改为"第1题"（如果是该题的第1个小题）
+- **适用场景**：
+  * 阅读理解题：重新编号子题序号
+  * 文言文阅读题：重新编号段落和小题序号
+  * 现代文阅读题：重新编号段落和小题序号
+  * 综合题：重新编号小题序号
+  * 任何包含内部序号引用的题目
+- **处理原则**：确保题目内部的序号表述与实际的subQuestions顺序对应
+- **示例**：
+  * ❌ 错误：`<p>根据第6段材料，选择正确答案</p>` （在独立题目中）
+  * ✅ 正确：`<p>根据第1段材料，选择正确答案</p>` （重新映射后）
+  * ❌ 错误：`<p>第12小题考查的是...</p>` （在solution中）
+  * ✅ 正确：`<p>第1小题考查的是...</p>` （重新映射后）
+
+**表格处理特别说明**：
+- **关键原则：必须保留表格结构！绝对不能将表格内容转换为连续段落！**
+- **表格结构保留**：对于任何表格，必须保持表格的行列结构
+- **表格转换规则**：
+  * **必须保持**原始表格的行列布局
+  * **必须使用**HTML表格标签：`<table>`, `<tr>`, `<td>`, `<th>`
+  * **不能拆解**表格内容为独立段落
+  * 每个原始表格单元格对应一个`<td>`或`<th>`标签
+- **具体处理要求**：
+  * 表格内的文本保持在对应单元格内：`<td>文本内容</td>`
+  * 表格内的图片保持在对应单元格内：`<td><img src="..." alt="..." /></td>`
+  * 表格内的格式化文本使用相应HTML标签：`<td><strong>粗体</strong></td>`
+- **❌ 绝对禁止的错误做法**：
+  * 将表格内容转换为连续的`<p>`段落
+  * 破坏原始表格的行列对应关系
+  * 将表格的不同单元格内容混合在一起
+- **✅ 正确示例**：
+  ```html
+  <table>
+    <tr>
+      <td><strong>LOST!</strong><br/><img src="media/image3.png" alt="钢笔"/><br/>Lost: My pen</td>
+      <td><strong>Thank you!</strong><br/><img src="media/image4.png" alt="钱包"/><br/>Please help me find my wallet!</td>
+    </tr>
+    <tr>
+      <td><strong>LOST PET</strong><br/><img src="media/image5.png" alt="泰迪犬"/></td>
+      <td><strong>Have You Seen This Mug</strong><br/><img src="media/image6.png" alt="保温杯"/></td>
+    </tr>
+  </table>
+  ```
+
+**填空格式要求（重要修正）**：
 - **必须使用标准HTML标签**：pandoc转换出的`[_____]{.underline}`类似格式必须替换为HTML形式
 - **下划线填空**：使用 `<input size="X" readonly="readonly" type="underline">` 标签
 - **禁止保留pandoc的中括号填空格式**：
@@ -147,18 +151,18 @@
   * 句子填空：size="25-35"
 
 
-**⚠️ 答题区域格式要求（重要）**：
+**答题区域格式要求（重要）**：
 - **普通简答题**：使用 `<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>` 标签
 - **书面表达题（作文）**：使用 `<p style=\"overflow: hidden;\"><full-line-blank id="mce_1" style="display: inline; position: static;" contenteditable="false" data-lines="8" data-punctuation="" data-first-line-width="379"></full-line-blank></p>` 标签
 - **填空题**：使用 `<input size="X" readonly="readonly" type="underline">` 标签
 
-**⚠️ 作文题识别规则（重要）**：
+**作文题识别规则（重要）**：
 - **作文题特征**：题目要求写作文、短文、文章等，通常包含"写一篇"、"完成一篇"、"写短文"等关键词
 - **作文题标签**：作文题必须使用 `<full-line-blank>` 标签，绝对不能使用 `<input size="X" readonly="readonly" type="underline">` 标签
 - **作文题type**：作文题的type为"简答"，但答题区域使用 `<full-line-blank>` 标签
 - **常见错误**：将作文题错误识别为填空题，使用 `<input size="X" readonly="readonly" type="underline">` 标签
 
-**⚠️ 标签使用区分（重要）**：
+**标签使用区分（重要）**：
 - **使用 `<full-line-blank>` 的情况**：
   * 简答题（需要写完整句子或段落）
   * 作文题（需要写文章）
@@ -170,12 +174,13 @@
 注意普通简答题和书面表达题都需要有<p style=\"overflow: hidden;\"></p>这个标签，后面有具体示例
 
 
-**⚠️ 填空形式选择规则（重要）**：
+**填空形式选择规则（重要）**：
 - **优先使用下划线形式**：`<input size="X" readonly="readonly" type="underline">`
 - **仅在以下情况使用括号形式**：
   * 原文明确显示为括号 `()` 形式的填空
   * 题目要求从选项中选择填入括号中
 - **常见错误**：不要将原文中的下划线填空错误地转换为括号形式
+
 
 请分析以下试卷内容，提取出试卷的二级结构（完整的一道题），返回JSON格式的数组，每个对象的格式要求如下：
 
@@ -259,6 +264,8 @@
   "title" : "题目"
 }
 
+
+**单选题**：题目有明确的选项，学生选择其中一个正确答案
 **单选题示例**
 
 {
@@ -280,9 +287,7 @@
 }
 
 
-
-
-书面表达题/文段表达题/作文题：
+**作文题**：
 - question: 主题目对象，包含：
   - content: 包含题目要求、提示内容和作答区域，作答区域使用完整的书面表达题格式
   - type: 固定为"简答"
@@ -290,8 +295,6 @@
   - answer: 包含完整答案内容的对象
     - answer: 完整的作文内容
   - solution: 详细的解析内容
-
-
 
 
 **作文类题目示例**
@@ -307,7 +310,7 @@
     }
 }
 
-填空题：
+**填空题**：
 - content: 题目内容（包含题干）
 - solution: 解析过程（如果有的话）
 - answer: 包含答案信息的对象
@@ -315,6 +318,27 @@
   - type: 固定为306（数字类型）
 - type: 固定为"填空"
 - score: 题目分数
+
+**填空题示例**
+{
+  "question": {
+    "content": "<p>根据课文内容填空。</p><p>《春》一文中，作者朱自清写道："<input size=\"8\" readonly=\"readonly\" type=\"underline\">，<input size=\"8\" readonly=\"readonly\" type=\"underline\">，<input size=\"8\" readonly=\"readonly\" type=\"underline\">，春天像<input size=\"8\" readonly=\"readonly\" type=\"underline\">的姑娘，<input size=\"8\" readonly=\"readonly\" type=\"underline\">着，<input size=\"8\" readonly=\"readonly\" type=\"underline\">着，笑着，向我们走来。"</p>",
+    "solution": "<p>这道题考查学生对课文《春》的记忆和理解。朱自清在文中用三个比喻来赞美春天：春天像刚落地的娃娃，春天像小姑娘，春天像健壮的青年。这句话是文章的结尾，表达了作者对春天的热爱和赞美之情。</p>",
+    "answer": {
+      "blanks": [
+        "春天像刚落地的娃娃",
+        "从头到脚都是新的",
+        "它生长着",
+        "花枝招展",
+        "花枝招展",
+        "笑着"
+      ]
+    },
+    "type": "填空",
+    "score": 6
+  }
+}
+
 
 **语文学科特色题型示例：**
 
@@ -367,7 +391,7 @@
       "accessories": []
     },
     {
-      "content": "<p>你审核资料中标注的字音。下列加点字读音标注不正确的一项是（ ）</p>",
+      "content": "<p>你审核资料中标注的字音。下列加点字读音标注不正确的一项是<input type=\"bracket\" size=\"8\" /></p>",
       "type": "单选",
       "accessories": [
         "<p>筹划</p>",
@@ -379,7 +403,7 @@
       "solution": "<p>本题考查字音。B项中\"召开\"的\"召\"应读作zhào，而不是zhāo。</p>"
     },
     {
-      "content": "<p>你在文段中的横线处填入一组词语。下列恰当的一项是（ ）</p>",
+      "content": "<p>你在文段中的横线处填入一组词语。下列恰当的一项是<input type=\"bracket\" size=\"8\" /></p>",
       "type": "单选",
       "accessories": [
         "<p>保护 研究 传播</p>",
@@ -402,7 +426,7 @@
   },
   "subQuestions": [
     {
-      "content": "<p>"吾日三省吾身"中的"日"与下列词语中加点的"日"，意思相同的一项是（ ）</p>",
+      "content": "<p>"吾日三省吾身"中的"日"与下列词语中加点的"日"，意思相同的一项是<input type=\"bracket\" size=\"8\" /></p>",
       "type": "单选",
       "accessories": [
         "<p>日月同辉</p>",
@@ -414,7 +438,7 @@
       "solution": "<p>本题考查一词多义。"吾日三省吾身"中的"日"，意思是"每天"；"日新月异"中的"日"指每天，含义相同。</p>"
     },
     {
-      "content": "<p>下列对"传不习乎"的理解，正确的一项是（ ）</p>",
+      "content": "<p>下列对"传不习乎"的理解，正确的一项是<input type=\"bracket\" size=\"8\" /></p>",
       "type": "单选",
       "accessories": [
         "<p>对老师传授的知识应该经常复习。</p>",
@@ -436,7 +460,7 @@
   },
   "subQuestions": [
     {
-      "content": "<p>根据以上材料，下列说法不符合文意的一项是（ ）</p>",
+      "content": "<p>根据以上材料，下列说法不符合文意的一项是<input type=\"bracket\" size=\"8\" /></p>",
       "type": "单选",
       "accessories": [
         "<p>每位公民都是气候变化的影响者，应接受并开展气候变化教育。</p>",
@@ -450,25 +474,6 @@
   ]
 }
 
-**填空题示例**
-{
-  "question": {
-    "content": "<p>根据课文内容填空。</p><p>《春》一文中，作者朱自清写道："<input size=\"8\" readonly=\"readonly\" type=\"underline\">，<input size=\"8\" readonly=\"readonly\" type=\"underline\">，<input size=\"8\" readonly=\"readonly\" type=\"underline\">，春天像<input size=\"8\" readonly=\"readonly\" type=\"underline\">的姑娘，<input size=\"8\" readonly=\"readonly\" type=\"underline\">着，<input size=\"8\" readonly=\"readonly\" type=\"underline\">着，笑着，向我们走来。"</p>",
-    "solution": "<p>这道题考查学生对课文《春》的记忆和理解。朱自清在文中用三个比喻来赞美春天：春天像刚落地的娃娃，春天像小姑娘，春天像健壮的青年。这句话是文章的结尾，表达了作者对春天的热爱和赞美之情。</p>",
-    "answer": {
-      "blanks": [
-        "春天像刚落地的娃娃",
-        "从头到脚都是新的",
-        "它生长着",
-        "花枝招展",
-        "花枝招展",
-        "笑着"
-      ]
-    },
-    "type": "填空",
-    "score": 6
-  }
-}
 
 
 多个问题的题目：
@@ -579,69 +584,7 @@
 ]
 ```
 
-**阅读理解题结构要求**：
-
-  ```json
-  {
-    "question": {
-      "content": "题目说明加阅读材料",
-      "type": "单选"  // 根据子题类型确定
-    },
-    "subQuestions": [
-      {
-        "content": "<p>第一个问题</p>",
-        "type": "单选",
-        "accessories": ["选项A", "选项B", "选项C"],
-        "answer": {"choice": "1"},
-        "solution": "<p>解析内容</p>"
-      }
-      // 更多子题...
-    ]
-  }
-  ```
-- **⚠️ 绝对禁止**：将共享同一阅读材料的多个问题拆分成独立的题目
-
-**阅读理解题正确处理示例**：
-
-✅ **正确做法**：合并为一道阅读理解题
-```json
-[
-  {
-    "question": {
-      "content": "<p>阅读下列短文，从每小题所给的A、B、C、D四个选项中选出最佳选项。<br>&nbsp; &nbsp; In a small village, there were two brothers named Jamie and Jack...</p><p>完整的阅读材料内容</p>",
-      "type": "单选"
-    },
-    "subQuestions": [
-      {
-        "content": "<p>What do we know about Jamie and Jack before their fight?</p>",
-        "type": "单选",
-        "accessories": ["<p>They lived in a big city.</p>", "<p>They cared about each other very much.</p>", "<p>They had always been fighting with each other.</p>"],
-        "answer": {"choice": "1"},
-        "solution": "<p>细节理解题。根据\"Every day, they worked together and happily helped one another.\"可知，在争吵之前，兄弟俩非常关心彼此。故选B。</p>"
-      },
-      {
-        "content": "<p>What does the underlined words \"malicious words\" in paragraph 2 mean?</p>",
-        "type": "单选",
-        "accessories": ["<p>Right words.</p>", "<p>Warm words.</p>", "<p>Bad words.</p>"],
-        "answer": {"choice": "2"},
-        "solution": "<p>词义猜测题。根据\"They stopped working together and began using malicious words towards each other...\"可知...</p>"
-      }
-      // 更多子题...
-    ]
-  }
-]
-```
-❌ **错误做法**：拆分为4个独立题目
-```json
-[
-  {"question": {"content": "Jamie和Jack的完整故事...", "type": "单选"}, ...},
-  {"question": {"content": "What do we know about Jamie and Jack before their fight?", "type": "单选"}, ...},
-  {"question": {"content": "What does the underlined words 'malicious words' mean?", "type": "单选"}, ...},
-  {"question": {"content": "Why did Jamie ask the carpenter to build a fence?", "type": "单选"}, ...}
-]
-```
-
-**示例1：包含多个子问题的简答题**
+**示例：包含多个子问题的简答题**
 {
   "question": {
     "content": "<p>阅读下面短文，从每题所给的A、B、C、D四个选项中选出最佳选项。<br>&nbsp; &nbsp; A lot of excellent straw-made miniatures (稻草微缩模型) of classic ancient buildings make Xu Jian's home more beautiful. They include models from the Yellow Crane Tower in Hubei Province to the Forbidden City's turrets (角楼) in Beijing. They are all full of details and carefully crafted (手工制成的), tied and placed by Xu's skillful hands.</p><p>&nbsp; &nbsp; \"All the doors and windows and everything else are made of sorghum stalks (高粱秆),\" Xu points to the Yellow Crane Tower that is $1$ meter high at his base in Yongqing County, Langfang City, Hebei Province. This special piece was made out of hundreds of thousands of sorghum stalks and took him two years to complete without the use of any nails (钉子) or glue. It completely depends on interlocking, tenon-and-mortise structures (榫卯结构),\" the man in his $30$s explains.</p><p>&nbsp; &nbsp; The sorghum straw art requires lots of patience, especially for works showing images of ancient buildings. They usually take several months or even one to two years to complete. Additionally, all the beams and columns (横梁和立柱) are straightened after being heated over a lamp. It's the only way that every door and window can open and close properly.</p><p>&nbsp; &nbsp; The sorghum straw art follows strict standards from choosing material to making the work. Xu has grown sorghum in his farmland, and chooses those of the highest quality to create straw works.</p><p>&nbsp; &nbsp; The sorghum stalks go from the thinnest at $1.8$ millimeters to the thickest at $12$ millimeters. Almost every piece includes hundreds of crafting steps. Xu doesn't waste the leftover stalks, either, as he turns them into windmills (风车).</p><p>&nbsp; &nbsp; \"Nothing is useless if we put our heart into it,\" says Xu. In the eyes of many, sorghum straw is only agricultural (农业的) waste, but through the creativity of craftsmen, it can be turned into a treasure.</p>",
@@ -686,7 +629,7 @@
     }
   ]
 }
-**示例1：包含子问题的简答题**
+**示例：包含子问题的简答题**
 {
   "question": {
     "content": "<p>如图$4 - ZT - 3\\circled{1}$所示，在$\\triangle ABC$中，$\\angle ACB = 90\\degree，AC = BC$，过点$C$在$\\triangle ABC$外作直线$MN，AM\\perp MN$于点$M，BN\\perp MN$于点$N$。</p><p><img src=\"page_1_img_1.png\" alt=\"几何图形\"/><img src=\"page_1_img_2.png\" alt=\"数学图表\"/></p><p>图$4 - ZT - 3$</p>",
@@ -720,7 +663,6 @@
   }
 }
 
-**示例：包含多个选择题的题目**
 
 **严格JSON输出格式规范：**
 
@@ -750,7 +692,7 @@
    - **⚠️ 正确示例**：`"solution": "fall（跌落），根据..."` 或 `"solution": "fall\"跌落\"，根据..."`
 
 
-5. **数学公式**：
+4. **数学公式**：
    - **数学公式转义要求**：
      - 公式和任何数字默认使用latex格式，$$括起，例如$12$，如果希望公式在下一行展示，则使用$$12$$。
      - 在JSON中，HTML属性的引号必须转义：class="..." → class=\"...\"
@@ -763,7 +705,7 @@
        - 想要输出大于号 >，需要替换为 &gt;
        - 想要输出 & 符号，需要替换为 &amp;
 
-6. **图片引用**：
+5. **图片引用**：
    - 格式：以url的形式给出
    - 图片尺寸要求：
      * 一般图片使用width="300-400"确保清晰可见
@@ -772,7 +714,7 @@
      * 避免使用width="150"以下的过小尺寸
    - 示例：`<img src="图片URL" width="350" alt="图片描述"/>`
 
-7. **HTML格式**
+6. **HTML格式**
 选择题：
    - content中涉及换行、加粗、斜体、加点等特殊的排版格式，统一用HTML的符号处理。例如<p>。
    - **格式对齐要求**：
@@ -799,11 +741,10 @@
 - **重要**：如果原文中填空处有提示信息（如括号内的词根提示），必须保留在title属性中，例如：`<input size="12" readonly="readonly" type="underline" title="invent">`
 
 
-
-8. **填空题特殊要求**：
+7. **填空题特殊要求**：
    - **格式严格匹配（重要）**：
      * 如果原文是下划线 `_____`，必须用 `<input size="X" readonly="readonly" type="underline">`
-     * 如果原文是括号 `()`，必须用 `<input type="bracket">`
+     * 如果原文是括号 `()`，必须用 `<input type=\"bracket\" size="X" />`
    - **常见错误示例**：
      * ❌ 错误：原文是下划线，却用了括号：`My sister is good at singing. <input type="bracket" size="8" /> can even sing some French songs.`
      * ✅ 正确：原文是下划线，用下划线：`My sister is good at singing. <input size="8" readonly="readonly" type="underline"> can even sing some French songs.`
@@ -811,11 +752,10 @@
      * 如果原文显示为 `\_\_\_\_\_\_\_\_` 或 `___` 等下划线形式，必须使用 `type="underline"`
      * 如果原文显示为 `()` 或 `（  ）` 等括号形式，才使用 `type="bracket"`
 
-9. **语文学科特殊处理要求**：
+8. **语文学科特殊处理要求**：
    - **字音字形题**：
      * 准确提取所有选项内容，不能遗漏任何拼音标注
      * 题干中的加点字要用适当HTML标签标注，如`<strong>筹</strong>划`
-     * 选项中只保留拼音和词语，如"筹（chóu）划"
    - **默写填空题**：
      * 必须使用`<input size="X" readonly="readonly" type="underline">`标签表示填空处
      * 根据预期答案长度设置合适的size值（诗句通常size="15-25"）
@@ -847,7 +787,7 @@
 
 
 
-10. **格式一致性检查要求**：
+9. **格式一致性检查要求**：
    - **段落格式**：所有段落开头使用`&nbsp; &nbsp;`进行首行缩进（阅读材料尤其重要）
    - **居中格式**：题目标题、作文标题等需要居中的内容使用`style="text-align: center;"`
    - **图片对齐**：根据原PDF中的图片位置设置对齐方式，重要图表通常需要居中显示
@@ -872,65 +812,6 @@
 语文阅读题的答案和解析，每一个都不能忽略，必须严格包含，否则会失败。
 禁止写出题号和选项号，JSON输入到下一个流程后会自动被补充。
 
-
-**⚠️ 特别重要检查项**：
-1. **答案格式一致性检查**：
-   - **内容必须与pandoc转换结果一致**：例如：pandoc：` 48\. to##with`→ JSON：`to##with`
-   - **禁止修改答案格式**：不能随意添加、删除或修改答案中的任何字符
-   - **正确做法**：
-     * ✅ 完全一致：pandoc显示 `(s)ince`，JSON中就是 `(s)ince`
-     * ✅ 保留所有符号：括号、首字母提示、标点等都必须保留
-     * ✅ **特殊字符完整保留**：下划线(_)、星号(*)、井号(#)、斜杠(/)等所有特殊字符必须完整保留
-     * ✅ **markdown符号保留**：*斜体*、**粗体**、_下划线_等格式标记必须原样保留
-   - **示例**：
-     * pandoc：`【答案】(s)ince` → JSON：`"blanks": ["(s)ince"]`
-     * pandoc：`【答案】inter_______` → JSON：`"blanks": ["inter_______"]`
-     * pandoc：`【答案】learn_______` → JSON：`"blanks": ["learn_______"]`
-
-
-2. **JSON格式正确性检查（⚠️ 最重要）**：
-   - **⚠️ 双引号转义检查**：确保所有解析和答案中的双引号都正确转义
-   - **⚠️ 检查方法**：搜索所有solution和answer字段，确保没有未转义的双引号
-
-
-5. **题目数量完整性检查**：
-   - 处理完成后，统计JSON数组中的题目总数
-   - 确保与试卷中的实际题目数量一致
-   - 如果数量不符，必须重新检查并补充缺失的题目
-
-6. **填空形式正确性检查（重要）**：
-   - **下划线填空检查**：如果原文是下划线形式，必须使用 `<input size="X" readonly="readonly" type="underline">`
-   - **括号填空检查**：如果原文是括号形式，才使用 `<input type="bracket" size="X" />`
-   - **常见错误**：不要将原文中的下划线填空错误地转换为括号形式
-   - **示例**：`My sister is good at singing. _____ can even sing some French songs.` → 必须用 `<input size="8" readonly="readonly" type="underline">`
-
-7. **作文题标签使用检查（重要）**：
-   - **作文题识别检查**：确保作文题（包含"写一篇"、"完成一篇"、"写短文"等关键词）被正确识别
-   - **作文题标签检查**：作文题必须使用 `<full-line-blank>` 标签，绝对不能使用 `<input size="X" readonly="readonly" type="underline">` 标签
-   - **示例检查**：
-     * ❌ 错误：`<p>写一篇关于...的短文</p><input size="80" readonly="readonly" type="underline">`
-     * ✅ 正确：`<p>写一篇关于...的短文</p><p style="overflow: hidden;"><full-line-blank...></full-line-blank></p>`
-
-8. **题号删除最终检查**：
-   - **最重要**：检查所有题目内容是否还包含题号（如"1."、"2."、"8."等）
-   - **最重要**：检查所有解析（solution）和答案（answer）是否还包含题号（如"31."、"32."、"33."等）
-   - **最重要**：检查阅读理解中是否还包含篇目标号（如"A."、"B."、"C."、"D."等）
-   - 如果发现任何题号，必须立即删除
-   - 示例：`<p>8. What's the main idea?</p>` → `<p>What's the main idea?</p>`
-   - 示例：`<p>31. 句意：让我们一起探寻它的过去与现在吧。</p>` → `<p>句意：让我们一起探寻它的过去与现在吧。</p>`
-   - 示例：`<p><strong>A</strong></p>` → `<p>文章内容</p>` （去掉A.和strong标签）
-   - 这是JSON格式正确性的关键要求，绝对不能违反！
-
-9. **括号提示保留要求**：
-   - **必须保留所有括号提示**：语法填空题中的括号提示（如"(create)"、"(visit)"、"(live)"等）必须完整保留
-   - **括号提示位置**：括号提示应放在对应的填空处附近，帮助学生理解应该填写什么
-   - **示例格式**：`<input size="8" readonly="readonly" type="underline"> (create)` 或 `(create) <input size="8" readonly="readonly" type="underline">`
-   - **禁止删除**：绝对禁止删除任何括号内的提示信息，这些是题目的重要组成部分
-
-试卷内容：
-{content}
-
-在开始处理前，请先扫描全文，统计总共有多少道题目（包括主题目和子题目），确保最终输出的JSON数组包含所有题目。
 
 **⚠️ 语文学科最终检查清单**：
 1. **语文综合运用题检查（重点）**：
@@ -960,26 +841,17 @@
    - 使用`<full-line-blank>`答题区域格式
    - 保留完整的写作要求和字数限制
 
-**⚠️ 最终答案格式检查**：
-- **答案必须与pandoc转换结果完全一致**：不能修改任何格式、符号或内容
-- **常见错误示例**：
-  * ❌ `(s)ince` → `since` （删除了括号和首字母提示）
-  * ❌ `inter_______` → `esting` （删除了部分提示内容）
-  * ❌ `learn_______` → `ing` （删除了部分提示内容）
-- **正确做法**：pandoc显示什么，JSON中就输出什么，完全一致
 
-
-**⚠️ JSON格式完整性检查（重要）**：
+**JSON格式完整性检查（重要）**：
 - **字符串完整性**：确保所有字符串都正确开始和结束，有完整的双引号
 - **内容完整性**：确保所有内容都完整，没有被截断
 - **转义完整性**：确保所有特殊字符都正确转义
-
 - **检查方法**：确保每个字符串都以 `"` 开始，以 `"` 结束，内容完整
 subQuestion不是一个必须的结构，如果一道题没有多个小问，则禁止使用subquestion结构。
 subQuestion的content可以只写答题区域，而不需要重复抄写question的content。
 你需要输出全部题对应的object，不能少题漏题。
 
-**🚨 重要提醒 - 序号重新映射检查**：
+**重要提醒 - 序号重新映射检查**：
 在处理每道题目时，必须检查题目内容中是否包含序号引用（如"第X段对话"、"第X小题"、"第X题"等），并根据当前题目的实际结构重新映射这些序号。确保：
 - 题目content中的序号与实际结构对应
 - solution中的序号与subQuestions的顺序对应
@@ -995,9 +867,9 @@ subQuestion的content可以只写答题区域，而不需要重复抄写question
 - **古诗词鉴赏题**：可能为单题或多题结构，注意诗歌格式保持
 - **语言文字运用题**：包括成语使用、病句修改等，通常为`"type": "单选"`或`"type": "简答"`
 - **名著阅读题**：`"type": "简答"`，考查对文学作品的理解
-- **作文题**：`"type": "作文"`，二选一题目绝对不能拆分为subQuestions
+- **作文题**：`"type": "简答"`，二选一题目绝对不能拆分为subQuestions
 
-**🔥 语文综合运用题识别要点**：
+**语文综合运用题识别要点**：
 - **关键特征**：有统一的主题背景 + 多个资料 + 多个小题围绕主题
 - **常见标志**：
   * 题目开头有主题性导语（如"学校组织编写..."）
@@ -1008,15 +880,13 @@ subQuestion的content可以只写答题区域，而不需要重复抄写question
 - **错误做法**：将每个小题拆分为独立的题目
 
 
-- **单选题**：题目有明确的选项，学生选择其中一个正确答案
 
-
-**⚠️ 题目内容完整性要求**：
+**题目内容完整性要求**：
 - **必须包含题目说明**：如"用方框中词的适当形式填空，把答案写在答题卡各小题的横线上"
 - **必须包含所有提示信息**：如方框选项、答题要求、注意事项等
 - **禁止遗漏任何题目信息**：确保题目完整可理解
 
-**⚠️ 题目说明提取规则（最重要）**：
+**题目说明提取规则**：
 - **题目开头说明必须完整**：不能遗漏任何题目说明文字
 - **方框选项必须包含**：如果题目开头有方框选项，必须完整提取
 - **答题要求必须保留**：如"把答案写在答题卡各小题的横线上"等要求
@@ -1026,25 +896,11 @@ subQuestion的content可以只写答题区域，而不需要重复抄写question
   * 题目结尾的注意事项
 - **检查方法**：确保每个题目的content字段都包含完整的题目说明，包括完形填空题
 
-**⚠️ 多问题阅读题处理规则**：
-1. **识别标准**：题目包含多个编号问题（如1. 2. 3. 4. 5.）
-2. **结构要求**：必须使用 `subQuestions` 结构，每个问题对应一个子题
-3. **答案处理**：每个子题都有独立的 `answer` 和 `solution`
-4. **🚨 序号重新映射**：阅读理解题中的序号表述需要重新编号
-   - 原文"第12小题" → 改为"第1小题"（如果是subQuestions[0]）
-   - 原文"第13题考查的是..." → 改为"第2题考查的是..."（如果是subQuestions[1]）
-   - 确保solution中的序号与subQuestions的实际顺序对应
-5. **正确做法**：
-   - 主题目包含文章内容但不包含具体问题，具体问题应该在下面的子题中呈现，不要在主题和子题的content中重复呈现
-   - 每个子题目对应一个具体问题
-   - 使用 `subQuestions` 结构组织
 
-
-
-**⚠️ 二选一写作题处理规则（重要）**：
+**二选一写作题处理规则**：
 - **识别标准**：题目中包含"从下面两个题目中任选一题"、"二选一"等选择性指示
-- **⚠️ 必须作为一整道题目**：二选一的写作题绝对不能使用subQuestions结构拆分
-- **⚠️ 禁止拆分原因**：如果拆分成两个子题，学生会误认为两道都需要回答，失去了"二选一"的选择性
+- **必须作为一整道题目**：二选一的写作题绝对不能使用subQuestions结构拆分
+- **禁止拆分原因**：如果拆分成两个子题，学生会误认为两道都需要回答，失去了"二选一"的选择性
 - **正确处理方式**：将整个题目（包括说明和两个选择）作为一道完整的简答题录入
 
 **✅ 二选一写作题正确示例**：
