@@ -744,7 +744,7 @@ class PandocWordProcessor:
             print(f"⚠️ 未找到prompt模板文件: {prompt_template_path}")
             print("使用默认prompt...")
             prompt = f"""
-一套试卷有三级结构，1. 分题型/类型的大模块 2.完整的一道题 3. 完整的一道题中的多个小题。你需要解析前两级结构。
+一套试卷有三级结构，1. 分题型/类型的大模块 2.完整的一道题 3. 完整的一道题中的多个小题。你需要解析后两级结构。
 请分析以下文档内容，提取出试卷的二级结构（完整的一道题），返回JSON格式的数组，每个对象包含以下字段：
 - total_number: 总题号，唯一，及此题按照试卷题目展示顺序的总题号。（字符串）
 - module_number: 模块中的题号，即在一级结构中的题号。（字符串） 
@@ -878,29 +878,41 @@ class PandocWordProcessor:
             return None
     
     def process_word_document(self, file_path, output_format='markdown', prompt_template_path="prompt.md", 
-                            enable_format_analysis=True):
+                            enable_format_analysis=True, enable_dot_below_detection=True):
         """完整的Word文档处理流程"""
         print("=" * 60)
-        print("Pandoc Word文档处理工具 - 增强版")
+        print("Pandoc Word文档处理工具 - 增强版 (支持加点字)")
         print("=" * 60)
         print(f"文档文件: {file_path}")
         print(f"输出格式: {output_format}")
         print(f"Prompt模板: {prompt_template_path}")
         print(f"格式分析: {'启用' if enable_format_analysis else '禁用'}")
+        print(f"加点字检测: {'启用' if enable_dot_below_detection else '禁用'}")
         print("=" * 60)
         
-        # 新增：第一步 - 格式分析（如果启用且为docx文件）
-        format_analysis = None
-        if enable_format_analysis and file_path.lower().endswith('.docx'):
-            format_analysis = self.extract_format_analysis(file_path)
-            if format_analysis:
-                self._save_format_analysis(format_analysis, file_path)
+        # 🆕 新增：第一步 - 加点字预处理（如果启用且为docx文件）
+        processed_file_path = file_path
+        if enable_dot_below_detection and file_path.lower().endswith('.docx'):
+            processed_file_path = self._preprocess_dot_below_chars(file_path)
+            if not processed_file_path:
+                processed_file_path = file_path  # 回退到原文件
         
-        # 第二步：使用pandoc转换文档
-        content = self.convert_word_to_text(file_path, output_format)
+        # 第二步 - 格式分析（如果启用且为docx文件）
+        format_analysis = None
+        if enable_format_analysis and processed_file_path.lower().endswith('.docx'):
+            format_analysis = self.extract_format_analysis(processed_file_path)
+            if format_analysis:
+                self._save_format_analysis(format_analysis, processed_file_path)
+        
+        # 第三步：使用pandoc转换文档
+        content = self.convert_word_to_text(processed_file_path, output_format)
         if not content:
             print("❌ 文档转换失败，无法继续处理")
             return None
+        
+        # 🆕 第四步：转换加点字标记为HTML格式
+        if enable_dot_below_detection:
+            content = self._convert_dot_below_markers_to_html(content)
         
         # 第三步：调用大模型API解析内容
         llm_response = self.call_llm_api(content, prompt_template_path)
@@ -975,6 +987,95 @@ class PandocWordProcessor:
             print(f"错误位置: 第{e.lineno}行第{e.colno}列")
             print("请检查原始API响应文件")
             return None
+    
+    def _preprocess_dot_below_chars(self, docx_path):
+        """预处理docx文件中的加点字，使pandoc能识别"""
+        print("🔍 预处理加点字...")
+        
+        try:
+            # 导入预处理器
+            import zipfile
+            import xml.etree.ElementTree as ET
+            import tempfile
+            import shutil
+            import re
+            
+            output_path = docx_path.replace('.docx', '_dot_processed.docx')
+            
+            # 创建临时目录来解压和重新打包docx
+            with tempfile.TemporaryDirectory() as temp_dir:
+                extract_dir = Path(temp_dir) / "docx_content"
+                extract_dir.mkdir()
+                
+                # 解压docx文件
+                with zipfile.ZipFile(docx_path, 'r') as zip_file:
+                    zip_file.extractall(extract_dir)
+                
+                # 修改document.xml
+                document_xml_path = extract_dir / "word" / "document.xml"
+                if document_xml_path.exists():
+                    with open(document_xml_path, 'r', encoding='utf-8') as f:
+                        xml_content = f.read()
+                    
+                    # 查找并替换加点字标记
+                    run_with_em_pattern = r'(<w:r>.*?<w:rPr>.*?)<w:em w:val="dot"\s*/>(.*?</w:rPr>.*?<w:t>)(.*?)(</w:t>.*?</w:r>)'
+                    
+                    def replace_run_with_em(match):
+                        before_em = match.group(1)
+                        after_em = match.group(2) 
+                        text_content = match.group(3)
+                        after_text = match.group(4)
+                        
+                        # 添加下划线和特殊标记
+                        underline_xml = '<w:u w:val="single"/>'
+                        marked_text = f"[DOT_BELOW]{text_content}[/DOT_BELOW]"
+                        
+                        return f"{before_em}{underline_xml}{after_em}{marked_text}{after_text}"
+                    
+                    modified_content, replacement_count = re.subn(run_with_em_pattern, replace_run_with_em, xml_content, flags=re.DOTALL)
+                    
+                    if replacement_count > 0:
+                        with open(document_xml_path, 'w', encoding='utf-8') as f:
+                            f.write(modified_content)
+                        print(f"  ✅ 处理了 {replacement_count} 个加点字")
+                
+                # 重新打包docx文件
+                with zipfile.ZipFile(output_path, 'w', zipfile.ZIP_DEFLATED) as zip_file:
+                    for file_path in extract_dir.rglob('*'):
+                        if file_path.is_file():
+                            relative_path = file_path.relative_to(extract_dir)
+                            zip_file.write(file_path, relative_path)
+            
+            return output_path
+            
+        except Exception as e:
+            print(f"  ⚠️ 预处理失败: {e}")
+            return None
+    
+    def _convert_dot_below_markers_to_html(self, content):
+        """将加点字标记转换为HTML格式"""
+        print("🎨 转换加点字标记为HTML格式...")
+        
+        try:
+            import re
+            
+            # 匹配模式：[\[DOT_BELOW\]字符\[/DOT_BELOW\]]{.underline}
+            pattern = r'\[\\\[DOT_BELOW\\\]([\u4e00-\u9fff])\\\[/DOT_BELOW\\\]\]\{\.underline\}'
+            
+            def replace_with_html(match):
+                char = match.group(1)
+                return f'<span style="text-emphasis: filled dot black; text-emphasis-position: under right;" data-mce-style="text-emphasis: filled dot black; text-emphasis-position: under right;">{char}</span>'
+            
+            converted_content, count = re.subn(pattern, replace_with_html, content)
+            
+            if count > 0:
+                print(f"  ✅ 转换了 {count} 个加点字为HTML格式")
+            
+            return converted_content
+            
+        except Exception as e:
+            print(f"  ⚠️ 加点字转换失败: {e}")
+            return content
 
 def main():
     """主函数"""
