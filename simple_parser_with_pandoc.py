@@ -2,19 +2,29 @@
 # -*- coding: utf-8 -*-
 
 """
-Pandoc Word文档处理工具 - 增强版
+Pandoc Word文档处理工具 - 增强版 (支持特殊格式识别)
 
 使用pandoc将Word文档转换为模型可读的纯文本内容，支持：
-1. 文档文本转换
-2. 图片提取和内容分析
+1. 文档文本转换 (Pandoc)
+2. 图片提取和内容分析 (LLM Vision)
 3. 水印文字替换
-4. 大模型API调用
+4. 大模型API调用 (文档结构解析)
+5. 🆕 特殊格式识别 (波浪线、下划线、上标下标等)
+6. 🆕 着重号检测 (加点字)
+7. 🆕 字体样式分析 (颜色、字体、字号)
+8. 🆕 格式统计报告
+
+依赖安装：
+1. 确保系统已安装pandoc: https://pandoc.org/installing.html
+2. 安装python-docx: pip install python-docx
+3. 安装其他依赖: pip install pillow requests
 
 使用方法：
-1. 确保系统已安装pandoc: https://pandoc.org/installing.html
-2. 运行脚本处理Word文档
-3. 自动提取图片并使用LLM分析内容
-4. 替换水印文字为图片内容描述
+1. 运行脚本处理Word文档
+2. 自动提取图片并使用LLM分析内容
+3. 识别文档中的特殊格式（波浪线、下划线等）
+4. 生成包含格式信息的解析结果
+5. 保存格式分析报告
 """
 
 import subprocess
@@ -30,6 +40,19 @@ from pathlib import Path
 from PIL import Image
 import base64
 from io import BytesIO
+from collections import defaultdict
+
+# 新增：特殊格式识别依赖
+try:
+    from docx import Document
+    from docx.enum.text import WD_UNDERLINE
+    from docx.oxml.ns import qn
+    DOCX_AVAILABLE = True
+    print("✅ python-docx库可用，支持特殊格式识别")
+except ImportError:
+    DOCX_AVAILABLE = False
+    print("⚠️ python-docx库不可用，将跳过特殊格式识别功能")
+    print("   安装命令: pip install python-docx")
 
 class PandocWordProcessor:
     def __init__(self):
@@ -41,6 +64,14 @@ class PandocWordProcessor:
         if not self.pandoc_available:
             print("⚠️ 警告: pandoc未安装或不在PATH中")
             print("请访问 https://pandoc.org/installing.html 安装pandoc")
+        
+        # 新增：特殊格式识别功能初始化
+        self.format_detection_enabled = DOCX_AVAILABLE
+        self.special_formatted_text = []
+        self.format_statistics = defaultdict(int)
+        
+        if self.format_detection_enabled:
+            self._init_format_styles()
     
     def _check_pandoc(self):
         """检查pandoc是否可用"""
@@ -62,6 +93,289 @@ class PandocWordProcessor:
         except Exception as e:
             print(f"❌ Pandoc检查异常: {e}")
             return False
+    
+    def _init_format_styles(self):
+        """初始化格式样式映射"""
+        if not DOCX_AVAILABLE:
+            return
+        
+        # 下划线样式映射 - 安全地添加下划线样式
+        self.underline_styles = {}
+        styles_to_add = [
+            (getattr(WD_UNDERLINE, 'SINGLE', None), "单下划线"),
+            (getattr(WD_UNDERLINE, 'DOUBLE', None), "双下划线"),
+            (getattr(WD_UNDERLINE, 'THICK', None), "粗下划线"),
+            (getattr(WD_UNDERLINE, 'DOTTED', None), "点状下划线"),
+            (getattr(WD_UNDERLINE, 'DASH', None), "虚线下划线"),
+            (getattr(WD_UNDERLINE, 'DOT_DASH', None), "点划线下划线"),
+            (getattr(WD_UNDERLINE, 'DOT_DOT_DASH', None), "点点划线下划线"),
+            (getattr(WD_UNDERLINE, 'WAVY', None), "波浪线下划线"),
+            (getattr(WD_UNDERLINE, 'DOTTED_HEAVY', None), "粗点状下划线"),
+            (getattr(WD_UNDERLINE, 'DASH_HEAVY', None), "粗虚线下划线"),
+            (getattr(WD_UNDERLINE, 'WAVY_HEAVY', None), "粗波浪线下划线"),
+            (getattr(WD_UNDERLINE, 'WAVY_DOUBLE', None), "双波浪线下划线")
+        ]
+        
+        for style_enum, style_name in styles_to_add:
+            if style_enum is not None:
+                self.underline_styles[style_enum] = style_name
+        
+        print(f"📋 初始化了 {len(self.underline_styles)} 种下划线样式识别")
+    
+    def _analyze_text_formatting(self, run, para_index=0, run_index=0):
+        """分析文本片段的格式"""
+        if not DOCX_AVAILABLE:
+            return []
+        
+        formats = []
+        font = run.font
+        
+        # 下划线检查
+        if font.underline:
+            underline_style = self.underline_styles.get(font.underline, f"未知下划线样式({font.underline})")
+            formats.append(f"下划线: {underline_style}")
+            
+            # 特别标记波浪线和点状线
+            wavy_styles = [style for style in [
+                getattr(WD_UNDERLINE, 'WAVY', None),
+                getattr(WD_UNDERLINE, 'WAVY_HEAVY', None),
+                getattr(WD_UNDERLINE, 'WAVY_DOUBLE', None)
+            ] if style is not None]
+            
+            dotted_styles = [style for style in [
+                getattr(WD_UNDERLINE, 'DOTTED', None),
+                getattr(WD_UNDERLINE, 'DOTTED_HEAVY', None)
+            ] if style is not None]
+            
+            if font.underline in wavy_styles:
+                formats.append("⚠️ 波浪线格式")
+            elif font.underline in dotted_styles:
+                formats.append("⚠️ 点状线格式")
+        
+        # 上标下标
+        if font.superscript:
+            formats.append("上标")
+        if font.subscript:
+            formats.append("下标")
+        
+        # 删除线
+        if font.strike:
+            formats.append("删除线")
+        
+        # 粗体斜体
+        if font.bold:
+            formats.append("粗体")
+        if font.italic:
+            formats.append("斜体")
+        
+        # 字体颜色
+        if font.color and font.color.rgb:
+            try:
+                rgb_val = font.color.rgb
+                if hasattr(rgb_val, '__int__'):
+                    color_hex = f"#{int(rgb_val):06x}"
+                else:
+                    color_hex = str(rgb_val)
+                formats.append(f"字体颜色: {color_hex}")
+            except Exception:
+                formats.append("字体颜色: 特殊颜色")
+        
+        # 字体大小
+        if font.size:
+            try:
+                size_pt = font.size.pt
+                formats.append(f"字号: {size_pt}磅")
+            except:
+                formats.append("字号: 自定义大小")
+        
+        # 字体名称
+        if font.name:
+            formats.append(f"字体: {font.name}")
+        
+        # 检查着重号
+        emphasis_mark = self._check_emphasis_mark(run)
+        if emphasis_mark:
+            formats.append(f"着重号: {emphasis_mark}")
+        
+        # 统计格式使用
+        for fmt in formats:
+            self.format_statistics[fmt] += 1
+        
+        # 保存特殊格式的文本
+        if formats and run.text.strip():
+            self.special_formatted_text.append({
+                'text': run.text,
+                'paragraph': para_index,
+                'run': run_index,
+                'formats': formats
+            })
+        
+        return formats
+    
+    def _check_emphasis_mark(self, run):
+        """检查着重号（加点字）"""
+        try:
+            run_xml = run._element
+            em_elements = run_xml.xpath('.//w:em', namespaces={'w': 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'})
+            
+            if em_elements:
+                em_val = em_elements[0].get(qn('w:val'))
+                emphasis_types = {
+                    'dot': '点',
+                    'comma': '逗号',
+                    'circle': '圆圈',
+                    'underDot': '下点'
+                }
+                return emphasis_types.get(em_val, f'着重号({em_val})')
+        except:
+            pass
+        
+        return None
+    
+    def extract_format_analysis(self, docx_path):
+        """提取文档的格式分析信息"""
+        if not self.format_detection_enabled:
+            print("🚫 格式检测功能未启用，跳过格式分析")
+            return None
+        
+        print("🔍 开始分析文档格式...")
+        
+        try:
+            doc = Document(docx_path)
+            paragraph_count = 0
+            
+            # 重置统计信息
+            self.special_formatted_text = []
+            self.format_statistics = defaultdict(int)
+            
+            for para in doc.paragraphs:
+                paragraph_count += 1
+                for run_index, run in enumerate(para.runs):
+                    self._analyze_text_formatting(run, paragraph_count, run_index)
+            
+            # 分析表格
+            table_count = 0
+            for table in doc.tables:
+                table_count += 1
+                for row_index, row in enumerate(table.rows):
+                    for cell_index, cell in enumerate(row.cells):
+                        for para in cell.paragraphs:
+                            for run_index, run in enumerate(para.runs):
+                                location = f"表格{table_count}-行{row_index}-列{cell_index}"
+                                self._analyze_text_formatting(run, location, run_index)
+            
+            print(f"✅ 格式分析完成: {paragraph_count}个段落, {table_count}个表格")
+            print(f"📊 发现 {len(self.special_formatted_text)} 个包含特殊格式的文本片段")
+            
+            return {
+                'total_paragraphs': paragraph_count,
+                'total_tables': table_count,
+                'special_format_count': len(self.special_formatted_text),
+                'format_statistics': dict(self.format_statistics)
+            }
+            
+        except Exception as e:
+            print(f"❌ 格式分析失败: {e}")
+            return None
+    
+    def _save_format_analysis(self, format_analysis, file_path):
+        """保存格式分析结果"""
+        try:
+            # 创建格式分析结果目录
+            format_dir = Path("format_analysis")
+            format_dir.mkdir(exist_ok=True)
+            
+            doc_name = Path(file_path).stem
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            
+            # 保存格式统计摘要
+            summary_file = format_dir / f"format_summary_{doc_name}_{timestamp}.txt"
+            with open(summary_file, 'w', encoding='utf-8') as f:
+                f.write(f"文档格式分析报告\n")
+                f.write(f"文档: {file_path}\n")
+                f.write(f"分析时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+                f.write(f"=" * 50 + "\n\n")
+                
+                f.write("格式统计:\n")
+                for fmt, count in format_analysis['format_statistics'].items():
+                    f.write(f"  {fmt}: {count}次\n")
+                
+                f.write(f"\n特殊格式文本详情:\n")
+                for item in self.special_formatted_text:
+                    f.write(f"\n位置{item['paragraph']}-片段{item['run']}: \"{item['text'][:100]}{'...' if len(item['text']) > 100 else ''}\"\n")
+                    for fmt in item['formats']:
+                        f.write(f"  └─ {fmt}\n")
+            
+            print(f"📋 格式分析报告已保存: {summary_file}")
+            
+            # 保存JSON格式的详细数据
+            json_file = format_dir / f"format_details_{doc_name}_{timestamp}.json"
+            with open(json_file, 'w', encoding='utf-8') as f:
+                json.dump({
+                    'document_path': file_path,
+                    'analysis_summary': format_analysis,
+                    'special_formatted_text': self.special_formatted_text,
+                    'analysis_time': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                }, f, ensure_ascii=False, indent=2)
+            
+            print(f"📄 详细格式数据已保存: {json_file}")
+            
+        except Exception as e:
+            print(f"⚠️ 保存格式分析结果失败: {e}")
+    
+    def _integrate_format_info(self, api_result, format_analysis, file_path):
+        """将格式信息整合到API结果中"""
+        try:
+            # 为API结果添加格式分析信息
+            if isinstance(api_result, list):
+                # 为每个题目添加格式信息概要
+                format_summary = {
+                    'total_special_formats': len(self.special_formatted_text),
+                    'format_types': list(format_analysis['format_statistics'].keys()),
+                    'analysis_enabled': True
+                }
+                
+                # 尝试匹配特殊格式文本到具体题目
+                for question in api_result:
+                    question['format_info'] = format_summary.copy()
+                    question['special_formats_in_question'] = []
+                    
+                    # 检查题目内容是否包含特殊格式的文本
+                    question_text = question.get('question', {}).get('content', '')
+                    for format_item in self.special_formatted_text:
+                        if format_item['text'].strip() in question_text:
+                            question['special_formats_in_question'].append({
+                                'text': format_item['text'],
+                                'formats': format_item['formats']
+                            })
+            
+            print(f"🔗 格式信息已整合到API结果中")
+            
+        except Exception as e:
+            print(f"⚠️ 整合格式信息失败: {e}")
+    
+    def get_special_format_summary(self):
+        """获取特殊格式摘要信息"""
+        if not self.format_detection_enabled:
+            return "格式检测功能未启用"
+        
+        if not self.special_formatted_text:
+            return "未发现特殊格式文本"
+        
+        summary = []
+        summary.append(f"📊 特殊格式统计 (总计: {len(self.special_formatted_text)} 个片段):")
+        
+        # 按格式类型统计
+        format_counts = defaultdict(int)
+        for item in self.special_formatted_text:
+            for fmt in item['formats']:
+                if '⚠️' in fmt:  # 重点关注的格式
+                    format_counts[fmt] += 1
+        
+        for fmt, count in sorted(format_counts.items(), key=lambda x: x[1], reverse=True):
+            summary.append(f"  {fmt}: {count}次")
+        
+        return "\n".join(summary)
     
     def get_supported_formats(self):
         """获取支持的文档格式"""
@@ -246,7 +560,7 @@ class PandocWordProcessor:
         return modified_content
     
     def convert_word_to_text(self, file_path, output_format='markdown'):
-        """使用pandoc将Word文档转换为文本"""
+        """使用pandoc将Word文档转换为文本，并增强格式标注"""
         if not self.pandoc_available:
             print("❌ Pandoc不可用，无法处理文档")
             return None
@@ -284,7 +598,6 @@ class PandocWordProcessor:
                 print(f"✅ 转换成功: {len(content)} 字符")
                 
                 # 如果是docx文件，提取图片并替换水印
-                # 注释掉图片处理功能
                 if file_path.lower().endswith('.docx'):
                      print("🖼️  检测到docx文件，开始处理图片...")
                      images = self.extract_images_from_docx(file_path, save_images=True)
@@ -293,8 +606,12 @@ class PandocWordProcessor:
                      else:
                          print("ℹ️  未找到图片或图片处理失败")
                 
+                # 新增：如果有格式分析结果，增强pandoc内容
+                if hasattr(self, 'special_formatted_text') and self.special_formatted_text:
+                    print("🎨 开始增强格式标注...")
+                    content = self._enhance_content_with_format_info(content)
+                
                 # 保存转换结果
-                # 创建 pandoc_res 文件夹
                 pandoc_res_dir = Path("pandoc_res")
                 pandoc_res_dir.mkdir(exist_ok=True)
                 
@@ -315,6 +632,90 @@ class PandocWordProcessor:
         except Exception as e:
             print(f"❌ 转换异常: {e}")
             return None
+    
+    def _enhance_content_with_format_info(self, content):
+        """根据格式分析结果增强pandoc内容"""
+        print(f"🔍 开始分析 {len(self.special_formatted_text)} 个特殊格式文本")
+        
+        # 按文本长度排序，从长到短，避免短文本替换影响长文本
+        sorted_formats = sorted(self.special_formatted_text, 
+                              key=lambda x: len(x['text']), reverse=True)
+        
+        enhanced_count = 0
+        
+        for format_item in sorted_formats:
+            text = format_item['text'].strip()
+            formats = format_item['formats']
+            
+            # 跳过空文本或过短文本
+            if len(text) < 2:
+                continue
+            
+            # 生成格式标注
+            format_annotation = self._generate_format_annotation(formats)
+            
+            if format_annotation and text in content:
+                # 创建增强的文本标注
+                enhanced_text = f"[{text}]{{{format_annotation}}}"
+                
+                # 执行替换（只替换第一个匹配，避免重复替换）
+                content = content.replace(text, enhanced_text, 1)
+                enhanced_count += 1
+                
+                print(f"  ✨ 增强: \"{text[:30]}{'...' if len(text) > 30 else ''}\" -> {format_annotation}")
+        
+        print(f"✅ 格式增强完成，共处理 {enhanced_count} 个文本")
+        return content
+    
+    def _generate_format_annotation(self, formats):
+        """根据格式列表生成标注"""
+        annotations = []
+        
+        # 处理下划线类型
+        for fmt in formats:
+            if "波浪线格式" in fmt:
+                annotations.append(".wavy-underline")
+            elif "点状线格式" in fmt:
+                annotations.append(".dotted-underline")
+            elif "下划线: 单下划线" in fmt:
+                annotations.append(".single-underline")
+            elif "下划线: 双下划线" in fmt:
+                annotations.append(".double-underline")
+            elif "下划线: 粗下划线" in fmt:
+                annotations.append(".thick-underline")
+            elif "下划线: 虚线下划线" in fmt:
+                annotations.append(".dashed-underline")
+            elif "删除线" in fmt:
+                annotations.append(".strikethrough")
+            elif "上标" in fmt:
+                annotations.append(".superscript")
+            elif "下标" in fmt:
+                annotations.append(".subscript")
+            elif "着重号" in fmt:
+                annotations.append(".emphasis-mark")
+            elif "粗体" in fmt:
+                annotations.append(".bold")
+            elif "斜体" in fmt:
+                annotations.append(".italic")
+        
+        # 处理字体颜色（提取颜色值）
+        for fmt in formats:
+            if "字体颜色:" in fmt and "000000" not in fmt:  # 跳过黑色
+                color = fmt.split("字体颜色:")[-1].strip()
+                annotations.append(f".color-{color}")
+        
+        # 处理字号
+        for fmt in formats:
+            if "字号:" in fmt and "磅" in fmt:
+                size = fmt.split("字号:")[-1].replace("磅", "").strip()
+                try:
+                    size_num = float(size)
+                    if size_num != 12.0:  # 跳过默认字号
+                        annotations.append(f".font-{size}pt")
+                except:
+                    pass
+        
+        return " ".join(annotations) if annotations else None
     
     def convert_word_to_markdown(self, file_path):
         """将Word文档转换为Markdown格式"""
@@ -476,7 +877,8 @@ class PandocWordProcessor:
             print(f"❌ API调用异常: {e}")
             return None
     
-    def process_word_document(self, file_path, output_format='markdown', prompt_template_path="prompt.md"):
+    def process_word_document(self, file_path, output_format='markdown', prompt_template_path="prompt.md", 
+                            enable_format_analysis=True):
         """完整的Word文档处理流程"""
         print("=" * 60)
         print("Pandoc Word文档处理工具 - 增强版")
@@ -484,22 +886,36 @@ class PandocWordProcessor:
         print(f"文档文件: {file_path}")
         print(f"输出格式: {output_format}")
         print(f"Prompt模板: {prompt_template_path}")
+        print(f"格式分析: {'启用' if enable_format_analysis else '禁用'}")
         print("=" * 60)
         
-        # 第一步：使用pandoc转换文档
+        # 新增：第一步 - 格式分析（如果启用且为docx文件）
+        format_analysis = None
+        if enable_format_analysis and file_path.lower().endswith('.docx'):
+            format_analysis = self.extract_format_analysis(file_path)
+            if format_analysis:
+                self._save_format_analysis(format_analysis, file_path)
+        
+        # 第二步：使用pandoc转换文档
         content = self.convert_word_to_text(file_path, output_format)
         if not content:
             print("❌ 文档转换失败，无法继续处理")
             return None
         
-        # 第二步：调用大模型API解析内容
+        # 第三步：调用大模型API解析内容
         llm_response = self.call_llm_api(content, prompt_template_path)
         if not llm_response:
             print("❌ API调用失败")
             return None
         
-        # 第三步：处理API响应
-        return self._process_api_response(llm_response, file_path)
+        # 第四步：处理API响应并集成格式信息
+        api_result = self._process_api_response(llm_response, file_path)
+        
+        # 第五步：如果有格式分析结果，将其整合到最终结果中
+        if format_analysis and api_result:
+            self._integrate_format_info(api_result, format_analysis, file_path)
+        
+        return api_result
     
     def _process_api_response(self, llm_content, original_file_path):
         """处理API响应并保存结果"""
@@ -568,7 +984,7 @@ def main():
     if len(sys.argv) > 1:
         word_file_path = sys.argv[1]
     else:
-        word_file_path = "Chinese/精品解析：2025年湖北省武汉市中考语文真题（解析版）.docx"  # 默认文件路径
+        word_file_path = "Chinese/精品解析：2025年甘肃省兰州市中考语文真题（解析版）.docx"  # 默认文件路径
      
     output_format = "markdown"  # 可选: markdown, plain, html
     prompt_template_path = "prompt_Chinese.md"
@@ -600,6 +1016,12 @@ def main():
     
     if result:
         print("✅ 文档处理完成！")
+        
+        # 显示特殊格式摘要
+        format_summary = processor.get_special_format_summary()
+        print("\n" + "="*50)
+        print(format_summary)
+        print("="*50)
     else:
         print("❌ 文档处理失败")
 

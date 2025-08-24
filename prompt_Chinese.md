@@ -47,7 +47,7 @@
 
 **语文学科特色题型识别**：
 语文试卷通常包含以下特色题型，需要特别注意处理方式：
-- **语文综合运用题**：有统一主题背景，包含多个资料和多个小题，**必须使用subQuestions结构**
+- **语文综合运用题**：有统一主题背景，包含多个资料和多个小题，必须使用subQuestions结构
 - **字音字形题**：通常为选择题形式，考查拼音标注的正误
 - **默写填空题**：需要填入准确的诗句或文言文语句
 - **古诗文阅读题**：包含古诗理解、文言文翻译、实词虚词解释等
@@ -68,10 +68,6 @@
   * **病句修改题**：必须包含需要修改的原句
   * **词语填空题**：必须包含完整的语境材料
   * **文言文词义题**：必须包含文言文原文
-- **常见错误示例**：
-  * ❌ 字音题只写"下列加点字读音标注不正确的一项是"，不包含材料内容
-  * ❌ 成语使用题只写"下列成语使用不恰当的一项是"，不包含语境材料
-  * ❌ 病句题只写"文段中的画线句存在问题，请你修改"，不包含原句
 - **正确处理示例**：
   * ✅ 字音题包含：完整材料内容 + 题目要求 + 选项
   * ✅ 成语题包含：完整语境材料 + 题目要求 + 选项
@@ -140,17 +136,44 @@
   </table>
   ```
 
-**填空格式要求（重要修正）**：
+**特殊格式处理要求（重要）**：
 - **下划线填空**：使用 `<input size="X" readonly="readonly" type="underline">` 标签
-- **禁止保留pandoc的中括号填空格式**：
-  * ❌ 禁止保留：`[_____]{.underline}`
-  * ❌ 禁止保留：`[___1___]{.underline}`
-  * ❌ 禁止保留：`[甲]{.underline}`、`[乙]{.underline}`等变量形式
+- **波浪线强调**：使用 `<u style="text-decoration-style: wavy;">` 标签
+- **单下划线强调**：使用 `<u>` 标签
+- **禁止在输出结果中保留pandoc的特殊格式，必须要替换为HTML标签**：
+  * ❌ 禁止出现：`[_____]{.underline}`
+  * ❌ 禁止出现：`[___1___]{.underline}`
+  * ❌ 禁止出现：`[甲]{.underline}`、`[乙]{.underline}`等变量形式
+  * ❌ 禁止出现：`[内容]{.wavy-underline}`
+  * ❌ 禁止出现：`[内容]{.single-underline}`
+  * ❌ 禁止出现：`[内容]{.bold}`
+  * ❌ 禁止出现：`[内容]{.color-XXXXXX}`及其多层嵌套
 - **正确替换格式示例**：
   * 下划线填空：`<input size="8" readonly="readonly" type="underline">`
+  * 波浪线强调：`<u style="text-decoration-style: wavy;">内容</u>`
+  * 单下划线强调：`<u>内容</u>`
+  * 粗体强调：`<strong>内容</strong>`
+  * 彩色文字：直接保留内容，忽略颜色格式
 - **常见错误转换示例**：
   * ❌ 错误：`古梨树 [甲]{.underline} （星罗棋布/浩如烟海）`
   * ✅ 正确：`古梨树 <input size="8" readonly="readonly" type="underline" placeholder="甲"> （星罗棋布/浩如烟海）`
+  * ❌ 错误：`[万亩梨花竞相绽放，如雪似云，吸引着数十万左右游客前来观赏。]{.wavy-underline}`
+  * ✅ 正确：`<u style="text-decoration-style: wavy;">万亩梨花竞相绽放，如雪似云，吸引着数十万左右游客前来观赏。</u>`
+  * ❌ 错误：`[[卒中往往语，皆指目陈胜。]{.single-underline}]{.underline}`
+  * ✅ 正确：`<u>卒中往往语，皆指目陈胜。</u>`
+  * ❌ 错误：`[注意事项：]{.bold}`
+  * ✅ 正确：`<strong>注意事项：</strong>`
+  * ❌ 错误：`[[[[[[【答案】]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}`
+  * ✅ 正确：`<strong>【答案】</strong>`
+- **特殊格式处理规则**：
+  * `[内容]{.underline}` 中如果内容是变量（如甲、乙、①、②等），转换为填空：`<input size="8" readonly="readonly" type="underline" placeholder="变量">`
+  * `[内容]{.underline}` 中如果内容是下划线（如___、____等），转换为填空：`<input size="8" readonly="readonly" type="underline">`
+  * `[内容]{.wavy-underline}` 转换为波浪线强调：`<u style="text-decoration-style: wavy;">内容</u>`
+  * `[内容]{.single-underline}` 转换为下划线强调：`<u>内容</u>`
+  * `[内容]{.bold}` 转换为粗体：`<strong>内容</strong>`
+  * `[内容]{.color-XXXXXX}` 忽略颜色，直接保留内容，如果内容重要则加粗：`<strong>内容</strong>`
+  * 多层嵌套格式如 `[[[[内容]{.color-A}]{.color-B}]{.color-C}]{.color-D}` 简化为：`<strong>内容</strong>`
+  * 嵌套格式如 `[[内容]{.single-underline}]{.underline}` 只保留最外层效果：`<u>内容</u>`
 - **标识符保留规则**：
   * 如果原文是 `[甲]{.underline}`，转换为 `<input size="8" readonly="readonly" type="underline" placeholder="甲">`
   * 如果原文是 `[乙]{.underline}`，转换为 `<input size="8" readonly="readonly" type="underline" placeholder="乙">`
@@ -250,7 +273,7 @@
         "type" : {
           "type" : "string",
           "title" : "题目类型",
-          "enum" : [ "单选", "多选", "填空", "判断", "简答", "综合", "作文" ]
+          "enum" : [ "单选", "多选", "填空", "判断", "简答", "综合"]
         }
       },
       "title" : "题目"
@@ -310,13 +333,13 @@
 **作文类题目示例**
 {
   "question": {
-        "content": "<p>阅读下面材料，根据要求写作。</p><p>生活中，我们常常会遇到各种挫折和困难。有人说："挫折是人生的财富"；也有人说："挫折让人痛苦不堪"。你是如何看待挫折的？</p><p>要求：</p><p>1. 以"谈挫折"为题，写一篇议论文；</p><p>2. 观点明确，论据充分，论证合理；</p><p>3. 语言流畅，结构完整；</p><p>4. 不少于600字。</p><p style='text-align: center;'><strong>谈挫折</strong></p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"15\" data-punctuation=\"\" data-first-line-width=\"600\">&nbsp;</full-line-blank></p>",
-        "solution": "<p>【写作指导】这是一篇议论文写作。要求以"谈挫折"为题，表达自己对挫折的看法。</p><p>【写作思路】1.开头：引出话题，明确观点——挫折是人生的财富；2.主体：分层论述挫折的积极作用，可以从"挫折让人成长""挫折让人坚强""挫折让人珍惜"等角度展开；3.结尾：总结全文，强化观点。</p><p>【写作要点】①观点要明确，可以从正面论述挫折的积极意义；②论据要充分，可以运用名人事例、历史典故、生活实例等；③论证要合理，运用举例论证、对比论证、引用论证等方法；④语言要流畅，注意段落层次清晰。</p>",
+        "content": "<p>阅读下面材料，根据要求写作。</p><p>生活中，我们常常会遇到各种挫折和困难。有人说：“挫折是人生的财富”；也有人说：“挫折让人痛苦不堪”。你是如何看待挫折的？</p><p>要求：</p><p>1. 以“谈挫折”为题，写一篇议论文；</p><p>2. 观点明确，论据充分，论证合理；</p><p>3. 语言流畅，结构完整；</p><p>4. 不少于600字。</p><p style='text-align: center;'><strong>谈挫折</strong></p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"15\" data-punctuation=\"\" data-first-line-width=\"600\">&nbsp;</full-line-blank></p>",
+        "solution": "<p>【写作指导】这是一篇议论文写作。要求以“谈挫折”为题，表达自己对挫折的看法。</p><p>【写作思路】1.开头：引出话题，明确观点——挫折是人生的财富；2.主体：分层论述挫折的积极作用，可以从“挫折让人成长”“挫折让人坚强”“挫折让人珍惜”等角度展开；3.结尾：总结全文，强化观点。</p><p>【写作要点】①观点要明确，可以从正面论述挫折的积极意义；②论据要充分，可以运用名人事例、历史典故、生活实例等；③论证要合理，运用举例论证、对比论证、引用论证等方法；④语言要流畅，注意段落层次清晰。</p>",
         "answer": {
-          "answer": "<p>&nbsp; &nbsp;人生路上，我们难免会遇到各种挫折和困难。有人因此而消沉，有人却在挫折中成长。在我看来，挫折是人生的财富，它能让我们变得更加坚强和成熟。</p><p>&nbsp; &nbsp;首先，挫折能够磨炼我们的意志。古人云："宝剑锋从磨砺出，梅花香自苦寒来。"只有经历过挫折的人，才能真正理解成功的来之不易。司马迁因李陵之祸受宫刑，这对一个男人来说是极大的屈辱，但他没有被挫折击倒，而是化悲愤为力量，最终完成了"史家之绝唱，无韵之离骚"的《史记》。挫折成就了司马迁，也成就了这部不朽的史学巨著。</p><p>&nbsp; &nbsp;其次，挫折能够让我们更加珍惜拥有的一切。平顺的生活往往让人产生惰性，而挫折却能唤醒我们内心深处的斗志。当我们失去某些东西时，才会真正明白它们的珍贵。正如一句话所说："失去了才知道珍惜。"挫折让我们学会感恩，学会珍惜身边的人和事。</p><p>&nbsp; &nbsp;最后，挫折是通向成功的必经之路。没有人能够一帆风顺地走向成功，每一个成功者的背后都有着无数次失败和挫折的积累。爱迪生发明电灯泡时失败了上千次，但他从不气馁，最终取得了成功。挫折不是成功的绊脚石，而是成功的垫脚石。</p><p>&nbsp; &nbsp;因此，我们应该以积极的心态面对挫折，把它当作人生的财富。只有这样，我们才能在挫折中成长，在困难中坚强，最终走向成功的彼岸。</p>"
+          "answer": "<p>&nbsp; &nbsp;人生路上，我们难免会遇到各种挫折和困难。有人因此而消沉，有人却在挫折中成长。在我看来，挫折是人生的财富，它能让我们变得更加坚强和成熟。</p><p>&nbsp; &nbsp;首先，挫折能够磨炼我们的意志。古人云：“宝剑锋从磨砺出，梅花香自苦寒来。”只有经历过挫折的人，才能真正理解成功的来之不易。司马迁因李陵之祸受宫刑，这对一个男人来说是极大的屈辱，但他没有被挫折击倒，而是化悲愤为力量，最终完成了“史家之绝唱，无韵之离骚”的《史记》。挫折成就了司马迁，也成就了这部不朽的史学巨著。</p><p>&nbsp; &nbsp;其次，挫折能够让我们更加珍惜拥有的一切。平顺的生活往往让人产生惰性，而挫折却能唤醒我们内心深处的斗志。当我们失去某些东西时，才会真正明白它们的珍贵。正如一句话所说：“失去了才知道珍惜。”挫折让我们学会感恩，学会珍惜身边的人和事。</p><p>&nbsp; &nbsp;最后，挫折是通向成功的必经之路。没有人能够一帆风顺地走向成功，每一个成功者的背后都有着无数次失败和挫折的积累。爱迪生发明电灯泡时失败了上千次，但他从不气馁，最终取得了成功。挫折不是成功的绊脚石，而是成功的垫脚石。</p><p>&nbsp; &nbsp;因此，我们应该以积极的心态面对挫折，把它当作人生的财富。只有这样，我们才能在挫折中成长，在困难中坚强，最终走向成功的彼岸。</p>"
         },
         "accessories": [],
-        "type": "作文"
+        "type": "简答"
     }
 }
 
@@ -355,16 +378,16 @@
 **字音题示例（正确格式 - 包含完整材料）**
 {
   "question": {
-    "content": "<p><strong>资料一</strong></p><p>&nbsp; &nbsp; 1937年4月，新华书店诞生于延安。1948年12月，毛泽东同志在西柏坡题写了“新华书店”四个大字，中共中央宣传部将其作为平津解放以后全国各地建立的新华书店的招牌用字。经<strong>筹</strong>（chóu）划，1949年2月，北平第一家新华书店在王府井大街开业。同年10月，全国新华书店第一届出版工作会议在北京<strong>召</strong>（zhāo）开。七十多年来，北京新华书店始终传承红色基因，<strong>砥</strong>（dǐ）砺“新华精神”，坚守为人民服务的初心，宣传党的路线方针政策，为广大读者<strong>提供</strong>（gōng）科学文化知识，极大地满足了人民群众的精神文化需求，促进了首都人民思想道德素质和科学文化素质的提高，在文化建设中发挥了重要作用。</p><p>你审核资料中标注的字音。下列加点字读音标注不正确的一项是（ ）</p>",
+    "content": "<p><strong>资料一</strong></p><p>&nbsp; &nbsp; 1937年4月，新华书店诞生于延安。1948年12月，毛泽东同志在西柏坡题写了“新华书店”四个大字，中共中央宣传部将其作为平津解放以后全国各地建立的新华书店的招牌用字。经<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">筹</span>（chóu）划，1949年2月，北平第一家新华书店在王府井大街开业。同年10月，全国新华书店第一届出版工作会议在北京<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">召</span>（zhāo）开。七十多年来，北京新华书店始终传承红色基因，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">砥</span>（dǐ）砺“新华精神”，坚守为人民服务的初心，宣传党的路线方针政策，为广大读者提<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">供</span>（gōng）科学文化知识，极大地满足了人民群众的精神文化需求，促进了首都人民思想道德素质和科学文化素质的提高，在文化建设中发挥了重要作用。</p><p>你审核资料中标注的字音。下列加点字读音标注不正确的一项是（ ）</p>",
     "solution": "<p>本题考查字音。需要逐一分析每个选项中加点字的读音是否正确。B项中“召开”的“召”应读作zhào，而不是zhāo。</p>",
     "answer": {
       "choice": "1"
     },
     "accessories": [
-      "<p>筹（chóu）划</p>",
-      "<p>召（zhāo）开</p>",
-      "<p>砥（dǐ）砺</p>",
-      "<p>提（tí）供</p>"
+      "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">筹</span>（chóu）划</p>",
+      "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">召</span>（zhāo）开</p>",
+      "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">砥</span>（dǐ）砺</p>",
+      "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">提</span>（tí）供</p>"
     ],
     "type": "单选"
   }
@@ -373,7 +396,7 @@
 **默写填空题示例**
 {
   "question": {
-    "content": "<p>默写填空。</p><p>①纷纷暮雪下辕门，<input size=\"20\" readonly=\"readonly\" type=\"underline\">。（岑参《白雪歌送武判官归京》）</p><p>②亭亭净植，<input size=\"25\" readonly=\"readonly\" type=\"underline\">。（周敦颐《爱莲说》）</p><p>③古人常用竹子制作乐器，很多乐器名称使用带"竹字头"的字。如古诗词中的"<input size=\"30\" readonly=\"readonly\" type=\"underline\">"一句，就出现了这样的乐器名称。（本试卷中出现的句子除外）</p>",
+    "content": "<p>默写填空。</p><p>①纷纷暮雪下辕门，<input size=\"20\" readonly=\"readonly\" type=\"underline\">。（岑参《白雪歌送武判官归京》）</p><p>②亭亭净植，<input size=\"25\" readonly=\"readonly\" type=\"underline\">。（周敦颐《爱莲说》）</p><p>③古人常用竹子制作乐器，很多乐器名称使用带“竹字头”的字。如古诗词中的“<input size=\"30\" readonly=\"readonly\" type=\"underline\">”一句，就出现了这样的乐器名称。（本试卷中出现的句子除外）</p>",
     "solution": "<p>本题考查名句名篇默写。默写题作答时，一是要透彻理解诗文的内容；二是要认真审题，找出符合题意的诗文句子；三是答题内容要准确，做到不添字、不漏字、不写错字。</p>",
     "answer": {
       "blanks": [
@@ -389,28 +412,28 @@
 **语文综合运用题示例（正确格式）**
 {
   "question": {
-    "content": "<p><strong>一、基础·运用（共13分）</strong></p><p>学校组织编写\"城市漫步地\"推荐手册，有同学推荐了北京市有代表性的书店，并搜集了相关资料。请你协助整理。</p><p><strong>资料一</strong></p><p>&nbsp; &nbsp; 1937年4月，新华书店诞生于延安。1948年12月，毛泽东同志在西柏坡题写了\"新华书店\"四个大字，中共中央宣传部将其作为平津解放以后全国各地建立的新华书店的招牌用字。经<strong>筹</strong>（chóu）划，1949年2月，北平第一家新华书店在王府井大街开业。同年10月，全国新华书店第一届出版工作会议在北京<strong>召</strong>（zhāo）开。七十多年来，北京新华书店始终传承红色基因，<strong>砥</strong>（dǐ）砺\"新华精神\"，坚守为人民服务的初心，宣传党的路线方针政策，为广大读者<strong>提供</strong>（gōng）科学文化知识，极大地满足了人民群众的精神文化需求，促进了首都人民思想道德素质和科学文化素质的提高，在文化建设中发挥了重要作用。</p><p><strong>资料二</strong></p><p>&nbsp; &nbsp; 中国书店创立于1952年，主要从事古旧书籍的经营及古籍的复制出版。2008年，中国书店申报的古籍修复技艺被列入国家级非物质文化遗产名录。如今，中国书店既保留了古籍影印复制等传统业务，又担负起文学典籍整理、北京传统文化研究等多项任务，还出版了《北京方志提要》《北京旧志汇刊》及大量新印古籍和研究传统文化的著作。中国书店在中华优秀传统文化的<input size="8" readonly="readonly" type="underline">、<input size="8" readonly="readonly" type="underline">和<input size="8" readonly="readonly" type="underline">等方面做出了积极努力。</p><p><strong>资料三</strong></p><p>&nbsp; &nbsp; 在北京市政府的支持下，有些书店迁入古建筑所在的院落。时尚的阅读空间与古树、古建筑相映成趣。这些书店承担着\"阅读传承\"与\"文物活化\"的双重使命，除图书外，还收藏老照片、旧报刊、胡同门牌等多种历史资料。图书与历史资料相得益彰，共同讲述着北京作为古城、古都的发展历史。这些书店大多自出心裁，选择具有地域特色的主题陈列图书和其他展品，如\"京味文学\"\"口述历史\"\"史地民俗\"等。读者捕风捉影，可以领略老北京的城市风貌。</p><p><strong>资料四</strong></p><p>&nbsp; &nbsp; 漫步胡同，胡同尽头有一座独立的四合院，它居然是一家书店。这家书店的院落布局融入了现代元素，房屋主体采用黛色砖瓦，装饰物以红色为主色调，古朴、时尚、喜庆。阅读区域暖黄色的灯光温柔地洒在木质书架上，琳琅满目的书籍散发着墨香。它特有的文化氛围不仅吸引着读者，还吸引着大量游客和摄影爱好者。<u>胡同里的这家书店创新了设计风格，营造了广大群众的文化体验。</u></p><p><strong>后记</strong></p><p>&nbsp; &nbsp; 赓续红色血脉的新华书店让我们领悟\"新华精神\"的当代内涵；<input size="25" readonly="readonly" type="underline">；古建筑旁、胡同里的创意书店让我们感受城市文化的地域特色。选择书店作为城市漫步地，你就选择了观察一座城市的独特视角。</p>",
+    "content": "<p><strong>一、基础·运用（共13分）</strong></p><p>学校组织编写“城市漫步地”推荐手册，有同学推荐了北京市有代表性的书店，并搜集了相关资料。请你协助整理。</p><p><strong>资料一</strong></p><p>&nbsp; &nbsp; 1937年4月，新华书店诞生于延安。1948年12月，毛泽东同志在西柏坡题写了“新华书店”四个大字，中共中央宣传部将其作为平津解放以后全国各地建立的新华书店的招牌用字。经<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">筹</span>（chóu）划，1949年2月，北平第一家新华书店在王府井大街开业。同年10月，全国新华书店第一届出版工作会议在北京<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">召</span>（zhāo）开。七十多年来，北京新华书店始终传承红色基因，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">砥</span>（dǐ）砺“新华精神”，坚守为人民服务的初心，宣传党的路线方针政策，为广大读者提<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">供</span>（gōng）科学文化知识，极大地满足了人民群众的精神文化需求，促进了首都人民思想道德素质和科学文化素质的提高，在文化建设中发挥了重要作用。</p><p><strong>资料二</strong></p><p>&nbsp; &nbsp; 中国书店创立于1952年，主要从事古旧书籍的经营及古籍的复制出版。2008年，中国书店申报的古籍修复技艺被列入国家级非物质文化遗产名录。如今，中国书店既保留了古籍影印复制等传统业务，又担负起文学典籍整理、北京传统文化研究等多项任务，还出版了《北京方志提要》《北京旧志汇刊》及大量新印古籍和研究传统文化的著作。中国书店在中华优秀传统文化的<input size="8" readonly="readonly" type="underline">、<input size="8" readonly="readonly" type="underline">和<input size="8" readonly="readonly" type="underline">等方面做出了积极努力。</p><p><strong>资料三</strong></p><p>&nbsp; &nbsp; 在北京市政府的支持下，有些书店迁入古建筑所在的院落。时尚的阅读空间与古树、古建筑相映成趣。这些书店承担着“阅读传承”与“文物活化”的双重使命，除图书外，还收藏老照片、旧报刊、胡同门牌等多种历史资料。图书与历史资料相得益彰，共同讲述着北京作为古城、古都的发展历史。这些书店大多自出心裁，选择具有地域特色的主题陈列图书和其他展品，如“京味文学”“口述历史”“史地民俗”等。读者捕风捉影，可以领略老北京的城市风貌。</p><p><strong>资料四</strong></p><p>&nbsp; &nbsp; 漫步胡同，胡同尽头有一座独立的四合院，它居然是一家书店。这家书店的院落布局融入了现代元素，房屋主体采用黛色砖瓦，装饰物以红色为主色调，古朴、时尚、喜庆。阅读区域暖黄色的灯光温柔地洒在木质书架上，琳琅满目的书籍散发着墨香。它特有的文化氛围不仅吸引着读者，还吸引着大量游客和摄影爱好者。<u>胡同里的这家书店创新了设计风格，营造了广大群众的文化体验。</u></p><p><strong>后记</strong></p><p>&nbsp; &nbsp; 赓续红色血脉的新华书店让我们领悟“新华精神”的当代内涵；<input size="25" readonly="readonly" type="underline">；古建筑旁、胡同里的创意书店让我们感受城市文化的地域特色。选择书店作为城市漫步地，你就选择了观察一座城市的独特视角。</p>",
     "type": "单选"
   },
   "subQuestions": [
     {
-      "content": "<p>在资料封面上用正楷字书写标题：\"城市漫步地\"推荐资料。</p>",
+      "content": "<p>在资料封面上用正楷字书写标题：“城市漫步地”推荐资料。</p>",
       "type": "简答",
-      "answer": {"answer": "<p>\"城市漫步地\"推荐资料</p>"},
-      "solution": "<p>本题考查汉字临摹。注意：用正楷书字体书写，工整美观；汉字的笔画顺序要清楚，书写要规范。注意\"城、漫\"等字。</p>",
+      "answer": {"answer": "<p>“城市漫步地”推荐资料</p>"},
+      "solution": "<p>本题考查汉字临摹。注意：用正楷书字体书写，工整美观；汉字的笔画顺序要清楚，书写要规范。注意“城、漫”等字。</p>",
       "accessories": []
     },
     {
       "content": "<p>你审核资料中标注的字音。下列加点字读音标注不正确的一项是<input type=\"bracket\" size=\"8\" /></p>",
       "type": "单选",
       "accessories": [
-        "<p>筹划</p>",
-        "<p>召开</p>",
-        "<p>砥砺</p>",
-        "<p>提供</p>"
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">筹</span>（chóu）划</p>",
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">召</span>（zhāo）开</p>",
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">砥</span>（dǐ）砺</p>",
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">提</span>（tí）供</p>"
       ],
       "answer": {"choice": "1"},
-      "solution": "<p>本题考查字音。B项中\"召开\"的\"召\"应读作zhào，而不是zhāo。</p>"
+      "solution": "<p>本题考查字音。B项中“召开”的“召”应读作zhào，而不是zhāo。</p>"
     },
     {
       "content": "<p>你在文段中的横线处填入一组词语。下列恰当的一项是<input type=\"bracket\" size=\"8\" /></p>",
@@ -422,7 +445,7 @@
         "<p>保护 传播 研究</p>"
       ],
       "answer": {"choice": "0"},
-      "solution": "<p>本题考查词义辨析。根据文段内容，应该是先\"保护\"、再\"研究\"、最后\"传播\"的逻辑顺序。</p>"
+      "solution": "<p>本题考查词义辨析。根据文段内容，应该是先“保护”、再“研究”、最后“传播”的逻辑顺序。</p>"
     }
     // 继续其他4个小题...
   ]
@@ -431,12 +454,12 @@
 **文言文阅读题示例**
 {
   "question": {
-    "content": "<p>阅读下面一则《论语》，完成下面小题。</p><p>曾子曰："吾日三省吾身：为人谋而不忠乎？与朋友交而不信乎？传不习乎？"（《学而》）</p>",
+    "content": "<p>阅读下面一则《论语》，完成下面小题。</p><p>曾子曰：“吾日三省吾身：为人谋而不忠乎？与朋友交而不信乎？传不习乎？”（《学而》）</p>",
     "type": "单选"
   },
   "subQuestions": [
     {
-      "content": "<p>"吾日三省吾身"中的"日"与下列词语中加点的"日"，意思相同的一项是<input type=\"bracket\" size=\"8\" /></p>",
+      "content": "<p>“吾日三省吾身”中的“日”与下列词语中加点的“日”，意思相同的一项是<input type=\"bracket\" size=\"8\" /></p>",
       "type": "单选",
       "accessories": [
         "<p>日月同辉</p>",
@@ -445,10 +468,10 @@
         "<p>夜以继日</p>"
       ],
       "answer": {"choice": "1"},
-      "solution": "<p>本题考查一词多义。"吾日三省吾身"中的"日"，意思是"每天"；"日新月异"中的"日"指每天，含义相同。</p>"
+      "solution": "<p>本题考查一词多义。“吾日三省吾身”中的“日”，意思是“每天”；“日新月异”中的“日”指每天，含义相同。</p>"
     },
     {
-      "content": "<p>下列对"传不习乎"的理解，正确的一项是<input type=\"bracket\" size=\"8\" /></p>",
+      "content": "<p>下列对“传不习乎”的理解，正确的一项是<input type=\"bracket\" size=\"8\" /></p>",
       "type": "单选",
       "accessories": [
         "<p>对老师传授的知识应该经常复习。</p>",
@@ -457,7 +480,7 @@
         "<p>要不断学习流传后世的经典著作。</p>"
       ],
       "answer": {"choice": "0"},
-      "solution": "<p>本题考查内容理解。"传不习乎"，意思是"老师传授的知识是否复习了呢"。这句话强调了复习的重要性。</p>"
+      "solution": "<p>本题考查内容理解。“传不习乎”，意思是“老师传授的知识是否复习了呢”。这句话强调了复习的重要性。</p>"
     }
   ]
 }
@@ -465,7 +488,7 @@
 **现代文阅读理解题示例**
 {
   "question": {
-    "content": "<p>阅读下面的材料，完成下面小题。</p><p><strong>材料一</strong></p><p>&nbsp; &nbsp; 气候变化是对全人类的挑战，每个人都承受着气候变化带来的影响，也影响着气候变化。我国颁布了相关文件，从政策层面指导、推动气候变化教育。《国家应对气候变化规划（2014-2020年）》提出将气候变化教育纳入国民教育体系，并建议气候变化知识进学校、进课堂。</p><p><strong>材料二</strong></p><p>&nbsp; &nbsp; 2024年，全国气候变化教育研究联盟成立。"联盟"发布《气候变化教育指导纲要（试行）》，从教育目标和实施方式两方面做出指导，推动气候变化教育政策向实践转化。</p>",
+    "content": "<p>阅读下面的材料，完成下面小题。</p><p><strong>材料一</strong></p><p>&nbsp; &nbsp; 气候变化是对全人类的挑战，每个人都承受着气候变化带来的影响，也影响着气候变化。我国颁布了相关文件，从政策层面指导、推动气候变化教育。《国家应对气候变化规划（2014-2020年）》提出将气候变化教育纳入国民教育体系，并建议气候变化知识进学校、进课堂。</p><p><strong>材料二</strong></p><p>&nbsp; &nbsp; 2024年，全国气候变化教育研究联盟成立。“联盟”发布《气候变化教育指导纲要（试行）》，从教育目标和实施方式两方面做出指导，推动气候变化教育政策向实践转化。</p>",
     "type": "单选"
   },
   "subQuestions": [
@@ -548,91 +571,69 @@
 
 **🎯 独立单选题正确处理示例**：
 
-❌ **错误做法**：将独立题目合并
-```json
-{
-  "question": {
-    "content": "<p>从题中所给的A、B、C、D四个选项中，选出一个最佳答案。</p>",
-    "type": "单选"
-  },
-  "subQuestions": [
-    {
-      "content": "<p>---My friend and I have a lot in common.<br>---Lucky you! A good friend is like a <input size=\"8\" readonly=\"readonly\" type=\"underline\">.</p>",
-      "type": "单选",
-      "accessories": ["<p>scarf</p>", "<p>clock</p>", "<p>dictionary</p>", "<p>mirror</p>"]
-    },
-    {
-      "content": "<p>---How do you like the food here?<br>---It tastes <input size=\"8\" readonly=\"readonly\" type=\"underline\">.</p>",
-      "type": "单选", 
-      "accessories": ["<p>good</p>", "<p>well</p>", "<p>bad</p>", "<p>badly</p>"]
-    }
-  ]
-}
-```
-
 ✅ **正确做法**：每道题独立处理
-```json
+
 [
   {
     "question": {
-      "content": "<p>---My friend and I have a lot in common.<br>---Lucky you! A good friend is like a <input size=\"8\" readonly=\"readonly\" type=\"underline\">.</p>",
+      "content": "<p>下列句子中，成语使用恰当的一项是<input type=\"bracket\" size=\"8\" /></p>",
       "type": "单选",
-      "accessories": ["<p>scarf</p>", "<p>clock</p>", "<p>dictionary</p>", "<p>mirror</p>"],
-      "answer": {"choice": "3"},
-      "solution": "<p>解析内容...</p>"
+      "accessories": ["<p>他在这次考试中名落孙山，全班同学都为他高兴。</p>", "<p>面对老师的批评，小明虚怀若谷，认真反思自己的不足。</p>", "<p>这道数学题对他来说简直是易如反掌，不值一提。</p>", "<p>听了这个笑话，大家都忍俊不禁地哭了起来。</p>"],
+      "answer": {"choice": "1"},
+      "solution": "<p>本题考查成语的正确使用。A项“名落孙山”指考试落榜，同学们不会为此高兴，使用错误；B项“虚怀若谷”指胸怀开阔，能够接受批评意见，使用正确；C项“易如反掌”与“不值一提”语义重复，使用错误；D项“忍俊不禁”指忍不住要笑出来，与“哭了起来”矛盾，使用错误。</p>"
     }
   },
   {
     "question": {
-      "content": "<p>---How do you like the food here?<br>---It tastes <input size=\"8\" readonly=\"readonly\" type=\"underline\">.</p>",
+      "content": "<p>下列句子中，没有语病的一项是<input type=\"bracket\" size=\"8\" /></p>",
       "type": "单选",
-      "accessories": ["<p>good</p>", "<p>well</p>", "<p>bad</p>", "<p>badly</p>"],
-      "answer": {"choice": "0"},
-      "solution": "<p>解析内容...</p>"
+      "accessories": ["<p>通过这次社会实践活动，使我们深刻地认识到保护环境的重要性。</p>", "<p>为了防止校园意外事件不再发生，学校加强了安全管理。</p>", "<p>这篇文章内容生动，语言优美，给读者留下了深刻的印象。</p>", "<p>能否取得好成绩，关键在于平时是否努力学习。</p>"],
+      "answer": {"choice": "2"},
+      "solution": "<p>本题考查病句辨析。A项缺少主语，应删去"通过“或”使"；B项“防止...不再发生”否定不当，应为“防止...发生”；C项语句通顺，无语病；D项前后对应不当，“能否”与“是否”不对应。</p>"
     }
   }
 ]
-```
+
 
 **示例：包含多个子问题的简答题**
 {
   "question": {
-    "content": "<p>阅读下面短文，从每题所给的A、B、C、D四个选项中选出最佳选项。<br>&nbsp; &nbsp; A lot of excellent straw-made miniatures (稻草微缩模型) of classic ancient buildings make Xu Jian's home more beautiful. They include models from the Yellow Crane Tower in Hubei Province to the Forbidden City's turrets (角楼) in Beijing. They are all full of details and carefully crafted (手工制成的), tied and placed by Xu's skillful hands.</p><p>&nbsp; &nbsp; \"All the doors and windows and everything else are made of sorghum stalks (高粱秆),\" Xu points to the Yellow Crane Tower that is $1$ meter high at his base in Yongqing County, Langfang City, Hebei Province. This special piece was made out of hundreds of thousands of sorghum stalks and took him two years to complete without the use of any nails (钉子) or glue. It completely depends on interlocking, tenon-and-mortise structures (榫卯结构),\" the man in his $30$s explains.</p><p>&nbsp; &nbsp; The sorghum straw art requires lots of patience, especially for works showing images of ancient buildings. They usually take several months or even one to two years to complete. Additionally, all the beams and columns (横梁和立柱) are straightened after being heated over a lamp. It's the only way that every door and window can open and close properly.</p><p>&nbsp; &nbsp; The sorghum straw art follows strict standards from choosing material to making the work. Xu has grown sorghum in his farmland, and chooses those of the highest quality to create straw works.</p><p>&nbsp; &nbsp; The sorghum stalks go from the thinnest at $1.8$ millimeters to the thickest at $12$ millimeters. Almost every piece includes hundreds of crafting steps. Xu doesn't waste the leftover stalks, either, as he turns them into windmills (风车).</p><p>&nbsp; &nbsp; \"Nothing is useless if we put our heart into it,\" says Xu. In the eyes of many, sorghum straw is only agricultural (农业的) waste, but through the creativity of craftsmen, it can be turned into a treasure.</p>",
+    "content": "<p>阅读下面的文章，完成下列各题。</p><p style=\"text-align: center;\"><strong>匠心传承</strong></p><p>&nbsp; &nbsp; 徐建的家里陈列着许多精美的稻草微缩古建筑模型，从湖北的黄鹤楼到北京故宫的角楼，每一件作品都细致入微，凝聚着他巧妙的双手和匠心独运的技艺。</p><p>&nbsp; &nbsp; “所有的门窗和其他部件都是用高粱秆制作的，徐建指着位于河北省廊坊市永清县基地里那座高达一米的黄鹤楼模型说道。这件特殊的作品用了数十万根高粱秆，耗费了他两年的时间才完成，全程没有使用一颗钉子或一滴胶水，完全依靠榫卯结构的巧妙结合，”这位三十多岁的手艺人解释道。</p><p>&nbsp; &nbsp; 高粱秆艺术需要极大的耐心，尤其是制作古建筑形象的作品。通常需要几个月甚至一到两年的时间才能完成。此外，所有的横梁和立柱都需要在灯火上加热后拉直，只有这样，每扇门窗才能正常开合。</p><p>&nbsp; &nbsp; 高粱秆艺术从选材到制作都遵循严格的标准。徐建在自己的农田里种植高粱，精选品质最好的来制作稻草作品。高粱秆从最细的$1.8$毫米到最粗的$12$毫米不等，几乎每件作品都包含数百道工艺步骤。徐建也不会浪费剩余的秆子，而是将它们制作成风车。</p><p>&nbsp; &nbsp; “用心去做，没有什么是无用的”，徐建说。在许多人眼中，高粱秆只是农业废料，但通过工匠的创意，它能够变成珍宝。</p>",
     "type": "简答"
   },
   "subQuestions": [
     {
-      "content": "<p>Did Xu Jian use nails or glue when making the Yellow Crane Tower model?</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
-      "solution": "<p>根据文章第二段内容\"This special piece was made out of hundreds of thousands of sorghum stalks and took him two years to complete without the use of any nails or glue.\"可知，Xu Jian在制作黄鹤楼模型时没有使用钉子或胶水。</p>",
+      "content": "<p>徐建制作黄鹤楼模型时是否使用了钉子或胶水？请结合文章内容回答。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+      "solution": "<p>根据文章第二段内容“这件特殊的作品用了数十万根高粱秆，耗费了他两年的时间才完成，全程没有使用一颗钉子或一滴胶水”可知，徐建在制作黄鹤楼模型时没有使用钉子或胶水。</p>",
       "answer": {
-        "answer": "<p>No, he didn't. The model was made completely without nails or glue, only using interlocking, tenon-and-mortise structures.</p>"
+        "answer": "<p>没有使用。徐建制作黄鹤楼模型全程没有使用一颗钉子或一滴胶水，完全依靠榫卯结构的巧妙结合。</p>"
       },
       "accessories": [],
       "type": "简答"
     },
     {
-      "content": "<p>How does Xu Jian make beams and columns straight?</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
-      "solution": "<p>根据文章第三段内容\"all the beams and columns are straightened after being heated over a lamp\"可知，Xu Jian通过在灯上加热来使横梁和立柱变直。</p>",
+      "content": "<p>徐建是如何让横梁和立柱变直的？</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+      "solution": "<p>根据文章第三段内容“所有的横梁和立柱都需要在灯火上加热后拉直”可知，徐建通过在灯火上加热的方法来使横梁和立柱变直。</p>",
       "answer": {
-        "answer": "<p>All the beams and columns are straightened after being heated over a lamp.</p>"
+        "answer": "<p>徐建将所有的横梁和立柱在灯火上加热后拉直。</p>"
       },
       "accessories": [],
       "type": "简答"
     },
     {
-      "content": "<p>What does the process of creating sorghum straw art tell us about Xu Jian's personality? (At least $3$ aspects)</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
-      "solution": "<p>从文章描述的创作过程可以看出Xu Jian的性格特点：耐心（需要几个月甚至一两年完成）、精益求精（注重细节，严格标准）、创新精神（将农业废料变成艺术品）、节俭（不浪费剩余材料）等。</p>",
+      "content": "<p>从高粱秆艺术的创作过程中，我们可以看出徐建具有哪些品质？（至少写出三个方面）</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+      "solution": "<p>从文章描述的创作过程可以看出徐建的品质特点：耐心（需要几个月甚至一两年完成）、精益求精（注重细节，遵循严格标准）、创新精神（将农业废料变成艺术品）、节俭（不浪费剩余材料）等。</p>",
       "answer": {
-        "answer": "<p>Xu Jian is patient (works take months or years), meticulous (follows strict standards and pays attention to details), creative (turns agricultural waste into art), and resourceful (doesn't waste leftover materials).</p>"
+        "answer": "<p>徐建具有耐心（作品需要几个月甚至几年完成）、精益求精（注重细节，遵循严格标准）、创新精神（变废为宝）、勤俭节约（不浪费剩余材料）等品质。</p>"
       },
       "accessories": [],
       "type": "简答"
     },
     {
-      "content": "<p>Do you agree with what Xu said in the last paragraph? Why or why not? (About $30$ words)</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
-      "solution": "<p>这是一道开放性题目，学生需要表达自己的观点并说明理由。答案应该围绕Xu说的\"Nothing is useless if we put our heart into it\"这句话展开，约30词左右。</p>",
+      "content": "<p>你同意徐建在最后一段说的话吗？请说明理由。（$30$字左右）</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+      "solution": "<p>这是一道开放性题目，学生需要表达自己的观点并说明理由。答案应该围绕徐建说的“用心去做，没有什么是无用的”这句话展开，约$30$字左右。</p>",
       "answer": {
-        "answer": "<p>Yes, I agree. With creativity and dedication, seemingly useless materials can be transformed into valuable works of art, which shows the power of human innovation and perseverance.</p>"
+        "answer": "<p>同意。用心和创意能让看似无用的材料变成艺术珍品，体现了人的智慧和毅力，变废为宝的理念值得学习。</p>"
       },
       "accessories": [],
       "type": "简答"
@@ -642,15 +643,15 @@
 **示例：包含子问题的简答题**
 {
   "question": {
-    "content": "<p>如图$4 - ZT - 3\\circled{1}$所示，在$\\triangle ABC$中，$\\angle ACB = 90\\degree，AC = BC$，过点$C$在$\\triangle ABC$外作直线$MN，AM\\perp MN$于点$M，BN\\perp MN$于点$N$。</p><p><img src=\"page_1_img_1.png\" alt=\"几何图形\"/><img src=\"page_1_img_2.png\" alt=\"数学图表\"/></p><p>图$4 - ZT - 3$</p>",
+    "content": "<p>阅读下面这首诗，完成下面的题目。</p><p style=\"text-align: center;\"><strong>春夜洛城闻笛</strong></p><p style=\"text-align: center;\">李白</p><p style=\"text-align: center;\">谁家玉笛暗飞声，散入春风满洛城。</p><p style=\"text-align: center;\">此夜曲中闻折柳，何人不起故园情。</p>",
     "type": "简答"
   },
   "subQuestions": [
     {
-      "content": "<p>求证：$MN = AM + BN$；</p>",
-      "solution": "<p>3。 解：（1） 证明：$\\because\\angle ACB = 90\\degree$，</p><p>$\\therefore\\angle ACM + \\angle BCN = 90\\degree$。</p><p>$\\because AM\\perp MN，BN\\perp MN$，</p><p>$\\therefore\\angle AMC = \\angle CNB = 90\\degree$。</p><p>$\\therefore\\angle BCN + \\angle CBN = 90\\degree$。</p><p>$\\therefore\\angle ACM = \\angle CBN$。</p><p>在$\\triangle ACM$和$\\triangle CBN$中，</p><p>$$\\begin{cases}\\angle AMC = \\angle CNB，\\\\\\angle ACM = \\angle CBN，\\\\AC = CB，\\end{cases}$$</p><p>$\\therefore\\triangle ACM\\cong\\triangle CBN（AAS）$。</p><p>$\\therefore CM = BN，AM = CN$。</p><p>$\\therefore MN = CN + CM = AM + BN$。</p>",
+      "content": "<p>请分析这首诗表达了诗人怎样的情感。</p>",
+      "solution": "<p>这首诗表达了诗人深深的思乡之情。诗中“折柳”一词是关键，“折柳”即《折杨柳》，是古代常见的送别曲，常常勾起人们的离愁别绪和思乡之情。诗人在春夜听到笛声演奏《折杨柳》，不禁勾起了对故乡的思念，“何人不起故园情”直接点明了主题，表达了游子对家乡深深的眷恋和思念。</p>",
       "answer": {
-        "answer": "<p>$\\because\\angle ACB = 90\\degree$，</p><p>$\\therefore\\angle ACM + \\angle BCN = 90\\degree$。</p><p>$\\because AM\\perp MN，BN\\perp MN$，</p><p>$\\therefore\\angle AMC = \\angle CNB = 90\\degree$。</p><p>$\\therefore\\angle BCN + \\angle CBN = 90\\degree$。</p><p>$\\therefore\\angle ACM = \\angle CBN$。</p><p>在$\\triangle ACM$和$\\triangle CBN$中，</p><p>$$\\begin{cases}\\angle AMC = \\angle CNB，\\\\\\angle ACM = \\angle CBN，\\\\AC = CB，\\end{cases}$$</p><p>$\\therefore\\triangle ACM\\cong\\triangle CBN（AAS）$。</p><p>$\\therefore CM = BN，AM = CN$。</p><p>$\\therefore MN = CN + CM = AM + BN$。</p>"
+        "answer": "<p>这首诗表达了诗人深深的思乡之情。诗人在春夜听到笛声演奏《折杨柳》曲，勾起了对故乡的思念和眷恋之情，体现了游子思乡的普遍情感。</p>"
       },
       "accessory": [],
       "type": "简答"
@@ -662,11 +663,11 @@
 **示例：单一问题的简答题**
 {
   "question": {
-    "content": "<p>&nbsp; &nbsp; In $2023$, the global production of renewable energy reached $3,372$ terawatt-hours (TWh), representing an $11$% increase from the previous year. Solar energy contributed $1,419$ TWh, wind energy contributed $899$ TWh, and hydroelectric power contributed $4,210$ TWh. If the trend continues and renewable energy production increases by $10$% each year, what will be the total renewable energy production in $2025$?</p><p>Show your calculation steps and give your answer in TWh.</p><p><input size=\"80\" readonly=\"readonly\" type=\"underline\"></p>",
+    "content": "<p>&nbsp; &nbsp; 鲁迅先生在《朝花夕拾》中回忆了自己的童年生活和求学经历，其中《从百草园到三味书屋》描写了儿时在百草园的自由快乐和在三味书屋读书的拘束无聊，形成了鲜明的对比。文中写道：“不必说碧绿的菜畦，光滑的石井栏，高大的皂荚树，紫红的桑椹；也不必说鸣蝉在树叶里长吟，肥胖的黄蜂伏在菜花上，轻捷的叫天子忽然从草间直窜向云霄里去了。单是周围的短短的泥墙根一带，就有无限趣味。”</p><p>请结合这段文字，分析鲁迅运用了哪些写作手法来表现百草园的有趣？（不少于$150$字）</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"600\"></full-line-blank></p>",
     "type": "简答",
-    "solution": "<p>Step 1: Calculate total renewable energy in $2023$</p><p>Solar + Wind + Hydro = $1,419 + 899 + 4,210 = 6,528$ TWh</p><p>Step 2: Calculate production in $2024$ (increase by $10$%)</p><p>$2024$ production = $6,528 × 1.10 = 7,180.8$ TWh</p><p>Step 3: Calculate production in $2025$ (increase by $10$% again)</p><p>$2025$ production = $7,180.8 × 1.10 = 7,898.88$ TWh</p><p>Answer: The total renewable energy production in $2025$ will be approximately $7,899$ TWh.</p>",
+    "solution": "<p>本题考查学生对写作手法的理解和分析能力。鲁迅在这段文字中主要运用了以下写作手法：</p><p>1. 对比手法：通过"不必说...也不必说...单是..."的句式，形成层次递进，突出重点；</p><p>2. 色彩描写：运用“碧绿”“光滑”“紫红”等颜色词，使画面生动鲜明；</p><p>3. 动静结合：既有静态的“菜畦、石井栏、皂荚树”，也有动态的“鸣蝉长吟、黄蜂伏花、叫天子直窜”；</p><p>4. 多感官描写：视觉、听觉等感官并用，增强表现力；</p><p>5. 详略得当：重点描写“泥墙根一带”，突出百草园的无限趣味。</p>",
     "answer": {
-      "answer": "<p>$7,899$ TWh</p>"
+      "answer": "<p>&nbsp; &nbsp; 鲁迅在这段文字中运用了多种写作手法来表现百草园的有趣。首先运用了对比手法，通过“不必说...也不必说...单是...”的递进句式，从面到点，层层深入，突出了重点。其次运用色彩描写，“碧绿”“光滑”“紫红”等词语使画面色彩鲜明，富有视觉冲击力。再次运用动静结合的手法，既有“菜畦、石井栏、皂荚树”等静态景物，也有“鸣蝉长吟、黄蜂伏花、叫天子直窜”等动态描写，动静相宜，富有生机。同时运用多感官描写，调动视觉、听觉等感官，增强了表现力。最后详略得当，重点描写“泥墙根一带”，以小见大，突出百草园的“无限趣味”，表达了作者对童年生活的怀念之情。</p>"
     },
     "accessories": [],
     "score": 5
@@ -763,9 +764,18 @@
      * 如果原文显示为 `()` 或 `（  ）` 等括号形式，才使用 `type="bracket"`
 
 8. **语文学科特殊处理要求**：
+   - **⚠️ 特殊格式转换（最重要）**：
+     * 必须将pandoc格式的特殊标记转换为HTML标签
+     * `[内容]{.wavy-underline}` → `<u style="text-decoration-style: wavy;">内容</u>`
+     * `[内容]{.single-underline}` → `<u>内容</u>`
+     * `[内容]{.bold}` → `<strong>内容</strong>`
+     * `[内容]{.color-XXXXXX}` → `<strong>内容</strong>`（忽略颜色，重要内容加粗）
+     * 多层嵌套如 `[[[[内容]{.color-A}]{.color-B}]{.color-C}]{.color-D}` → `<strong>内容</strong>`
+     * `[[内容]{.single-underline}]{.underline}` → `<u>内容</u>`（优先外层）
+     * 绝对禁止在最终JSON中保留pandoc的特殊格式标记
    - **字音字形题**：
      * 准确提取所有选项内容，不能遗漏任何拼音标注
-     * 题干中的加点字要用适当HTML标签标注，如`<strong>筹</strong>划`
+     * 题干中的加点字要用适当HTML标签标注，如`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">筹</span>>划`
    - **默写填空题**：
      * 必须使用`<input size="X" readonly="readonly" type="underline">`标签表示填空处
      * 根据预期答案长度设置合适的size值（诗句通常size="15-25"）
@@ -780,7 +790,8 @@
    - **现代文阅读题**：
      * 保持原文的段落结构和格式
      * 阅读材料的每个段落必须以`<p>&nbsp; &nbsp;`开头进行首行缩进
-     * 题目中涉及的加点词语要用`<strong>`标签标注
+     * 题目中涉及的加点词语要用`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\"></span>`标签标注
+     * 画波浪线的句子要用`<u style="text-decoration-style: wavy;">`标签
    - **古诗词鉴赏题**：
      * 诗歌格式要规范，注意断行和韵律
      * 诗歌要保持原有的平仄格式
@@ -829,8 +840,8 @@
    - **🚨 最重要**：检查所有解析和答案是否还包含题号（如"31."、"32."、"33."等）
    - **🚨 最重要**：检查是否还包含大题标号（如"一、"、"二、"、"三、"、"四、"、"五、"等）
    - **实际错误示例**：
-     * ❌ `<p>19. 班级准备开展"有趣的《西游记》"读书分享会</p>`
-     * ✅ `<p>班级准备开展"有趣的《西游记》"读书分享会</p>`
+     * ❌ `<p>19. 班级准备开展“有趣的《西游记》”读书分享会</p>`
+     * ✅ `<p>班级准备开展“有趣的《西游记》”读书分享会</p>`
      * ❌ `<p>四、名著阅读（6分）</p>` → ✅ `<p><strong>名著阅读</strong></p>`
 2. **语文综合运用题检查（重点）**：
    - **最重要**：识别统一主题背景+多个资料+多个小题的结构
@@ -839,7 +850,7 @@
    - 每个小题单独处理，不能拆分为独立题目
 3. **字音题检查**：
    - **最重要**：必须包含完整的材料内容，让学生能看到所有拼音标注
-   - 材料中的加点字用`<strong>`标签正确标注
+   - 材料中的加点字用`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\"></span>`标签正确标注
    - 确保题目能够独立回答，不依赖外部材料
    - 答案选择正确的错误选项
 4. **默写题检查**：
@@ -877,7 +888,7 @@ subQuestion的content可以只写答题区域，而不需要重复抄写question
 
 
 **语文学科题型分类说明**：
-- **语文综合运用题**：`"type": "单选"`或`"简答"`，**必须使用subQuestions**，包含多个资料和多个小题
+- **语文综合运用题**：`"type": "单选"`或`"简答"`，必须使用subQuestions，包含多个资料和多个小题
 - **字音字形题**：`"type": "单选"`，考查拼音、字形正误识别
 - **默写填空题**：`"type": "填空"`，需要填入准确的诗句或文言文语句
 - **文言文阅读题**：通常使用 `subQuestions` 结构，包含词义、翻译、理解等子题
@@ -890,19 +901,13 @@ subQuestion的content可以只写答题区域，而不需要重复抄写question
 **语文综合运用题识别要点**：
 - **关键特征**：有统一的主题背景 + 多个资料 + 多个小题围绕主题
 - **常见标志**：
-  * 题目开头有主题性导语（如"学校组织编写..."）
+  * 题目开头有主题性导语
   * 包含多个材料或资料（资料一、二、三、四等）
   * 有多个编号小题（1. 2. 3. 4. 5. 6. 7.等）
   * 所有小题都围绕同一个主题背景
-- **处理原则**：**必须作为一道题，使用subQuestions结构**
+- **处理原则**：必须作为一道题，使用subQuestions结构
 - **错误做法**：将每个小题拆分为独立的题目
 
-
-
-**题目内容完整性要求**：
-- **必须包含题目说明**：如"用方框中词的适当形式填空，把答案写在答题卡各小题的横线上"
-- **必须包含所有提示信息**：如方框选项、答题要求、注意事项等
-- **禁止遗漏任何题目信息**：确保题目完整可理解
 
 **题目说明提取规则**：
 - **题目开头说明必须完整**：不能遗漏任何题目说明文字
@@ -922,7 +927,7 @@ subQuestion的content可以只写答题区域，而不需要重复抄写question
 - **正确处理方式**：将整个题目（包括说明和两个选择）作为一道完整的简答题录入
 
 **✅ 二选一写作题正确示例**：
-```json
+
 {
   "question": {
     "content": "<p>五、写作（50分）</p><p>从下面两个题目中任选一题，按要求作答。不少于600字。将题目抄写在答题卡上。</p><p><strong>题目一：</strong>请以“那一刻，我长大了”为题，写一篇记叙文。</p><p>要求：</p><p>①内容具体，有真情实感；</p><p>②除诗歌外，文体不限；</p><p>③不少于600字；</p><p>④凡涉及真实的人名、校名、地名，一律用A、B、C等英文大写字母代替。</p><p><strong>题目二：</strong>有人说，青春是一首歌，歌声里有欢笑也有眼泪；有人说，青春是一幅画，画面里有色彩也有线条。请以“青春”为话题，自拟题目，写一篇文章。</p><p>要求：</p><p>①除诗歌外，文体不限，写议论文或记叙文；</p><p>②不少于600字；</p><p>③凡涉及真实的人名、校名、地名，一律用A、B、C等英文大写字母代替。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"15\" data-punctuation=\"\" data-first-line-width=\"600\"></full-line-blank></p>",
@@ -934,10 +939,10 @@ subQuestion的content可以只写答题区域，而不需要重复抄写question
     "accessories": []
   }
 }
-```
+
 
 **❌ 错误处理方式**：
-```json
+
 // ❌ 禁止：将二选一题目拆分为subQuestions
 {
   "question": { "content": "题目说明", "type": "简答" },
@@ -946,4 +951,4 @@ subQuestion的content可以只写答题区域，而不需要重复抄写question
     { "content": "题目2...", "type": "简答" }
   ]
 }
-```
+
