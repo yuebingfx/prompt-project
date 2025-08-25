@@ -878,7 +878,7 @@ class PandocWordProcessor:
             return None
     
     def process_word_document(self, file_path, output_format='markdown', prompt_template_path="prompt.md", 
-                            enable_format_analysis=True, enable_dot_below_detection=True):
+                            enable_format_analysis=True, enable_dot_below_detection=True, enable_coze_workflow=True):
         """完整的Word文档处理流程"""
         print("=" * 60)
         print("Pandoc Word文档处理工具 - 增强版 (支持加点字)")
@@ -888,6 +888,7 @@ class PandocWordProcessor:
         print(f"Prompt模板: {prompt_template_path}")
         print(f"格式分析: {'启用' if enable_format_analysis else '禁用'}")
         print(f"加点字检测: {'启用' if enable_dot_below_detection else '禁用'}")
+        print(f"Coze工作流: {'启用' if enable_coze_workflow else '禁用'}")
         print("=" * 60)
         
         # 🆕 新增：第一步 - 加点字预处理（如果启用且为docx文件）
@@ -910,15 +911,21 @@ class PandocWordProcessor:
             print("❌ 文档转换失败，无法继续处理")
             return None
         
-        # 🆕 第四步：转换加点字标记为HTML格式
+        # 🆕 第四步：转换特殊标记为HTML格式
         if enable_dot_below_detection:
             content = self._convert_dot_below_markers_to_html(content)
         
-        # 第三步：调用大模型API解析内容
+        # 🆕 第五步：转换连续短横线为中文破折号
+        content = self._convert_dashes_to_chinese(content)
+        
+        # 第七步：调用大模型API解析内容
         llm_response = self.call_llm_api(content, prompt_template_path)
         if not llm_response:
             print("❌ API调用失败")
             return None
+        
+        # 🆕 第八步：对LLM输出进行后处理，确保格式转换完整
+        llm_response = self._post_process_llm_response(llm_response)
         
         # 第四步：处理API响应并集成格式信息
         api_result = self._process_api_response(llm_response, file_path)
@@ -927,65 +934,183 @@ class PandocWordProcessor:
         if format_analysis and api_result:
             self._integrate_format_info(api_result, format_analysis, file_path)
         
-        return api_result
+        # 🆕 第六步：调用Coze工作流（如果启用）
+        coze_ids = None
+        if enable_coze_workflow:
+            print("\n" + "=" * 60)
+            print("🔗 Coze工作流处理阶段")
+            print("=" * 60)
+            
+            if api_result:
+                # 正常情况：使用API解析结果调用Coze
+                coze_ids = self.call_coze_workflow(api_result)
+                
+                if coze_ids:
+                    # 将Coze返回的ID列表保存为文本文件
+                    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                    coze_output_file = f"coze_ids_{Path(file_path).stem}_{timestamp}.txt"
+                    
+                    with open(coze_output_file, 'w', encoding='utf-8') as f:
+                        f.write(",".join(coze_ids))
+                    
+                    print(f"📁 Coze ID列表已保存到: {coze_output_file}")
+                    
+                    # 可选：将ID列表添加到API结果中
+                    if isinstance(api_result, list):
+                        # 如果API结果是题目列表，可以为每道题添加一个ID
+                        for i, question in enumerate(api_result[:len(coze_ids)]):
+                            if isinstance(question, dict):
+                                question['coze_id'] = coze_ids[i] if i < len(coze_ids) else None
+                    print("✅ Coze ID已整合到题目结果中")
+                else:
+                    print("⚠️ Coze工作流未返回有效数据")
+            else:
+                # API解析失败的情况：提供手动调用指导
+                print("⚠️ 由于JSON解析失败，无法自动调用Coze工作流")
+                print("💡 解决方案：")
+                print("  1. 检查并修复生成的JSON文件格式问题")
+                print("  2. 或者使用手动脚本调用Coze工作流:")
+                print("     python3 manual_coze_call.py")
+        
+        return {
+            'questions': api_result,
+            'coze_ids': coze_ids
+        } if enable_coze_workflow else api_result
     
     def _process_api_response(self, llm_content, original_file_path):
-        """处理API响应并保存结果"""
-        # 去掉markdown代码块标记（如果有的话）
-        if '```json' in llm_content:
-            start_idx = llm_content.find('```json') + 7
-            end_idx = llm_content.find('```', start_idx)
-            if end_idx != -1:
-                llm_content = llm_content[start_idx:end_idx]
-            else:
-                llm_content = llm_content[start_idx:]
-        elif '```' in llm_content:
-            parts = llm_content.split('```')
-            if len(parts) >= 2:
-                llm_content = parts[1]
-        
-        llm_content = llm_content.strip()
-        
-        # 检测重复模式（防止API生成错误）
-        import re
-        # 检测重复的score模式
-        if re.search(r'("score"\s*,\s*){3,}', llm_content):
-            print("❌ 检测到重复的score模式，API响应异常")
-            return None
-        
-        # 检测其他重复模式
-        if re.search(r'(\s*,\s*,\s*){3,}', llm_content):
-            print("❌ 检测到重复的逗号模式，API响应异常")
-            return None
-        
-        # 修复JSON中的双引号问题
-        # 替换题目内容中的未转义双引号
-        llm_content = re.sub(r'将数据"([^"]+)"', r'将数据\\"\\1\\"', llm_content)
-        
-        # 保存原始API响应
-        # timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        # raw_filename = f"raw_api_response_{timestamp}.txt"
-        # with open(raw_filename, 'w', encoding='utf-8') as f:
-        #     f.write(llm_content)
-        # print(f"📄 原始API响应已保存到: {raw_filename}")
-        
-        # 尝试转换为JSON
-        try:
-            questions = json.loads(llm_content)
+        """处理API响应并保存结果，增强健壮性和错误处理"""
+        def extract_json_from_codeblock(content):
+            """从Markdown代码块中提取JSON内容，处理多种格式情况"""
+            # 匹配```json开头的代码块（允许前后有空白）
+            json_block_pattern = re.compile(r'^\s*```\s*json\s*\n(.*?)\n\s*```\s*$', re.DOTALL | re.MULTILINE)
+            match = json_block_pattern.search(content)
+            if match:
+                return match.group(1).strip()
             
-            # 创建 json_res 文件夹
+            # 匹配普通```代码块
+            general_block_pattern = re.compile(r'^\s*```\s*\n(.*?)\n\s*```\s*$', re.DOTALL | re.MULTILINE)
+            match = general_block_pattern.search(content)
+            if match:
+                return match.group(1).strip()
+            
+            # 无代码块时返回原始内容（可能已是纯JSON）
+            return content.strip()
+
+        def clean_json_string(content):
+            """清理JSON字符串，处理常见格式问题"""
+            # 移除JSON中的注释（/* ... */ 或 // ...）
+            content = re.sub(r'/\*.*?\*/', '', content, flags=re.DOTALL)
+            content = re.sub(r'//.*?$', '', content, flags=re.MULTILINE)
+            
+            # 移除尾逗号（如 [1,2,] 或 {"a":1,}）
+            content = re.sub(r',\s*([}\]])', r'\1', content)
+            
+            return content.strip()
+
+        # 1. 提取并清理内容
+        try:
+            # 提取JSON内容（处理代码块）
+            extracted_content = extract_json_from_codeblock(llm_content)
+            
+            # 清理JSON格式问题
+            cleaned_content = clean_json_string(extracted_content)
+        except Exception as e:
+            print(f"⚠️ 内容提取/清理失败: {e}")
+            cleaned_content = llm_content.strip()
+
+        # 2. 保存原始响应（无论后续处理是否成功，便于调试）
+        try:
+            # 创建专门的原始响应目录
+            raw_dir = Path("raw_api_responses")
+            raw_dir.mkdir(exist_ok=True)
+            
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            raw_filename = raw_dir / f"raw_response_{Path(original_file_path).stem}_{timestamp}.txt"
+            with open(raw_filename, 'w', encoding='utf-8') as f:
+                f.write(f"=== 原始LLM响应 ===\n{llm_content}\n\n")
+                f.write(f"=== 提取后内容 ===\n{extracted_content}\n\n")
+                f.write(f"=== 清理后内容 ===\n{cleaned_content}")
+            print(f"📄 原始响应已保存到: {raw_filename}")
+        except Exception as e:
+            print(f"⚠️ 保存原始响应失败: {e}")
+
+        # 3. 解析JSON并保存结果
+        try:
+            questions = json.loads(cleaned_content)
+            
+            # 验证解析结果格式
+            if not isinstance(questions, list):
+                raise ValueError("解析结果不是JSON数组")
+            
+            # 保存处理后的结果
             json_res_dir = Path("json_res")
             json_res_dir.mkdir(exist_ok=True)
             
-            output_file = json_res_dir / f"questions_with_pandoc_{Path(original_file_path).stem}.json"
+            output_file = json_res_dir / f"questions_{Path(original_file_path).stem}_{timestamp}.json"
             with open(output_file, 'w', encoding='utf-8') as f:
                 json.dump(questions, f, ensure_ascii=False, indent=2)
+            
             print(f"🎉 完成！共{len(questions)}道题目，保存到: {output_file}")
             return questions
+            
         except json.JSONDecodeError as e:
             print(f"❌ JSON解析失败: {e}")
             print(f"错误位置: 第{e.lineno}行第{e.colno}列")
-            print("请检查原始API响应文件")
+            print(f"请查看原始响应文件: {raw_filename}")
+            return None
+        except ValueError as e:
+            print(f"❌ 解析结果格式错误: {e}")
+            return None
+        except Exception as e:
+            print(f"❌ 处理响应时发生意外错误: {e}")
+            return None
+    
+    def call_coze_workflow(self, processed_data):
+        """调用Coze工作流"""
+        print("🔗 准备调用Coze工作流...")
+        
+        try:
+            headers = {
+                'Authorization': f'Bearer pat_Z0r3WQNZ435IUDhJCc0bVHDd9mVcIh0Z6tOvYd3HPT3Q6WNfw5KaX7veOhNkqC3N',
+                'Content-Type': 'application/json'
+            }
+
+            data = {
+                "workflow_id": "7540878860784680995",
+                "parameters": {
+                    "input": json.dumps(processed_data, ensure_ascii=False)
+                }
+            }
+            
+            print("🚀 调用Coze工作流开始...")
+            print(f"📊 发送数据量: {len(json.dumps(processed_data, ensure_ascii=False))} 字符")
+            
+            response = requests.post('https://api.coze.cn/v1/workflow/run', headers=headers, data=json.dumps(data))
+
+            if response.status_code == 200:
+                response_data = response.json().get("data")
+                
+                if response_data:
+                    # 解析 JSON 字符串
+                    parsed_data = json.loads(response_data)
+                    
+                    # 提取 data 字段并按 \n 分割成数组
+                    id_list = parsed_data["data"].split("\n")
+                    
+                    print(f"✅ Coze工作流调用成功，返回 {len(id_list)} 个ID")
+                    print(f"📋 ID列表预览: {', '.join(id_list[:5])}...")  # 只显示前5个
+                    
+                    return id_list
+                else:
+                    print("❌ Coze工作流返回数据为空")
+                    return None
+            else:
+                print(f"❌ Coze工作流调用失败，状态码: {response.status_code}")
+                print(f"错误信息: {response.text}")
+                return None
+
+        except Exception as e:
+            print(f"❌ 调用Coze工作流异常: {e}")
             return None
     
     def _preprocess_dot_below_chars(self, docx_path):
@@ -1000,7 +1125,31 @@ class PandocWordProcessor:
             import shutil
             import re
             
-            output_path = docx_path.replace('.docx', '_dot_processed.docx')
+            # 创建专门的子文件夹来存储中间文件
+            from pathlib import Path
+            input_path = Path(docx_path)
+            
+            # 如果文件在Chinese文件夹中，创建processed子文件夹
+            if 'Chinese' in str(input_path):
+                # 获取Chinese文件夹的路径
+                chinese_folder = None
+                for parent in input_path.parents:
+                    if parent.name == 'Chinese':
+                        chinese_folder = parent
+                        break
+                
+                if chinese_folder:
+                    processed_folder = chinese_folder / 'processed'
+                    processed_folder.mkdir(exist_ok=True)
+                    filename = input_path.name.replace('.docx', '_dot_processed.docx')
+                    output_path = str(processed_folder / filename)
+                    print(f"  📁 中间文件将保存到: processed/{filename}")
+                else:
+                    # 回退到原来的方式
+                    output_path = docx_path.replace('.docx', '_dot_processed.docx')
+            else:
+                # 不在Chinese文件夹中，使用原来的方式
+                output_path = docx_path.replace('.docx', '_dot_processed.docx')
             
             # 创建临时目录来解压和重新打包docx
             with tempfile.TemporaryDirectory() as temp_dir:
@@ -1077,6 +1226,116 @@ class PandocWordProcessor:
             print(f"  ⚠️ 加点字转换失败: {e}")
             return content
 
+    def _convert_dashes_to_chinese(self, content):
+        """转换连续短横线为中文破折号"""
+        print("🔀 转换连续短横线为中文破折号...")
+        
+        try:
+            import re
+            
+            conversion_count = 0
+            
+            # 匹配多个连续的短横线（4个或更多）
+            # 常见模式：------、-----、--------、---------等
+            dash_pattern = r'-{4,}'  # 匹配4个或更多连续的短横线
+            
+            def replace_dashes(match):
+                nonlocal conversion_count
+                dashes = match.group(0)
+                conversion_count += 1
+                # 统一替换为中文破折号（两个em dash）
+                return '——'
+            
+            content = re.sub(dash_pattern, replace_dashes, content)
+            
+            if conversion_count > 0:
+                print(f"  ✅ 转换了 {conversion_count} 处连续短横线为中文破折号")
+            else:
+                print("  ℹ️ 未发现需要转换的连续短横线")
+            
+            return content
+            
+        except Exception as e:
+            print(f"  ⚠️ 破折号转换失败: {e}")
+            return content
+    
+    def _post_process_llm_response(self, llm_response):
+        """对LLM响应进行后处理，确保格式转换完整"""
+        print("🔧 对LLM输出进行后处理...")
+        
+        try:
+            import re
+            import json
+            
+            # 如果响应是字符串，直接处理
+            if isinstance(llm_response, str):
+                # 处理破折号
+                llm_response = self._convert_dashes_to_chinese(llm_response)
+                return llm_response
+            
+            # 如果响应是JSON字符串，需要小心处理以避免破坏JSON结构
+            response_str = str(llm_response)
+            
+            # 在JSON内容中转换破折号，采用更安全的方式
+            dash_count = 0
+            
+            try:
+                # 尝试解析为JSON并在内容中转换破折号
+                json_data = json.loads(response_str)
+                
+                def fix_dashes_in_data(data):
+                    nonlocal dash_count
+                    if isinstance(data, dict):
+                        fixed_data = {}
+                        for key, value in data.items():
+                            fixed_data[key] = fix_dashes_in_data(value)
+                        return fixed_data
+                    elif isinstance(data, list):
+                        return [fix_dashes_in_data(item) for item in data]
+                    elif isinstance(data, str):
+                        # 在字符串中查找并替换连续短横线
+                        dash_pattern = r'-{4,}'
+                        matches = re.findall(dash_pattern, data)
+                        if matches:
+                            dash_count += len(matches)
+                            return re.sub(dash_pattern, '——', data)
+                        return data
+                    else:
+                        return data
+                
+                fixed_json_data = fix_dashes_in_data(json_data)
+                response_str = json.dumps(fixed_json_data, ensure_ascii=False, separators=(',', ':'))
+                
+                if dash_count > 0:
+                    print(f"  ✅ 后处理转换了 {dash_count} 处破折号")
+                    
+            except (json.JSONDecodeError, TypeError):
+                # 如果不是有效的JSON，使用简单的字符串替换
+                dash_pattern = r'-{4,}'
+                matches = re.findall(dash_pattern, response_str)
+                if matches:
+                    dash_count = len(matches)
+                    response_str = re.sub(dash_pattern, '——', response_str)
+                    print(f"  ✅ 后处理转换了 {dash_count} 处破折号")
+            
+
+            
+            # 尝试解析回JSON（如果原本是JSON）
+            try:
+                if response_str.strip().startswith('[') or response_str.strip().startswith('{'):
+                    # 先尝试直接解析
+                    return json.loads(response_str)
+            except json.JSONDecodeError as e:
+                print(f"  ⚠️ JSON解析失败，返回原始响应: {e}")
+                # 如果JSON解析失败，返回原始响应，避免数据损坏
+                return llm_response
+            
+            return response_str
+            
+        except Exception as e:
+            print(f"  ⚠️ LLM响应后处理失败: {e}")
+            return llm_response
+
 def main():
     """主函数"""
     import sys
@@ -1085,7 +1344,7 @@ def main():
     if len(sys.argv) > 1:
         word_file_path = sys.argv[1]
     else:
-        word_file_path = "Chinese/精品解析：2025年甘肃省兰州市中考语文真题（解析版）.docx"  # 默认文件路径
+        word_file_path = "Chinese/精品解析：2025年湖北省武汉市中考语文真题（解析版）.docx"  # 默认文件路径
      
     output_format = "markdown"  # 可选: markdown, plain, html
     prompt_template_path = "prompt_Chinese.md"

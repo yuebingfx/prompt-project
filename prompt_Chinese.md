@@ -80,8 +80,8 @@
 - **🚨 必须删除**解析和答案中的题号，如"31."、"32."、"33."等
 - **🚨 必须删除**大题标号，如"一、"、"二、"、"三、"、"四、"、"五、"等
 - **常见错误示例**：
-  * ❌ 错误：`<p>19. 班级准备开展"有趣的《西游记》"读书分享会</p>`
-  * ✅ 正确：`<p>班级准备开展"有趣的《西游记》"读书分享会</p>`
+  * ❌ 错误：`<p>19. 班级准备开展“有趣的《西游记》”读书分享会</p>`
+  * ✅ 正确：`<p>班级准备开展“有趣的《西游记》”读书分享会</p>`
   * ❌ 错误：`<p>8. 这篇文章的主旨是什么？</p>`
   * ✅ 正确：`<p>这篇文章的主旨是什么？</p>`
   * ❌ 错误：`<p>四、名著阅读（6分）</p><p>19. 班级准备开展...</p>`
@@ -116,7 +116,7 @@
   * 每个原始表格单元格对应一个`<td>`或`<th>`标签
 - **具体处理要求**：
   * 表格内的文本保持在对应单元格内：`<td>文本内容</td>`
-  * 表格内的图片保持在对应单元格内：`<td><img src="..." alt="..." /></td>`
+  * 表格内的图片保持在对应单元格内：`<td><img src=\"...\" alt=\"...\" /></td>`
   * 表格内的格式化文本使用相应HTML标签：`<td><strong>粗体</strong></td>`
 - **❌ 绝对禁止的错误做法**：
   * 将表格内容转换为连续的`<p>`段落
@@ -126,80 +126,139 @@
   ```html
   <table>
     <tr>
-      <td><strong>LOST!</strong><br/><img src="media/image3.png" alt="钢笔"/><br/>Lost: My pen</td>
-      <td><strong>Thank you!</strong><br/><img src="media/image4.png" alt="钱包"/><br/>Please help me find my wallet!</td>
+      <td><strong>LOST!</strong><br/><img src=\"media/image3.png\" alt=\"钢笔\"/><br/>Lost: My pen</td>
+      <td><strong>Thank you!</strong><br/><img src=\"media/image4.png\" alt=\"钱包\"/><br/>Please help me find my wallet!</td>
     </tr>
     <tr>
-      <td><strong>LOST PET</strong><br/><img src="media/image5.png" alt="泰迪犬"/></td>
-      <td><strong>Have You Seen This Mug</strong><br/><img src="media/image6.png" alt="保温杯"/></td>
+      <td><strong>LOST PET</strong><br/><img src=\"media/image5.png\" alt=\"泰迪犬\"/></td>
+      <td><strong>Have You Seen This Mug</strong><br/><img src=\"media/image6.png\" alt=\"保温杯\"/></td>
     </tr>
   </table>
   ```
 
 **特殊格式处理要求（重要）**：
-- **下划线填空**：使用 `<input size="X" readonly="readonly" type="underline">` 标签
-- **波浪线强调**：使用 `<u style="text-decoration-style: wavy;">` 标签
+- **🚨 括号填空（最重要）**：所有作为答题区的括号 `（）` 必须转换为 `<input type=\"bracket\" size=\"8\" />` 标签（注意：不是普通的标点括号，而是填空答题区的括号）
+- **🚨 下划线填空（最重要）**：所有作为答题区的下划线 `___` 或 `_____` 必须转换为 `<input size=\"X\" readonly=\"readonly\" type=\"underline\">` 标签
+- **波浪线强调**：使用 `<u style=\"text-decoration-style: wavy;\">` 标签
 - **单下划线强调**：使用 `<u>` 标签
-- **禁止在输出结果中保留pandoc的特殊格式，必须要替换为HTML标签**：
+- **上角标格式**：`^①^` `^②^` `^③^` 等必须转换为HTML上角标：`<sup>①</sup>` `<sup>②</sup>` `<sup>③</sup>`
+- **破折号格式**：将pandoc生成的多个连续短横线 `------` 转换为正确的中文破折号 `——`（两个em dash）
+- **中文双引号格式**：将英文双引号 `"内容"` 转换为中文双引号 `“内容”`（特别是语文题目中的引用内容）
+- **加点字格式**：`[\[DOT_BELOW\]字符\[/DOT_BELOW\]]{.underline}` 必须转换为加点字标签：`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">字符</span>`
+- **🚨 禁止在输出结果中保留原始格式，必须要替换为HTML标签（最重要）**：
+  * ❌ 禁止出现原始括号：`（）` → ✅ 必须转换为：`<input type=\"bracket\" size=\"X\" />`X的数值需要结合实际情况决定
+  * ❌ 禁止出现原始下划线：`___` → ✅ 必须转换为：`<input size=\"X\" readonly=\"readonly\" type=\"underline\">`X的数值需要结合实际情况决定
   * ❌ 禁止出现：`[_____]{.underline}`
   * ❌ 禁止出现：`[___1___]{.underline}`
   * ❌ 禁止出现：`[甲]{.underline}`、`[乙]{.underline}`等变量形式
   * ❌ 禁止出现：`[内容]{.wavy-underline}`
   * ❌ 禁止出现：`[内容]{.single-underline}`
   * ❌ 禁止出现：`[内容]{.bold}`
+  * ❌ 禁止出现：`[\[DOT_BELOW\]字符\[/DOT_BELOW\]]{.underline}` 加点字格式
   * ❌ 禁止出现：`[内容]{.color-XXXXXX}`及其多层嵌套
 - **正确替换格式示例**：
-  * 下划线填空：`<input size="8" readonly="readonly" type="underline">`
-  * 波浪线强调：`<u style="text-decoration-style: wavy;">内容</u>`
+  * 下划线填空：`<input size=\"8\" readonly=\"readonly\" type=\"underline\">`
+  * 波浪线强调：`<u style=\"text-decoration-style: wavy;\">内容</u>`
   * 单下划线强调：`<u>内容</u>`
   * 粗体强调：`<strong>内容</strong>`
   * 彩色文字：直接保留内容，忽略颜色格式
-- **常见错误转换示例**：
+- **🚨 波浪线格式转换实例（极其重要，必须严格执行）**：
+  * ❌ **严重错误**：`[即使在贫乏的环境里，依然可以做一个理想主义者。]{.wavy-underline}`
+  * ✅ **必须转换为**：`<u style=\"text-decoration-style: wavy;\">即使在贫乏的环境里，依然可以做一个理想主义者。</u>`
+
+- **🚨 单下划线格式转换实例（同样重要）**：
+  * ❌ **严重错误**：`[[卒中往往语，皆指目陈胜。]{.single-underline}]{.underline}`
+  * ✅ **必须转换为**：`<u>卒中往往语，皆指目陈胜。</u>`
+  * ❌ **严重错误**：`[良欲往从之，道遇沛公。]{.single-underline}`
+  * ✅ **必须转换为**：`<u>良欲往从之，道遇沛公。</u>`
+
+- **其他常见错误转换示例**：
   * ❌ 错误：`古梨树 [甲]{.underline} （星罗棋布/浩如烟海）`
-  * ✅ 正确：`古梨树 <input size="8" readonly="readonly" type="underline" placeholder="甲"> （星罗棋布/浩如烟海）`
-  * ❌ 错误：`[万亩梨花竞相绽放，如雪似云，吸引着数十万左右游客前来观赏。]{.wavy-underline}`
-  * ✅ 正确：`<u style="text-decoration-style: wavy;">万亩梨花竞相绽放，如雪似云，吸引着数十万左右游客前来观赏。</u>`
-  * ❌ 错误：`[[卒中往往语，皆指目陈胜。]{.single-underline}]{.underline}`
-  * ✅ 正确：`<u>卒中往往语，皆指目陈胜。</u>`
+  * ✅ 正确：`古梨树 <input size=\"8\" readonly=\"readonly\" type=\"underline\" placeholder=\"甲\"> （星罗棋布/浩如烟海）`
   * ❌ 错误：`[注意事项：]{.bold}`
   * ✅ 正确：`<strong>注意事项：</strong>`
   * ❌ 错误：`[[[[[[【答案】]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}`
   * ✅ 正确：`<strong>【答案】</strong>`
+  * ❌ 错误：`岁晚^①^ 王安石`
+  * ✅ 正确：`岁晚<sup>①</sup> 王安石`
+  * ❌ 错误：`携幼寻新菂^②^，扶衰坐野航^③^`
+  * ✅ 正确：`携幼寻新菂<sup>②</sup>，扶衰坐野航<sup>③</sup>`
+  * ❌ 错误：`[\[DOT_BELOW\]会\[/DOT_BELOW\]]{.underline}天大雨`
+  * ✅ 正确：`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">会</span>天大雨`
+  * ❌ 错误：`[\[DOT_BELOW\]筹\[/DOT_BELOW\]]{.underline}划`
+  * ✅ 正确：`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">筹</span>划`
+  * ❌ 错误：`告诉世界------真正的可持续发展`
+  * ✅ 正确：`告诉世界——真正的可持续发展`
+  * ❌ 错误：`"甘肃皋兰什川古梨园系统"`
+  * ✅ 正确：`“甘肃皋兰什川古梨园系统”`
 - **特殊格式处理规则**：
-  * `[内容]{.underline}` 中如果内容是变量（如甲、乙、①、②等），转换为填空：`<input size="8" readonly="readonly" type="underline" placeholder="变量">`
-  * `[内容]{.underline}` 中如果内容是下划线（如___、____等），转换为填空：`<input size="8" readonly="readonly" type="underline">`
-  * `[内容]{.wavy-underline}` 转换为波浪线强调：`<u style="text-decoration-style: wavy;">内容</u>`
+  * `[内容]{.underline}` 中如果内容是变量（如甲、乙、①、②等），转换为填空：`<input size=\"8\" readonly=\"readonly\" type=\"underline\" placeholder=\"变量\">`
+  * `[内容]{.underline}` 中如果内容是下划线（如___、____等），转换为填空：`<input size=\"8\" readonly=\"readonly\" type=\"underline\">`
+  * `[内容]{.wavy-underline}` 转换为波浪线强调：`<u style=\"text-decoration-style: wavy;\">内容</u>`
   * `[内容]{.single-underline}` 转换为下划线强调：`<u>内容</u>`
   * `[内容]{.bold}` 转换为粗体：`<strong>内容</strong>`
   * `[内容]{.color-XXXXXX}` 忽略颜色，直接保留内容，如果内容重要则加粗：`<strong>内容</strong>`
   * 多层嵌套格式如 `[[[[内容]{.color-A}]{.color-B}]{.color-C}]{.color-D}` 简化为：`<strong>内容</strong>`
   * 嵌套格式如 `[[内容]{.single-underline}]{.underline}` 只保留最外层效果：`<u>内容</u>`
+  * **上角标格式** `^①^` `^②^` `^③^` 等必须转换为HTML上角标：`<sup>①</sup>` `<sup>②</sup>` `<sup>③</sup>`
+  * **🆕 破折号格式** 多个连续短横线 `------` 或 `-----` 或 `--------` 转换为中文破折号：`——`
+  * **🆕 双引号格式** 英文双引号 `"内容"` 转换为中文双引号：`"内容"`（语文题目中的引用、对话、标题等）
+  * **🆕 加点字格式** `[\[DOT_BELOW\]字符\[/DOT_BELOW\]]{.underline}` 转换为加点字标签：`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">字符</span>`
 - **标识符保留规则**：
-  * 如果原文是 `[甲]{.underline}`，转换为 `<input size="8" readonly="readonly" type="underline" placeholder="甲">`
-  * 如果原文是 `[乙]{.underline}`，转换为 `<input size="8" readonly="readonly" type="underline" placeholder="乙">`
-  * 如果原文是 `[____]{.underline}`，转换为 `<input size="8" readonly="readonly" type="underline">`
+  * 如果原文是 `[甲]{.underline}`，转换为 `<input size=\"8\" readonly=\"readonly\" type=\"underline\" placeholder=\"甲\">`
+  * 如果原文是 `[乙]{.underline}`，转换为 `<input size=\"8\" readonly=\"readonly\" type=\"underline\" placeholder=\"乙\">`
+  * 如果原文是 `[____]{.underline}`，转换为 `<input size=\"8\" readonly=\"readonly\" type=\"underline\">`
 - **size设置规则**：
-  * 单词填空：size="8-12"
-  * 短语填空：size="15-20"
-  * 句子填空：size="25-35"
+  * 单词填空：size=\"8-12\"
+  * 短语填空：size=\"15-20\"
+  * 句子填空：size=\"25-35\"
+
+- **🚨 中文双引号格式（精确替换规则）**：
+  * **替换范围**：仅限HTML标签（如`<p>`、`<span>`、`<div>`等）内部的纯文本
+  * **转换规则**：将英文双引号 `"` 转换为中文双引号 `“` 和 `”`
+  * ✅ **正确示例**：
+    ```html
+    <!-- 转换前 -->
+    <p>指腹的汗洇湿了\"竞选班长\"四个字。</p>
+    
+    <!-- 转换后 -->
+    <p>指腹的汗洇湿了“竞选班长”四个字。</p>
+    ```
+  * ❌ **严禁替换**：
+    - JSON键名：`"subjectId"`、`"question"`、`"content"`等
+    - JSON数据结构：`{"blanks": ["形声", "桶"]}`中的引号
+    - HTML属性：`<p style=\"color:red\">`、`<input size=\"10\">`中的引号
+
+- **字符串转义规则**：
+  * 在JSON字符串值中：
+    - 保留英文双引号作为字符串分隔符
+    - 字符串内的中文双引号不需要转义
+    - 字符串内的英文双引号必须转义：`\"`
+  * ✅ **正确示例**：
+    ```json
+    {
+      "content": "<p>他说\"坚持努力\"才能成功。</p>",
+      "answer": {"blanks": ["形声", "桶"]}
+    }
+    ```
 
 
 **答题区域格式要求（重要）**：
 - **普通简答题**：使用 `<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>` 标签
-- **书面表达题（作文）**：使用 `<p style=\"overflow: hidden;\"><full-line-blank id="mce_1" style="display: inline; position: static;" contenteditable="false" data-lines="8" data-punctuation="" data-first-line-width="379"></full-line-blank></p>` 标签
-- **填空题**：使用 `<input size="X" readonly="readonly" type="underline">` 标签
+- **书面表达题（作文）**：使用 `<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"8\" data-punctuation=\"\" data-first-line-width=\"379\"></full-line-blank></p>` 标签
+- **填空题**：使用 `<input size=\"X\" readonly=\"readonly\" type=\"underline\">` 标签
 
 **作文题识别规则（重要）**：
 - **作文题特征**：题目要求写作文、短文、文章等，通常包含"写一篇"、"完成一篇"、"写短文"等关键词
-- **作文题标签**：作文题必须使用 `<full-line-blank>` 标签，绝对不能使用 `<input size="X" readonly="readonly" type="underline">` 标签
+- **作文题标签**：作文题必须使用 `<full-line-blank>` 标签，绝对不能使用 `<input size=\"X\" readonly=\"readonly\" type=\"underline\">` 标签
 - **作文题type**：作文题的type为"简答"，但答题区域使用 `<full-line-blank>` 标签
-- **常见错误**：将作文题错误识别为填空题，使用 `<input size="X" readonly="readonly" type="underline">` 标签
+- **常见错误**：将作文题错误识别为填空题，使用 `<input size=\"X\" readonly=\"readonly\" type=\"underline\">` 标签
 
 **标签使用区分（重要）**：
 - **使用 `<full-line-blank>` 的情况**：
   * 简答题（需要写完整句子或段落）
   * 作文题（需要写文章）
-- **使用 `<input size="X" readonly="readonly" type="underline">` 的情况**：
+- **使用 `<input size=\"X\" readonly=\"readonly\" type=\"underline\">` 的情况**：
   * 填空题（只需要填单词或短语）
   * 语法填空题（填入适当形式）
   * 补全句子题（填入缺失部分）
@@ -208,7 +267,7 @@
 
 
 **填空形式选择规则（重要）**：
-- **优先使用下划线形式**：`<input size="X" readonly="readonly" type="underline">`
+- **优先使用下划线形式**：`<input size=\"X\" readonly=\"readonly\" type=\"underline\">`
 - **仅在以下情况使用括号形式**：
   * 原文明确显示为括号 `()` 形式的填空
   * 题目要求从选项中选择填入括号中
@@ -303,7 +362,7 @@
 
 {
   "question": {
-    "content": "<p>从题中所给的A、B、C、D四个选项中, 选出一个最佳答案。</p><p>下列句子中加点词语使用不正确的一项是（    ）</p>",
+    "content": "<p>从题中所给的A、B、C、D四个选项中, 选出一个最佳答案。</p><p>下列句子中加点词语使用不正确的一项是<input type=\"bracket\" size=\"8\" /></p>",
     "solution": "<p>这道题考查学生对词语使用的理解和掌握。需要仔细分析每个选项中加点词语在语境中的使用是否恰当，是否符合词语的本意和使用规范。</p>",
     "answer": {
       "choice": "0"
@@ -355,7 +414,7 @@
 **填空题示例**
 {
   "question": {
-    "content": "<p>根据课文内容填空。</p><p>《春》一文中，作者朱自清写道："<input size=\"8\" readonly=\"readonly\" type=\"underline\">，<input size=\"8\" readonly=\"readonly\" type=\"underline\">，<input size=\"8\" readonly=\"readonly\" type=\"underline\">，春天像<input size=\"8\" readonly=\"readonly\" type=\"underline\">的姑娘，<input size=\"8\" readonly=\"readonly\" type=\"underline\">着，<input size=\"8\" readonly=\"readonly\" type=\"underline\">着，笑着，向我们走来。"</p>",
+    "content": "<p>根据课文内容填空。</p><p>《春》一文中，作者朱自清写道：“<input size=\"8\" readonly=\"readonly\" type=\"underline\">，<input size=\"8\" readonly=\"readonly\" type=\"underline\">，<input size=\"8\" readonly=\"readonly\" type=\"underline\">，春天像<input size=\"8\" readonly=\"readonly\" type=\"underline\">的姑娘，<input size=\"8\" readonly=\"readonly\" type=\"underline\">着，<input size=\"8\" readonly=\"readonly\" type=\"underline\">着，笑着，向我们走来。”</p>",
     "solution": "<p>这道题考查学生对课文《春》的记忆和理解。朱自清在文中用三个比喻来赞美春天：春天像刚落地的娃娃，春天像小姑娘，春天像健壮的青年。这句话是文章的结尾，表达了作者对春天的热爱和赞美之情。</p>",
     "answer": {
       "blanks": [
@@ -378,7 +437,7 @@
 **字音题示例（正确格式 - 包含完整材料）**
 {
   "question": {
-    "content": "<p><strong>资料一</strong></p><p>&nbsp; &nbsp; 1937年4月，新华书店诞生于延安。1948年12月，毛泽东同志在西柏坡题写了“新华书店”四个大字，中共中央宣传部将其作为平津解放以后全国各地建立的新华书店的招牌用字。经<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">筹</span>（chóu）划，1949年2月，北平第一家新华书店在王府井大街开业。同年10月，全国新华书店第一届出版工作会议在北京<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">召</span>（zhāo）开。七十多年来，北京新华书店始终传承红色基因，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">砥</span>（dǐ）砺“新华精神”，坚守为人民服务的初心，宣传党的路线方针政策，为广大读者提<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">供</span>（gōng）科学文化知识，极大地满足了人民群众的精神文化需求，促进了首都人民思想道德素质和科学文化素质的提高，在文化建设中发挥了重要作用。</p><p>你审核资料中标注的字音。下列加点字读音标注不正确的一项是（ ）</p>",
+    "content": "<p><strong>资料一</strong></p><p>&nbsp; &nbsp; 1937年4月，新华书店诞生于延安。1948年12月，毛泽东同志在西柏坡题写了“新华书店”四个大字，中共中央宣传部将其作为平津解放以后全国各地建立的新华书店的招牌用字。经<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">筹</span>（chóu）划，1949年2月，北平第一家新华书店在王府井大街开业。同年10月，全国新华书店第一届出版工作会议在北京<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">召</span>（zhāo）开。七十多年来，北京新华书店始终传承红色基因，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">砥</span>（dǐ）砺“新华精神”，坚守为人民服务的初心，宣传党的路线方针政策，为广大读者提<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">供</span>（gōng）科学文化知识，极大地满足了人民群众的精神文化需求，促进了首都人民思想道德素质和科学文化素质的提高，在文化建设中发挥了重要作用。</p><p>你审核资料中标注的字音。下列加点字读音标注不正确的一项是<input type=\"bracket\" size=\"8\" /></p>",
     "solution": "<p>本题考查字音。需要逐一分析每个选项中加点字的读音是否正确。B项中“召开”的“召”应读作zhào，而不是zhāo。</p>",
     "answer": {
       "choice": "1"
@@ -412,7 +471,7 @@
 **语文综合运用题示例（正确格式）**
 {
   "question": {
-    "content": "<p><strong>一、基础·运用（共13分）</strong></p><p>学校组织编写“城市漫步地”推荐手册，有同学推荐了北京市有代表性的书店，并搜集了相关资料。请你协助整理。</p><p><strong>资料一</strong></p><p>&nbsp; &nbsp; 1937年4月，新华书店诞生于延安。1948年12月，毛泽东同志在西柏坡题写了“新华书店”四个大字，中共中央宣传部将其作为平津解放以后全国各地建立的新华书店的招牌用字。经<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">筹</span>（chóu）划，1949年2月，北平第一家新华书店在王府井大街开业。同年10月，全国新华书店第一届出版工作会议在北京<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">召</span>（zhāo）开。七十多年来，北京新华书店始终传承红色基因，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">砥</span>（dǐ）砺“新华精神”，坚守为人民服务的初心，宣传党的路线方针政策，为广大读者提<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">供</span>（gōng）科学文化知识，极大地满足了人民群众的精神文化需求，促进了首都人民思想道德素质和科学文化素质的提高，在文化建设中发挥了重要作用。</p><p><strong>资料二</strong></p><p>&nbsp; &nbsp; 中国书店创立于1952年，主要从事古旧书籍的经营及古籍的复制出版。2008年，中国书店申报的古籍修复技艺被列入国家级非物质文化遗产名录。如今，中国书店既保留了古籍影印复制等传统业务，又担负起文学典籍整理、北京传统文化研究等多项任务，还出版了《北京方志提要》《北京旧志汇刊》及大量新印古籍和研究传统文化的著作。中国书店在中华优秀传统文化的<input size="8" readonly="readonly" type="underline">、<input size="8" readonly="readonly" type="underline">和<input size="8" readonly="readonly" type="underline">等方面做出了积极努力。</p><p><strong>资料三</strong></p><p>&nbsp; &nbsp; 在北京市政府的支持下，有些书店迁入古建筑所在的院落。时尚的阅读空间与古树、古建筑相映成趣。这些书店承担着“阅读传承”与“文物活化”的双重使命，除图书外，还收藏老照片、旧报刊、胡同门牌等多种历史资料。图书与历史资料相得益彰，共同讲述着北京作为古城、古都的发展历史。这些书店大多自出心裁，选择具有地域特色的主题陈列图书和其他展品，如“京味文学”“口述历史”“史地民俗”等。读者捕风捉影，可以领略老北京的城市风貌。</p><p><strong>资料四</strong></p><p>&nbsp; &nbsp; 漫步胡同，胡同尽头有一座独立的四合院，它居然是一家书店。这家书店的院落布局融入了现代元素，房屋主体采用黛色砖瓦，装饰物以红色为主色调，古朴、时尚、喜庆。阅读区域暖黄色的灯光温柔地洒在木质书架上，琳琅满目的书籍散发着墨香。它特有的文化氛围不仅吸引着读者，还吸引着大量游客和摄影爱好者。<u>胡同里的这家书店创新了设计风格，营造了广大群众的文化体验。</u></p><p><strong>后记</strong></p><p>&nbsp; &nbsp; 赓续红色血脉的新华书店让我们领悟“新华精神”的当代内涵；<input size="25" readonly="readonly" type="underline">；古建筑旁、胡同里的创意书店让我们感受城市文化的地域特色。选择书店作为城市漫步地，你就选择了观察一座城市的独特视角。</p>",
+    "content": "<p><strong>一、基础·运用（共13分）</strong></p><p>学校组织编写“城市漫步地”推荐手册，有同学推荐了北京市有代表性的书店，并搜集了相关资料。请你协助整理。</p><p><strong>资料一</strong></p><p>&nbsp; &nbsp; 1937年4月，新华书店诞生于延安。1948年12月，毛泽东同志在西柏坡题写了“新华书店”四个大字，中共中央宣传部将其作为平津解放以后全国各地建立的新华书店的招牌用字。经<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">筹</span>（chóu）划，1949年2月，北平第一家新华书店在王府井大街开业。同年10月，全国新华书店第一届出版工作会议在北京<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">召</span>（zhāo）开。七十多年来，北京新华书店始终传承红色基因，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">砥</span>（dǐ）砺“新华精神”，坚守为人民服务的初心，宣传党的路线方针政策，为广大读者提<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">供</span>（gōng）科学文化知识，极大地满足了人民群众的精神文化需求，促进了首都人民思想道德素质和科学文化素质的提高，在文化建设中发挥了重要作用。</p><p><strong>资料二</strong></p><p>&nbsp; &nbsp; 中国书店创立于1952年，主要从事古旧书籍的经营及古籍的复制出版。2008年，中国书店申报的古籍修复技艺被列入国家级非物质文化遗产名录。如今，中国书店既保留了古籍影印复制等传统业务，又担负起文学典籍整理、北京传统文化研究等多项任务，还出版了《北京方志提要》《北京旧志汇刊》及大量新印古籍和研究传统文化的著作。中国书店在中华优秀传统文化的<input size=\"8\" readonly=\"readonly\" type=\"underline\">、<input size=\"8\" readonly=\"readonly\" type=\"underline\">和<input size=\"8\" readonly=\"readonly\" type=\"underline\">等方面做出了积极努力。</p><p><strong>资料三</strong></p><p>&nbsp; &nbsp; 在北京市政府的支持下，有些书店迁入古建筑所在的院落。时尚的阅读空间与古树、古建筑相映成趣。这些书店承担着“阅读传承”与“文物活化”的双重使命，除图书外，还收藏老照片、旧报刊、胡同门牌等多种历史资料。图书与历史资料相得益彰，共同讲述着北京作为古城、古都的发展历史。这些书店大多自出心裁，选择具有地域特色的主题陈列图书和其他展品，如“京味文学”“口述历史”“史地民俗”等。读者捕风捉影，可以领略老北京的城市风貌。</p><p><strong>资料四</strong></p><p>&nbsp; &nbsp; 漫步胡同，胡同尽头有一座独立的四合院，它居然是一家书店。这家书店的院落布局融入了现代元素，房屋主体采用黛色砖瓦，装饰物以红色为主色调，古朴、时尚、喜庆。阅读区域暖黄色的灯光温柔地洒在木质书架上，琳琅满目的书籍散发着墨香。它特有的文化氛围不仅吸引着读者，还吸引着大量游客和摄影爱好者。<u>胡同里的这家书店创新了设计风格，营造了广大群众的文化体验。</u></p><p><strong>后记</strong></p><p>&nbsp; &nbsp; 赓续红色血脉的新华书店让我们领悟“新华精神”的当代内涵；<input size=\"25\" readonly=\"readonly\" type=\"underline\">；古建筑旁、胡同里的创意书店让我们感受城市文化的地域特色。选择书店作为城市漫步地，你就选择了观察一座城市的独特视角。</p>",
     "type": "单选"
   },
   "subQuestions": [
@@ -447,7 +506,6 @@
       "answer": {"choice": "0"},
       "solution": "<p>本题考查词义辨析。根据文段内容，应该是先“保护”、再“研究”、最后“传播”的逻辑顺序。</p>"
     }
-    // 继续其他4个小题...
   ]
 }
 
@@ -674,6 +732,38 @@
   }
 }
 
+**二选一写作题处理规则**：
+- **识别标准**：题目中包含"从下面两个题目中任选一题"、"二选一"等选择性指示
+- **必须作为一整道题目**：二选一的写作题绝对不能使用subQuestions结构拆分
+- **禁止拆分原因**：如果拆分成两个子题，学生会误认为两道都需要回答，失去了"二选一"的选择性
+- **正确处理方式**：将整个题目（包括说明和两个选择）作为一道完整的简答题录入
+
+**✅ 二选一写作题正确示例**：
+
+{
+  "question": {
+    "content": "<p>五、写作（50分）</p><p>从下面两个题目中任选一题，按要求作答。不少于600字。将题目抄写在答题卡上。</p><p><strong>题目一：</strong>请以“那一刻，我长大了”为题，写一篇记叙文。</p><p>要求：</p><p>①内容具体，有真情实感；</p><p>②除诗歌外，文体不限；</p><p>③不少于600字；</p><p>④凡涉及真实的人名、校名、地名，一律用A、B、C等英文大写字母代替。</p><p><strong>题目二：</strong>有人说，青春是一首歌，歌声里有欢笑也有眼泪；有人说，青春是一幅画，画面里有色彩也有线条。请以“青春”为话题，自拟题目，写一篇文章。</p><p>要求：</p><p>①除诗歌外，文体不限，写议论文或记叙文；</p><p>②不少于600字；</p><p>③凡涉及真实的人名、校名、地名，一律用A、B、C等英文大写字母代替。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"15\" data-punctuation=\"\" data-first-line-width=\"600\"></full-line-blank></p>",
+    "type": "简答",
+    "answer": { 
+      "answer": "<p>学生可以选择题目一或题目二中的任意一个进行作答，评分标准按照语文作文评分要求执行。</p>" 
+    },
+    "solution": "<p>这是一道二选一的作文题，学生只需要选择其中一个题目进行作答。题目一是命题作文，要求写记叙文；题目二是话题作文，文体不限但建议写议论文或记叙文。评分时只评价学生选择的那个题目，按照内容、语言、结构三个维度进行评价。</p>",
+    "accessories": []
+  }
+}
+
+
+**❌ 错误处理方式**：
+
+// ❌ 禁止：将二选一题目拆分为subQuestions
+{
+  "question": { "content": "题目说明", "type": "简答" },
+  "subQuestions": [
+    { "content": "题目1...", "type": "简答" },
+    { "content": "题目2...", "type": "简答" }
+  ]
+}
+
 
 **严格JSON输出格式规范：**
 
@@ -723,16 +813,16 @@
      * 小图标或装饰图片使用width="150-200" 
      * 大图表或重要示意图使用width="500-600"
      * 避免使用width="150"以下的过小尺寸
-   - 示例：`<img src="图片URL" width="350" alt="图片描述"/>`
+   - 示例：`<img src=\"图片URL\" width=\"350\" alt=\"图片描述\"/>`
 
 6. **HTML格式**
 选择题：
    - content中涉及换行、加粗、斜体、加点等特殊的排版格式，统一用HTML的符号处理。例如<p>。
    - **格式对齐要求**：
-     * 居中文本使用：`<p style="text-align: center;">居中内容</p>`
+     * 居中文本使用：`<p style=\"text-align: center;\">居中内容</p>`
      * 首行缩进使用：`<p>&nbsp; &nbsp; 段落内容</p>`（两个全角空格）
-     * 右对齐使用：`<p style="text-align: right;">右对齐内容</p>`
-     * 图片居中：`<p style="text-align: center;"><img src="..." /></p>`
+     * 右对齐使用：`<p style=\"text-align: right;\">右对齐内容</p>`
+     * 图片居中：`<p style=\"text-align: center;\"><img src=\"...\" /></p>`
   - content: 题目内容（包含题干）
   - solution: 解析过程（如果有的话）
   - answer: 包含正确答案信息的对象
@@ -743,42 +833,43 @@
 - score: 题目分数
 - 如果包含图片，则按照对应格式写明
 - 只要涉及选项的内容，都放到accessory的options中，不要放在content中，包括选项中的图片，也要放在accessory中。
-- 题干和选项中如果出现括号答题区，例如（）（而不是普通括号，即不是答题区的，例如（8）），则用<input type="bracket" size="8" />，而不能用文字表示括号，默认size为8，需要更大篇幅可以修改。
-- 如果出现**下划线填空**（无论长短），都用<input size="X" readonly="readonly" type="underline">表示，size根据预期答案长度调整：
-  * **单词填空**：size="8-12"（如invention, beautiful）
-  * **短语填空**：size="15-20"（如in the past, look forward to）
-  * **句子填空**：size="25-35"（如完整的句子回答）
-  * **长文本填空**：size="40-50"（如简答题类答案）
-- **重要**：如果原文中填空处有提示信息（如括号内的词根提示），必须保留在title属性中，例如：`<input size="12" readonly="readonly" type="underline" title="invent">`
+- 题干和选项中如果出现括号答题区，例如（）（而不是普通括号，即不是答题区的，例如（8）），则用<input type=\"bracket\" size=\"8\" />，而不能用文字表示括号，默认size为8，需要更大篇幅可以修改。
+- 如果出现**下划线填空**（无论长短），都用<input size=\"X\" readonly=\"readonly\" type=\"underline\">表示，size根据预期答案长度调整：
+  * **单词填空**：size=\"8-12\"（如invention, beautiful）
+  * **短语填空**：size=\"15-20\"（如in the past, look forward to）
+  * **句子填空**：size=\"25-35\"（如完整的句子回答）
+  * **长文本填空**：size=\"40-50\"（如简答题类答案）
+- **重要**：如果原文中填空处有提示信息（如括号内的词根提示），必须保留在title属性中，例如：`<input size=\"12\" readonly=\"readonly\" type=\"underline\" title=\"invent\">`
 
 
 7. **填空题特殊要求**：
    - **格式严格匹配（重要）**：
-     * 如果原文是下划线 `_____`，必须用 `<input size="X" readonly="readonly" type="underline">`
-     * 如果原文是括号 `()`，必须用 `<input type=\"bracket\" size="X" />`
+     * 如果原文是下划线 `_____`，必须用 `<input size=\"X\" readonly=\"readonly\" type=\"underline\">`
+     * 如果原文是括号 `()`，必须用 `<input type=\"bracket\" size=\"X\" />`
    - **常见错误示例**：
-     * ❌ 错误：原文是下划线，却用了括号：`My sister is good at singing. <input type="bracket" size="8" /> can even sing some French songs.`
-     * ✅ 正确：原文是下划线，用下划线：`My sister is good at singing. <input size="8" readonly="readonly" type="underline"> can even sing some French songs.`
+     * ❌ 错误：原文是下划线，却用了括号：`My sister is good at singing. <input type=\"bracket\" size=\"8\" /> can even sing some French songs.`
+     * ✅ 正确：原文是下划线，用下划线：`My sister is good at singing. <input size=\"8\" readonly=\"readonly\" type=\"underline\"> can even sing some French songs.`
    - **判断标准**：
-     * 如果原文显示为 `\_\_\_\_\_\_\_\_` 或 `___` 等下划线形式，必须使用 `type="underline"`
-     * 如果原文显示为 `()` 或 `（  ）` 等括号形式，才使用 `type="bracket"`
+     * 如果原文显示为 `\_\_\_\_\_\_\_\_` 或 `___` 等下划线形式，必须使用 `type=\"underline\"`
+     * 如果原文显示为 `()` 或 `（  ）` 等括号形式，才使用 `type=\"bracket\"`
 
 8. **语文学科特殊处理要求**：
-   - **⚠️ 特殊格式转换（最重要）**：
-     * 必须将pandoc格式的特殊标记转换为HTML标签
-     * `[内容]{.wavy-underline}` → `<u style="text-decoration-style: wavy;">内容</u>`
-     * `[内容]{.single-underline}` → `<u>内容</u>`
+   - **🚨 特殊格式转换（最重要且最容易错误）**：
+     * **必须将pandoc格式的特殊标记转换为HTML标签，这是试卷格式的核心要求！**
+     * **`[内容]{.wavy-underline}` → `<u style=\"text-decoration-style: wavy;\">内容</u>`** ← **绝对不能遗漏这个转换！**
+     * **`[内容]{.single-underline}` → `<u>内容</u>`** ← **绝对不能遗漏这个转换！**
      * `[内容]{.bold}` → `<strong>内容</strong>`
      * `[内容]{.color-XXXXXX}` → `<strong>内容</strong>`（忽略颜色，重要内容加粗）
      * 多层嵌套如 `[[[[内容]{.color-A}]{.color-B}]{.color-C}]{.color-D}` → `<strong>内容</strong>`
      * `[[内容]{.single-underline}]{.underline}` → `<u>内容</u>`（优先外层）
-     * 绝对禁止在最终JSON中保留pandoc的特殊格式标记
+     * **🔥 绝对禁止在最终JSON中保留pandoc的特殊格式标记！这是最常见的错误！**
    - **字音字形题**：
      * 准确提取所有选项内容，不能遗漏任何拼音标注
-     * 题干中的加点字要用适当HTML标签标注，如`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">筹</span>>划`
+     * 题干中的加点字要用适当HTML标签标注，如`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">筹</span>划`
+     * 特别注意：如遇到 `[\[DOT_BELOW\]筹\[/DOT_BELOW\]]{.underline}` 格式，必须转换为上述加点字标签
    - **默写填空题**：
-     * 必须使用`<input size="X" readonly="readonly" type="underline">`标签表示填空处
-     * 根据预期答案长度设置合适的size值（诗句通常size="15-25"）
+     * 必须使用`<input size=\"X\" readonly=\"readonly\" type=\"underline\">`标签表示填空处
+     * 根据预期答案长度设置合适的size值（诗句通常size=\"15-25\"）
      * 保持诗歌的断行格式，每句诗独立成行
      * 题目要求和提示信息必须完整保留
    - **文言文阅读题**：
@@ -791,7 +882,7 @@
      * 保持原文的段落结构和格式
      * 阅读材料的每个段落必须以`<p>&nbsp; &nbsp;`开头进行首行缩进
      * 题目中涉及的加点词语要用`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\"></span>`标签标注
-     * 画波浪线的句子要用`<u style="text-decoration-style: wavy;">`标签
+     * **画波浪线的句子要用`<u style=\"text-decoration-style: wavy;\">`标签，绝对不能保留`{.wavy-underline}`格式**
    - **古诗词鉴赏题**：
      * 诗歌格式要规范，注意断行和韵律
      * 诗歌要保持原有的平仄格式
@@ -810,7 +901,7 @@
 
 9. **格式一致性检查要求**：
    - **段落格式**：所有段落开头使用`&nbsp; &nbsp;`进行首行缩进（阅读材料尤其重要）
-   - **居中格式**：题目标题、作文标题等需要居中的内容使用`style="text-align: center;"`
+   - **居中格式**：题目标题、作文标题等需要居中的内容使用`style=\"text-align: center;\"`
    - **图片对齐**：根据原PDF中的图片位置设置对齐方式，重要图表通常需要居中显示
    - **列表格式**：如有编号列表或要点，使用适当的HTML列表标签`<ol>`或`<ul>`
    - **引用格式**：对话或引文部分保持原有的缩进和格式
@@ -835,7 +926,21 @@
 
 
 **⚠️ 语文学科最终检查清单**：
-1. **🚨 题号删除检查（最关键）**：
+1. **🚨 括号和填空转换检查（最关键）**：
+   - **🚨 最重要**：检查所有答题区的括号`（）`是否都转换为`<input type=\"bracket\" size=\"8\" />`
+   - **🚨 最重要**：检查所有答题区的下划线`___`是否都转换为`<input size=\"X\" readonly=\"readonly\" type=\"underline\">`
+   - **🚨 最重要**：绝对不能保留原始的`（）`或`___`格式在最终输出中
+1.5. **🔥 波浪线格式转换检查（极其关键）**：
+   - **🔥 最关键**：检查所有`[内容]{.wavy-underline}`是否都转换为`<u style=\"text-decoration-style: wavy;\">内容</u>`
+   - **🔥 最关键**：检查所有`[内容]{.single-underline}`是否都转换为`<u>内容</u>`
+   - **🔥 最关键**：绝对不能在最终JSON中保留任何`{.wavy-underline}`或`{.single-underline}`格式
+   - **🔥 这是最容易被遗漏的转换，必须仔细检查每一个实例！**
+   - **实际错误示例**：
+     * ❌ `<p>截zhì（ ）目前，我国全球重要...</p>`
+     * ✅ `<p>截zhì<input type=\"bracket\" size=\"8\" />目前，我国全球重要...</p>`
+     * ❌ `<p>古梨树历史yōu（ ）久</p>`
+     * ✅ `<p>古梨树历史yōu<input type=\"bracket\" size=\"8\" />久</p>`
+2. **🚨 题号删除检查（最关键）**：
    - **🚨 最重要**：检查所有题目内容是否还包含题号（如"1."、"2."、"8."、"19."、"25."等）
    - **🚨 最重要**：检查所有解析和答案是否还包含题号（如"31."、"32."、"33."等）
    - **🚨 最重要**：检查是否还包含大题标号（如"一、"、"二、"、"三、"、"四、"、"五、"等）
@@ -843,29 +948,30 @@
      * ❌ `<p>19. 班级准备开展“有趣的《西游记》”读书分享会</p>`
      * ✅ `<p>班级准备开展“有趣的《西游记》”读书分享会</p>`
      * ❌ `<p>四、名著阅读（6分）</p>` → ✅ `<p><strong>名著阅读</strong></p>`
-2. **语文综合运用题检查（重点）**：
+3. **语文综合运用题检查（重点）**：
    - **最重要**：识别统一主题背景+多个资料+多个小题的结构
    - 必须作为一道题，使用subQuestions结构
    - 主题目包含完整的背景介绍和所有资料
    - 每个小题单独处理，不能拆分为独立题目
-3. **字音题检查**：
+4. **字音题检查**：
    - **最重要**：必须包含完整的材料内容，让学生能看到所有拼音标注
    - 材料中的加点字用`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\"></span>`标签正确标注
+   - **重要**：遇到 `[\[DOT_BELOW\]字符\[/DOT_BELOW\]]{.underline}` 格式时，必须转换为加点字标签
    - 确保题目能够独立回答，不依赖外部材料
    - 答案选择正确的错误选项
-4. **默写题检查**：
-   - 填空处使用`<input size="X" readonly="readonly" type="underline">`格式
+5. **默写题检查**：
+   - 填空处使用`<input size=\"X\" readonly=\"readonly\" type=\"underline\">`格式
    - 诗句断行格式正确，每句独立成行
    - 答案与原文完全一致，不能有任何错字
-5. **文言文阅读检查**：
+6. **文言文阅读检查**：
    - 保持原文的断句和古代汉语特点
    - 词义解释准确，选项完整
    - 如有翻译要求，现代汉语表达规范
-6. **现代文阅读检查**：
+7. **现代文阅读检查**：
    - 阅读材料段落首行缩进格式正确
    - 加点词语用`<strong>`标签标注
    - 共享材料的题目使用subQuestions结构
-7. **作文题检查**：
+8. **作文题检查**：
    - 二选一作文绝对不能拆分为subQuestions
    - 使用`<full-line-blank>`答题区域格式
    - 保留完整的写作要求和字数限制
@@ -919,36 +1025,12 @@ subQuestion的content可以只写答题区域，而不需要重复抄写question
   * 题目结尾的注意事项
 - **检查方法**：确保每个题目的content字段都包含完整的题目说明，包括完形填空题
 
-
-**二选一写作题处理规则**：
-- **识别标准**：题目中包含"从下面两个题目中任选一题"、"二选一"等选择性指示
-- **必须作为一整道题目**：二选一的写作题绝对不能使用subQuestions结构拆分
-- **禁止拆分原因**：如果拆分成两个子题，学生会误认为两道都需要回答，失去了"二选一"的选择性
-- **正确处理方式**：将整个题目（包括说明和两个选择）作为一道完整的简答题录入
-
-**✅ 二选一写作题正确示例**：
-
-{
-  "question": {
-    "content": "<p>五、写作（50分）</p><p>从下面两个题目中任选一题，按要求作答。不少于600字。将题目抄写在答题卡上。</p><p><strong>题目一：</strong>请以“那一刻，我长大了”为题，写一篇记叙文。</p><p>要求：</p><p>①内容具体，有真情实感；</p><p>②除诗歌外，文体不限；</p><p>③不少于600字；</p><p>④凡涉及真实的人名、校名、地名，一律用A、B、C等英文大写字母代替。</p><p><strong>题目二：</strong>有人说，青春是一首歌，歌声里有欢笑也有眼泪；有人说，青春是一幅画，画面里有色彩也有线条。请以“青春”为话题，自拟题目，写一篇文章。</p><p>要求：</p><p>①除诗歌外，文体不限，写议论文或记叙文；</p><p>②不少于600字；</p><p>③凡涉及真实的人名、校名、地名，一律用A、B、C等英文大写字母代替。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"15\" data-punctuation=\"\" data-first-line-width=\"600\"></full-line-blank></p>",
-    "type": "简答",
-    "answer": { 
-      "answer": "<p>学生可以选择题目一或题目二中的任意一个进行作答，评分标准按照语文作文评分要求执行。</p>" 
-    },
-    "solution": "<p>这是一道二选一的作文题，学生只需要选择其中一个题目进行作答。题目一是命题作文，要求写记叙文；题目二是话题作文，文体不限但建议写议论文或记叙文。评分时只评价学生选择的那个题目，按照内容、语言、结构三个维度进行评价。</p>",
-    "accessories": []
-  }
-}
+- **最终检查清单**：
+  * 检查HTML标签内文本的英文双引号是否转换为中文双引号
+  * 检查JSON键名是否保持英文双引号
+  * 检查JSON数据结构中的引号是否保持英文双引号
+  * 检查HTML属性引号是否保持英文双引号
+  * 检查中文双引号是否正确使用（左“和右”成对出现）
 
 
-**❌ 错误处理方式**：
-
-// ❌ 禁止：将二选一题目拆分为subQuestions
-{
-  "question": { "content": "题目说明", "type": "简答" },
-  "subQuestions": [
-    { "content": "题目1...", "type": "简答" },
-    { "content": "题目2...", "type": "简答" }
-  ]
-}
 
