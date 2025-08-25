@@ -891,7 +891,7 @@ class PandocWordProcessor:
         print(f"Coze工作流: {'启用' if enable_coze_workflow else '禁用'}")
         print("=" * 60)
         
-        # 🆕 新增：第一步 - 加点字预处理（如果启用且为docx文件）
+        # 第一步 - 加点字预处理（如果启用且为docx文件）
         processed_file_path = file_path
         if enable_dot_below_detection and file_path.lower().endswith('.docx'):
             processed_file_path = self._preprocess_dot_below_chars(file_path)
@@ -911,30 +911,27 @@ class PandocWordProcessor:
             print("❌ 文档转换失败，无法继续处理")
             return None
         
-        # 🆕 第四步：转换特殊标记为HTML格式
+        # 第四步：转换特殊标记为HTML格式
         if enable_dot_below_detection:
             content = self._convert_dot_below_markers_to_html(content)
         
-        # 🆕 第五步：转换连续短横线为中文破折号
+        # 第五步：转换连续短横线为中文破折号
         content = self._convert_dashes_to_chinese(content)
         
-        # 第七步：调用大模型API解析内容
+        # 第六步：调用大模型API解析内容
         llm_response = self.call_llm_api(content, prompt_template_path)
         if not llm_response:
             print("❌ API调用失败")
             return None
         
-        # 🆕 第八步：对LLM输出进行后处理，确保格式转换完整
-        llm_response = self._post_process_llm_response(llm_response)
-        
-        # 第四步：处理API响应并集成格式信息
+        # 第七步：处理API响应并集成格式信息
         api_result = self._process_api_response(llm_response, file_path)
         
         # 第五步：如果有格式分析结果，将其整合到最终结果中
         if format_analysis and api_result:
             self._integrate_format_info(api_result, format_analysis, file_path)
         
-        # 🆕 第六步：调用Coze工作流（如果启用）
+        # 第六步：调用Coze工作流（如果启用）
         coze_ids = None
         if enable_coze_workflow:
             print("\n" + "=" * 60)
@@ -946,9 +943,13 @@ class PandocWordProcessor:
                 coze_ids = self.call_coze_workflow(api_result)
                 
                 if coze_ids:
+                    # 创建coze_res文件夹
+                    coze_res_dir = Path("coze_res")
+                    coze_res_dir.mkdir(exist_ok=True)
+                    
                     # 将Coze返回的ID列表保存为文本文件
                     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                    coze_output_file = f"coze_ids_{Path(file_path).stem}_{timestamp}.txt"
+                    coze_output_file = coze_res_dir / f"coze_ids_{Path(file_path).stem}_{timestamp}.txt"
                     
                     with open(coze_output_file, 'w', encoding='utf-8') as f:
                         f.write(",".join(coze_ids))
@@ -1038,6 +1039,9 @@ class PandocWordProcessor:
         try:
             questions = json.loads(cleaned_content)
             
+            #TODO: 对questions进行处理，将questions中需要转换的中文引号转化一下：transform_chinese_quotes(questions)
+            questions = transform_chinese_quote(questions)
+
             # 验证解析结果格式
             if not isinstance(questions, list):
                 raise ValueError("解析结果不是JSON数组")
@@ -1235,21 +1239,23 @@ class PandocWordProcessor:
             
             conversion_count = 0
             
-            # 匹配多个连续的短横线（4个或更多）
-            # 常见模式：------、-----、--------、---------等
-            dash_pattern = r'-{4,}'  # 匹配4个或更多连续的短横线
+            # 匹配多个连续的短横线（3个或更多）
+            # 常见模式：---、------、--------、---------等
+            dash_pattern = r'-{3,}'  # 匹配3个或更多连续的短横线
             
             def replace_dashes(match):
                 nonlocal conversion_count
                 dashes = match.group(0)
+                dash_count = len(dashes)
                 conversion_count += 1
-                # 统一替换为中文破折号（两个em dash）
-                return '——'
+                # 每3个短横线替换为一个em dash
+                em_dash_count = dash_count // 3
+                return '—' * em_dash_count
             
             content = re.sub(dash_pattern, replace_dashes, content)
             
             if conversion_count > 0:
-                print(f"  ✅ 转换了 {conversion_count} 处连续短横线为中文破折号")
+                print(f"  ✅ 转换了 {conversion_count} 处连续短横线为中文破折号（每3个短横线转换为1个em dash）")
             else:
                 print("  ℹ️ 未发现需要转换的连续短横线")
             
@@ -1259,82 +1265,101 @@ class PandocWordProcessor:
             print(f"  ⚠️ 破折号转换失败: {e}")
             return content
     
-    def _post_process_llm_response(self, llm_response):
-        """对LLM响应进行后处理，确保格式转换完整"""
-        print("🔧 对LLM输出进行后处理...")
-        
-        try:
-            import re
-            import json
-            
-            # 如果响应是字符串，直接处理
-            if isinstance(llm_response, str):
-                # 处理破折号
-                llm_response = self._convert_dashes_to_chinese(llm_response)
-                return llm_response
-            
-            # 如果响应是JSON字符串，需要小心处理以避免破坏JSON结构
-            response_str = str(llm_response)
-            
-            # 在JSON内容中转换破折号，采用更安全的方式
-            dash_count = 0
-            
-            try:
-                # 尝试解析为JSON并在内容中转换破折号
-                json_data = json.loads(response_str)
-                
-                def fix_dashes_in_data(data):
-                    nonlocal dash_count
-                    if isinstance(data, dict):
-                        fixed_data = {}
-                        for key, value in data.items():
-                            fixed_data[key] = fix_dashes_in_data(value)
-                        return fixed_data
-                    elif isinstance(data, list):
-                        return [fix_dashes_in_data(item) for item in data]
-                    elif isinstance(data, str):
-                        # 在字符串中查找并替换连续短横线
-                        dash_pattern = r'-{4,}'
-                        matches = re.findall(dash_pattern, data)
-                        if matches:
-                            dash_count += len(matches)
-                            return re.sub(dash_pattern, '——', data)
-                        return data
-                    else:
-                        return data
-                
-                fixed_json_data = fix_dashes_in_data(json_data)
-                response_str = json.dumps(fixed_json_data, ensure_ascii=False, separators=(',', ':'))
-                
-                if dash_count > 0:
-                    print(f"  ✅ 后处理转换了 {dash_count} 处破折号")
-                    
-            except (json.JSONDecodeError, TypeError):
-                # 如果不是有效的JSON，使用简单的字符串替换
-                dash_pattern = r'-{4,}'
-                matches = re.findall(dash_pattern, response_str)
-                if matches:
-                    dash_count = len(matches)
-                    response_str = re.sub(dash_pattern, '——', response_str)
-                    print(f"  ✅ 后处理转换了 {dash_count} 处破折号")
-            
+import json
 
-            
-            # 尝试解析回JSON（如果原本是JSON）
-            try:
-                if response_str.strip().startswith('[') or response_str.strip().startswith('{'):
-                    # 先尝试直接解析
-                    return json.loads(response_str)
-            except json.JSONDecodeError as e:
-                print(f"  ⚠️ JSON解析失败，返回原始响应: {e}")
-                # 如果JSON解析失败，返回原始响应，避免数据损坏
-                return llm_response
-            
-            return response_str
-            
-        except Exception as e:
-            print(f"  ⚠️ LLM响应后处理失败: {e}")
-            return llm_response
+def transform_chinese_quote(data):
+    """
+    手动实现 HTML 解析并交替将英文引号替换为中文左右引号，
+    同时将连续六个英文句点......转换为中文省略号……
+
+    参数:
+        data: 包含 HTML 内容的 JSON 数据
+
+    返回:
+        处理后的 JSON 数据，其中英文引号已交替替换为中文左右引号，
+        英文省略号已转换为中文省略号
+    """
+
+    def replace_quotes_in_html(html_content):
+        """手动解析 HTML 并交替替换英文引号为中文左右引号，同时转换省略号"""
+        if not html_content:
+            return html_content
+
+        result = []
+        i = 0
+        n = len(html_content)
+        single_quote_count = 0  # 用于跟踪引号出现次数
+        double_quote_count = 0  # 用于跟踪引号出现次数
+
+        while i < n:
+            if html_content[i] == '<':
+                # 处理标签部分（原样保留）
+                tag_end = html_content.find('>', i)
+                if tag_end == -1:
+                    tag_end = n
+                result.append(html_content[i:tag_end + 1])
+                i = tag_end + 1
+            else:
+                # 处理文本内容
+                text_end = html_content.find('<', i)
+                if text_end == -1:
+                    text_end = n
+                text = html_content[i:text_end]
+
+                # 处理文本中的引号（交替替换）和省略号
+                new_text = []
+                j = 0
+                text_len = len(text)
+                
+                while j < text_len:
+                    # 检查是否是六个连续的句点
+                    if text[j] == '.' and j + 5 < text_len and all(text[j + k] == '.' for k in range(6)):
+                        new_text.append('……')
+                        j += 6  # 跳过这六个句点
+                    else:
+                        # 处理引号
+                        char = text[j]
+                        if char == '"':
+                            double_quote_count += 1
+                            new_text.append('“' if double_quote_count % 2 == 1 else '”')
+                        elif char == "'":
+                            single_quote_count += 1
+                            new_text.append("‘" if single_quote_count % 2 == 1 else "’")
+                        else:
+                            new_text.append(char)
+                        j += 1
+
+                result.append(''.join(new_text))
+                i = text_end
+
+        return ''.join(result)
+
+    # 如果是字符串形式的 JSON，先解析为字典
+    if isinstance(data, str):
+        try:
+            data = json.loads(data)
+        except json.JSONDecodeError:
+            return data
+
+    # 递归处理 JSON 中的每个字段
+    def process_item(item):
+        if isinstance(item, dict):
+            for key, value in item.items():
+                if isinstance(value, str):
+                    item[key] = replace_quotes_in_html(value)
+                elif isinstance(value, (dict, list)):
+                    process_item(value)
+        elif isinstance(item, list):
+            for i in range(len(item)):
+                if isinstance(item[i], str):
+                    item[i] = replace_quotes_in_html(item[i])
+                elif isinstance(item[i], (dict, list)):
+                    process_item(item[i])
+
+    process_item(data)
+
+    return data
+
 
 def main():
     """主函数"""
@@ -1344,7 +1369,7 @@ def main():
     if len(sys.argv) > 1:
         word_file_path = sys.argv[1]
     else:
-        word_file_path = "Chinese/精品解析：2025年湖北省武汉市中考语文真题（解析版）.docx"  # 默认文件路径
+        word_file_path = "Chinese/精品解析：2025年北京市中考语文真题（解析版）.docx"  # 默认文件路径
      
     output_format = "markdown"  # 可选: markdown, plain, html
     prompt_template_path = "prompt_Chinese.md"
