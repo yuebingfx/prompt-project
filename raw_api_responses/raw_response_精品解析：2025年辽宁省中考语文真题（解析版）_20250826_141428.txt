@@ -1,0 +1,533 @@
+=== 原始LLM响应 ===
+[
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>下列词语中加点字的字音、字形完全正确的一项是（<input type=\"bracket\" size=\"8\" />）</p>",
+      "type": "单选",
+      "accessories": [
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">钦</span>（qīn）佩 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">尉</span>（wèi）蓝 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">颁</span>（bān）发 惟妙惟<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">肖</span>（xiāo）</p>",
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">轩</span>（xuān）昂 赞<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">誉</span>（yù） 山<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">涧</span>（jiàn） 心旷神<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">怡</span>（yí）</p>",
+        "<p>扶<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">植</span>（zhí） 星<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">辰</span>（cén） <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">瞭</span>（liáo）亮 慷<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">慨</span>（kǎi）淋漓</p>",
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">掂</span>（diàn）记 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">乖</span>（guāi）巧 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">倔</span>（juè）强 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">屏</span>（bǐng）息敛声</p>"
+      ],
+      "answer": {
+        "choice": "1"
+      },
+      "solution": "<p>本题考查字音字形。A.<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">尉</span>蓝——蔚蓝，惟妙惟<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">肖</span>（xiāo）——xiào；C.星<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">辰</span>（cén）——chén，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">瞭</span>亮——嘹亮；D.<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">掂</span>记——惦记，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">倔</span>（juè）强——jué；故选B。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>依次填入下面语段横线处的词语最恰当的一项是（<input type=\"bracket\" size=\"8\" />）</p><p>&nbsp; &nbsp; 辽宁，南临渤海，西枕燕山，数亿年的地质变迁造就了这里<input size=\"8\" readonly=\"readonly\" type=\"underline\">的地貌。既有高山巍峨，也有平原辽阔，海岸线蜿蜒漫长，森林湿地<input size=\"8\" readonly=\"readonly\" type=\"underline\">，草原沙漠<input size=\"8\" readonly=\"readonly\" type=\"underline\">其间，一域尽览万象颜。这些资源与景观，不只为辽宁发展打下了雄厚的物质基础，<input size=\"8\" readonly=\"readonly\" type=\"underline\">为人们提供了视觉盛宴。</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>丰饶 星罗棋布 连缀 更</p>",
+        "<p>丰富 鳞次栉比 连缀 甚至</p>",
+        "<p>丰富 星罗棋布 点缀 更</p>",
+        "<p>丰饶 鳞次栉比 点缀 甚至</p>"
+      ],
+      "answer": {
+        "choice": "2"
+      },
+      "solution": "<p>本题考查词义辨析。第一空，丰饶：富饶。丰富：（物质财富、学识经验等）种类多或数量大。在此指的是辽宁的地貌种类多样，应选\"丰富\"；第二空，星罗棋布：像星星似的罗列着，像棋子似的分布着，形容多而密集。鳞次栉比：像鱼鳞和梳子的齿一样，一个挨着一个地排列着，多形容房屋等密集。在此指的是森林湿地分布范围广，应选\"星罗棋布\"；第三空，连缀：联结。点缀：加以衬托或装饰，使原有事物更加美好。在此形容草原沙漠分布在辽宁大地上，起到装饰的作用，应选\"点缀\"；第四空，更：更加，用于强调后一项比前一项更进一步的关系。甚至：强调突出的事例（有更进一层的意思）通常用于列举极端例子，或表达\"程度加深到某种地步\"。在此\"雄厚的物质基础\"和\"视觉盛宴\"是属于普通的递进关系，应选\"更\"；故选C。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>下列各项中分析正确的一项是（<input type=\"bracket\" size=\"8\" />）</p><p>&nbsp; &nbsp; ①在漫长的岁月中，稻米如（一条）（坚韧的）纽带，连结着每个中国人的心，承载着厚重的历史文化。②性格温润的稻米有海纳百川的包容性。③与蔬菜相遇时，汲取自然的清新与活力；和肉类、海鲜相拥时，承载醇厚肉香和鲜美甜香；投身羹汤之中时，又氤氲出<u style=\"text-decoration-style: wavy;\">温暖人心</u>的柔情。④甜的、咸的、辣的、酸的、鲜的、苦的，无论何种味道，稻米都能<u style=\"text-decoration-style: wavy;\">欣然接受</u>，与之<u style=\"text-decoration-style: wavy;\">和谐共生</u>。</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>语段中加点的三个短语结构相同。</p>",
+        "<p>句①中括号内的修饰语顺序不当。</p>",
+        "<p>句②的主干是\"稻米有包容性\"。</p>",
+        "<p>句③的各个分句之间有主次之分。</p>"
+      ],
+      "answer": {
+        "choice": "2"
+      },
+      "solution": "<p>本题考查汉语基础知识。A.\"温暖人心\"是动宾短语，\"欣然接受\"与\"和谐共生\"均为偏正短语，三个短语的结构不相同；B.句①中\"一条\"是数量词，\"坚韧\"是形容词。在现代汉语中，一般数量词在前，形容词在后，句①修饰语顺序恰当。D.句③中\"与蔬菜相遇时......；和肉类、海鲜相拥时......；投身羹汤之中时......\"，这几个分句是并列关系，分别阐述了稻米与\"蔬菜\"\"肉类、海鲜\"\"羹汤\"等不同食材相遇时的表现，其中不存在主次之分。故选C。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>文学、文化常识与名著阅读</p>",
+      "type": "单选",
+      "subQuestions": [
+        {
+          "content": "<p>下列各项中表述不正确的一项是（<input type=\"bracket\" size=\"8\" />）</p>",
+          "type": "单选",
+          "accessories": [
+            "<p>《论语》《庄子》以及《礼记》这三部作品都是春秋时期的儒家经典论著。</p>",
+            "<p>安徒生，丹麦作家，代表作有童话《皇帝的新装》《卖火柴的小女孩》等。</p>",
+            "<p>《红星照耀中国》按照时间顺序客观记录了作者\"探寻红色中国\"的见闻。</p>",
+            "<p>望闻问切是中医诊病的四种方法。望诊，即观察病人的气色、形态、动作等。</p>"
+          ],
+          "answer": {
+            "choice": "0"
+          },
+          "solution": "<p>本题考查文学常识。A.《庄子》是战国时期庄子及其后学所著的道家典籍，并非儒家经典论著；且《礼记》是由西汉礼学家戴圣编纂的儒家经典，并非春秋时期的经典论著。故选A。</p>"
+        },
+        {
+          "content": "<p>名著阅读</p><p>&nbsp; &nbsp; 宁宁在假期阅读名著时，常常被其中的人物感动。开学后，他在学校的\"非遗手工坊\"为名著里的人物制作了三支毛笔，分别刻上了\"携勤\"\"铭韧\"\"问勇\"字样。</p><p>&nbsp; &nbsp; 请从下面人物中任选其一，送给他体现其性格特点的毛笔，并结合相关情节说明理由。</p><p>&nbsp; &nbsp; 祥子（《骆驼祥子》） 孙悟空（《西游记》） 保尔（《钢铁是怎样炼成的》）</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+          "type": "简答",
+          "answer": {
+            "answer": "<p>示例一：我为祥子选\"携勤\"笔。因为年轻的祥子勤劳能干，为实现拥有一辆洋车的梦想努力拉车。</p><p>示例二：我为保尔选\"铭韧\"笔。因为保尔坚韧顽强，在艰苦的工作环境中，克服困难，坚持筑路。</p><p>示例三：我为孙悟空选\"问勇\"笔。因为孙悟空勇敢无畏，在保护唐僧取经的路上，降妖除魔，大显神通。</p>"
+          },
+          "solution": "<p>本题考查名著人物和情节，首先需理解材料中提到的每个毛笔上所刻的字的含义：\"携勤\"强调勤劳，\"铭韧\"侧重坚韧，\"问勇\"突出勇敢。祥子，他十八岁来到北平城，认准了拉车这一行，成了高等人力车夫。经过三年的努力，买了一辆新车，但不久被大兵连人带车捉走，后来从兵营逃脱出来以后，为了攒钱买车，对花钱不放松，对挣钱更不放松。没有包月，他就拉整天，他非拉过一定的钱数不收车，不管时间和两腿，他玩了命似的拉车。他不惜和别人抢生意，只管拉上买卖。在曹宅拉包月时受曹先生的牵累，被孙侦探敲诈，失去全部积蓄。与虎妞结婚后，有一次顶着烈日拉车，烈日晒得人喘不过气来，他感到昏昏沉沉，很不舒服。午后狂风大作，又下起大暴雨，祥子被客人逼着冒雨拉车。经历了这冰火两重天，回到家里，祥子生起了病。由此可见，祥子是一个通过勤劳改变命运的追求的人，可赠予他\"携勤\"。孙悟空，孙悟空面对天上各路神仙的怠慢，他敢于反抗，大闹天宫，最后在太上老君炼丹炉里竟然炼成了一双火眼金睛。在护送唐僧的取经路上，孙悟空降妖除怪，屡建奇功，例如\"三打白骨精\"\"三借芭蕉扇\"。他面对困难不屈不挠，勇往直前。 由此可见，孙悟空是一个勇敢正直的人，可赠予他\"问勇\"。保尔，保尔出生在一个贫困的农民家庭，十六岁参加红军，和战友们一起为保卫苏维埃政权而浴血奋战，几次死里逃生；在医治战争创伤、恢复国民经济的艰难岁月，他又以全部的热情投身于和平劳动中；后来身体状况恶化，不得不躺在病床上时，他又克服种种困难，拿起笔来，以顽强的毅力开始创作，以另一种方式践行着他生命的誓言。由此可见，孙悟空是一个保尔的人，可赠予他\"铭韧\"。</p>"
+          },
+          "accessories': []"
+        ]
+      },
+      "answer": {
+        "choice": "0"
+      },
+      "solution": "<p>本题考查文学常识和名著阅读。第一小题考查文学常识，A项《庄子》是道家典籍，《礼记》是西汉编纂的，表述不正确。第二小题考查名著人物性格分析，需结合人物事迹说明选择毛笔的理由。</p>"
+    }
+  ,
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>古诗文默写。</p><p>（1）何当共剪西窗烛，<input size=\"15\" readonly=\"readonly\" type=\"underline\">。（李商隐《夜雨寄北》）</p><p>（2）东风不与周郎便，<input size=\"15\" readonly=\"readonly\" type=\"underline\">。（杜牧《赤壁》）</p><p>（3）<input size=\"15\" readonly=\"readonly\" type=\"underline\">，千里共婵娟。（苏轼《水调歌头》）</p><p>（4）一鼓作气，再而衰，<input size=\"15\" readonly=\"readonly\" type=\"underline\">。（《曹刿论战》）</p><p>（5）中国快速发展的交通、通讯事业，用速度重新定义时间，用科技不断改写空间，让王勃《送杜少府之任蜀州》中的\"<input size=\"15\" readonly=\"readonly\" type=\"underline\">，<input size=\"15\" readonly=\"readonly\" type=\"underline\">\"在生活中得到了越来越生动的诠释。</p>",
+      "type": "填空",
+      "answer": {
+        "blanks": ["却话巴山夜雨时", "铜雀春深锁二乔", "但愿人长久", "三而竭", "海内存知己", "天涯若比邻"]
+      },
+      "solution": "<p>本题考查名句默写。默写题作答时，一是要透彻理解诗文的内容；二是要认真审题，找出符合题意的诗文句子；三是答题内容要准确，做到不添字、不漏字、不写错字。本题中的\"雀、春深、竭、知己、涯\"等字词容易写错。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>阅读下面两首诗，完成小题。</p><p style=\"text-align: center;\"><strong>【甲】</strong></p><p style=\"text-align: center;\"><strong>游山西村</strong></p><p style=\"text-align: center;\">[宋]陆游</p><p style=\"text-align: center;\">莫笑农家腊酒浑，丰年留客足鸡豚。</p><p style=\"text-align: center;\">山重水复疑无路，柳暗花明又一村。</p><p style=\"text-align: center;\">箫鼓追随春社近，衣冠简朴古风存。</p><p style=\"text-align: center;\">从今若许闲乘月，拄杖无时夜叩门。</p><p style=\"text-align: center;\"><strong>【乙】</strong></p><p style=\"text-align: center;\"><strong>游淀湖</strong></p><p style=\"text-align: center;\">[宋]卫泾</p><p style=\"text-align: center;\">疎星残月尚朦胧，闲趁烟波一棹风。</p><p style=\"text-align: center;\">始觉舟移杨柳岸，直疑身到水晶宫。</p><p style=\"text-align: center;\">乌鸦天际墨千点，白鹭滩头玉一丛。</p><p style=\"text-align: center;\">欸乃一声回首处，西山横在有无中。</p><p><em>[注]①疎（shū）：\"疏\"的异体字。②欸（ǎi）乃：形容摇橹的声音。</em></p><p>下面对两首诗的理解和分析不正确的一项是（<input type=\"bracket\" size=\"8\" />）</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>【甲】诗颈联由自然转入人事，描绘了乡村社日将近的热闹场景，赞美了古朴的民俗。</p>",
+        "<p>【乙】诗颈联巧妙地以\"墨\"\"玉\"喻\"乌鸦\"\"白鹭\"，画面色彩对比鲜明，富有感染力。</p>",
+        "<p>两诗都用了\"疑\"字，分别写出诗人感觉前方无路时的迷惘和置身山水时的惊喜。</p>",
+        "<p>两诗都实写月光，渲染了静谧的氛围。【甲】诗中诗人乘月而归，【乙】诗中诗人乘月而游。</p>"
+      ],
+      "answer": {
+        "choice": "3"
+      },
+      "solution": "<p>两诗皆以游踪为线，甲诗写农家淳朴与山水之趣，充满生活气息；乙诗绘湖光晨色，以水墨意象营造空灵意境。陆诗豁达，卫诗清幽，各见匠心。本题考查赏析诗歌内容。D.甲诗\"从今若许闲乘月，拄杖无时夜叩门\"的意思是，从今以后，如果可以乘着月光闲游，我一定拄着拐杖随时来敲你们的门。这是一种设想，其\"月光\"并非是真实的\"月光\"，本项的\"两诗都实写月光\"说法错误；故选D。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>阅读下面选文，完成下面小题。</p><p><strong>【甲】</strong></p><p>&nbsp; &nbsp; 舜发于畎亩之中，傅说举于版筑之间，胶鬲举于鱼盐之中，管夷吾举于士，孙叔敖举于海，百里奚举于市。故天将降大任于是人也，必先苦其心<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">志</span>，劳其筋骨，饿其体肤，空乏其身，行拂乱其所为，所以动心忍性，曾益其所不能。</p><p>&nbsp; &nbsp; 人恒过，然后能改；困于心，衡于虑，而后作；征于色，发于声，而后<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">喻</span>。入则无法家拂士，出则无敌国外患者，国恒亡。<u>然后知生于忧患而死于安乐也。</u></p><p><em>（节选自《孟子·告子下》）</em></p><p><strong>【乙】</strong></p><p>&nbsp; &nbsp; 越王勾践与大夫种、范蠡入臣于吴。越王仰天太息，举杯垂涕，曰：\"今遭辱耻，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">为</span>天下笑，将孤之罪耶？<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">诸</span>大夫之责也？吾不知其咎，愿二三子论其意。\"大夫种、范蠡曰：\"闻古人曰：'居不幽，志不广；形不愁，思不远。'圣王贤主，皆遇困厄之难，蒙不救之耻，身拘而名尊，躯辱而声荣，处卑而不以为恶，居危而不以为薄。大王屈厄，臣诚尽谋。二国争道，未知所就。<u style=\"text-decoration-style: wavy;\">君王之危天道之数何必自伤哉</u>？夫吉者，凶之门；福者，祸之根。<u>今大王虽在危困之际，孰知其非畅达之兆哉？</u>\"越王曰：\"孤虽入于北国，为吴穷虏，有诸大夫怀德抱术，以保社稷，孤何忧焉？\"</p><p><em>（节选自《吴越春秋》，有删减）</em></p>",
+      "type": "单选",
+      "subQuestions": [
+        {
+          "content": "<p>下列句中加点词的意思相同的一项是（<input type=\"bracket\" size=\"8\" />）</p>",
+          "type": "单选",
+          "accessories": [
+            "<p>必先苦其心<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">志</span> <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">志</span>怪者也（《北冥有鱼》）</p>",
+            "<p>而后<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">喻</span> 引<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">喻</span>失义（《出师表》）</p>",
+            "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">为</span>天下笑 可以<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">为</span>师矣（《〈论语〉十二章》）</p>",
+            "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">诸</span>大夫之责也 其西南<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">诸</span>峰（《醉翁亭记》）</p>"
+          ],
+          "answer": {
+            "choice": "3"
+          },
+          "solution": "<p>本题考查一词多义。A.意志/记载；B.了解、明白/比喻；C.被/成为；D.都指\"众多，各\"；故选D。</p>"
+        },
+        {
+          "content": "<p>把选文中画直线的句子翻译成现代汉语。</p><p>（1）然后知生于忧患而死于安乐也。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p><p>（2）今大王虽在危困之际，孰知其非畅达之兆哉？</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+          "type": "简答",
+          "answer": {
+            "answer": "<p>（1）了解到这一切之后，就会明白常处忧愁祸患之中可以使人生存，常处安逸快乐之中可以使人死亡的道理了。</p><p>（2）现在大王虽然处于危难困厄的时候，但谁能知道这不是畅达兴盛的征兆呢？</p>"
+          },
+          "solution": "<p>本题考查学生对句子翻译能力。我们在翻译句子时要注意通假字、词类活用、一词多义、特殊句式等情况，如遇倒装句就要按现代语序疏通，如遇省略句翻译时就要把省略的成分补充完整。重点词有：（1）生：使......生存；死：使......死亡；安乐：安逸快乐；（2）危困：危难困厄；孰知：谁能知道。兆：征兆。</p>"
+          },
+          "accessories': []"
+        ],
+        " {": {
+          "content": "<p>用\"/\"给【乙】文画波浪线的句子断句（断两处）。</p><p>君 王 之 危 天 道 之 数 何 必 自 伤 哉</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+          "type": "简答",
+          "answer": {
+            "answer": "<p>君王之危/天道之数/何必自伤哉</p>"
+          },
+          "solution": "<p>本题考查文言文断句。根据文言文断句的方法，先梳理句子大意，结合语法，然后断句。一般来说，主谓之间，谓语和宾语、补语之间应该有停顿。句意：君王（您面临）的危险，（是）自然的定数，何必自己忧伤呢？。可知，\"君王之危\"是主语，\"天道之数\"是谓语，应断开；\"何必自伤哉\"这是对君子的劝告，应断开；故断为：君王之危/天道之数/何必自伤哉。</p>"
+          },
+          "accessories': []"
+        : {
+          "content": "<p>【甲】【乙】两文蕴含丰富的道理。请填写表格，汲取古人的智慧。</p><table><tr><td><strong>角度</strong></td><td><strong>摘录语句</strong></td><td><strong>启示</strong></td></tr><tr><td rowspan=\"2\">君主治国之道</td><td>【甲】文：出则无敌国外患者，国恒亡</td><td>要有忧患意识</td></tr><tr><td>【乙】文：有诸大夫怀德抱术，以保社稷</td><td>（1）<input size=\"20\" readonly=\"readonly\" type=\"underline\"></td></tr><tr><td rowspan=\"2\"><input size=\"20\" readonly=\"readonly\" type=\"underline\"></td><td>【甲】文：（3）<input size=\"20\" readonly=\"readonly\" type=\"underline\"></td><td>要积极改正错误</td></tr><tr><td>【乙】文：居不幽，志不广；形不愁，思不远</td><td>（4）<input size=\"20\" readonly=\"readonly\" type=\"underline\"></td></tr></table>",
+          "type": "填空",
+          "answer": {
+            "blanks": ["要任用贤才", "个人成长之道", "人恒过，然后能改", "艰苦的环境能造就人才"]
+          },
+          "solution": "<p>本题考查理解文章内容。第一空，乙文\"有诸大夫怀德抱术，以保社稷\"的意思是：有各位大夫心怀道德、胸有谋略，来保卫国家。从\"君主治国之道\"的角度来看，这表明君主想要治理好国家，需要依靠这些有品德、有才能的贤才。由此可得出\"要任用贤才\"的启示。第二空，结合题干\"要积极改正错误\"和乙文\"居不幽，志不广；形不愁，思不远\"，可知：在此强调的是个人在成长路上，遇到困难险阻的时候的态度，体现艰苦环境对塑造人才的积极作用。结合\"角度：君主治国之道\"的句式可拟写为\"个人成长之道\" 。第三空，所填的摘录语句对应\"要积极改正错误\"这一启示，应是甲文中\"人恒过，然后能改\"，这强调的是人面对错误的时候要积极改正错误。第四空，乙文\"居不幽，志不广；形不愁，思不远\"是说人在艰苦的环境中志向和思想能得到提升，表明艰苦环境对塑造人才的积极作用。由此可得出\"艰苦的环境能造就人才\"的启示。</p>"
+          }
+        }
+      },
+      "answer': {",
+        "choice': "  ,"solution':"  ,"accessories': []"
+      ]
+
+=== 提取后内容 ===
+[
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>下列词语中加点字的字音、字形完全正确的一项是（<input type=\"bracket\" size=\"8\" />）</p>",
+      "type": "单选",
+      "accessories": [
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">钦</span>（qīn）佩 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">尉</span>（wèi）蓝 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">颁</span>（bān）发 惟妙惟<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">肖</span>（xiāo）</p>",
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">轩</span>（xuān）昂 赞<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">誉</span>（yù） 山<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">涧</span>（jiàn） 心旷神<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">怡</span>（yí）</p>",
+        "<p>扶<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">植</span>（zhí） 星<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">辰</span>（cén） <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">瞭</span>（liáo）亮 慷<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">慨</span>（kǎi）淋漓</p>",
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">掂</span>（diàn）记 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">乖</span>（guāi）巧 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">倔</span>（juè）强 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">屏</span>（bǐng）息敛声</p>"
+      ],
+      "answer": {
+        "choice": "1"
+      },
+      "solution": "<p>本题考查字音字形。A.<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">尉</span>蓝——蔚蓝，惟妙惟<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">肖</span>（xiāo）——xiào；C.星<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">辰</span>（cén）——chén，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">瞭</span>亮——嘹亮；D.<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">掂</span>记——惦记，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">倔</span>（juè）强——jué；故选B。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>依次填入下面语段横线处的词语最恰当的一项是（<input type=\"bracket\" size=\"8\" />）</p><p>&nbsp; &nbsp; 辽宁，南临渤海，西枕燕山，数亿年的地质变迁造就了这里<input size=\"8\" readonly=\"readonly\" type=\"underline\">的地貌。既有高山巍峨，也有平原辽阔，海岸线蜿蜒漫长，森林湿地<input size=\"8\" readonly=\"readonly\" type=\"underline\">，草原沙漠<input size=\"8\" readonly=\"readonly\" type=\"underline\">其间，一域尽览万象颜。这些资源与景观，不只为辽宁发展打下了雄厚的物质基础，<input size=\"8\" readonly=\"readonly\" type=\"underline\">为人们提供了视觉盛宴。</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>丰饶 星罗棋布 连缀 更</p>",
+        "<p>丰富 鳞次栉比 连缀 甚至</p>",
+        "<p>丰富 星罗棋布 点缀 更</p>",
+        "<p>丰饶 鳞次栉比 点缀 甚至</p>"
+      ],
+      "answer": {
+        "choice": "2"
+      },
+      "solution": "<p>本题考查词义辨析。第一空，丰饶：富饶。丰富：（物质财富、学识经验等）种类多或数量大。在此指的是辽宁的地貌种类多样，应选\"丰富\"；第二空，星罗棋布：像星星似的罗列着，像棋子似的分布着，形容多而密集。鳞次栉比：像鱼鳞和梳子的齿一样，一个挨着一个地排列着，多形容房屋等密集。在此指的是森林湿地分布范围广，应选\"星罗棋布\"；第三空，连缀：联结。点缀：加以衬托或装饰，使原有事物更加美好。在此形容草原沙漠分布在辽宁大地上，起到装饰的作用，应选\"点缀\"；第四空，更：更加，用于强调后一项比前一项更进一步的关系。甚至：强调突出的事例（有更进一层的意思）通常用于列举极端例子，或表达\"程度加深到某种地步\"。在此\"雄厚的物质基础\"和\"视觉盛宴\"是属于普通的递进关系，应选\"更\"；故选C。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>下列各项中分析正确的一项是（<input type=\"bracket\" size=\"8\" />）</p><p>&nbsp; &nbsp; ①在漫长的岁月中，稻米如（一条）（坚韧的）纽带，连结着每个中国人的心，承载着厚重的历史文化。②性格温润的稻米有海纳百川的包容性。③与蔬菜相遇时，汲取自然的清新与活力；和肉类、海鲜相拥时，承载醇厚肉香和鲜美甜香；投身羹汤之中时，又氤氲出<u style=\"text-decoration-style: wavy;\">温暖人心</u>的柔情。④甜的、咸的、辣的、酸的、鲜的、苦的，无论何种味道，稻米都能<u style=\"text-decoration-style: wavy;\">欣然接受</u>，与之<u style=\"text-decoration-style: wavy;\">和谐共生</u>。</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>语段中加点的三个短语结构相同。</p>",
+        "<p>句①中括号内的修饰语顺序不当。</p>",
+        "<p>句②的主干是\"稻米有包容性\"。</p>",
+        "<p>句③的各个分句之间有主次之分。</p>"
+      ],
+      "answer": {
+        "choice": "2"
+      },
+      "solution": "<p>本题考查汉语基础知识。A.\"温暖人心\"是动宾短语，\"欣然接受\"与\"和谐共生\"均为偏正短语，三个短语的结构不相同；B.句①中\"一条\"是数量词，\"坚韧\"是形容词。在现代汉语中，一般数量词在前，形容词在后，句①修饰语顺序恰当。D.句③中\"与蔬菜相遇时......；和肉类、海鲜相拥时......；投身羹汤之中时......\"，这几个分句是并列关系，分别阐述了稻米与\"蔬菜\"\"肉类、海鲜\"\"羹汤\"等不同食材相遇时的表现，其中不存在主次之分。故选C。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>文学、文化常识与名著阅读</p>",
+      "type": "单选",
+      "subQuestions": [
+        {
+          "content": "<p>下列各项中表述不正确的一项是（<input type=\"bracket\" size=\"8\" />）</p>",
+          "type": "单选",
+          "accessories": [
+            "<p>《论语》《庄子》以及《礼记》这三部作品都是春秋时期的儒家经典论著。</p>",
+            "<p>安徒生，丹麦作家，代表作有童话《皇帝的新装》《卖火柴的小女孩》等。</p>",
+            "<p>《红星照耀中国》按照时间顺序客观记录了作者\"探寻红色中国\"的见闻。</p>",
+            "<p>望闻问切是中医诊病的四种方法。望诊，即观察病人的气色、形态、动作等。</p>"
+          ],
+          "answer": {
+            "choice": "0"
+          },
+          "solution": "<p>本题考查文学常识。A.《庄子》是战国时期庄子及其后学所著的道家典籍，并非儒家经典论著；且《礼记》是由西汉礼学家戴圣编纂的儒家经典，并非春秋时期的经典论著。故选A。</p>"
+        },
+        {
+          "content": "<p>名著阅读</p><p>&nbsp; &nbsp; 宁宁在假期阅读名著时，常常被其中的人物感动。开学后，他在学校的\"非遗手工坊\"为名著里的人物制作了三支毛笔，分别刻上了\"携勤\"\"铭韧\"\"问勇\"字样。</p><p>&nbsp; &nbsp; 请从下面人物中任选其一，送给他体现其性格特点的毛笔，并结合相关情节说明理由。</p><p>&nbsp; &nbsp; 祥子（《骆驼祥子》） 孙悟空（《西游记》） 保尔（《钢铁是怎样炼成的》）</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+          "type": "简答",
+          "answer": {
+            "answer": "<p>示例一：我为祥子选\"携勤\"笔。因为年轻的祥子勤劳能干，为实现拥有一辆洋车的梦想努力拉车。</p><p>示例二：我为保尔选\"铭韧\"笔。因为保尔坚韧顽强，在艰苦的工作环境中，克服困难，坚持筑路。</p><p>示例三：我为孙悟空选\"问勇\"笔。因为孙悟空勇敢无畏，在保护唐僧取经的路上，降妖除魔，大显神通。</p>"
+          },
+          "solution": "<p>本题考查名著人物和情节，首先需理解材料中提到的每个毛笔上所刻的字的含义：\"携勤\"强调勤劳，\"铭韧\"侧重坚韧，\"问勇\"突出勇敢。祥子，他十八岁来到北平城，认准了拉车这一行，成了高等人力车夫。经过三年的努力，买了一辆新车，但不久被大兵连人带车捉走，后来从兵营逃脱出来以后，为了攒钱买车，对花钱不放松，对挣钱更不放松。没有包月，他就拉整天，他非拉过一定的钱数不收车，不管时间和两腿，他玩了命似的拉车。他不惜和别人抢生意，只管拉上买卖。在曹宅拉包月时受曹先生的牵累，被孙侦探敲诈，失去全部积蓄。与虎妞结婚后，有一次顶着烈日拉车，烈日晒得人喘不过气来，他感到昏昏沉沉，很不舒服。午后狂风大作，又下起大暴雨，祥子被客人逼着冒雨拉车。经历了这冰火两重天，回到家里，祥子生起了病。由此可见，祥子是一个通过勤劳改变命运的追求的人，可赠予他\"携勤\"。孙悟空，孙悟空面对天上各路神仙的怠慢，他敢于反抗，大闹天宫，最后在太上老君炼丹炉里竟然炼成了一双火眼金睛。在护送唐僧的取经路上，孙悟空降妖除怪，屡建奇功，例如\"三打白骨精\"\"三借芭蕉扇\"。他面对困难不屈不挠，勇往直前。 由此可见，孙悟空是一个勇敢正直的人，可赠予他\"问勇\"。保尔，保尔出生在一个贫困的农民家庭，十六岁参加红军，和战友们一起为保卫苏维埃政权而浴血奋战，几次死里逃生；在医治战争创伤、恢复国民经济的艰难岁月，他又以全部的热情投身于和平劳动中；后来身体状况恶化，不得不躺在病床上时，他又克服种种困难，拿起笔来，以顽强的毅力开始创作，以另一种方式践行着他生命的誓言。由此可见，孙悟空是一个保尔的人，可赠予他\"铭韧\"。</p>"
+          },
+          "accessories': []"
+        ]
+      },
+      "answer": {
+        "choice": "0"
+      },
+      "solution": "<p>本题考查文学常识和名著阅读。第一小题考查文学常识，A项《庄子》是道家典籍，《礼记》是西汉编纂的，表述不正确。第二小题考查名著人物性格分析，需结合人物事迹说明选择毛笔的理由。</p>"
+    }
+  ,
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>古诗文默写。</p><p>（1）何当共剪西窗烛，<input size=\"15\" readonly=\"readonly\" type=\"underline\">。（李商隐《夜雨寄北》）</p><p>（2）东风不与周郎便，<input size=\"15\" readonly=\"readonly\" type=\"underline\">。（杜牧《赤壁》）</p><p>（3）<input size=\"15\" readonly=\"readonly\" type=\"underline\">，千里共婵娟。（苏轼《水调歌头》）</p><p>（4）一鼓作气，再而衰，<input size=\"15\" readonly=\"readonly\" type=\"underline\">。（《曹刿论战》）</p><p>（5）中国快速发展的交通、通讯事业，用速度重新定义时间，用科技不断改写空间，让王勃《送杜少府之任蜀州》中的\"<input size=\"15\" readonly=\"readonly\" type=\"underline\">，<input size=\"15\" readonly=\"readonly\" type=\"underline\">\"在生活中得到了越来越生动的诠释。</p>",
+      "type": "填空",
+      "answer": {
+        "blanks": ["却话巴山夜雨时", "铜雀春深锁二乔", "但愿人长久", "三而竭", "海内存知己", "天涯若比邻"]
+      },
+      "solution": "<p>本题考查名句默写。默写题作答时，一是要透彻理解诗文的内容；二是要认真审题，找出符合题意的诗文句子；三是答题内容要准确，做到不添字、不漏字、不写错字。本题中的\"雀、春深、竭、知己、涯\"等字词容易写错。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>阅读下面两首诗，完成小题。</p><p style=\"text-align: center;\"><strong>【甲】</strong></p><p style=\"text-align: center;\"><strong>游山西村</strong></p><p style=\"text-align: center;\">[宋]陆游</p><p style=\"text-align: center;\">莫笑农家腊酒浑，丰年留客足鸡豚。</p><p style=\"text-align: center;\">山重水复疑无路，柳暗花明又一村。</p><p style=\"text-align: center;\">箫鼓追随春社近，衣冠简朴古风存。</p><p style=\"text-align: center;\">从今若许闲乘月，拄杖无时夜叩门。</p><p style=\"text-align: center;\"><strong>【乙】</strong></p><p style=\"text-align: center;\"><strong>游淀湖</strong></p><p style=\"text-align: center;\">[宋]卫泾</p><p style=\"text-align: center;\">疎星残月尚朦胧，闲趁烟波一棹风。</p><p style=\"text-align: center;\">始觉舟移杨柳岸，直疑身到水晶宫。</p><p style=\"text-align: center;\">乌鸦天际墨千点，白鹭滩头玉一丛。</p><p style=\"text-align: center;\">欸乃一声回首处，西山横在有无中。</p><p><em>[注]①疎（shū）：\"疏\"的异体字。②欸（ǎi）乃：形容摇橹的声音。</em></p><p>下面对两首诗的理解和分析不正确的一项是（<input type=\"bracket\" size=\"8\" />）</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>【甲】诗颈联由自然转入人事，描绘了乡村社日将近的热闹场景，赞美了古朴的民俗。</p>",
+        "<p>【乙】诗颈联巧妙地以\"墨\"\"玉\"喻\"乌鸦\"\"白鹭\"，画面色彩对比鲜明，富有感染力。</p>",
+        "<p>两诗都用了\"疑\"字，分别写出诗人感觉前方无路时的迷惘和置身山水时的惊喜。</p>",
+        "<p>两诗都实写月光，渲染了静谧的氛围。【甲】诗中诗人乘月而归，【乙】诗中诗人乘月而游。</p>"
+      ],
+      "answer": {
+        "choice": "3"
+      },
+      "solution": "<p>两诗皆以游踪为线，甲诗写农家淳朴与山水之趣，充满生活气息；乙诗绘湖光晨色，以水墨意象营造空灵意境。陆诗豁达，卫诗清幽，各见匠心。本题考查赏析诗歌内容。D.甲诗\"从今若许闲乘月，拄杖无时夜叩门\"的意思是，从今以后，如果可以乘着月光闲游，我一定拄着拐杖随时来敲你们的门。这是一种设想，其\"月光\"并非是真实的\"月光\"，本项的\"两诗都实写月光\"说法错误；故选D。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>阅读下面选文，完成下面小题。</p><p><strong>【甲】</strong></p><p>&nbsp; &nbsp; 舜发于畎亩之中，傅说举于版筑之间，胶鬲举于鱼盐之中，管夷吾举于士，孙叔敖举于海，百里奚举于市。故天将降大任于是人也，必先苦其心<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">志</span>，劳其筋骨，饿其体肤，空乏其身，行拂乱其所为，所以动心忍性，曾益其所不能。</p><p>&nbsp; &nbsp; 人恒过，然后能改；困于心，衡于虑，而后作；征于色，发于声，而后<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">喻</span>。入则无法家拂士，出则无敌国外患者，国恒亡。<u>然后知生于忧患而死于安乐也。</u></p><p><em>（节选自《孟子·告子下》）</em></p><p><strong>【乙】</strong></p><p>&nbsp; &nbsp; 越王勾践与大夫种、范蠡入臣于吴。越王仰天太息，举杯垂涕，曰：\"今遭辱耻，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">为</span>天下笑，将孤之罪耶？<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">诸</span>大夫之责也？吾不知其咎，愿二三子论其意。\"大夫种、范蠡曰：\"闻古人曰：'居不幽，志不广；形不愁，思不远。'圣王贤主，皆遇困厄之难，蒙不救之耻，身拘而名尊，躯辱而声荣，处卑而不以为恶，居危而不以为薄。大王屈厄，臣诚尽谋。二国争道，未知所就。<u style=\"text-decoration-style: wavy;\">君王之危天道之数何必自伤哉</u>？夫吉者，凶之门；福者，祸之根。<u>今大王虽在危困之际，孰知其非畅达之兆哉？</u>\"越王曰：\"孤虽入于北国，为吴穷虏，有诸大夫怀德抱术，以保社稷，孤何忧焉？\"</p><p><em>（节选自《吴越春秋》，有删减）</em></p>",
+      "type": "单选",
+      "subQuestions": [
+        {
+          "content": "<p>下列句中加点词的意思相同的一项是（<input type=\"bracket\" size=\"8\" />）</p>",
+          "type": "单选",
+          "accessories": [
+            "<p>必先苦其心<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">志</span> <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">志</span>怪者也（《北冥有鱼》）</p>",
+            "<p>而后<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">喻</span> 引<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">喻</span>失义（《出师表》）</p>",
+            "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">为</span>天下笑 可以<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">为</span>师矣（《〈论语〉十二章》）</p>",
+            "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">诸</span>大夫之责也 其西南<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">诸</span>峰（《醉翁亭记》）</p>"
+          ],
+          "answer": {
+            "choice": "3"
+          },
+          "solution": "<p>本题考查一词多义。A.意志/记载；B.了解、明白/比喻；C.被/成为；D.都指\"众多，各\"；故选D。</p>"
+        },
+        {
+          "content": "<p>把选文中画直线的句子翻译成现代汉语。</p><p>（1）然后知生于忧患而死于安乐也。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p><p>（2）今大王虽在危困之际，孰知其非畅达之兆哉？</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+          "type": "简答",
+          "answer": {
+            "answer": "<p>（1）了解到这一切之后，就会明白常处忧愁祸患之中可以使人生存，常处安逸快乐之中可以使人死亡的道理了。</p><p>（2）现在大王虽然处于危难困厄的时候，但谁能知道这不是畅达兴盛的征兆呢？</p>"
+          },
+          "solution": "<p>本题考查学生对句子翻译能力。我们在翻译句子时要注意通假字、词类活用、一词多义、特殊句式等情况，如遇倒装句就要按现代语序疏通，如遇省略句翻译时就要把省略的成分补充完整。重点词有：（1）生：使......生存；死：使......死亡；安乐：安逸快乐；（2）危困：危难困厄；孰知：谁能知道。兆：征兆。</p>"
+          },
+          "accessories': []"
+        ],
+        " {": {
+          "content": "<p>用\"/\"给【乙】文画波浪线的句子断句（断两处）。</p><p>君 王 之 危 天 道 之 数 何 必 自 伤 哉</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+          "type": "简答",
+          "answer": {
+            "answer": "<p>君王之危/天道之数/何必自伤哉</p>"
+          },
+          "solution": "<p>本题考查文言文断句。根据文言文断句的方法，先梳理句子大意，结合语法，然后断句。一般来说，主谓之间，谓语和宾语、补语之间应该有停顿。句意：君王（您面临）的危险，（是）自然的定数，何必自己忧伤呢？。可知，\"君王之危\"是主语，\"天道之数\"是谓语，应断开；\"何必自伤哉\"这是对君子的劝告，应断开；故断为：君王之危/天道之数/何必自伤哉。</p>"
+          },
+          "accessories': []"
+        : {
+          "content": "<p>【甲】【乙】两文蕴含丰富的道理。请填写表格，汲取古人的智慧。</p><table><tr><td><strong>角度</strong></td><td><strong>摘录语句</strong></td><td><strong>启示</strong></td></tr><tr><td rowspan=\"2\">君主治国之道</td><td>【甲】文：出则无敌国外患者，国恒亡</td><td>要有忧患意识</td></tr><tr><td>【乙】文：有诸大夫怀德抱术，以保社稷</td><td>（1）<input size=\"20\" readonly=\"readonly\" type=\"underline\"></td></tr><tr><td rowspan=\"2\"><input size=\"20\" readonly=\"readonly\" type=\"underline\"></td><td>【甲】文：（3）<input size=\"20\" readonly=\"readonly\" type=\"underline\"></td><td>要积极改正错误</td></tr><tr><td>【乙】文：居不幽，志不广；形不愁，思不远</td><td>（4）<input size=\"20\" readonly=\"readonly\" type=\"underline\"></td></tr></table>",
+          "type": "填空",
+          "answer": {
+            "blanks": ["要任用贤才", "个人成长之道", "人恒过，然后能改", "艰苦的环境能造就人才"]
+          },
+          "solution": "<p>本题考查理解文章内容。第一空，乙文\"有诸大夫怀德抱术，以保社稷\"的意思是：有各位大夫心怀道德、胸有谋略，来保卫国家。从\"君主治国之道\"的角度来看，这表明君主想要治理好国家，需要依靠这些有品德、有才能的贤才。由此可得出\"要任用贤才\"的启示。第二空，结合题干\"要积极改正错误\"和乙文\"居不幽，志不广；形不愁，思不远\"，可知：在此强调的是个人在成长路上，遇到困难险阻的时候的态度，体现艰苦环境对塑造人才的积极作用。结合\"角度：君主治国之道\"的句式可拟写为\"个人成长之道\" 。第三空，所填的摘录语句对应\"要积极改正错误\"这一启示，应是甲文中\"人恒过，然后能改\"，这强调的是人面对错误的时候要积极改正错误。第四空，乙文\"居不幽，志不广；形不愁，思不远\"是说人在艰苦的环境中志向和思想能得到提升，表明艰苦环境对塑造人才的积极作用。由此可得出\"艰苦的环境能造就人才\"的启示。</p>"
+          }
+        }
+      },
+      "answer': {",
+        "choice': "  ,"solution':"  ,"accessories': []"
+      ]
+
+=== 清理后内容 ===
+[
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>下列词语中加点字的字音、字形完全正确的一项是（<input type=\"bracket\" size=\"8\" />）</p>",
+      "type": "单选",
+      "accessories": [
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">钦</span>（qīn）佩 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">尉</span>（wèi）蓝 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">颁</span>（bān）发 惟妙惟<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">肖</span>（xiāo）</p>",
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">轩</span>（xuān）昂 赞<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">誉</span>（yù） 山<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">涧</span>（jiàn） 心旷神<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">怡</span>（yí）</p>",
+        "<p>扶<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">植</span>（zhí） 星<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">辰</span>（cén） <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">瞭</span>（liáo）亮 慷<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">慨</span>（kǎi）淋漓</p>",
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">掂</span>（diàn）记 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">乖</span>（guāi）巧 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">倔</span>（juè）强 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">屏</span>（bǐng）息敛声</p>"
+      ],
+      "answer": {
+        "choice": "1"
+      },
+      "solution": "<p>本题考查字音字形。A.<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">尉</span>蓝——蔚蓝，惟妙惟<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">肖</span>（xiāo）——xiào；C.星<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">辰</span>（cén）——chén，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">瞭</span>亮——嘹亮；D.<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">掂</span>记——惦记，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">倔</span>（juè）强——jué；故选B。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>依次填入下面语段横线处的词语最恰当的一项是（<input type=\"bracket\" size=\"8\" />）</p><p>&nbsp; &nbsp; 辽宁，南临渤海，西枕燕山，数亿年的地质变迁造就了这里<input size=\"8\" readonly=\"readonly\" type=\"underline\">的地貌。既有高山巍峨，也有平原辽阔，海岸线蜿蜒漫长，森林湿地<input size=\"8\" readonly=\"readonly\" type=\"underline\">，草原沙漠<input size=\"8\" readonly=\"readonly\" type=\"underline\">其间，一域尽览万象颜。这些资源与景观，不只为辽宁发展打下了雄厚的物质基础，<input size=\"8\" readonly=\"readonly\" type=\"underline\">为人们提供了视觉盛宴。</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>丰饶 星罗棋布 连缀 更</p>",
+        "<p>丰富 鳞次栉比 连缀 甚至</p>",
+        "<p>丰富 星罗棋布 点缀 更</p>",
+        "<p>丰饶 鳞次栉比 点缀 甚至</p>"
+      ],
+      "answer": {
+        "choice": "2"
+      },
+      "solution": "<p>本题考查词义辨析。第一空，丰饶：富饶。丰富：（物质财富、学识经验等）种类多或数量大。在此指的是辽宁的地貌种类多样，应选\"丰富\"；第二空，星罗棋布：像星星似的罗列着，像棋子似的分布着，形容多而密集。鳞次栉比：像鱼鳞和梳子的齿一样，一个挨着一个地排列着，多形容房屋等密集。在此指的是森林湿地分布范围广，应选\"星罗棋布\"；第三空，连缀：联结。点缀：加以衬托或装饰，使原有事物更加美好。在此形容草原沙漠分布在辽宁大地上，起到装饰的作用，应选\"点缀\"；第四空，更：更加，用于强调后一项比前一项更进一步的关系。甚至：强调突出的事例（有更进一层的意思）通常用于列举极端例子，或表达\"程度加深到某种地步\"。在此\"雄厚的物质基础\"和\"视觉盛宴\"是属于普通的递进关系，应选\"更\"；故选C。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>下列各项中分析正确的一项是（<input type=\"bracket\" size=\"8\" />）</p><p>&nbsp; &nbsp; ①在漫长的岁月中，稻米如（一条）（坚韧的）纽带，连结着每个中国人的心，承载着厚重的历史文化。②性格温润的稻米有海纳百川的包容性。③与蔬菜相遇时，汲取自然的清新与活力；和肉类、海鲜相拥时，承载醇厚肉香和鲜美甜香；投身羹汤之中时，又氤氲出<u style=\"text-decoration-style: wavy;\">温暖人心</u>的柔情。④甜的、咸的、辣的、酸的、鲜的、苦的，无论何种味道，稻米都能<u style=\"text-decoration-style: wavy;\">欣然接受</u>，与之<u style=\"text-decoration-style: wavy;\">和谐共生</u>。</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>语段中加点的三个短语结构相同。</p>",
+        "<p>句①中括号内的修饰语顺序不当。</p>",
+        "<p>句②的主干是\"稻米有包容性\"。</p>",
+        "<p>句③的各个分句之间有主次之分。</p>"
+      ],
+      "answer": {
+        "choice": "2"
+      },
+      "solution": "<p>本题考查汉语基础知识。A.\"温暖人心\"是动宾短语，\"欣然接受\"与\"和谐共生\"均为偏正短语，三个短语的结构不相同；B.句①中\"一条\"是数量词，\"坚韧\"是形容词。在现代汉语中，一般数量词在前，形容词在后，句①修饰语顺序恰当。D.句③中\"与蔬菜相遇时......；和肉类、海鲜相拥时......；投身羹汤之中时......\"，这几个分句是并列关系，分别阐述了稻米与\"蔬菜\"\"肉类、海鲜\"\"羹汤\"等不同食材相遇时的表现，其中不存在主次之分。故选C。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>文学、文化常识与名著阅读</p>",
+      "type": "单选",
+      "subQuestions": [
+        {
+          "content": "<p>下列各项中表述不正确的一项是（<input type=\"bracket\" size=\"8\" />）</p>",
+          "type": "单选",
+          "accessories": [
+            "<p>《论语》《庄子》以及《礼记》这三部作品都是春秋时期的儒家经典论著。</p>",
+            "<p>安徒生，丹麦作家，代表作有童话《皇帝的新装》《卖火柴的小女孩》等。</p>",
+            "<p>《红星照耀中国》按照时间顺序客观记录了作者\"探寻红色中国\"的见闻。</p>",
+            "<p>望闻问切是中医诊病的四种方法。望诊，即观察病人的气色、形态、动作等。</p>"
+          ],
+          "answer": {
+            "choice": "0"
+          },
+          "solution": "<p>本题考查文学常识。A.《庄子》是战国时期庄子及其后学所著的道家典籍，并非儒家经典论著；且《礼记》是由西汉礼学家戴圣编纂的儒家经典，并非春秋时期的经典论著。故选A。</p>"
+        },
+        {
+          "content": "<p>名著阅读</p><p>&nbsp; &nbsp; 宁宁在假期阅读名著时，常常被其中的人物感动。开学后，他在学校的\"非遗手工坊\"为名著里的人物制作了三支毛笔，分别刻上了\"携勤\"\"铭韧\"\"问勇\"字样。</p><p>&nbsp; &nbsp; 请从下面人物中任选其一，送给他体现其性格特点的毛笔，并结合相关情节说明理由。</p><p>&nbsp; &nbsp; 祥子（《骆驼祥子》） 孙悟空（《西游记》） 保尔（《钢铁是怎样炼成的》）</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+          "type": "简答",
+          "answer": {
+            "answer": "<p>示例一：我为祥子选\"携勤\"笔。因为年轻的祥子勤劳能干，为实现拥有一辆洋车的梦想努力拉车。</p><p>示例二：我为保尔选\"铭韧\"笔。因为保尔坚韧顽强，在艰苦的工作环境中，克服困难，坚持筑路。</p><p>示例三：我为孙悟空选\"问勇\"笔。因为孙悟空勇敢无畏，在保护唐僧取经的路上，降妖除魔，大显神通。</p>"
+          },
+          "solution": "<p>本题考查名著人物和情节，首先需理解材料中提到的每个毛笔上所刻的字的含义：\"携勤\"强调勤劳，\"铭韧\"侧重坚韧，\"问勇\"突出勇敢。祥子，他十八岁来到北平城，认准了拉车这一行，成了高等人力车夫。经过三年的努力，买了一辆新车，但不久被大兵连人带车捉走，后来从兵营逃脱出来以后，为了攒钱买车，对花钱不放松，对挣钱更不放松。没有包月，他就拉整天，他非拉过一定的钱数不收车，不管时间和两腿，他玩了命似的拉车。他不惜和别人抢生意，只管拉上买卖。在曹宅拉包月时受曹先生的牵累，被孙侦探敲诈，失去全部积蓄。与虎妞结婚后，有一次顶着烈日拉车，烈日晒得人喘不过气来，他感到昏昏沉沉，很不舒服。午后狂风大作，又下起大暴雨，祥子被客人逼着冒雨拉车。经历了这冰火两重天，回到家里，祥子生起了病。由此可见，祥子是一个通过勤劳改变命运的追求的人，可赠予他\"携勤\"。孙悟空，孙悟空面对天上各路神仙的怠慢，他敢于反抗，大闹天宫，最后在太上老君炼丹炉里竟然炼成了一双火眼金睛。在护送唐僧的取经路上，孙悟空降妖除怪，屡建奇功，例如\"三打白骨精\"\"三借芭蕉扇\"。他面对困难不屈不挠，勇往直前。 由此可见，孙悟空是一个勇敢正直的人，可赠予他\"问勇\"。保尔，保尔出生在一个贫困的农民家庭，十六岁参加红军，和战友们一起为保卫苏维埃政权而浴血奋战，几次死里逃生；在医治战争创伤、恢复国民经济的艰难岁月，他又以全部的热情投身于和平劳动中；后来身体状况恶化，不得不躺在病床上时，他又克服种种困难，拿起笔来，以顽强的毅力开始创作，以另一种方式践行着他生命的誓言。由此可见，孙悟空是一个保尔的人，可赠予他\"铭韧\"。</p>"
+          },
+          "accessories': []"
+        ]
+      },
+      "answer": {
+        "choice": "0"
+      },
+      "solution": "<p>本题考查文学常识和名著阅读。第一小题考查文学常识，A项《庄子》是道家典籍，《礼记》是西汉编纂的，表述不正确。第二小题考查名著人物性格分析，需结合人物事迹说明选择毛笔的理由。</p>"
+    }
+  ,
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>古诗文默写。</p><p>（1）何当共剪西窗烛，<input size=\"15\" readonly=\"readonly\" type=\"underline\">。（李商隐《夜雨寄北》）</p><p>（2）东风不与周郎便，<input size=\"15\" readonly=\"readonly\" type=\"underline\">。（杜牧《赤壁》）</p><p>（3）<input size=\"15\" readonly=\"readonly\" type=\"underline\">，千里共婵娟。（苏轼《水调歌头》）</p><p>（4）一鼓作气，再而衰，<input size=\"15\" readonly=\"readonly\" type=\"underline\">。（《曹刿论战》）</p><p>（5）中国快速发展的交通、通讯事业，用速度重新定义时间，用科技不断改写空间，让王勃《送杜少府之任蜀州》中的\"<input size=\"15\" readonly=\"readonly\" type=\"underline\">，<input size=\"15\" readonly=\"readonly\" type=\"underline\">\"在生活中得到了越来越生动的诠释。</p>",
+      "type": "填空",
+      "answer": {
+        "blanks": ["却话巴山夜雨时", "铜雀春深锁二乔", "但愿人长久", "三而竭", "海内存知己", "天涯若比邻"]
+      },
+      "solution": "<p>本题考查名句默写。默写题作答时，一是要透彻理解诗文的内容；二是要认真审题，找出符合题意的诗文句子；三是答题内容要准确，做到不添字、不漏字、不写错字。本题中的\"雀、春深、竭、知己、涯\"等字词容易写错。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>阅读下面两首诗，完成小题。</p><p style=\"text-align: center;\"><strong>【甲】</strong></p><p style=\"text-align: center;\"><strong>游山西村</strong></p><p style=\"text-align: center;\">[宋]陆游</p><p style=\"text-align: center;\">莫笑农家腊酒浑，丰年留客足鸡豚。</p><p style=\"text-align: center;\">山重水复疑无路，柳暗花明又一村。</p><p style=\"text-align: center;\">箫鼓追随春社近，衣冠简朴古风存。</p><p style=\"text-align: center;\">从今若许闲乘月，拄杖无时夜叩门。</p><p style=\"text-align: center;\"><strong>【乙】</strong></p><p style=\"text-align: center;\"><strong>游淀湖</strong></p><p style=\"text-align: center;\">[宋]卫泾</p><p style=\"text-align: center;\">疎星残月尚朦胧，闲趁烟波一棹风。</p><p style=\"text-align: center;\">始觉舟移杨柳岸，直疑身到水晶宫。</p><p style=\"text-align: center;\">乌鸦天际墨千点，白鹭滩头玉一丛。</p><p style=\"text-align: center;\">欸乃一声回首处，西山横在有无中。</p><p><em>[注]①疎（shū）：\"疏\"的异体字。②欸（ǎi）乃：形容摇橹的声音。</em></p><p>下面对两首诗的理解和分析不正确的一项是（<input type=\"bracket\" size=\"8\" />）</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>【甲】诗颈联由自然转入人事，描绘了乡村社日将近的热闹场景，赞美了古朴的民俗。</p>",
+        "<p>【乙】诗颈联巧妙地以\"墨\"\"玉\"喻\"乌鸦\"\"白鹭\"，画面色彩对比鲜明，富有感染力。</p>",
+        "<p>两诗都用了\"疑\"字，分别写出诗人感觉前方无路时的迷惘和置身山水时的惊喜。</p>",
+        "<p>两诗都实写月光，渲染了静谧的氛围。【甲】诗中诗人乘月而归，【乙】诗中诗人乘月而游。</p>"
+      ],
+      "answer": {
+        "choice": "3"
+      },
+      "solution": "<p>两诗皆以游踪为线，甲诗写农家淳朴与山水之趣，充满生活气息；乙诗绘湖光晨色，以水墨意象营造空灵意境。陆诗豁达，卫诗清幽，各见匠心。本题考查赏析诗歌内容。D.甲诗\"从今若许闲乘月，拄杖无时夜叩门\"的意思是，从今以后，如果可以乘着月光闲游，我一定拄着拐杖随时来敲你们的门。这是一种设想，其\"月光\"并非是真实的\"月光\"，本项的\"两诗都实写月光\"说法错误；故选D。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>阅读下面选文，完成下面小题。</p><p><strong>【甲】</strong></p><p>&nbsp; &nbsp; 舜发于畎亩之中，傅说举于版筑之间，胶鬲举于鱼盐之中，管夷吾举于士，孙叔敖举于海，百里奚举于市。故天将降大任于是人也，必先苦其心<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">志</span>，劳其筋骨，饿其体肤，空乏其身，行拂乱其所为，所以动心忍性，曾益其所不能。</p><p>&nbsp; &nbsp; 人恒过，然后能改；困于心，衡于虑，而后作；征于色，发于声，而后<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">喻</span>。入则无法家拂士，出则无敌国外患者，国恒亡。<u>然后知生于忧患而死于安乐也。</u></p><p><em>（节选自《孟子·告子下》）</em></p><p><strong>【乙】</strong></p><p>&nbsp; &nbsp; 越王勾践与大夫种、范蠡入臣于吴。越王仰天太息，举杯垂涕，曰：\"今遭辱耻，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">为</span>天下笑，将孤之罪耶？<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">诸</span>大夫之责也？吾不知其咎，愿二三子论其意。\"大夫种、范蠡曰：\"闻古人曰：'居不幽，志不广；形不愁，思不远。'圣王贤主，皆遇困厄之难，蒙不救之耻，身拘而名尊，躯辱而声荣，处卑而不以为恶，居危而不以为薄。大王屈厄，臣诚尽谋。二国争道，未知所就。<u style=\"text-decoration-style: wavy;\">君王之危天道之数何必自伤哉</u>？夫吉者，凶之门；福者，祸之根。<u>今大王虽在危困之际，孰知其非畅达之兆哉？</u>\"越王曰：\"孤虽入于北国，为吴穷虏，有诸大夫怀德抱术，以保社稷，孤何忧焉？\"</p><p><em>（节选自《吴越春秋》，有删减）</em></p>",
+      "type": "单选",
+      "subQuestions": [
+        {
+          "content": "<p>下列句中加点词的意思相同的一项是（<input type=\"bracket\" size=\"8\" />）</p>",
+          "type": "单选",
+          "accessories": [
+            "<p>必先苦其心<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">志</span> <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">志</span>怪者也（《北冥有鱼》）</p>",
+            "<p>而后<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">喻</span> 引<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">喻</span>失义（《出师表》）</p>",
+            "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">为</span>天下笑 可以<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">为</span>师矣（《〈论语〉十二章》）</p>",
+            "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">诸</span>大夫之责也 其西南<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">诸</span>峰（《醉翁亭记》）</p>"
+          ],
+          "answer": {
+            "choice": "3"
+          },
+          "solution": "<p>本题考查一词多义。A.意志/记载；B.了解、明白/比喻；C.被/成为；D.都指\"众多，各\"；故选D。</p>"
+        },
+        {
+          "content": "<p>把选文中画直线的句子翻译成现代汉语。</p><p>（1）然后知生于忧患而死于安乐也。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p><p>（2）今大王虽在危困之际，孰知其非畅达之兆哉？</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+          "type": "简答",
+          "answer": {
+            "answer": "<p>（1）了解到这一切之后，就会明白常处忧愁祸患之中可以使人生存，常处安逸快乐之中可以使人死亡的道理了。</p><p>（2）现在大王虽然处于危难困厄的时候，但谁能知道这不是畅达兴盛的征兆呢？</p>"
+          },
+          "solution": "<p>本题考查学生对句子翻译能力。我们在翻译句子时要注意通假字、词类活用、一词多义、特殊句式等情况，如遇倒装句就要按现代语序疏通，如遇省略句翻译时就要把省略的成分补充完整。重点词有：（1）生：使......生存；死：使......死亡；安乐：安逸快乐；（2）危困：危难困厄；孰知：谁能知道。兆：征兆。</p>"
+          },
+          "accessories': []"
+        ],
+        " {": {
+          "content": "<p>用\"/\"给【乙】文画波浪线的句子断句（断两处）。</p><p>君 王 之 危 天 道 之 数 何 必 自 伤 哉</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+          "type": "简答",
+          "answer": {
+            "answer": "<p>君王之危/天道之数/何必自伤哉</p>"
+          },
+          "solution": "<p>本题考查文言文断句。根据文言文断句的方法，先梳理句子大意，结合语法，然后断句。一般来说，主谓之间，谓语和宾语、补语之间应该有停顿。句意：君王（您面临）的危险，（是）自然的定数，何必自己忧伤呢？。可知，\"君王之危\"是主语，\"天道之数\"是谓语，应断开；\"何必自伤哉\"这是对君子的劝告，应断开；故断为：君王之危/天道之数/何必自伤哉。</p>"
+          },
+          "accessories': []"
+        : {
+          "content": "<p>【甲】【乙】两文蕴含丰富的道理。请填写表格，汲取古人的智慧。</p><table><tr><td><strong>角度</strong></td><td><strong>摘录语句</strong></td><td><strong>启示</strong></td></tr><tr><td rowspan=\"2\">君主治国之道</td><td>【甲】文：出则无敌国外患者，国恒亡</td><td>要有忧患意识</td></tr><tr><td>【乙】文：有诸大夫怀德抱术，以保社稷</td><td>（1）<input size=\"20\" readonly=\"readonly\" type=\"underline\"></td></tr><tr><td rowspan=\"2\"><input size=\"20\" readonly=\"readonly\" type=\"underline\"></td><td>【甲】文：（3）<input size=\"20\" readonly=\"readonly\" type=\"underline\"></td><td>要积极改正错误</td></tr><tr><td>【乙】文：居不幽，志不广；形不愁，思不远</td><td>（4）<input size=\"20\" readonly=\"readonly\" type=\"underline\"></td></tr></table>",
+          "type": "填空",
+          "answer": {
+            "blanks": ["要任用贤才", "个人成长之道", "人恒过，然后能改", "艰苦的环境能造就人才"]
+          },
+          "solution": "<p>本题考查理解文章内容。第一空，乙文\"有诸大夫怀德抱术，以保社稷\"的意思是：有各位大夫心怀道德、胸有谋略，来保卫国家。从\"君主治国之道\"的角度来看，这表明君主想要治理好国家，需要依靠这些有品德、有才能的贤才。由此可得出\"要任用贤才\"的启示。第二空，结合题干\"要积极改正错误\"和乙文\"居不幽，志不广；形不愁，思不远\"，可知：在此强调的是个人在成长路上，遇到困难险阻的时候的态度，体现艰苦环境对塑造人才的积极作用。结合\"角度：君主治国之道\"的句式可拟写为\"个人成长之道\" 。第三空，所填的摘录语句对应\"要积极改正错误\"这一启示，应是甲文中\"人恒过，然后能改\"，这强调的是人面对错误的时候要积极改正错误。第四空，乙文\"居不幽，志不广；形不愁，思不远\"是说人在艰苦的环境中志向和思想能得到提升，表明艰苦环境对塑造人才的积极作用。由此可得出\"艰苦的环境能造就人才\"的启示。</p>"
+          }
+        }
+      },
+      "answer': {",
+        "choice': "  ,"solution':"  ,"accessories': []"
+      ]

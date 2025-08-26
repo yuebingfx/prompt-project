@@ -1,0 +1,1067 @@
+=== 原始LLM响应 ===
+[
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>下列词语中加点字的字音、字形完全正确的一项是（ ）</p>",
+      "type": "单选",
+      "accessories": [
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">钦</span>（qīn）佩 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">尉</span>（wèi）蓝 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">颁</span>（bān）发 惟妙惟<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">肖</span>（xiāo）</p>",
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">轩</span>（xuān）昂 赞<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">誉</span>（yù） 山<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">涧</span>（jiàn） 心旷神<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">怡</span>（yí）</p>",
+        "<p>扶<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">植</span>（zhí） 星<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">辰</span>（cén） <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">瞭</span>（liáo）亮 慷<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">慨</span>（kǎi）淋漓</p>",
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">掂</span>（diàn）记 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">乖</span>（guāi）巧 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">倔</span>（juè）强 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">屏</span>（bǐng）息敛声</p>"
+      ],
+      "answer": {
+        "choice": "1"
+      },
+      "solution": "<p>本题考查字音字形。A.<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">尉</span>蓝——蔚蓝，惟妙惟<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">肖</span>（xiāo）——xiào；C.星<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">辰</span>（cén）——chén，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">瞭</span>亮——嘹亮；D.<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">掂</span>记——惦记，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">倔</span>（juè）强——jué；故选B。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>依次填入下面语段横线处的词语最恰当的一项是（ ）</p><p>辽宁，南临渤海，西枕燕山，数亿年的地质变迁造就了这里______的地貌。既有高山巍峨，也有平原辽阔，海岸线蜿蜒漫长，森林湿地______，草原沙漠______其间，一域尽览万象颜。这些资源与景观，不只为辽宁发展打下了雄厚的物质基础，______为人们提供了视觉盛宴。</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>丰饶 星罗棋布 连缀 更</p>",
+        "<p>丰富 鳞次栉比 连缀 甚至</p>",
+        "<p>丰富 星罗棋布 点缀 更</p>",
+        "<p>丰饶 鳞次栉比 点缀 甚至</p>"
+      ],
+      "answer": {
+        "choice": "2"
+      },
+      "solution": "<p>本题考查词义辨析。第一空，丰饶：富饶。丰富：（物质财富、学识经验等）种类多或数量大。在此指的是辽宁的地貌种类多样，应选\"丰富\"；第二空，星罗棋布：像星星似的罗列着，像棋子似的分布着，形容多而密集。鳞次栉比：像鱼鳞和梳子的齿一样，一个挨着一个地排列着，多形容房屋等密集。在此指的是森林湿地分布范围广，应选\"星罗棋布\"；第三空，连缀：联结。点缀：加以衬托或装饰，使原有事物更加美好。在此形容草原沙漠分布在辽宁大地上，起到装饰的作用，应选\"点缀\"；第四空，更：更加，用于强调后一项比前一项更进一步的关系。甚至：强调突出的事例（有更进一层的意思）通常用于列举极端例子，或表达\"程度加深到某种地步\"。在此\"雄厚的物质基础\"和\"视觉盛宴\"是属于普通的递进关系，应选\"更\"；故选C。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>下列各项中分析正确的一项是（ ）</p><p>①在漫长的岁月中，稻米如（一条）（坚韧的）纽带，连结着每个中国人的心，承载着厚重的历史文化。②性格温润的稻米有海纳百川的包容性。③与蔬菜相遇时，汲取自然的清新与活力；和肉类、海鲜相拥时，承载醇厚肉香和鲜美甜香；投身羹汤之中时，又氤氲出<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">温暖人心</span>的柔情。④甜的、咸的、辣的、酸的、鲜的、苦的，无论何种味道，稻米都能<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">欣然接受</span>，与之<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">和谐共生</span>。</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>语段中加点的三个短语结构相同。</p>",
+        "<p>句①中括号内的修饰语顺序不当。</p>",
+        "<p>句②的主干是\"稻米有包容性\"。</p>",
+        "<p>句③的各个分句之间有主次之分。</p>"
+      ],
+      "answer": {
+        "choice": "2"
+      },
+      "solution": "<p>本题考查汉语基础知识。A.\"温暖人心\"是动宾短语，\"欣然接受\"与\"和谐共生\"均为偏正短语，三个短语的结构不相同；B.句①中\"一条\"是数量词，\"坚韧\"是形容词。在现代汉语中，一般数量词在前，形容词在后，句①修饰语顺序恰当。D.句③中\"与蔬菜相遇时......；和肉类、海鲜相拥时......；投身羹汤之中时......\"，这几个分句是并列关系，分别阐述了稻米与\"蔬菜\"\"肉类、海鲜\"\"羹汤\"等不同食材相遇时的表现，其中不存在主次之分。故选C。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>文学、文化常识与名著阅读</p>",
+      "type": "单选"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>下列各项中表述不正确的一项是（ ）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>《论语》《庄子》以及《礼记》这三部作品都是春秋时期的儒家经典论著。</p>",
+          "<p>安徒生，丹麦作家，代表作有童话《皇帝的新装》《卖火柴的小女孩》等。</p>",
+          "<p>《红星照耀中国》按照时间顺序客观记录了作者\"探寻红色中国\"的见闻。</p>",
+          "<p>望闻问切是中医诊病的四种方法。望诊，即观察病人的气色、形态、动作等。</p>"
+        ],
+        "answer": {
+          "choice": "0"
+        },
+        "solution": "<p>本题考查文学常识。A.《庄子》是战国时期庄子及其后学所著的道家典籍，并非儒家经典论著；且《礼记》是由西汉礼学家戴圣编纂的儒家经典，并非春秋时期的经典论著。故选A。</p>"
+      },
+      {
+        "content": "<p>名著阅读</p><p>宁宁在假期阅读名著时，常常被其中的人物感动。开学后，他在学校的\"非遗手工坊\"为名著里的人物制作了三支毛笔，分别刻上了\"携勤\"\"铭韧\"\"问勇\"字样。</p><p>请从下面人物中任选其一，送给他体现其性格特点的毛笔，并结合相关情节说明理由。</p><p>祥子（《骆驼祥子》） 孙悟空（《西游记》） 保尔（《钢铁是怎样炼成的》）</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>示例一：我为祥子选\"携勤\"笔。因为年轻的祥子勤劳能干，为实现拥有一辆洋车的梦想努力拉车。</p><p>示例二：我为保尔选\"铭韧\"笔。因为保尔坚韧顽强，在艰苦的工作环境中，克服困难，坚持筑路。</p><p>示例三：我为孙悟空选\"问勇\"笔。因为孙悟空勇敢无畏，在保护唐僧取经的路上，降妖除魔，大显神通。</p>"
+        },
+        "solution": "<p>本题考查名著人物和情节，首先需理解材料中提到的每个毛笔上所刻的字的含义：\"携勤\"强调勤劳，\"铭韧\"侧重坚韧，\"问勇\"突出勇敢。</p><p>祥子，他十八岁来到北平城，认准了拉车这一行，成了高等人力车夫。经过三年的努力，买了一辆新车，但不久被大兵连人带车捉走，后来从兵营逃脱出来以后，为了攒钱买车，对花钱不放松，对挣钱更不放松。没有包月，他就拉整天，他非拉过一定的钱数不收车，不管时间和两腿，他玩了命似的拉车。他不惜和别人抢生意，只管拉上买卖。在曹宅拉包月时受曹先生的牵累，被孙侦探敲诈，失去全部积蓄。与虎妞结婚后，有一次顶着烈日拉车，烈日晒得人喘不过气来，他感到昏昏沉沉，很不舒服。午后狂风大作，又下起大暴雨，祥子被客人逼着冒雨拉车。经历了这冰火两重天，回到家里，祥子生起了病。由此可见，祥子是一个通过勤劳改变命运的追求的人，可赠予他\"携勤\"。</p><p>孙悟空，孙悟空面对天上各路神仙的怠慢，他敢于反抗，大闹天宫，最后在太上老君炼丹炉里竟然炼成了一双火眼金睛。在护送唐僧的取经路上，孙悟空降妖除怪，屡建奇功，例如\"三打白骨精\"\"三借芭蕉扇\"。他面对困难不屈不挠，勇往直前。 由此可见，孙悟空是一个勇敢正直的人，可赠予他\"问勇\"。</p><p>保尔，保尔出生在一个贫困的农民家庭，十六岁参加红军，和战友们一起为保卫苏维埃政权而浴血奋战，几次死里逃生；在医治战争创伤、恢复国民经济的艰难岁月，他又以全部的热情投身于和平劳动中；后来身体状况恶化，不得不躺在病床上时，他又克服种种困难，拿起笔来，以顽强的毅力开始创作，以另一种方式践行着他生命的誓言。由此可见，孙悟空是一个保尔的人，可赠予他\"铭韧\"。</p>",
+        "accessories": []
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>古诗文默写。</p><p>（1）何当共剪西窗烛，<input size=\"20\" readonly=\"readonly\" type=\"underline\">。（李商隐《夜雨寄北》）</p><p>（2）东风不与周郎便，<input size=\"20\" readonly=\"readonly\" type=\"underline\">。（杜牧《赤壁》）</p><p>（3）<input size=\"20\" readonly=\"readonly\" type=\"underline\">，千里共婵娟。（苏轼《水调歌头》）</p><p>（4）一鼓作气，再而衰，<input size=\"20\" readonly=\"readonly\" type=\"underline\">。（《曹刿论战》）</p><p>（5）中国快速发展的交通、通讯事业，用速度重新定义时间，用科技不断改写空间，让王勃《送杜少府之任蜀州》中的\"<input size=\"20\" readonly=\"readonly\" type=\"underline\">，<input size=\"20\" readonly=\"readonly\" type=\"underline\">\"在生活中得到了越来越生动的诠释。</p>",
+      "type": "填空",
+      "answer": {
+        "blanks": [
+          "却话巴山夜雨时",
+          "铜雀春深锁二乔",
+          "但愿人长久",
+          "三而竭",
+          "海内存知己",
+          "天涯若比邻"
+        ]
+      },
+      "solution": "<p>本题考查名句默写。默写题作答时，一是要透彻理解诗文的内容；二是要认真审题，找出符合题意的诗文句子；三是答题内容要准确，做到不添字、不漏字、不写错字。本题中的\"雀、春深、竭、知己、涯\"等字词容易写错。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>阅读下面两首诗，完成小题。</p><p><strong>【甲】</strong></p><p><strong>游山西村</strong></p><p>[宋]陆游</p><p>莫笑农家腊酒浑，丰年留客足鸡豚。</p><p>山重水复疑无路，柳暗花明又一村。</p><p>箫鼓追随春社近，衣冠简朴古风存。</p><p>从今若许闲乘月，拄杖无时夜叩门。</p><p><strong>【乙】</strong></p><p><strong>游淀湖</strong></p><p>[宋]卫泾</p><p>疎星残月尚朦胧，闲趁烟波一棹风。</p><p>始觉舟移杨柳岸，直疑身到水晶宫。</p><p>乌鸦天际墨千点，白鹭滩头玉一丛。</p><p>欸乃一声回首处，西山横在有无中。</p><p>[注]①疎（shū）：\"疏\"的异体字。②欸（ǎi）乃：形容摇橹的声音。</p><p>下面对两首诗的理解和分析不正确的一项是（ ）</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>【甲】诗颈联由自然转入人事，描绘了乡村社日将近的热闹场景，赞美了古朴的民俗。</p>",
+        "<p>【乙】诗颈联巧妙地以\"墨\"\"玉\"喻\"乌鸦\"\"白鹭\"，画面色彩对比鲜明，富有感染力。</p>",
+        "<p>两诗都用了\"疑\"字，分别写出诗人感觉前方无路时的迷惘和置身山水时的惊喜。</p>",
+        "<p>两诗都实写月光，渲染了静谧的氛围。【甲】诗中诗人乘月而归，【乙】诗中诗人乘月而游。</p>"
+      ],
+      "answer": {
+        "choice": "3"
+      },
+      "solution": "<p>两诗皆以游踪为线，甲诗写农家淳朴与山水之趣，充满生活气息；乙诗绘湖光晨色，以水墨意象营造空灵意境。陆诗豁达，卫诗清幽，各见匠心。</p><p>本题考查赏析诗歌内容。D.甲诗\"从今若许闲乘月，拄杖无时夜叩门\"的意思是，从今以后，如果可以乘着月光闲游，我一定拄着拐杖随时来敲你们的门。这是一种设想，其\"月光\"并非是真实的\"月光\"，本项的\"两诗都实写月光\"说法错误；故选D。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>阅读下面选文，完成下面小题。</p><p><strong>【甲】</strong></p><p>舜发于畎亩之中，傅说举于版筑之间，胶鬲举于鱼盐之中，管夷吾举于士，孙叔敖举于海，百里奚举于市。故天将降大任于是人也，必先苦其心<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">志</span>，劳其筋骨，饿其体肤，空乏其身，行拂乱其所为，所以动心忍性，曾益其所不能。</p><p>人恒过，然后能改；困于心，衡于虑，而后作；征于色，发于声，而后<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">喻</span>。入则无法家拂士，出则无敌国外患者，国恒亡。<u>然后知生于忧患而死于安乐也。</u></p><p>（节选自《孟子·告子下》）</p><p><strong>【乙】</strong></p><p>越王勾践与大夫种、范蠡入臣于吴。越王仰天太息，举杯垂涕，曰：\"今遭辱耻，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">为</span>天下笑，将孤之罪耶？<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">诸</span>大夫之责也？吾不知其咎，愿二三子论其意。\"大夫种、范蠡曰：\"闻古人曰：'居不幽，志不广；形不愁，思不远。'圣王贤主，皆遇困厄之难，蒙不救之耻，身拘而名尊，躯辱而声荣，处卑而不以为恶，居危而不以为薄。大王屈厄，臣诚尽谋。二国争道，未知所就。君王之危天道之数何必自伤哉？夫吉者，凶之门；福者，祸之根。<u>今大王虽在危困之际，孰知其非畅达之兆哉？</u>\"越王曰：\"孤虽入于北国，为吴穷虏，有诸大夫怀德抱术，以保社稷，孤何忧焉？\"</p><p>（节选自《吴越春秋》，有删减）</p>",
+      "type": "单选"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>下列句中加点词的意思相同的一项是（ ）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>必先苦其心<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">志</span> <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">志</span>怪者也（《北冥有鱼》）</p>",
+          "<p>而后<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">喻</span> 引<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">喻</span>失义（《出师表》）</p>",
+          "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">为</span>天下笑 可以<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">为</span>师矣（《〈论语〉十二章》）</p>",
+          "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">诸</span>大夫之责也 其西南<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">诸</span>峰（《醉翁亭记》）</p>"
+        ],
+        "answer": {
+          "choice": "3"
+        },
+        "solution": "<p>本题考查一词多义。A.意志/记载；B.了解、明白/比喻；C.被/成为；D.都指\"众多，各\"；故选D。</p>"
+      },
+      {
+        "content": "<p>把选文中画直线的句子翻译成现代汉语。</p><p>（1）然后知生于忧患而死于安乐也。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p><p>（2）今大王虽在危困之际，孰知其非畅达之兆哉？</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>（1）了解到这一切之后，就会明白常处忧愁祸患之中可以使人生存，常处安逸快乐之中可以使人死亡的道理了。</p><p>（2）现在大王虽然处于危难困厄的时候，但谁能知道这不是畅达兴盛的征兆呢？</p>"
+        },
+        "solution": "<p>本题考查学生对句子翻译能力。我们在翻译句子时要注意通假字、词类活用、一词多义、特殊句式等情况，如遇倒装句就要按现代语序疏通，如遇省略句翻译时就要把省略的成分补充完整。重点词有：（1）生：使......生存；死：使......死亡；安乐：安逸快乐；（2）危困：危难困厄；孰知：谁能知道。兆：征兆。</p>",
+        "accessories": []
+      },
+      {
+        "content": "<p>用\"/\"给【乙】文画波浪线的句子断句（断两处）。</p><p>君 王 之 危 天 道 之 数 何 必 自 伤 哉</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "君王之危/天道之数/何必自伤哉"
+          ]
+        },
+        "solution": "<p>本题考查文言文断句。根据文言文断句的方法，先梳理句子大意，结合语法，然后断句。一般来说，主谓之间，谓语和宾语、补语之间应该有停顿。句意：君王（您面临）的危险，（是）自然的定数，何必自己忧伤呢？。可知，\"君王之危\"是主语，\"天道之数\"是谓语，应断开；\"何必自伤哉\"这是对君子的劝告，应断开；故断为：君王之危/天道之数/何必自伤哉。</p>"
+      },
+      {
+        "content": "<p>【甲】【乙】两文蕴含丰富的道理。请填写表格，汲取古人的智慧。</p><table><thead><tr><th>角度</th><th>摘录语句</th><th>启示</th></tr></thead><tbody><tr><td>君主治国之道</td><td>【甲】文：出则无敌国外患者，国恒亡</td><td>要有忧患意识</td></tr><tr><td></td><td>【乙】文：有诸大夫怀德抱术，以保社稷</td><td>（1）<input size=\"25\" readonly=\"readonly\" type=\"underline\"></td></tr><tr><td>（2）<input size=\"25\" readonly=\"readonly\" type=\"underline\"></td><td>【甲】文：（3）<input size=\"25\" readonly=\"readonly\" type=\"underline\"></td><td>要积极改正错误</td></tr><tr><td></td><td>【乙】文：居不幽，志不广；形不愁，思不远</td><td>（4）<input size=\"25\" readonly=\"readonly\" type=\"underline\"></td></tr></tbody></table>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "要任用贤才",
+            "个人成长之道",
+            "人恒过，然后能改",
+            "艰苦的环境能造就人才"
+          ]
+        },
+        "solution": "<p>本题考查理解文章内容。第一空，乙文\"有诸大夫怀德抱术，以保社稷\"的意思是：有各位大夫心怀道德、胸有谋略，来保卫国家。从\"君主治国之道\"的角度来看，这表明君主想要治理好国家，需要依靠这些有品德、有才能的贤才。由此可得出\"要任用贤才\"的启示。第二空，结合题干\"要积极改正错误\"和乙文\"居不幽，志不广；形不愁，思不远\"，可知：在此强调的是个人在成长路上，遇到困难险阻的时候的态度，体现艰苦环境对塑造人才的积极作用。结合\"角度：君主治国之道\"的句式可拟写为\"个人成长之道\" 。第三空，所填的摘录语句对应\"要积极改正错误\"这一启示，应是甲文中\"人恒过，然后能改\"，这强调的是人面对错误的时候要积极改正错误。第四空，乙文\"居不幽，志不广；形不愁，思不远\"是说人在艰苦的环境中志向和思想能得到提升，表明艰苦环境对塑造人才的积极作用。由此可得出\"艰苦的环境能造就人才\"的启示。</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>2025年是中国人民抗日战争暨世界反法西斯战争胜利80周年，学校举办\"传承东北抗联精神\"纪念图册征集活动。为完成制作纪念图册的相关任务，宁宁搜集了下列材料。</p><p><strong>【材料一】</strong>从1931年九一八事变，到1945年日本侵略者投降，东北抗联辗转于白山黑水之间，进行了长达14年不屈不挠的斗争，开辟了全国最早、坚持时间最长的抗日战场，在中国人民抗日战争和世界反法西斯战争中发挥了重要作用。</p><p>&nbsp; &nbsp; 东北抗联与敌人进行了近10万次大小战斗，消灭了18万敌人，牵制了70多万日本关东军精锐部队，有力支援了全国的抗日战争，为中国和世界反法西斯战争胜利作出了不可磨灭的贡献。</p><p>&nbsp; &nbsp; 以\"忠诚于党的坚定信念，勇赴国难的民族大义，血战到底的英雄气概\"为内核的东北抗联精神，是第一批被纳入中国共产党人精神谱系的伟大精神，需要我们永远铭记与传承。</p><p>（选自《人民日报》《解放军报》，有删改）</p><p><strong>【材料二】</strong>有一群人始终挺立在一个民族的前列，永远不会低头屈服，永远不会畏缩后退。</p><p>&nbsp; &nbsp; 在\"火烤胸前暖，风吹背后寒\"的极端艰苦条件下，为了掩护主力突围西征，李兆麟率领部队面对百倍于我方的敌军，一路血战，一路高唱。</p><p>&nbsp; &nbsp; 1938年10月，已行至河边准备渡河的8名妇女团战士，为掩护大部队突围，毅然放弃渡河，背水一战、弹尽粮绝之际，面对敌人\"抓活的\"的逼降，女战士们誓死不屈。8人毁掉枪支，互相搀扶着踏入汹涌的乌斯浑河，壮烈殉国。</p><p>（选自《人民日报》《解放军报》，有删改）</p><p><strong>【材料三】</strong></p><table><tr><td><img src=\"media/image4.png\" alt=\"东北抗联密营生活场景复原蜡像\" width=\"1.65625in\" height=\"1.0625in\"><br>（图一）东北抗联密营生活场景复原蜡像<br><br>大小不一、形式各异的密营为抗日斗争提供了坚实的后勤保障。</td><td><img src=\"media/image5.png\" alt=\"地戗子式密营复原图\" width=\"1.6770833333333333in\" height=\"1.0625in\"><br>（图二）\"地戗（qiāng）子\"式密营复原图<br><br>这种密营就地取材，搭出\"人\"字形框架，上覆茅草树皮。</td></tr><tr><td><img src=\"media/image6.png\" alt=\"马架子式密营复原图\" width=\"1.6666666666666667in\" height=\"1.0625in\"><br>（图三）\"马架子\"式密营复原图<br><br>这种密营前边高抬如马头，后面低垂如马尾，因此叫\"马架子\"。</td><td><img src=\"media/image7.png\" alt=\"抗日将领魏拯民病逝密营复原图\" width=\"1.3645833333333333in\" height=\"1.0625in\"><br>（图四）抗日将领魏拯民病逝密营复原图<br><br>没有医生、药品、粮食，魏拯民病情不断加重，最终病逝，年仅32岁。</td></tr></table><p><strong>【材料四】</strong>东北抗联研究存在着\"有史无迹\"的难题，东北抗联遗址考古工作为东北抗联研究提供了翔实的考古实物资料，从考古学角度实证了抗战史实。这些考古发现生动地展现了东北抗联艰苦卓绝的战斗经历。</p><p>&nbsp; &nbsp; 据介绍，到2023年，全国登记的抗联遗址611处、纪念设施（场馆）35家、文物藏品近10万件/套，重要抗联文物重大险情基本消除，保存状况明显改善。</p><p>（选自《人民日报》《光明日报》，有删改）</p>",
+      "type": "单选"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>宁宁为图册编写了四则简介，其中与材料内容不相符的一条是（ ）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>东北抗联开辟了全国最早、坚持时间最长的抗日战场。</p>",
+          "<p>东北抗联在近10万次的大小战斗中消灭了18万敌人。</p>",
+          "<p>东北抗联遗址考古工作从考古学角度实证了抗战史实。</p>",
+          "<p>所有抗联文物重大险情全部消除，保存状况明显改善。</p>"
+        ],
+        "answer": {
+          "choice": "3"
+        },
+        "solution": "<p>本题考查辨析材料。D.结合材料四第二段\"据介绍，到2023年，全国登记的抗联遗址611处、纪念设施（场馆）35家、文物藏品近10万件/套，重要抗联文物重大险情基本消除，保存状况明显改善\"，可知：文章只是强调\"重要抗联文物重大险情基本消除\"，并非是\"所有抗联文物重大险情全部消除\"，选项的表述与材料内容不符；故选D。</p>"
+      },
+      {
+        "content": "<p>宁宁根据图册准备了一份\"抗联精神探究学习单\"在班级分享。请你依据【材料一】【材料二】将下面内容补写完整。</p><table><thead><tr><th><strong>抗联精神探究学习单</strong></th></tr></thead><tbody><tr><td>是什么 <input size=\"20\" readonly=\"readonly\" type=\"underline\">，（1）<input size=\"20\" readonly=\"readonly\" type=\"underline\">，（2）<input size=\"20\" readonly=\"readonly\" type=\"underline\"></td></tr><tr><td>为什么 因为有魏拯民、李兆麟这样的英雄个体。<br><br>因为有（3）<input size=\"20\" readonly=\"readonly\" type=\"underline\">这样的英雄群体。<br><br>因为有进行了长达14年不屈不挠斗争、英雄辈出的民族</td></tr></tbody></table>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "忠诚于党的坚定信念",
+            "勇赴国难的民族大义",
+            "血战到底的英雄气概",
+            "8名妇女团战士"
+          ]
+        },
+        "solution": "<p>本题考查概括文章内容。第一空、第二空：根据【材料一】第三段\"以'忠诚于党的坚定信念，勇赴国难的民族大义，血战到底的英雄气概'为内核的东北抗联精神\"可知：抗联精神是忠诚于党的坚定信念，勇赴国难的民族大义，血战到底的英雄气概。第三空，结合题干\"英雄群体\"，找到材料二第三段\"1938年10月，已行至河边准备渡河的8名妇女团战士，......互相搀扶着踏入汹涌的乌斯浑河，壮烈殉国\"，可知：8名妇女团战士为了掩护大部队突围，壮烈殉国。</p>"
+      },
+      {
+        "content": "<p>宁宁从【材料三】中选取图一、图二、图三，制作了题为《密营：林海雪原上的生命堡垒》的图册插页。请你配写一段说明性文字，介绍密营的形式和作用。要求：运用一种说明方法，不超过60字。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>示例一：密营大小不一、形式各异，例如\"地戗子\"式密营、\"马架子\"式密营等。密营为抗日斗争提供了坚实的后勤保障。</p><p>示例二：密营大小不一、形式各异，其中\"马架子\"式密营前边高抬如马头、后面低垂如马尾。密营为抗日斗争提供了坚实的后勤保障。</p>"
+        },
+        "solution": "<p>本题考查图文转换。结合图一可知：东北抗联的密营大小不一、形式各异，为抗日斗争提供了坚实的后勤保障。结合图片二可知：\"地戗子\"式的密营，这种密营就地取材，搭出类似\"人\"字形框架，上覆茅草树皮。结合图片三可知：\"马架子\"式密营因前边高抬如马头，后面低垂如马尾而得名。结合以上分析从形式和作用两方面对密营进行介绍，运用恰当的说明方法来介绍即可。</p>",
+        "accessories": []
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>阅读下面选文，完成下面小题。</p><p><strong>寂静的水闸</strong><sup>①</sup></p><p>梁衡</p><p>①水闸是干什么的？拦洪蓄水，调节水流。我们常见的水闸是天生与洪水搏斗、逆水而生的\"拼命三郎\"，但有谁见过巍然如山却寂静无声、与黄河相伴50年而滴水未沾的水闸呢？有，山东省齐河县豆腐窝水闸就是一个典型。</p><p>②黄河极其任性，它曾北夺海河入渤海，南夺淮河入黄海，它成就了丰沃的土地，也曾威胁着百姓的生存。人与水做着漫长的拉锯战。直到1972年的一天，在黄河下游河堤最险的地段之一——号称\"黄河咽喉\"的齐河县豆腐窝，人与水开始了一次心平气和的\"谈判\"。黄河携万里之势，挟16亿吨泥沙之威上门对话。<u>齐河人则一片诚心：\"黄河，不要再闹了。你挟沙远行到此也已很累，我给你修一座大门，出得门去大片空地，足够你横躺竖卧。行不？\"黄河说：\"不是我要闹，实在是年年沙淤堤高，逼得我走投无路。\"齐河人说：\"我们现在就动工。\"</u>振臂一呼，20万众上阵，8个月为黄河筑起一个新居，6个乡镇、近5万人搬走，空出100平方公里土地，同时盖起一座8层楼高的7孔大闸。黄河为这份诚心所感动，50年间竟没有一次来\"敲门\"。闸前黄河滚滚去，闸后草木悄悄绿。</p><p>③我曾两次到豆腐窝大闸。第一次是到堤上看一个治水史迹展，听讲解员讲述了齐河人不懈努力的治黄故事。1958年，在当地抗洪抢险中有两位民工巡堤，见一处管涌急喷，手边没有合适用料，一人急屈身坐进管口，犹如战士以身堵枪眼。另一人爬上堤岸大呼求救，何等惊心动魄！1970年，齐河堤防段研发制造的黄河第一艘吸泥船\"红心一号\"下水。这艘吸泥船每小时能出水700立方米，其吐沙量之大在当时堪称大新闻。如今这条船已退役，正静卧岸上接受游客的礼赞。</p><p>④来到离展览馆不远的大闸脚下，看到陡峭的闸墙、粗大的钢缆、冰冷的铁门。豆腐窝水闸没有故事，也没有上过什么报纸，游客更不会注意到它。工作人员说，你别看它这样安静，每年这闸门总要轰隆隆地提升几次，试试运转灵不灵。闸前的土层里预埋着炸药，遇有紧急情况，一声雷鸣，土飞门开，洪水就夺门而出。但是50年来这种情况还没有过，黄河一直遵守与人的承诺。</p><p>⑤那次离开豆腐窝水闸后我心里总有一丝的惆怅。我们平常一提治黄，就是三门峡、刘家峡、小浪底......可有谁知道这个名不见经传的\"豆腐窝\"呢？谁会想到它、歌颂它呢？\"为隐者传名，为无名者立传\"是记者的职责，我于心不忍，两年后重访豆腐窝。</p><p>⑥正是深秋，红的高粱、黄的玉米、白的棉花，大地一片五彩斑斓。大闸脚下是一条水泥路，阳光下村民晾晒的玉米、棉花堆积如山。我说这样不妨碍闸门的起吊吗？听工作人员说，近年黄河上游治理有成，下游河床降低，危险已经解除。豆腐窝大闸已光荣退役，将成文物。我立即想到闸外那100平方公里的备用土地，于是我又花了两天的时间去逛这个大闸的后院。这里已经入驻了不少高新企业。有大型游乐园，过山车惊险刺激；有野生动物园，长颈鹿的头伸到二楼阳台上去吻客人的手；有珍宝馆，我第一次看到传说中的夜明珠，在黑暗中熠熠发光。而传统农业也大放光彩，大型粮库的粮塔高耸入云，当地的美食手工挂面居然细得能穿过针眼去，而且还是空心的。最可看的是一座博物馆，在诉说黄河的历史。50年前人送黄河100平方公里的土地，50年后黄河又分毫不少地还赠于人，上面还附加了这么多的宝贝，豆腐窝变成了科技窝、财富窝、欢乐窝。人敬自然一尺，自然敬人一丈，水闸为证。</p><p>⑦这闸的设计者是谁？几经查访不得其详。我想他们和这水闸一样，本来也是不想留名的。但他们与闸都有功于世，何忍其没于尘埃？遂书见闻，是为记。</p><p>（选自《人民日报》，有删改）</p><p>[注]①文章原标题为《在齐河，有个豆腐窝水闸》。</p>",
+      "type": "单选"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>概括选文内容，填写下表。</p><table><thead><tr><th>寻访历程</th><th>所见</th><th>所闻</th></tr></thead><tbody><tr><td>第一次到访</td><td>治水史迹展</td><td>（1）<input size=\"25\" readonly=\"readonly\" type=\"underline\"></td></tr><tr><td></td><td>（2）<input size=\"25\" readonly=\"readonly\" type=\"underline\"></td><td>大闸处于备用状态</td></tr><tr><td>第二次到访</td><td>（3）<input size=\"25\" readonly=\"readonly\" type=\"underline\"></td><td>（4）<input size=\"25\" readonly=\"readonly\" type=\"underline\"></td></tr></tbody></table>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "齐河人不懈努力的治黄故事",
+            "大闸的外观（陡峭的闸墙、粗大的钢缆、冰冷的铁门）",
+            "豆腐窝地区的繁荣景象",
+            "大闸光荣退役"
+          ]
+        },
+        "solution": "<p>本题考查概括文章内容。第一空，结合\"治水史迹展\"，找到第③段\"第一次是到堤上看一个治水史迹展，听讲解员讲述了齐河人不懈努力的治黄故事\"，可得出：齐河人不懈努力的治黄故事。第二空，结合\"大闸处于备用状态\"，找到第④段\"来到离展览馆不远的大闸脚下，看到陡峭的闸墙、粗大的钢缆、冰冷的铁门\"，可知：作者看到大闸陡峭的闸墙、粗大的钢缆、冰冷的铁门，这是大闸的外观。第三空，第四空，结合\"第二次到访\"，找到第⑥段\"正是深秋，红的高粱、黄的玉米、白的棉花，大地一片五彩斑斓。......豆腐窝大闸已光荣退役，将成文物\"\"这里已经入驻了不少高新企业。......豆腐窝变成了科技窝、财富窝、欢乐窝\"，可知：作者再次来到豆腐窝，发现这里进驻不少高新企业，变成了科技窝、财富窝、欢乐窝。到处都呈现繁华的景象。豆腐窝大闸已光荣退役，将成文物。</p>"
+      },
+      {
+        "content": "<p>选文第①段为什么要写常见的水闸？</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"2\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>使常见的水闸与豆腐窝水闸形成对比；突出了豆腐窝水闸寂静无声、滴水未沾的独特性；引出豆腐窝水闸这一写作对象。</p>"
+        },
+        "solution": "<p>本题考查句段的作用。结合第①段\"水闸是干什么的？拦洪蓄水，调节水流。......有，山东省齐河县豆腐窝水闸就是一个典型\"，可知：通过将常见的水闸的功能是\"拦洪蓄水，调节水流\"的，是与洪水搏斗的\"拼命三郎\"，而豆腐窝水闸却是\"巍然如山却寂静无声、与黄河相伴50年而滴水未沾\"。这种对比突出了豆腐窝水闸寂静无声、滴水未沾的独特性。通过对比，作者引出了本文的写作对象——豆腐窝水闸的独特存在，为后文详细描述这座水闸的历史、作用和意义做了铺垫。</p>",
+        "accessories": []
+      },
+      {
+        "content": "<p>选文中画线句虚拟了一次人与黄河的对话，精读这段对话，回答下面两个问题。</p><p>（1）这段对话写了什么？</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p><p>（2）这段对话的语言特点是<input size=\"15\" readonly=\"readonly\" type=\"underline\">、<input size=\"15\" readonly=\"readonly\" type=\"underline\">。</p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>（1）黄河由于沙淤堤高将要泛滥，齐河人决定修建水闸来治理黄河。</p><p>（2）生动形象（运用拟人的语句） 诙谐幽默 口语化</p>"
+        },
+        "solution": "<p>本题考查理解句子的内容和写法。（1）\"我给你修一座大门，出得门去大片空地，足够你横躺竖卧\"\"不是我要闹，实在是年年沙淤堤高\"\"我们现在就动工\"，这交代了修筑豆腐窝水闸的原因，这是因为黄河由于年年沙淤堤高，即将要泛滥，齐河人决定修建水闸来治理黄河。\"行不\"这些话语充满口语化的特点，使文章内容富有生活气息。\"我给你修一座大门，出得门去大片空地，足够你横躺竖卧\"\"不是我要闹，实在是年年沙淤堤高，逼得我走投无路\"在此运用拟人手法，把黄河当做人来写，表现黄河与人的\"谈判\"内容，体现人们科学治河的思想。语言生动幽默，富有口语化。</p>",
+        "accessories": []
+      },
+      {
+        "content": "<p>简析选文第⑤段在结构上的作用。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"2\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>承上启下（过渡）。作者离开豆腐窝水闸后心生惆怅，承接上文他第一次到访水闸；作者产生为隐者立传的想法，引出下文重访水闸的见闻。</p>"
+        },
+        "solution": "<p>本题考查段落的作用。结合第③段\"第一次是到堤上看一个治水史迹展，听讲解员讲述了齐河人不懈努力的治黄故事\"，第④段\"工作人员说，你别看它这样安静，......土飞门开，洪水就夺门而出\"，第⑤段\"那次离开豆腐窝水闸后我心里总有一丝的惆怅。......可有谁知道这个名不见经传的'豆腐窝'呢\"\"我于心不忍，两年后重访豆腐窝\"，第⑥段\"正是深秋，红的高粱、黄的玉米、白的棉花，......豆腐窝大闸已光荣退役，将成文物\"，可知：上文介绍了作者第一次到豆腐窝水闸了解其齐河人不懈努力的治黄故事，作者立下为为隐者立传的想法。\"我心里总有一丝的惆怅\"是承接上文，强调作者离开豆腐窝水闸后心生惆怅；\"两年后重访豆腐窝\"引出下文后来重访豆腐窝，发现其变化的内容。由此可见，本段起到承上启下的作用。</p>",
+        "accessories": []
+      },
+      {
+        "content": "<p>选文中作者赞美了齐河人的哪些精神品质？请概括出三种。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"2\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>赞美了齐河人勤劳能干、英勇无畏、团结一致、不求名利、坚持不懈、善于创新等精神品质。</p>"
+        },
+        "solution": "<p>本题考查理解文章主题。结合第②段\"20万众上阵，8个月为黄河筑起一个新居，6个乡镇、近5万人搬走，空出100平方公里土地，同时盖起一座8层楼高的7孔大闸\"，可知：为了治理黄河，大家齐心协力，为黄河空出100平方公里土地，盖起大闸来治理黄河，这体现人们团结一致的精神。结合第③段\"在当地抗洪抢险中有两位民工巡堤，见一处管涌急喷，手边没有合适用料，一人急屈身坐进管口，犹如战士以身堵枪眼。另一人爬上堤岸大呼求救，何等惊心动魄\"，可知：当年人们发现险情的时候，奋不顾身，用人的力量来堵管涌急喷的问题，这体现人们英勇无畏的精神。结合第③段\"齐河堤防段研发制造的黄河第一艘吸泥船'红心一号'下水。这艘吸泥船每小时能出水700立方米，其吐沙量之大在当时堪称大新闻\"，可知：齐河堤防段研发制造的黄河吸泥船，这体现人们运用科技手段、勇于突破传统治水方式的智慧，展现了开拓进取的精神。结合第③段\"第一次是到堤上看一个治水史迹展，听讲解员讲述了齐河人不懈努力的治黄故事\"，可知：人们一直以来都在不懈治理黄河，这体现人们勤劳能干、坚持不懈的精神。结合第⑦段\"这闸的设计者是谁？几经查访不得其详。我想他们和这水闸一样，本来也是不想留名的。但他们与闸都有功于世，何忍其没于尘埃\"，可知：豆腐窝水闸默默无闻，为治理黄河贡献自己的一份力量，这体现不求名利的精神品质。</p>",
+        "accessories": []
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>阅读下面选文，完成下面小题。</p><p><strong>读书贵在破</strong></p><p>啸风</p><p>①\"读书破万卷，下笔如有神\"，杜甫此句真是字字珠玑，令人神往。一个\"破\"字妙极了，既点出了读书的量，又点出了读书的质。\"破\"至少有三个层次的内涵：第一层点出了读书之勤。把书页都翻烂了，与\"韦编三绝\"异曲同工。第二层点出了读书之透。不仅把书翻烂了，还能解其意，会其神，释疑解惑。第三层点出了读书之悟。悟出了书外之意、书外之理，是更高层次的读透。</p><p>②世上勤读者不少，但读破者不多。一些人喜欢读书，但囫囵吞枣，不求甚解；还有一些人，喜欢钻到书堆里抠字眼；另有一些人，知识满腹，但读书不疑书，唯书是从，不问实际。我们不能说这些人不是勤读者，可惜他们浪费了许多大好光阴，也只读出了第一层次。可见，读书贵在破。</p><p>③那么，该如何将书读破？</p><p>④专一有恒好破书。滴水瞄准一处，持之不懈可穿石。读书如滴水，围绕一个主题或者一个问题，广泛涉猎，精读思考，天长日久，终会破题。<u>苏轼喜欢把书分成若干专题，一个专题一个专题地熟读精思，坚持不懈，这种方法不仅帮助苏轼积累了深厚的学问，也对后世学者产生了深远的影响。</u>马克·吐温说过：\"人的思想是了不起的，只要专注于某一项事业，那就一定会做出使自己吃惊的成绩来。\"</p><p>⑤善于联想好破书。书对一些善读的人来说，是一个酵头，可以蒸出一锅香喷喷的馒头。一篇文章、一本书可以读出许多篇文章、许多本书。毛泽东知识渊博，读起书来善于联想，由此及彼、由古至今，思路开阔。达尔文研究生物进化30多年，读书积累无数，却没想出一个简单的贯串说明。一天，他无意中读到了马尔萨斯的人口论，悟出物竞天择的道理，成就了巨著《物种起源》。</p><p>⑥处处有心好破书。做生活的有心人，带着问题勤琢磨，时刻把书中疑惑之处装在脑里，放在心上，多动脑筋多思考；带着问题勤观察，观察要与读书相结合，把观察到的事物与书中所写联系起来，相互印证和比较，通过思考加工，加深对书的理解，必有新的发现和感悟；带着问题勤听勤问，问与学相辅相成，对书中的疑惑和不解，要虚心勤问。街谈巷议，必有所采，只要带着耳朵细细听，终会有所获。</p><p>⑦习惯不同，读书不一，方法多样，但有一点应成共识——读书贵在破，不破是白读。沿着将书读破的路走下去，前方会越来越宽广，思想的天空会越来越深邃、清朗。</p><p>（选自《应用写作》，有删改）</p>",
+      "type": "单选"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>厘清选文思路，完成下面图表。</p><p>【三层内涵析\"破\"义】（1）<input size=\"15\" readonly=\"readonly\" type=\"underline\">→透→悟</p><p><img src=\"media/image10.png\" alt=\"向下箭头\" width=\"0.22916666666666666in\" height=\"0.3958333333333333in\"></p><p>【三类读者引论点】中心论点：（2）<input size=\"30\" readonly=\"readonly\" type=\"underline\"></p><p><img src=\"media/image10.png\" alt=\"向下箭头\" width=\"0.22916666666666666in\" height=\"0.3958333333333333in\"></p><p>【三种做法明方向】专一有恒、（3）<input size=\"15\" readonly=\"readonly\" type=\"underline\">、（4）<input size=\"15\" readonly=\"readonly\" type=\"underline\"></p><p><img src=\"media/image10.png\" alt=\"向下箭头\" width=\"0.22916666666666666in\" height=\"0.3958333333333333in\"></p><p>重申论点，强调意义</p>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "勤",
+            "读书贵在破",
+            "善于联想",
+            "处处有心"
+          ]
+        },
+        "solution": "<p>本题理解文章内容，梳理文章结构。（1）结合第①段\"'破'至少有三个层次的内涵：第一层点出了读书之勤。......第二层点出了读书之透。......第三层点出了读书之悟。......\"，可知：\"破\"至少有三个层次的内涵，分别是\"勤\"\"透\"\"悟\"。（2）结合\"题目：读书贵在破\"，第①段\"'读书破万卷，下笔如有神'，......又点出了读书的质\"，第②段\"世上勤读者不少，但读破者不多。......可见，读书贵在破\"，可知：文章一开始由杜甫的诗歌点出\"破\"字的意蕴，然后列举人们读书的不同情况，指出许多勤读者仅停留在\"破\"的第一层次，从而提出\"读书贵在破\"的中心论点，照应题目。（3）结合第⑤段\"善于联想好破书\"，可得出：善于联想好破书。（4）结合第⑥段\"处处有心好破书\"，可得出：处处有心好破书。</p>"
+      },
+      {
+        "content": "<p>简要分析选文第④段画直线的句子是怎样论证\"专一有恒好破书\"的？</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"2\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>运用举例论证。举了苏轼以专题的形式，专一持久地读书，从而积累学问、对后世产生深远影响的事例，具体有力地证明了观点。</p>"
+        },
+        "solution": "<p>本题考查分析论证方法及其作用。这句话举了苏轼以专题的形式，专一持久地读书的例子，运用了举例论证的论证方法；结合第④段\"专一有恒好破书\"\"这种方法不仅帮助苏轼积累了深厚的学问，也对后世学者产生了深远的影响\"可知，苏轼因\"专一有恒\"取得了实际成就，具体有力地证明了\"专一有恒好破书\"的观点，使得论证更加具体和有说服力。</p>",
+        "accessories": []
+      },
+      {
+        "content": "<p>简析选文第⑤段画波浪线句子的含义，并结合自己的阅读经历谈谈你对这句话的理解。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>含义：把读书所得与平时积累联系在一起，激发联想，触类旁通，形成自己的理解和感悟。（在读书时善于联想，由此及彼、由古至今，思路开阔）</p><p>具体阅读经历：</p><p>示例一：我读了《钢铁是怎样炼成的》，主人公保尔让我联想到《红岩》中的江姐，他们都是为了革命理想而不懈奋斗的战士。</p><p>示例二：我读了选文，联想到《史记》中赵括的故事，他熟读兵书，但在指挥作战中，不知变通，最终导致赵国兵败。可见唯书是从，不问实际地读书，不仅无用，还会误事。</p>"
+        },
+        "solution": "<p>本题考查理解文中重要句子的含义。\"一篇文章、一本书\"代表阅读的原文本，\"许多篇文章、许多本书\"并非指数量上的增多，而是指从原文本中延伸出的相关知识、多元思考、深层联想与感悟。强调阅读时通过联想能够突破书籍本身的限制，挖掘出更丰富的知识和思想，触类旁通，形成自己的理解和感悟，是对\"善于联想好破书\"这一观点的具体表达，强调了读起书来善于联想的重要性。</p><p>结合自身阅读经历谈理解时，需紧扣\"联想\"和\"知识拓展\"两个关键要素。明确指出阅读的书籍或文章，说明收获与感悟，强调通过联想获得的新认知、新思考，体现\"读出许多篇文章、许多本书\"的效果即可。</p>",
+        "accessories": []
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>从下列两题中，任选其一，按要求作文。</p><p><strong>题目：\"他们\"与我</strong></p><p>要求：①自选角度，自定立意，自选文体（诗歌、戏剧除外）。②字迹工整，书写清楚，卷面整洁。③不少于600字。④不得套作、抄袭，不得透露个人信息。</p><p style='text-align: center;'><strong>\"他们\"与我</strong></p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"15\" data-punctuation=\"\" data-first-line-width=\"600\"></full-line-blank></p>",
+      "type": "简答",
+      "answer": {
+        "answer": "<p>&nbsp; &nbsp;在人生的长河中，我们常常以为自己是孤独的航行者，却不知有多少\"他们\"如繁星般照亮我们的旅程。这些\"他们\"或许是人，或许是物，或许是某个瞬间，都在不经意间成为我们生命中的灯塔，指引我们前行。</p><p>&nbsp; &nbsp;那些给予我们温暖的人，是生命中最珍贵的\"他们\"。记得初中时，我的数学成绩一度跌入谷底，是张老师每天放学后为我耐心讲解题目，用红笔在作业本上写下\"相信你能做到\"的批注。还有我的同桌小林，总是在我沮丧时递来一颗糖果，用她特有的幽默驱散我的阴霾。这些温暖的\"他们\"，如同冬日里的阳光，融化了成长路上的坚冰。</p><p>&nbsp; &nbsp;那些激发我们思考的\"他们\"，往往以挑战者的姿态出现。初二那年，我参加了全市辩论赛，对手学校的一辩手思维缜密、言辞犀利，几次将我的论点驳得体无完肤。赛后，我独自在空荡的教室里反思到深夜。正是这样的\"他们\"，像一面镜子照出我的不足，又像磨刀石般砥砺我的思想。古人云：\"三人行，必有我师\"，每一个让我们感到压力的对手，都是上天派来帮助我们成长的老师。</p><p>&nbsp; &nbsp;而大自然中的\"他们\"，则以无声的方式滋养着我们的心灵。外婆家后院的老槐树，每年春天都开满洁白的花朵，我在树下读书时，常有花瓣飘落书页间；雨后的清晨，蜗牛在湿润的泥土上画出银色的轨迹；深秋的傍晚，成群的大雁排成人字形飞过橘红色的天空。这些看似微不足道的\"他们\"，却在不经意间教会我们生命的坚韧与美好。</p><p>&nbsp; &nbsp;回望来路，正是无数个\"他们\"构成了我生命的经纬。他们或许不会永远陪伴，但留下的印记却成为永恒。在这个世界上，没有人是真正的孤岛，我们都在与无数个\"他们\"的相遇中，完成自我的塑造与成长。珍惜每一个\"他们\"，就是珍惜生命最丰厚的馈赠。</p>"
+      },
+      "solution": "<p>【写作指导】结合材料可知，题目中\"他们\"指代范围广泛，既可以是身边具体的人，如给予鼓励的队友、引发反思的对手、带来启发的评委，也可以是抽象或具体的事物，如一次全新的挑战、一片璀璨的星空、一只活泼的小猫等。这些人或事物都在\"我\"的生活中扮演着重要角色，对\"我\"产生了积极影响。\"他们\"强调的是多个人或多种事物，这是一个群体。\"与我\"明确了写作视角和内容方向，强调\"他们\"和\"我\"之间的互动与关联。文章要着重展现\"他们\"对\"我\"的影响，以及\"我\"在与\"他们\"相处过程中的感受、变化和成长。这种关系可以是行为上的引导、情感上的支持、思想上的启发等。\"与我\"的表述暗含了自我成长的主题。</p><p>【写作思路】本文建议写成记叙文。写作前要思考，\"他们\"是谁，\"他们\"对\"我\"的成长中有什么影响，文章要将重点放在\"我\"从\"他们\"身上获得了什么，\"我\"如何因为\"他们\"而发生改变，从而使文章具有深度和内涵。如果写\"他们\"是身边的人，叙写身边的人对\"我\"的影响，如父母关心\"我\"的生活，老师关心\"我\"的学业，朋友陪伴\"我\"的成长，他们让\"我\"感受到生活的美好与快乐。如果写的他们是物，可写生活中一些坚强积极向上的事物对\"我\"成长的意义。例如石缝间的植物给予\"我\"坚强的勇气；蚂蚁齐心协力搬食物，教会\"我\"要团结同学，在集体中获得成长的力量；早上穿越黑暗的太阳让\"我\"懂得，没有什么黑暗是越不过的。文章要通过具体写人写景，详写\"他们\"如何走进\"我\"的生活、触动\"我\"的内心、给\"我\"带来什么改变或感悟。行文时要用\"我\"的视角和感受整件事情，突出\"他们\"让\"我\"看到世界的美好，表现积极向上的主题。</p>",
+      "accessories": []
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>在成功演出《天下第一楼》后，兴辽中学话剧社召开经验总结会。</p><p>宁宁说：\"台上精彩的表演，来自台下的深研剧本和精心排练。\"</p><p>文文说：\"你说得有道理，但今天面对突发状况时，大家的临场发挥，也成就了演出的精彩。\"</p><p>上面这段对话引发了你怎样的联想和思考？请自拟题目，写一篇文章。</p><p>要求：①自选角度，自定立意，自选文体（诗歌、戏剧除外）。②字迹工整，书写清楚，卷面整洁。③不少于600字。④不得套作、抄袭，不得透露个人信息。</p><p style='text-align: center;'><strong>台上一分钟，功夫在\"双向\"</strong></p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"15\" data-punctuation=\"\" data-first-line-width=\"600\"></full-line-blank></p>",
+      "type": "简答",
+      "answer": {
+        "answer": "<p>&nbsp; &nbsp;《天下第一楼》的演出成功，让宁宁和文文的对话有了具象的注脚——台上的精彩从不是单一变量的结果。深研剧本是根基，临场发挥是枝叶，二者如同飞鸟的双翼，缺一便难越山海。</p><p>&nbsp; &nbsp;台下的积淀是所有精彩的起点。就像《天下第一楼》里的演员，若不反复揣摩卢孟实的傲骨与无奈，不把每句台词的语气、每个动作的幅度刻进肌肉记忆，台上的表演便会沦为空洞的模仿。程派传人张火丁为演好《锁麟囊》，曾对着镜子练水袖三个月，只为\"朱楼找球\"那三十秒的身段能兼具柔美与苍凉。这种\"台下十年功\"的深耕，是艺术创作的坐标系，让所有表达都有了精准的落点。没有对剧本的通透理解，没有千百次排练形成的肌肉记忆，所谓\"精彩\"不过是空中楼阁。</p><p>&nbsp; &nbsp;但舞台从不是复刻排练室的机器。当意外突至，临场的应变能力便成了化险为夷的关键。话剧《雷雨》某次演出时，侍萍的道具手帕不慎掉落，饰演者没有慌乱，反而顺势弯腰捡拾，口中加了句\"这旧物件总怕丢，就像人一样\"，既贴合人物心境，又让剧情更添真实感。这种\"即兴创作\"并非凭空而来，而是建立在对角色的深度共情之上——就像《天下第一楼》的演员，若对人物关系了如指掌，即便灯光突然暗了半秒，也能借着台词的顿挫自然过渡。临场发挥不是脱离轨道的任性，而是以积淀为圆心的灵活转动。</p><p>&nbsp; &nbsp;台下积淀与临场发挥，本质上是\"守\"与\"变\"的共生。深研剧本是守住艺术的内核，让表达有不变的根基；临场发挥是在坚守内核的前提下应变，让表达有鲜活的姿态。就像书法中的\"中锋用笔\"是根基，\"侧锋取势\"是变化，唯有二者结合，才能写出既有筋骨又有灵气的作品。若只重排练不重应变，演出会像按程序运行的机器人，失了灵气；若只靠临场忽视积淀，表演便成了无源之水，难有力量。</p><p>&nbsp; &nbsp;《天下第一楼》的成功启示我们：所有值得称道的成果，都是\"台下功夫\"与\"台上智慧\"的共舞。无论是舞台表演，还是人生赛场，先沉下心打好基础，再以灵活之心应对变化，方能在既定的轨道上，走出属于自己的精彩。</p>"
+      },
+      "solution": "<p>【写作指导】材料围绕兴辽中学话剧社演出《天下第一楼》后的经验总结会展开，宁宁强调台上精彩源于台下深研剧本和精心排练，文文则指出临场发挥也成就了演出的精彩。整体来看，材料旨在引导我们思考成功背后的多种因素，即扎实准备和灵活应变的重要性。立意上，我们可以从二者相辅相成的角度出发，阐述只有将台下的充分准备与台上的灵活应对结合起来，才能取得成功；也可以强调在不同情境下，二者的不同侧重，但不能忽视任何一方。</p><p>【写作思路】我们可以选择艺术创作类的素材，如绘画创作，画家在创作前需要深入研究主题、学习技法，但在创作过程中也需要根据纸张纹理、颜料效果等突发情况灵活调整笔触和色彩；还可以选择体育竞技类的素材，运动员在比赛前要进行长时间的艰苦训练，掌握扎实的技术和战术，但在比赛中也需要根据对手的变化、场上的形势做出及时的应变。比如，篮球运动员在比赛中，按照教练布置的战术进攻，但当对手防守策略改变时，要迅速调整进攻方式。也可以围绕学习成长类进行创作，学生在备考过程中，要认真复习知识点，做大量的习题，但在考试时遇到难题也需要灵活思考，尝试不同的解题思路。写作安排上，开头可以引用名言\"台上一分钟，台下十年功\"，然后引出材料内容，点明扎实准备和灵活应变对成功的重要性，引起读者的兴趣。中间部分按照选材分类叙述，如果选择了艺术、体育、学习等多个方面的素材，可以分别用一个小标题来引领每个部分的内容，使文章结构更加清晰。在叙述每个事件时，要注重细节描写，包括人物的心理活动、动作、语言等。结尾总结扎实准备和灵活应变对自己的启示和意义，表达在未来的生活中要将二者结合起来，不断追求成功的决心即可。</p>",
+      "accessories": []
+    }
+  }
+]
+
+=== 提取后内容 ===
+[
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>下列词语中加点字的字音、字形完全正确的一项是（ ）</p>",
+      "type": "单选",
+      "accessories": [
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">钦</span>（qīn）佩 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">尉</span>（wèi）蓝 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">颁</span>（bān）发 惟妙惟<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">肖</span>（xiāo）</p>",
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">轩</span>（xuān）昂 赞<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">誉</span>（yù） 山<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">涧</span>（jiàn） 心旷神<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">怡</span>（yí）</p>",
+        "<p>扶<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">植</span>（zhí） 星<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">辰</span>（cén） <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">瞭</span>（liáo）亮 慷<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">慨</span>（kǎi）淋漓</p>",
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">掂</span>（diàn）记 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">乖</span>（guāi）巧 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">倔</span>（juè）强 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">屏</span>（bǐng）息敛声</p>"
+      ],
+      "answer": {
+        "choice": "1"
+      },
+      "solution": "<p>本题考查字音字形。A.<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">尉</span>蓝——蔚蓝，惟妙惟<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">肖</span>（xiāo）——xiào；C.星<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">辰</span>（cén）——chén，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">瞭</span>亮——嘹亮；D.<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">掂</span>记——惦记，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">倔</span>（juè）强——jué；故选B。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>依次填入下面语段横线处的词语最恰当的一项是（ ）</p><p>辽宁，南临渤海，西枕燕山，数亿年的地质变迁造就了这里______的地貌。既有高山巍峨，也有平原辽阔，海岸线蜿蜒漫长，森林湿地______，草原沙漠______其间，一域尽览万象颜。这些资源与景观，不只为辽宁发展打下了雄厚的物质基础，______为人们提供了视觉盛宴。</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>丰饶 星罗棋布 连缀 更</p>",
+        "<p>丰富 鳞次栉比 连缀 甚至</p>",
+        "<p>丰富 星罗棋布 点缀 更</p>",
+        "<p>丰饶 鳞次栉比 点缀 甚至</p>"
+      ],
+      "answer": {
+        "choice": "2"
+      },
+      "solution": "<p>本题考查词义辨析。第一空，丰饶：富饶。丰富：（物质财富、学识经验等）种类多或数量大。在此指的是辽宁的地貌种类多样，应选\"丰富\"；第二空，星罗棋布：像星星似的罗列着，像棋子似的分布着，形容多而密集。鳞次栉比：像鱼鳞和梳子的齿一样，一个挨着一个地排列着，多形容房屋等密集。在此指的是森林湿地分布范围广，应选\"星罗棋布\"；第三空，连缀：联结。点缀：加以衬托或装饰，使原有事物更加美好。在此形容草原沙漠分布在辽宁大地上，起到装饰的作用，应选\"点缀\"；第四空，更：更加，用于强调后一项比前一项更进一步的关系。甚至：强调突出的事例（有更进一层的意思）通常用于列举极端例子，或表达\"程度加深到某种地步\"。在此\"雄厚的物质基础\"和\"视觉盛宴\"是属于普通的递进关系，应选\"更\"；故选C。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>下列各项中分析正确的一项是（ ）</p><p>①在漫长的岁月中，稻米如（一条）（坚韧的）纽带，连结着每个中国人的心，承载着厚重的历史文化。②性格温润的稻米有海纳百川的包容性。③与蔬菜相遇时，汲取自然的清新与活力；和肉类、海鲜相拥时，承载醇厚肉香和鲜美甜香；投身羹汤之中时，又氤氲出<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">温暖人心</span>的柔情。④甜的、咸的、辣的、酸的、鲜的、苦的，无论何种味道，稻米都能<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">欣然接受</span>，与之<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">和谐共生</span>。</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>语段中加点的三个短语结构相同。</p>",
+        "<p>句①中括号内的修饰语顺序不当。</p>",
+        "<p>句②的主干是\"稻米有包容性\"。</p>",
+        "<p>句③的各个分句之间有主次之分。</p>"
+      ],
+      "answer": {
+        "choice": "2"
+      },
+      "solution": "<p>本题考查汉语基础知识。A.\"温暖人心\"是动宾短语，\"欣然接受\"与\"和谐共生\"均为偏正短语，三个短语的结构不相同；B.句①中\"一条\"是数量词，\"坚韧\"是形容词。在现代汉语中，一般数量词在前，形容词在后，句①修饰语顺序恰当。D.句③中\"与蔬菜相遇时......；和肉类、海鲜相拥时......；投身羹汤之中时......\"，这几个分句是并列关系，分别阐述了稻米与\"蔬菜\"\"肉类、海鲜\"\"羹汤\"等不同食材相遇时的表现，其中不存在主次之分。故选C。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>文学、文化常识与名著阅读</p>",
+      "type": "单选"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>下列各项中表述不正确的一项是（ ）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>《论语》《庄子》以及《礼记》这三部作品都是春秋时期的儒家经典论著。</p>",
+          "<p>安徒生，丹麦作家，代表作有童话《皇帝的新装》《卖火柴的小女孩》等。</p>",
+          "<p>《红星照耀中国》按照时间顺序客观记录了作者\"探寻红色中国\"的见闻。</p>",
+          "<p>望闻问切是中医诊病的四种方法。望诊，即观察病人的气色、形态、动作等。</p>"
+        ],
+        "answer": {
+          "choice": "0"
+        },
+        "solution": "<p>本题考查文学常识。A.《庄子》是战国时期庄子及其后学所著的道家典籍，并非儒家经典论著；且《礼记》是由西汉礼学家戴圣编纂的儒家经典，并非春秋时期的经典论著。故选A。</p>"
+      },
+      {
+        "content": "<p>名著阅读</p><p>宁宁在假期阅读名著时，常常被其中的人物感动。开学后，他在学校的\"非遗手工坊\"为名著里的人物制作了三支毛笔，分别刻上了\"携勤\"\"铭韧\"\"问勇\"字样。</p><p>请从下面人物中任选其一，送给他体现其性格特点的毛笔，并结合相关情节说明理由。</p><p>祥子（《骆驼祥子》） 孙悟空（《西游记》） 保尔（《钢铁是怎样炼成的》）</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>示例一：我为祥子选\"携勤\"笔。因为年轻的祥子勤劳能干，为实现拥有一辆洋车的梦想努力拉车。</p><p>示例二：我为保尔选\"铭韧\"笔。因为保尔坚韧顽强，在艰苦的工作环境中，克服困难，坚持筑路。</p><p>示例三：我为孙悟空选\"问勇\"笔。因为孙悟空勇敢无畏，在保护唐僧取经的路上，降妖除魔，大显神通。</p>"
+        },
+        "solution": "<p>本题考查名著人物和情节，首先需理解材料中提到的每个毛笔上所刻的字的含义：\"携勤\"强调勤劳，\"铭韧\"侧重坚韧，\"问勇\"突出勇敢。</p><p>祥子，他十八岁来到北平城，认准了拉车这一行，成了高等人力车夫。经过三年的努力，买了一辆新车，但不久被大兵连人带车捉走，后来从兵营逃脱出来以后，为了攒钱买车，对花钱不放松，对挣钱更不放松。没有包月，他就拉整天，他非拉过一定的钱数不收车，不管时间和两腿，他玩了命似的拉车。他不惜和别人抢生意，只管拉上买卖。在曹宅拉包月时受曹先生的牵累，被孙侦探敲诈，失去全部积蓄。与虎妞结婚后，有一次顶着烈日拉车，烈日晒得人喘不过气来，他感到昏昏沉沉，很不舒服。午后狂风大作，又下起大暴雨，祥子被客人逼着冒雨拉车。经历了这冰火两重天，回到家里，祥子生起了病。由此可见，祥子是一个通过勤劳改变命运的追求的人，可赠予他\"携勤\"。</p><p>孙悟空，孙悟空面对天上各路神仙的怠慢，他敢于反抗，大闹天宫，最后在太上老君炼丹炉里竟然炼成了一双火眼金睛。在护送唐僧的取经路上，孙悟空降妖除怪，屡建奇功，例如\"三打白骨精\"\"三借芭蕉扇\"。他面对困难不屈不挠，勇往直前。 由此可见，孙悟空是一个勇敢正直的人，可赠予他\"问勇\"。</p><p>保尔，保尔出生在一个贫困的农民家庭，十六岁参加红军，和战友们一起为保卫苏维埃政权而浴血奋战，几次死里逃生；在医治战争创伤、恢复国民经济的艰难岁月，他又以全部的热情投身于和平劳动中；后来身体状况恶化，不得不躺在病床上时，他又克服种种困难，拿起笔来，以顽强的毅力开始创作，以另一种方式践行着他生命的誓言。由此可见，孙悟空是一个保尔的人，可赠予他\"铭韧\"。</p>",
+        "accessories": []
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>古诗文默写。</p><p>（1）何当共剪西窗烛，<input size=\"20\" readonly=\"readonly\" type=\"underline\">。（李商隐《夜雨寄北》）</p><p>（2）东风不与周郎便，<input size=\"20\" readonly=\"readonly\" type=\"underline\">。（杜牧《赤壁》）</p><p>（3）<input size=\"20\" readonly=\"readonly\" type=\"underline\">，千里共婵娟。（苏轼《水调歌头》）</p><p>（4）一鼓作气，再而衰，<input size=\"20\" readonly=\"readonly\" type=\"underline\">。（《曹刿论战》）</p><p>（5）中国快速发展的交通、通讯事业，用速度重新定义时间，用科技不断改写空间，让王勃《送杜少府之任蜀州》中的\"<input size=\"20\" readonly=\"readonly\" type=\"underline\">，<input size=\"20\" readonly=\"readonly\" type=\"underline\">\"在生活中得到了越来越生动的诠释。</p>",
+      "type": "填空",
+      "answer": {
+        "blanks": [
+          "却话巴山夜雨时",
+          "铜雀春深锁二乔",
+          "但愿人长久",
+          "三而竭",
+          "海内存知己",
+          "天涯若比邻"
+        ]
+      },
+      "solution": "<p>本题考查名句默写。默写题作答时，一是要透彻理解诗文的内容；二是要认真审题，找出符合题意的诗文句子；三是答题内容要准确，做到不添字、不漏字、不写错字。本题中的\"雀、春深、竭、知己、涯\"等字词容易写错。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>阅读下面两首诗，完成小题。</p><p><strong>【甲】</strong></p><p><strong>游山西村</strong></p><p>[宋]陆游</p><p>莫笑农家腊酒浑，丰年留客足鸡豚。</p><p>山重水复疑无路，柳暗花明又一村。</p><p>箫鼓追随春社近，衣冠简朴古风存。</p><p>从今若许闲乘月，拄杖无时夜叩门。</p><p><strong>【乙】</strong></p><p><strong>游淀湖</strong></p><p>[宋]卫泾</p><p>疎星残月尚朦胧，闲趁烟波一棹风。</p><p>始觉舟移杨柳岸，直疑身到水晶宫。</p><p>乌鸦天际墨千点，白鹭滩头玉一丛。</p><p>欸乃一声回首处，西山横在有无中。</p><p>[注]①疎（shū）：\"疏\"的异体字。②欸（ǎi）乃：形容摇橹的声音。</p><p>下面对两首诗的理解和分析不正确的一项是（ ）</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>【甲】诗颈联由自然转入人事，描绘了乡村社日将近的热闹场景，赞美了古朴的民俗。</p>",
+        "<p>【乙】诗颈联巧妙地以\"墨\"\"玉\"喻\"乌鸦\"\"白鹭\"，画面色彩对比鲜明，富有感染力。</p>",
+        "<p>两诗都用了\"疑\"字，分别写出诗人感觉前方无路时的迷惘和置身山水时的惊喜。</p>",
+        "<p>两诗都实写月光，渲染了静谧的氛围。【甲】诗中诗人乘月而归，【乙】诗中诗人乘月而游。</p>"
+      ],
+      "answer": {
+        "choice": "3"
+      },
+      "solution": "<p>两诗皆以游踪为线，甲诗写农家淳朴与山水之趣，充满生活气息；乙诗绘湖光晨色，以水墨意象营造空灵意境。陆诗豁达，卫诗清幽，各见匠心。</p><p>本题考查赏析诗歌内容。D.甲诗\"从今若许闲乘月，拄杖无时夜叩门\"的意思是，从今以后，如果可以乘着月光闲游，我一定拄着拐杖随时来敲你们的门。这是一种设想，其\"月光\"并非是真实的\"月光\"，本项的\"两诗都实写月光\"说法错误；故选D。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>阅读下面选文，完成下面小题。</p><p><strong>【甲】</strong></p><p>舜发于畎亩之中，傅说举于版筑之间，胶鬲举于鱼盐之中，管夷吾举于士，孙叔敖举于海，百里奚举于市。故天将降大任于是人也，必先苦其心<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">志</span>，劳其筋骨，饿其体肤，空乏其身，行拂乱其所为，所以动心忍性，曾益其所不能。</p><p>人恒过，然后能改；困于心，衡于虑，而后作；征于色，发于声，而后<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">喻</span>。入则无法家拂士，出则无敌国外患者，国恒亡。<u>然后知生于忧患而死于安乐也。</u></p><p>（节选自《孟子·告子下》）</p><p><strong>【乙】</strong></p><p>越王勾践与大夫种、范蠡入臣于吴。越王仰天太息，举杯垂涕，曰：\"今遭辱耻，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">为</span>天下笑，将孤之罪耶？<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">诸</span>大夫之责也？吾不知其咎，愿二三子论其意。\"大夫种、范蠡曰：\"闻古人曰：'居不幽，志不广；形不愁，思不远。'圣王贤主，皆遇困厄之难，蒙不救之耻，身拘而名尊，躯辱而声荣，处卑而不以为恶，居危而不以为薄。大王屈厄，臣诚尽谋。二国争道，未知所就。君王之危天道之数何必自伤哉？夫吉者，凶之门；福者，祸之根。<u>今大王虽在危困之际，孰知其非畅达之兆哉？</u>\"越王曰：\"孤虽入于北国，为吴穷虏，有诸大夫怀德抱术，以保社稷，孤何忧焉？\"</p><p>（节选自《吴越春秋》，有删减）</p>",
+      "type": "单选"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>下列句中加点词的意思相同的一项是（ ）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>必先苦其心<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">志</span> <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">志</span>怪者也（《北冥有鱼》）</p>",
+          "<p>而后<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">喻</span> 引<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">喻</span>失义（《出师表》）</p>",
+          "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">为</span>天下笑 可以<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">为</span>师矣（《〈论语〉十二章》）</p>",
+          "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">诸</span>大夫之责也 其西南<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">诸</span>峰（《醉翁亭记》）</p>"
+        ],
+        "answer": {
+          "choice": "3"
+        },
+        "solution": "<p>本题考查一词多义。A.意志/记载；B.了解、明白/比喻；C.被/成为；D.都指\"众多，各\"；故选D。</p>"
+      },
+      {
+        "content": "<p>把选文中画直线的句子翻译成现代汉语。</p><p>（1）然后知生于忧患而死于安乐也。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p><p>（2）今大王虽在危困之际，孰知其非畅达之兆哉？</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>（1）了解到这一切之后，就会明白常处忧愁祸患之中可以使人生存，常处安逸快乐之中可以使人死亡的道理了。</p><p>（2）现在大王虽然处于危难困厄的时候，但谁能知道这不是畅达兴盛的征兆呢？</p>"
+        },
+        "solution": "<p>本题考查学生对句子翻译能力。我们在翻译句子时要注意通假字、词类活用、一词多义、特殊句式等情况，如遇倒装句就要按现代语序疏通，如遇省略句翻译时就要把省略的成分补充完整。重点词有：（1）生：使......生存；死：使......死亡；安乐：安逸快乐；（2）危困：危难困厄；孰知：谁能知道。兆：征兆。</p>",
+        "accessories": []
+      },
+      {
+        "content": "<p>用\"/\"给【乙】文画波浪线的句子断句（断两处）。</p><p>君 王 之 危 天 道 之 数 何 必 自 伤 哉</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "君王之危/天道之数/何必自伤哉"
+          ]
+        },
+        "solution": "<p>本题考查文言文断句。根据文言文断句的方法，先梳理句子大意，结合语法，然后断句。一般来说，主谓之间，谓语和宾语、补语之间应该有停顿。句意：君王（您面临）的危险，（是）自然的定数，何必自己忧伤呢？。可知，\"君王之危\"是主语，\"天道之数\"是谓语，应断开；\"何必自伤哉\"这是对君子的劝告，应断开；故断为：君王之危/天道之数/何必自伤哉。</p>"
+      },
+      {
+        "content": "<p>【甲】【乙】两文蕴含丰富的道理。请填写表格，汲取古人的智慧。</p><table><thead><tr><th>角度</th><th>摘录语句</th><th>启示</th></tr></thead><tbody><tr><td>君主治国之道</td><td>【甲】文：出则无敌国外患者，国恒亡</td><td>要有忧患意识</td></tr><tr><td></td><td>【乙】文：有诸大夫怀德抱术，以保社稷</td><td>（1）<input size=\"25\" readonly=\"readonly\" type=\"underline\"></td></tr><tr><td>（2）<input size=\"25\" readonly=\"readonly\" type=\"underline\"></td><td>【甲】文：（3）<input size=\"25\" readonly=\"readonly\" type=\"underline\"></td><td>要积极改正错误</td></tr><tr><td></td><td>【乙】文：居不幽，志不广；形不愁，思不远</td><td>（4）<input size=\"25\" readonly=\"readonly\" type=\"underline\"></td></tr></tbody></table>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "要任用贤才",
+            "个人成长之道",
+            "人恒过，然后能改",
+            "艰苦的环境能造就人才"
+          ]
+        },
+        "solution": "<p>本题考查理解文章内容。第一空，乙文\"有诸大夫怀德抱术，以保社稷\"的意思是：有各位大夫心怀道德、胸有谋略，来保卫国家。从\"君主治国之道\"的角度来看，这表明君主想要治理好国家，需要依靠这些有品德、有才能的贤才。由此可得出\"要任用贤才\"的启示。第二空，结合题干\"要积极改正错误\"和乙文\"居不幽，志不广；形不愁，思不远\"，可知：在此强调的是个人在成长路上，遇到困难险阻的时候的态度，体现艰苦环境对塑造人才的积极作用。结合\"角度：君主治国之道\"的句式可拟写为\"个人成长之道\" 。第三空，所填的摘录语句对应\"要积极改正错误\"这一启示，应是甲文中\"人恒过，然后能改\"，这强调的是人面对错误的时候要积极改正错误。第四空，乙文\"居不幽，志不广；形不愁，思不远\"是说人在艰苦的环境中志向和思想能得到提升，表明艰苦环境对塑造人才的积极作用。由此可得出\"艰苦的环境能造就人才\"的启示。</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>2025年是中国人民抗日战争暨世界反法西斯战争胜利80周年，学校举办\"传承东北抗联精神\"纪念图册征集活动。为完成制作纪念图册的相关任务，宁宁搜集了下列材料。</p><p><strong>【材料一】</strong>从1931年九一八事变，到1945年日本侵略者投降，东北抗联辗转于白山黑水之间，进行了长达14年不屈不挠的斗争，开辟了全国最早、坚持时间最长的抗日战场，在中国人民抗日战争和世界反法西斯战争中发挥了重要作用。</p><p>&nbsp; &nbsp; 东北抗联与敌人进行了近10万次大小战斗，消灭了18万敌人，牵制了70多万日本关东军精锐部队，有力支援了全国的抗日战争，为中国和世界反法西斯战争胜利作出了不可磨灭的贡献。</p><p>&nbsp; &nbsp; 以\"忠诚于党的坚定信念，勇赴国难的民族大义，血战到底的英雄气概\"为内核的东北抗联精神，是第一批被纳入中国共产党人精神谱系的伟大精神，需要我们永远铭记与传承。</p><p>（选自《人民日报》《解放军报》，有删改）</p><p><strong>【材料二】</strong>有一群人始终挺立在一个民族的前列，永远不会低头屈服，永远不会畏缩后退。</p><p>&nbsp; &nbsp; 在\"火烤胸前暖，风吹背后寒\"的极端艰苦条件下，为了掩护主力突围西征，李兆麟率领部队面对百倍于我方的敌军，一路血战，一路高唱。</p><p>&nbsp; &nbsp; 1938年10月，已行至河边准备渡河的8名妇女团战士，为掩护大部队突围，毅然放弃渡河，背水一战、弹尽粮绝之际，面对敌人\"抓活的\"的逼降，女战士们誓死不屈。8人毁掉枪支，互相搀扶着踏入汹涌的乌斯浑河，壮烈殉国。</p><p>（选自《人民日报》《解放军报》，有删改）</p><p><strong>【材料三】</strong></p><table><tr><td><img src=\"media/image4.png\" alt=\"东北抗联密营生活场景复原蜡像\" width=\"1.65625in\" height=\"1.0625in\"><br>（图一）东北抗联密营生活场景复原蜡像<br><br>大小不一、形式各异的密营为抗日斗争提供了坚实的后勤保障。</td><td><img src=\"media/image5.png\" alt=\"地戗子式密营复原图\" width=\"1.6770833333333333in\" height=\"1.0625in\"><br>（图二）\"地戗（qiāng）子\"式密营复原图<br><br>这种密营就地取材，搭出\"人\"字形框架，上覆茅草树皮。</td></tr><tr><td><img src=\"media/image6.png\" alt=\"马架子式密营复原图\" width=\"1.6666666666666667in\" height=\"1.0625in\"><br>（图三）\"马架子\"式密营复原图<br><br>这种密营前边高抬如马头，后面低垂如马尾，因此叫\"马架子\"。</td><td><img src=\"media/image7.png\" alt=\"抗日将领魏拯民病逝密营复原图\" width=\"1.3645833333333333in\" height=\"1.0625in\"><br>（图四）抗日将领魏拯民病逝密营复原图<br><br>没有医生、药品、粮食，魏拯民病情不断加重，最终病逝，年仅32岁。</td></tr></table><p><strong>【材料四】</strong>东北抗联研究存在着\"有史无迹\"的难题，东北抗联遗址考古工作为东北抗联研究提供了翔实的考古实物资料，从考古学角度实证了抗战史实。这些考古发现生动地展现了东北抗联艰苦卓绝的战斗经历。</p><p>&nbsp; &nbsp; 据介绍，到2023年，全国登记的抗联遗址611处、纪念设施（场馆）35家、文物藏品近10万件/套，重要抗联文物重大险情基本消除，保存状况明显改善。</p><p>（选自《人民日报》《光明日报》，有删改）</p>",
+      "type": "单选"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>宁宁为图册编写了四则简介，其中与材料内容不相符的一条是（ ）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>东北抗联开辟了全国最早、坚持时间最长的抗日战场。</p>",
+          "<p>东北抗联在近10万次的大小战斗中消灭了18万敌人。</p>",
+          "<p>东北抗联遗址考古工作从考古学角度实证了抗战史实。</p>",
+          "<p>所有抗联文物重大险情全部消除，保存状况明显改善。</p>"
+        ],
+        "answer": {
+          "choice": "3"
+        },
+        "solution": "<p>本题考查辨析材料。D.结合材料四第二段\"据介绍，到2023年，全国登记的抗联遗址611处、纪念设施（场馆）35家、文物藏品近10万件/套，重要抗联文物重大险情基本消除，保存状况明显改善\"，可知：文章只是强调\"重要抗联文物重大险情基本消除\"，并非是\"所有抗联文物重大险情全部消除\"，选项的表述与材料内容不符；故选D。</p>"
+      },
+      {
+        "content": "<p>宁宁根据图册准备了一份\"抗联精神探究学习单\"在班级分享。请你依据【材料一】【材料二】将下面内容补写完整。</p><table><thead><tr><th><strong>抗联精神探究学习单</strong></th></tr></thead><tbody><tr><td>是什么 <input size=\"20\" readonly=\"readonly\" type=\"underline\">，（1）<input size=\"20\" readonly=\"readonly\" type=\"underline\">，（2）<input size=\"20\" readonly=\"readonly\" type=\"underline\"></td></tr><tr><td>为什么 因为有魏拯民、李兆麟这样的英雄个体。<br><br>因为有（3）<input size=\"20\" readonly=\"readonly\" type=\"underline\">这样的英雄群体。<br><br>因为有进行了长达14年不屈不挠斗争、英雄辈出的民族</td></tr></tbody></table>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "忠诚于党的坚定信念",
+            "勇赴国难的民族大义",
+            "血战到底的英雄气概",
+            "8名妇女团战士"
+          ]
+        },
+        "solution": "<p>本题考查概括文章内容。第一空、第二空：根据【材料一】第三段\"以'忠诚于党的坚定信念，勇赴国难的民族大义，血战到底的英雄气概'为内核的东北抗联精神\"可知：抗联精神是忠诚于党的坚定信念，勇赴国难的民族大义，血战到底的英雄气概。第三空，结合题干\"英雄群体\"，找到材料二第三段\"1938年10月，已行至河边准备渡河的8名妇女团战士，......互相搀扶着踏入汹涌的乌斯浑河，壮烈殉国\"，可知：8名妇女团战士为了掩护大部队突围，壮烈殉国。</p>"
+      },
+      {
+        "content": "<p>宁宁从【材料三】中选取图一、图二、图三，制作了题为《密营：林海雪原上的生命堡垒》的图册插页。请你配写一段说明性文字，介绍密营的形式和作用。要求：运用一种说明方法，不超过60字。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>示例一：密营大小不一、形式各异，例如\"地戗子\"式密营、\"马架子\"式密营等。密营为抗日斗争提供了坚实的后勤保障。</p><p>示例二：密营大小不一、形式各异，其中\"马架子\"式密营前边高抬如马头、后面低垂如马尾。密营为抗日斗争提供了坚实的后勤保障。</p>"
+        },
+        "solution": "<p>本题考查图文转换。结合图一可知：东北抗联的密营大小不一、形式各异，为抗日斗争提供了坚实的后勤保障。结合图片二可知：\"地戗子\"式的密营，这种密营就地取材，搭出类似\"人\"字形框架，上覆茅草树皮。结合图片三可知：\"马架子\"式密营因前边高抬如马头，后面低垂如马尾而得名。结合以上分析从形式和作用两方面对密营进行介绍，运用恰当的说明方法来介绍即可。</p>",
+        "accessories": []
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>阅读下面选文，完成下面小题。</p><p><strong>寂静的水闸</strong><sup>①</sup></p><p>梁衡</p><p>①水闸是干什么的？拦洪蓄水，调节水流。我们常见的水闸是天生与洪水搏斗、逆水而生的\"拼命三郎\"，但有谁见过巍然如山却寂静无声、与黄河相伴50年而滴水未沾的水闸呢？有，山东省齐河县豆腐窝水闸就是一个典型。</p><p>②黄河极其任性，它曾北夺海河入渤海，南夺淮河入黄海，它成就了丰沃的土地，也曾威胁着百姓的生存。人与水做着漫长的拉锯战。直到1972年的一天，在黄河下游河堤最险的地段之一——号称\"黄河咽喉\"的齐河县豆腐窝，人与水开始了一次心平气和的\"谈判\"。黄河携万里之势，挟16亿吨泥沙之威上门对话。<u>齐河人则一片诚心：\"黄河，不要再闹了。你挟沙远行到此也已很累，我给你修一座大门，出得门去大片空地，足够你横躺竖卧。行不？\"黄河说：\"不是我要闹，实在是年年沙淤堤高，逼得我走投无路。\"齐河人说：\"我们现在就动工。\"</u>振臂一呼，20万众上阵，8个月为黄河筑起一个新居，6个乡镇、近5万人搬走，空出100平方公里土地，同时盖起一座8层楼高的7孔大闸。黄河为这份诚心所感动，50年间竟没有一次来\"敲门\"。闸前黄河滚滚去，闸后草木悄悄绿。</p><p>③我曾两次到豆腐窝大闸。第一次是到堤上看一个治水史迹展，听讲解员讲述了齐河人不懈努力的治黄故事。1958年，在当地抗洪抢险中有两位民工巡堤，见一处管涌急喷，手边没有合适用料，一人急屈身坐进管口，犹如战士以身堵枪眼。另一人爬上堤岸大呼求救，何等惊心动魄！1970年，齐河堤防段研发制造的黄河第一艘吸泥船\"红心一号\"下水。这艘吸泥船每小时能出水700立方米，其吐沙量之大在当时堪称大新闻。如今这条船已退役，正静卧岸上接受游客的礼赞。</p><p>④来到离展览馆不远的大闸脚下，看到陡峭的闸墙、粗大的钢缆、冰冷的铁门。豆腐窝水闸没有故事，也没有上过什么报纸，游客更不会注意到它。工作人员说，你别看它这样安静，每年这闸门总要轰隆隆地提升几次，试试运转灵不灵。闸前的土层里预埋着炸药，遇有紧急情况，一声雷鸣，土飞门开，洪水就夺门而出。但是50年来这种情况还没有过，黄河一直遵守与人的承诺。</p><p>⑤那次离开豆腐窝水闸后我心里总有一丝的惆怅。我们平常一提治黄，就是三门峡、刘家峡、小浪底......可有谁知道这个名不见经传的\"豆腐窝\"呢？谁会想到它、歌颂它呢？\"为隐者传名，为无名者立传\"是记者的职责，我于心不忍，两年后重访豆腐窝。</p><p>⑥正是深秋，红的高粱、黄的玉米、白的棉花，大地一片五彩斑斓。大闸脚下是一条水泥路，阳光下村民晾晒的玉米、棉花堆积如山。我说这样不妨碍闸门的起吊吗？听工作人员说，近年黄河上游治理有成，下游河床降低，危险已经解除。豆腐窝大闸已光荣退役，将成文物。我立即想到闸外那100平方公里的备用土地，于是我又花了两天的时间去逛这个大闸的后院。这里已经入驻了不少高新企业。有大型游乐园，过山车惊险刺激；有野生动物园，长颈鹿的头伸到二楼阳台上去吻客人的手；有珍宝馆，我第一次看到传说中的夜明珠，在黑暗中熠熠发光。而传统农业也大放光彩，大型粮库的粮塔高耸入云，当地的美食手工挂面居然细得能穿过针眼去，而且还是空心的。最可看的是一座博物馆，在诉说黄河的历史。50年前人送黄河100平方公里的土地，50年后黄河又分毫不少地还赠于人，上面还附加了这么多的宝贝，豆腐窝变成了科技窝、财富窝、欢乐窝。人敬自然一尺，自然敬人一丈，水闸为证。</p><p>⑦这闸的设计者是谁？几经查访不得其详。我想他们和这水闸一样，本来也是不想留名的。但他们与闸都有功于世，何忍其没于尘埃？遂书见闻，是为记。</p><p>（选自《人民日报》，有删改）</p><p>[注]①文章原标题为《在齐河，有个豆腐窝水闸》。</p>",
+      "type": "单选"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>概括选文内容，填写下表。</p><table><thead><tr><th>寻访历程</th><th>所见</th><th>所闻</th></tr></thead><tbody><tr><td>第一次到访</td><td>治水史迹展</td><td>（1）<input size=\"25\" readonly=\"readonly\" type=\"underline\"></td></tr><tr><td></td><td>（2）<input size=\"25\" readonly=\"readonly\" type=\"underline\"></td><td>大闸处于备用状态</td></tr><tr><td>第二次到访</td><td>（3）<input size=\"25\" readonly=\"readonly\" type=\"underline\"></td><td>（4）<input size=\"25\" readonly=\"readonly\" type=\"underline\"></td></tr></tbody></table>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "齐河人不懈努力的治黄故事",
+            "大闸的外观（陡峭的闸墙、粗大的钢缆、冰冷的铁门）",
+            "豆腐窝地区的繁荣景象",
+            "大闸光荣退役"
+          ]
+        },
+        "solution": "<p>本题考查概括文章内容。第一空，结合\"治水史迹展\"，找到第③段\"第一次是到堤上看一个治水史迹展，听讲解员讲述了齐河人不懈努力的治黄故事\"，可得出：齐河人不懈努力的治黄故事。第二空，结合\"大闸处于备用状态\"，找到第④段\"来到离展览馆不远的大闸脚下，看到陡峭的闸墙、粗大的钢缆、冰冷的铁门\"，可知：作者看到大闸陡峭的闸墙、粗大的钢缆、冰冷的铁门，这是大闸的外观。第三空，第四空，结合\"第二次到访\"，找到第⑥段\"正是深秋，红的高粱、黄的玉米、白的棉花，大地一片五彩斑斓。......豆腐窝大闸已光荣退役，将成文物\"\"这里已经入驻了不少高新企业。......豆腐窝变成了科技窝、财富窝、欢乐窝\"，可知：作者再次来到豆腐窝，发现这里进驻不少高新企业，变成了科技窝、财富窝、欢乐窝。到处都呈现繁华的景象。豆腐窝大闸已光荣退役，将成文物。</p>"
+      },
+      {
+        "content": "<p>选文第①段为什么要写常见的水闸？</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"2\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>使常见的水闸与豆腐窝水闸形成对比；突出了豆腐窝水闸寂静无声、滴水未沾的独特性；引出豆腐窝水闸这一写作对象。</p>"
+        },
+        "solution": "<p>本题考查句段的作用。结合第①段\"水闸是干什么的？拦洪蓄水，调节水流。......有，山东省齐河县豆腐窝水闸就是一个典型\"，可知：通过将常见的水闸的功能是\"拦洪蓄水，调节水流\"的，是与洪水搏斗的\"拼命三郎\"，而豆腐窝水闸却是\"巍然如山却寂静无声、与黄河相伴50年而滴水未沾\"。这种对比突出了豆腐窝水闸寂静无声、滴水未沾的独特性。通过对比，作者引出了本文的写作对象——豆腐窝水闸的独特存在，为后文详细描述这座水闸的历史、作用和意义做了铺垫。</p>",
+        "accessories": []
+      },
+      {
+        "content": "<p>选文中画线句虚拟了一次人与黄河的对话，精读这段对话，回答下面两个问题。</p><p>（1）这段对话写了什么？</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p><p>（2）这段对话的语言特点是<input size=\"15\" readonly=\"readonly\" type=\"underline\">、<input size=\"15\" readonly=\"readonly\" type=\"underline\">。</p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>（1）黄河由于沙淤堤高将要泛滥，齐河人决定修建水闸来治理黄河。</p><p>（2）生动形象（运用拟人的语句） 诙谐幽默 口语化</p>"
+        },
+        "solution": "<p>本题考查理解句子的内容和写法。（1）\"我给你修一座大门，出得门去大片空地，足够你横躺竖卧\"\"不是我要闹，实在是年年沙淤堤高\"\"我们现在就动工\"，这交代了修筑豆腐窝水闸的原因，这是因为黄河由于年年沙淤堤高，即将要泛滥，齐河人决定修建水闸来治理黄河。\"行不\"这些话语充满口语化的特点，使文章内容富有生活气息。\"我给你修一座大门，出得门去大片空地，足够你横躺竖卧\"\"不是我要闹，实在是年年沙淤堤高，逼得我走投无路\"在此运用拟人手法，把黄河当做人来写，表现黄河与人的\"谈判\"内容，体现人们科学治河的思想。语言生动幽默，富有口语化。</p>",
+        "accessories": []
+      },
+      {
+        "content": "<p>简析选文第⑤段在结构上的作用。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"2\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>承上启下（过渡）。作者离开豆腐窝水闸后心生惆怅，承接上文他第一次到访水闸；作者产生为隐者立传的想法，引出下文重访水闸的见闻。</p>"
+        },
+        "solution": "<p>本题考查段落的作用。结合第③段\"第一次是到堤上看一个治水史迹展，听讲解员讲述了齐河人不懈努力的治黄故事\"，第④段\"工作人员说，你别看它这样安静，......土飞门开，洪水就夺门而出\"，第⑤段\"那次离开豆腐窝水闸后我心里总有一丝的惆怅。......可有谁知道这个名不见经传的'豆腐窝'呢\"\"我于心不忍，两年后重访豆腐窝\"，第⑥段\"正是深秋，红的高粱、黄的玉米、白的棉花，......豆腐窝大闸已光荣退役，将成文物\"，可知：上文介绍了作者第一次到豆腐窝水闸了解其齐河人不懈努力的治黄故事，作者立下为为隐者立传的想法。\"我心里总有一丝的惆怅\"是承接上文，强调作者离开豆腐窝水闸后心生惆怅；\"两年后重访豆腐窝\"引出下文后来重访豆腐窝，发现其变化的内容。由此可见，本段起到承上启下的作用。</p>",
+        "accessories": []
+      },
+      {
+        "content": "<p>选文中作者赞美了齐河人的哪些精神品质？请概括出三种。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"2\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>赞美了齐河人勤劳能干、英勇无畏、团结一致、不求名利、坚持不懈、善于创新等精神品质。</p>"
+        },
+        "solution": "<p>本题考查理解文章主题。结合第②段\"20万众上阵，8个月为黄河筑起一个新居，6个乡镇、近5万人搬走，空出100平方公里土地，同时盖起一座8层楼高的7孔大闸\"，可知：为了治理黄河，大家齐心协力，为黄河空出100平方公里土地，盖起大闸来治理黄河，这体现人们团结一致的精神。结合第③段\"在当地抗洪抢险中有两位民工巡堤，见一处管涌急喷，手边没有合适用料，一人急屈身坐进管口，犹如战士以身堵枪眼。另一人爬上堤岸大呼求救，何等惊心动魄\"，可知：当年人们发现险情的时候，奋不顾身，用人的力量来堵管涌急喷的问题，这体现人们英勇无畏的精神。结合第③段\"齐河堤防段研发制造的黄河第一艘吸泥船'红心一号'下水。这艘吸泥船每小时能出水700立方米，其吐沙量之大在当时堪称大新闻\"，可知：齐河堤防段研发制造的黄河吸泥船，这体现人们运用科技手段、勇于突破传统治水方式的智慧，展现了开拓进取的精神。结合第③段\"第一次是到堤上看一个治水史迹展，听讲解员讲述了齐河人不懈努力的治黄故事\"，可知：人们一直以来都在不懈治理黄河，这体现人们勤劳能干、坚持不懈的精神。结合第⑦段\"这闸的设计者是谁？几经查访不得其详。我想他们和这水闸一样，本来也是不想留名的。但他们与闸都有功于世，何忍其没于尘埃\"，可知：豆腐窝水闸默默无闻，为治理黄河贡献自己的一份力量，这体现不求名利的精神品质。</p>",
+        "accessories": []
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>阅读下面选文，完成下面小题。</p><p><strong>读书贵在破</strong></p><p>啸风</p><p>①\"读书破万卷，下笔如有神\"，杜甫此句真是字字珠玑，令人神往。一个\"破\"字妙极了，既点出了读书的量，又点出了读书的质。\"破\"至少有三个层次的内涵：第一层点出了读书之勤。把书页都翻烂了，与\"韦编三绝\"异曲同工。第二层点出了读书之透。不仅把书翻烂了，还能解其意，会其神，释疑解惑。第三层点出了读书之悟。悟出了书外之意、书外之理，是更高层次的读透。</p><p>②世上勤读者不少，但读破者不多。一些人喜欢读书，但囫囵吞枣，不求甚解；还有一些人，喜欢钻到书堆里抠字眼；另有一些人，知识满腹，但读书不疑书，唯书是从，不问实际。我们不能说这些人不是勤读者，可惜他们浪费了许多大好光阴，也只读出了第一层次。可见，读书贵在破。</p><p>③那么，该如何将书读破？</p><p>④专一有恒好破书。滴水瞄准一处，持之不懈可穿石。读书如滴水，围绕一个主题或者一个问题，广泛涉猎，精读思考，天长日久，终会破题。<u>苏轼喜欢把书分成若干专题，一个专题一个专题地熟读精思，坚持不懈，这种方法不仅帮助苏轼积累了深厚的学问，也对后世学者产生了深远的影响。</u>马克·吐温说过：\"人的思想是了不起的，只要专注于某一项事业，那就一定会做出使自己吃惊的成绩来。\"</p><p>⑤善于联想好破书。书对一些善读的人来说，是一个酵头，可以蒸出一锅香喷喷的馒头。一篇文章、一本书可以读出许多篇文章、许多本书。毛泽东知识渊博，读起书来善于联想，由此及彼、由古至今，思路开阔。达尔文研究生物进化30多年，读书积累无数，却没想出一个简单的贯串说明。一天，他无意中读到了马尔萨斯的人口论，悟出物竞天择的道理，成就了巨著《物种起源》。</p><p>⑥处处有心好破书。做生活的有心人，带着问题勤琢磨，时刻把书中疑惑之处装在脑里，放在心上，多动脑筋多思考；带着问题勤观察，观察要与读书相结合，把观察到的事物与书中所写联系起来，相互印证和比较，通过思考加工，加深对书的理解，必有新的发现和感悟；带着问题勤听勤问，问与学相辅相成，对书中的疑惑和不解，要虚心勤问。街谈巷议，必有所采，只要带着耳朵细细听，终会有所获。</p><p>⑦习惯不同，读书不一，方法多样，但有一点应成共识——读书贵在破，不破是白读。沿着将书读破的路走下去，前方会越来越宽广，思想的天空会越来越深邃、清朗。</p><p>（选自《应用写作》，有删改）</p>",
+      "type": "单选"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>厘清选文思路，完成下面图表。</p><p>【三层内涵析\"破\"义】（1）<input size=\"15\" readonly=\"readonly\" type=\"underline\">→透→悟</p><p><img src=\"media/image10.png\" alt=\"向下箭头\" width=\"0.22916666666666666in\" height=\"0.3958333333333333in\"></p><p>【三类读者引论点】中心论点：（2）<input size=\"30\" readonly=\"readonly\" type=\"underline\"></p><p><img src=\"media/image10.png\" alt=\"向下箭头\" width=\"0.22916666666666666in\" height=\"0.3958333333333333in\"></p><p>【三种做法明方向】专一有恒、（3）<input size=\"15\" readonly=\"readonly\" type=\"underline\">、（4）<input size=\"15\" readonly=\"readonly\" type=\"underline\"></p><p><img src=\"media/image10.png\" alt=\"向下箭头\" width=\"0.22916666666666666in\" height=\"0.3958333333333333in\"></p><p>重申论点，强调意义</p>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "勤",
+            "读书贵在破",
+            "善于联想",
+            "处处有心"
+          ]
+        },
+        "solution": "<p>本题理解文章内容，梳理文章结构。（1）结合第①段\"'破'至少有三个层次的内涵：第一层点出了读书之勤。......第二层点出了读书之透。......第三层点出了读书之悟。......\"，可知：\"破\"至少有三个层次的内涵，分别是\"勤\"\"透\"\"悟\"。（2）结合\"题目：读书贵在破\"，第①段\"'读书破万卷，下笔如有神'，......又点出了读书的质\"，第②段\"世上勤读者不少，但读破者不多。......可见，读书贵在破\"，可知：文章一开始由杜甫的诗歌点出\"破\"字的意蕴，然后列举人们读书的不同情况，指出许多勤读者仅停留在\"破\"的第一层次，从而提出\"读书贵在破\"的中心论点，照应题目。（3）结合第⑤段\"善于联想好破书\"，可得出：善于联想好破书。（4）结合第⑥段\"处处有心好破书\"，可得出：处处有心好破书。</p>"
+      },
+      {
+        "content": "<p>简要分析选文第④段画直线的句子是怎样论证\"专一有恒好破书\"的？</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"2\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>运用举例论证。举了苏轼以专题的形式，专一持久地读书，从而积累学问、对后世产生深远影响的事例，具体有力地证明了观点。</p>"
+        },
+        "solution": "<p>本题考查分析论证方法及其作用。这句话举了苏轼以专题的形式，专一持久地读书的例子，运用了举例论证的论证方法；结合第④段\"专一有恒好破书\"\"这种方法不仅帮助苏轼积累了深厚的学问，也对后世学者产生了深远的影响\"可知，苏轼因\"专一有恒\"取得了实际成就，具体有力地证明了\"专一有恒好破书\"的观点，使得论证更加具体和有说服力。</p>",
+        "accessories": []
+      },
+      {
+        "content": "<p>简析选文第⑤段画波浪线句子的含义，并结合自己的阅读经历谈谈你对这句话的理解。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>含义：把读书所得与平时积累联系在一起，激发联想，触类旁通，形成自己的理解和感悟。（在读书时善于联想，由此及彼、由古至今，思路开阔）</p><p>具体阅读经历：</p><p>示例一：我读了《钢铁是怎样炼成的》，主人公保尔让我联想到《红岩》中的江姐，他们都是为了革命理想而不懈奋斗的战士。</p><p>示例二：我读了选文，联想到《史记》中赵括的故事，他熟读兵书，但在指挥作战中，不知变通，最终导致赵国兵败。可见唯书是从，不问实际地读书，不仅无用，还会误事。</p>"
+        },
+        "solution": "<p>本题考查理解文中重要句子的含义。\"一篇文章、一本书\"代表阅读的原文本，\"许多篇文章、许多本书\"并非指数量上的增多，而是指从原文本中延伸出的相关知识、多元思考、深层联想与感悟。强调阅读时通过联想能够突破书籍本身的限制，挖掘出更丰富的知识和思想，触类旁通，形成自己的理解和感悟，是对\"善于联想好破书\"这一观点的具体表达，强调了读起书来善于联想的重要性。</p><p>结合自身阅读经历谈理解时，需紧扣\"联想\"和\"知识拓展\"两个关键要素。明确指出阅读的书籍或文章，说明收获与感悟，强调通过联想获得的新认知、新思考，体现\"读出许多篇文章、许多本书\"的效果即可。</p>",
+        "accessories": []
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>从下列两题中，任选其一，按要求作文。</p><p><strong>题目：\"他们\"与我</strong></p><p>要求：①自选角度，自定立意，自选文体（诗歌、戏剧除外）。②字迹工整，书写清楚，卷面整洁。③不少于600字。④不得套作、抄袭，不得透露个人信息。</p><p style='text-align: center;'><strong>\"他们\"与我</strong></p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"15\" data-punctuation=\"\" data-first-line-width=\"600\"></full-line-blank></p>",
+      "type": "简答",
+      "answer": {
+        "answer": "<p>&nbsp; &nbsp;在人生的长河中，我们常常以为自己是孤独的航行者，却不知有多少\"他们\"如繁星般照亮我们的旅程。这些\"他们\"或许是人，或许是物，或许是某个瞬间，都在不经意间成为我们生命中的灯塔，指引我们前行。</p><p>&nbsp; &nbsp;那些给予我们温暖的人，是生命中最珍贵的\"他们\"。记得初中时，我的数学成绩一度跌入谷底，是张老师每天放学后为我耐心讲解题目，用红笔在作业本上写下\"相信你能做到\"的批注。还有我的同桌小林，总是在我沮丧时递来一颗糖果，用她特有的幽默驱散我的阴霾。这些温暖的\"他们\"，如同冬日里的阳光，融化了成长路上的坚冰。</p><p>&nbsp; &nbsp;那些激发我们思考的\"他们\"，往往以挑战者的姿态出现。初二那年，我参加了全市辩论赛，对手学校的一辩手思维缜密、言辞犀利，几次将我的论点驳得体无完肤。赛后，我独自在空荡的教室里反思到深夜。正是这样的\"他们\"，像一面镜子照出我的不足，又像磨刀石般砥砺我的思想。古人云：\"三人行，必有我师\"，每一个让我们感到压力的对手，都是上天派来帮助我们成长的老师。</p><p>&nbsp; &nbsp;而大自然中的\"他们\"，则以无声的方式滋养着我们的心灵。外婆家后院的老槐树，每年春天都开满洁白的花朵，我在树下读书时，常有花瓣飘落书页间；雨后的清晨，蜗牛在湿润的泥土上画出银色的轨迹；深秋的傍晚，成群的大雁排成人字形飞过橘红色的天空。这些看似微不足道的\"他们\"，却在不经意间教会我们生命的坚韧与美好。</p><p>&nbsp; &nbsp;回望来路，正是无数个\"他们\"构成了我生命的经纬。他们或许不会永远陪伴，但留下的印记却成为永恒。在这个世界上，没有人是真正的孤岛，我们都在与无数个\"他们\"的相遇中，完成自我的塑造与成长。珍惜每一个\"他们\"，就是珍惜生命最丰厚的馈赠。</p>"
+      },
+      "solution": "<p>【写作指导】结合材料可知，题目中\"他们\"指代范围广泛，既可以是身边具体的人，如给予鼓励的队友、引发反思的对手、带来启发的评委，也可以是抽象或具体的事物，如一次全新的挑战、一片璀璨的星空、一只活泼的小猫等。这些人或事物都在\"我\"的生活中扮演着重要角色，对\"我\"产生了积极影响。\"他们\"强调的是多个人或多种事物，这是一个群体。\"与我\"明确了写作视角和内容方向，强调\"他们\"和\"我\"之间的互动与关联。文章要着重展现\"他们\"对\"我\"的影响，以及\"我\"在与\"他们\"相处过程中的感受、变化和成长。这种关系可以是行为上的引导、情感上的支持、思想上的启发等。\"与我\"的表述暗含了自我成长的主题。</p><p>【写作思路】本文建议写成记叙文。写作前要思考，\"他们\"是谁，\"他们\"对\"我\"的成长中有什么影响，文章要将重点放在\"我\"从\"他们\"身上获得了什么，\"我\"如何因为\"他们\"而发生改变，从而使文章具有深度和内涵。如果写\"他们\"是身边的人，叙写身边的人对\"我\"的影响，如父母关心\"我\"的生活，老师关心\"我\"的学业，朋友陪伴\"我\"的成长，他们让\"我\"感受到生活的美好与快乐。如果写的他们是物，可写生活中一些坚强积极向上的事物对\"我\"成长的意义。例如石缝间的植物给予\"我\"坚强的勇气；蚂蚁齐心协力搬食物，教会\"我\"要团结同学，在集体中获得成长的力量；早上穿越黑暗的太阳让\"我\"懂得，没有什么黑暗是越不过的。文章要通过具体写人写景，详写\"他们\"如何走进\"我\"的生活、触动\"我\"的内心、给\"我\"带来什么改变或感悟。行文时要用\"我\"的视角和感受整件事情，突出\"他们\"让\"我\"看到世界的美好，表现积极向上的主题。</p>",
+      "accessories": []
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>在成功演出《天下第一楼》后，兴辽中学话剧社召开经验总结会。</p><p>宁宁说：\"台上精彩的表演，来自台下的深研剧本和精心排练。\"</p><p>文文说：\"你说得有道理，但今天面对突发状况时，大家的临场发挥，也成就了演出的精彩。\"</p><p>上面这段对话引发了你怎样的联想和思考？请自拟题目，写一篇文章。</p><p>要求：①自选角度，自定立意，自选文体（诗歌、戏剧除外）。②字迹工整，书写清楚，卷面整洁。③不少于600字。④不得套作、抄袭，不得透露个人信息。</p><p style='text-align: center;'><strong>台上一分钟，功夫在\"双向\"</strong></p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"15\" data-punctuation=\"\" data-first-line-width=\"600\"></full-line-blank></p>",
+      "type": "简答",
+      "answer": {
+        "answer": "<p>&nbsp; &nbsp;《天下第一楼》的演出成功，让宁宁和文文的对话有了具象的注脚——台上的精彩从不是单一变量的结果。深研剧本是根基，临场发挥是枝叶，二者如同飞鸟的双翼，缺一便难越山海。</p><p>&nbsp; &nbsp;台下的积淀是所有精彩的起点。就像《天下第一楼》里的演员，若不反复揣摩卢孟实的傲骨与无奈，不把每句台词的语气、每个动作的幅度刻进肌肉记忆，台上的表演便会沦为空洞的模仿。程派传人张火丁为演好《锁麟囊》，曾对着镜子练水袖三个月，只为\"朱楼找球\"那三十秒的身段能兼具柔美与苍凉。这种\"台下十年功\"的深耕，是艺术创作的坐标系，让所有表达都有了精准的落点。没有对剧本的通透理解，没有千百次排练形成的肌肉记忆，所谓\"精彩\"不过是空中楼阁。</p><p>&nbsp; &nbsp;但舞台从不是复刻排练室的机器。当意外突至，临场的应变能力便成了化险为夷的关键。话剧《雷雨》某次演出时，侍萍的道具手帕不慎掉落，饰演者没有慌乱，反而顺势弯腰捡拾，口中加了句\"这旧物件总怕丢，就像人一样\"，既贴合人物心境，又让剧情更添真实感。这种\"即兴创作\"并非凭空而来，而是建立在对角色的深度共情之上——就像《天下第一楼》的演员，若对人物关系了如指掌，即便灯光突然暗了半秒，也能借着台词的顿挫自然过渡。临场发挥不是脱离轨道的任性，而是以积淀为圆心的灵活转动。</p><p>&nbsp; &nbsp;台下积淀与临场发挥，本质上是\"守\"与\"变\"的共生。深研剧本是守住艺术的内核，让表达有不变的根基；临场发挥是在坚守内核的前提下应变，让表达有鲜活的姿态。就像书法中的\"中锋用笔\"是根基，\"侧锋取势\"是变化，唯有二者结合，才能写出既有筋骨又有灵气的作品。若只重排练不重应变，演出会像按程序运行的机器人，失了灵气；若只靠临场忽视积淀，表演便成了无源之水，难有力量。</p><p>&nbsp; &nbsp;《天下第一楼》的成功启示我们：所有值得称道的成果，都是\"台下功夫\"与\"台上智慧\"的共舞。无论是舞台表演，还是人生赛场，先沉下心打好基础，再以灵活之心应对变化，方能在既定的轨道上，走出属于自己的精彩。</p>"
+      },
+      "solution": "<p>【写作指导】材料围绕兴辽中学话剧社演出《天下第一楼》后的经验总结会展开，宁宁强调台上精彩源于台下深研剧本和精心排练，文文则指出临场发挥也成就了演出的精彩。整体来看，材料旨在引导我们思考成功背后的多种因素，即扎实准备和灵活应变的重要性。立意上，我们可以从二者相辅相成的角度出发，阐述只有将台下的充分准备与台上的灵活应对结合起来，才能取得成功；也可以强调在不同情境下，二者的不同侧重，但不能忽视任何一方。</p><p>【写作思路】我们可以选择艺术创作类的素材，如绘画创作，画家在创作前需要深入研究主题、学习技法，但在创作过程中也需要根据纸张纹理、颜料效果等突发情况灵活调整笔触和色彩；还可以选择体育竞技类的素材，运动员在比赛前要进行长时间的艰苦训练，掌握扎实的技术和战术，但在比赛中也需要根据对手的变化、场上的形势做出及时的应变。比如，篮球运动员在比赛中，按照教练布置的战术进攻，但当对手防守策略改变时，要迅速调整进攻方式。也可以围绕学习成长类进行创作，学生在备考过程中，要认真复习知识点，做大量的习题，但在考试时遇到难题也需要灵活思考，尝试不同的解题思路。写作安排上，开头可以引用名言\"台上一分钟，台下十年功\"，然后引出材料内容，点明扎实准备和灵活应变对成功的重要性，引起读者的兴趣。中间部分按照选材分类叙述，如果选择了艺术、体育、学习等多个方面的素材，可以分别用一个小标题来引领每个部分的内容，使文章结构更加清晰。在叙述每个事件时，要注重细节描写，包括人物的心理活动、动作、语言等。结尾总结扎实准备和灵活应变对自己的启示和意义，表达在未来的生活中要将二者结合起来，不断追求成功的决心即可。</p>",
+      "accessories": []
+    }
+  }
+]
+
+=== 清理后内容 ===
+[
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>下列词语中加点字的字音、字形完全正确的一项是（ ）</p>",
+      "type": "单选",
+      "accessories": [
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">钦</span>（qīn）佩 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">尉</span>（wèi）蓝 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">颁</span>（bān）发 惟妙惟<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">肖</span>（xiāo）</p>",
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">轩</span>（xuān）昂 赞<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">誉</span>（yù） 山<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">涧</span>（jiàn） 心旷神<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">怡</span>（yí）</p>",
+        "<p>扶<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">植</span>（zhí） 星<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">辰</span>（cén） <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">瞭</span>（liáo）亮 慷<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">慨</span>（kǎi）淋漓</p>",
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">掂</span>（diàn）记 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">乖</span>（guāi）巧 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">倔</span>（juè）强 <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">屏</span>（bǐng）息敛声</p>"
+      ],
+      "answer": {
+        "choice": "1"
+      },
+      "solution": "<p>本题考查字音字形。A.<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">尉</span>蓝——蔚蓝，惟妙惟<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">肖</span>（xiāo）——xiào；C.星<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">辰</span>（cén）——chén，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">瞭</span>亮——嘹亮；D.<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">掂</span>记——惦记，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">倔</span>（juè）强——jué；故选B。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>依次填入下面语段横线处的词语最恰当的一项是（ ）</p><p>辽宁，南临渤海，西枕燕山，数亿年的地质变迁造就了这里______的地貌。既有高山巍峨，也有平原辽阔，海岸线蜿蜒漫长，森林湿地______，草原沙漠______其间，一域尽览万象颜。这些资源与景观，不只为辽宁发展打下了雄厚的物质基础，______为人们提供了视觉盛宴。</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>丰饶 星罗棋布 连缀 更</p>",
+        "<p>丰富 鳞次栉比 连缀 甚至</p>",
+        "<p>丰富 星罗棋布 点缀 更</p>",
+        "<p>丰饶 鳞次栉比 点缀 甚至</p>"
+      ],
+      "answer": {
+        "choice": "2"
+      },
+      "solution": "<p>本题考查词义辨析。第一空，丰饶：富饶。丰富：（物质财富、学识经验等）种类多或数量大。在此指的是辽宁的地貌种类多样，应选\"丰富\"；第二空，星罗棋布：像星星似的罗列着，像棋子似的分布着，形容多而密集。鳞次栉比：像鱼鳞和梳子的齿一样，一个挨着一个地排列着，多形容房屋等密集。在此指的是森林湿地分布范围广，应选\"星罗棋布\"；第三空，连缀：联结。点缀：加以衬托或装饰，使原有事物更加美好。在此形容草原沙漠分布在辽宁大地上，起到装饰的作用，应选\"点缀\"；第四空，更：更加，用于强调后一项比前一项更进一步的关系。甚至：强调突出的事例（有更进一层的意思）通常用于列举极端例子，或表达\"程度加深到某种地步\"。在此\"雄厚的物质基础\"和\"视觉盛宴\"是属于普通的递进关系，应选\"更\"；故选C。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>下列各项中分析正确的一项是（ ）</p><p>①在漫长的岁月中，稻米如（一条）（坚韧的）纽带，连结着每个中国人的心，承载着厚重的历史文化。②性格温润的稻米有海纳百川的包容性。③与蔬菜相遇时，汲取自然的清新与活力；和肉类、海鲜相拥时，承载醇厚肉香和鲜美甜香；投身羹汤之中时，又氤氲出<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">温暖人心</span>的柔情。④甜的、咸的、辣的、酸的、鲜的、苦的，无论何种味道，稻米都能<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">欣然接受</span>，与之<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">和谐共生</span>。</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>语段中加点的三个短语结构相同。</p>",
+        "<p>句①中括号内的修饰语顺序不当。</p>",
+        "<p>句②的主干是\"稻米有包容性\"。</p>",
+        "<p>句③的各个分句之间有主次之分。</p>"
+      ],
+      "answer": {
+        "choice": "2"
+      },
+      "solution": "<p>本题考查汉语基础知识。A.\"温暖人心\"是动宾短语，\"欣然接受\"与\"和谐共生\"均为偏正短语，三个短语的结构不相同；B.句①中\"一条\"是数量词，\"坚韧\"是形容词。在现代汉语中，一般数量词在前，形容词在后，句①修饰语顺序恰当。D.句③中\"与蔬菜相遇时......；和肉类、海鲜相拥时......；投身羹汤之中时......\"，这几个分句是并列关系，分别阐述了稻米与\"蔬菜\"\"肉类、海鲜\"\"羹汤\"等不同食材相遇时的表现，其中不存在主次之分。故选C。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>文学、文化常识与名著阅读</p>",
+      "type": "单选"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>下列各项中表述不正确的一项是（ ）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>《论语》《庄子》以及《礼记》这三部作品都是春秋时期的儒家经典论著。</p>",
+          "<p>安徒生，丹麦作家，代表作有童话《皇帝的新装》《卖火柴的小女孩》等。</p>",
+          "<p>《红星照耀中国》按照时间顺序客观记录了作者\"探寻红色中国\"的见闻。</p>",
+          "<p>望闻问切是中医诊病的四种方法。望诊，即观察病人的气色、形态、动作等。</p>"
+        ],
+        "answer": {
+          "choice": "0"
+        },
+        "solution": "<p>本题考查文学常识。A.《庄子》是战国时期庄子及其后学所著的道家典籍，并非儒家经典论著；且《礼记》是由西汉礼学家戴圣编纂的儒家经典，并非春秋时期的经典论著。故选A。</p>"
+      },
+      {
+        "content": "<p>名著阅读</p><p>宁宁在假期阅读名著时，常常被其中的人物感动。开学后，他在学校的\"非遗手工坊\"为名著里的人物制作了三支毛笔，分别刻上了\"携勤\"\"铭韧\"\"问勇\"字样。</p><p>请从下面人物中任选其一，送给他体现其性格特点的毛笔，并结合相关情节说明理由。</p><p>祥子（《骆驼祥子》） 孙悟空（《西游记》） 保尔（《钢铁是怎样炼成的》）</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>示例一：我为祥子选\"携勤\"笔。因为年轻的祥子勤劳能干，为实现拥有一辆洋车的梦想努力拉车。</p><p>示例二：我为保尔选\"铭韧\"笔。因为保尔坚韧顽强，在艰苦的工作环境中，克服困难，坚持筑路。</p><p>示例三：我为孙悟空选\"问勇\"笔。因为孙悟空勇敢无畏，在保护唐僧取经的路上，降妖除魔，大显神通。</p>"
+        },
+        "solution": "<p>本题考查名著人物和情节，首先需理解材料中提到的每个毛笔上所刻的字的含义：\"携勤\"强调勤劳，\"铭韧\"侧重坚韧，\"问勇\"突出勇敢。</p><p>祥子，他十八岁来到北平城，认准了拉车这一行，成了高等人力车夫。经过三年的努力，买了一辆新车，但不久被大兵连人带车捉走，后来从兵营逃脱出来以后，为了攒钱买车，对花钱不放松，对挣钱更不放松。没有包月，他就拉整天，他非拉过一定的钱数不收车，不管时间和两腿，他玩了命似的拉车。他不惜和别人抢生意，只管拉上买卖。在曹宅拉包月时受曹先生的牵累，被孙侦探敲诈，失去全部积蓄。与虎妞结婚后，有一次顶着烈日拉车，烈日晒得人喘不过气来，他感到昏昏沉沉，很不舒服。午后狂风大作，又下起大暴雨，祥子被客人逼着冒雨拉车。经历了这冰火两重天，回到家里，祥子生起了病。由此可见，祥子是一个通过勤劳改变命运的追求的人，可赠予他\"携勤\"。</p><p>孙悟空，孙悟空面对天上各路神仙的怠慢，他敢于反抗，大闹天宫，最后在太上老君炼丹炉里竟然炼成了一双火眼金睛。在护送唐僧的取经路上，孙悟空降妖除怪，屡建奇功，例如\"三打白骨精\"\"三借芭蕉扇\"。他面对困难不屈不挠，勇往直前。 由此可见，孙悟空是一个勇敢正直的人，可赠予他\"问勇\"。</p><p>保尔，保尔出生在一个贫困的农民家庭，十六岁参加红军，和战友们一起为保卫苏维埃政权而浴血奋战，几次死里逃生；在医治战争创伤、恢复国民经济的艰难岁月，他又以全部的热情投身于和平劳动中；后来身体状况恶化，不得不躺在病床上时，他又克服种种困难，拿起笔来，以顽强的毅力开始创作，以另一种方式践行着他生命的誓言。由此可见，孙悟空是一个保尔的人，可赠予他\"铭韧\"。</p>",
+        "accessories": []
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>古诗文默写。</p><p>（1）何当共剪西窗烛，<input size=\"20\" readonly=\"readonly\" type=\"underline\">。（李商隐《夜雨寄北》）</p><p>（2）东风不与周郎便，<input size=\"20\" readonly=\"readonly\" type=\"underline\">。（杜牧《赤壁》）</p><p>（3）<input size=\"20\" readonly=\"readonly\" type=\"underline\">，千里共婵娟。（苏轼《水调歌头》）</p><p>（4）一鼓作气，再而衰，<input size=\"20\" readonly=\"readonly\" type=\"underline\">。（《曹刿论战》）</p><p>（5）中国快速发展的交通、通讯事业，用速度重新定义时间，用科技不断改写空间，让王勃《送杜少府之任蜀州》中的\"<input size=\"20\" readonly=\"readonly\" type=\"underline\">，<input size=\"20\" readonly=\"readonly\" type=\"underline\">\"在生活中得到了越来越生动的诠释。</p>",
+      "type": "填空",
+      "answer": {
+        "blanks": [
+          "却话巴山夜雨时",
+          "铜雀春深锁二乔",
+          "但愿人长久",
+          "三而竭",
+          "海内存知己",
+          "天涯若比邻"
+        ]
+      },
+      "solution": "<p>本题考查名句默写。默写题作答时，一是要透彻理解诗文的内容；二是要认真审题，找出符合题意的诗文句子；三是答题内容要准确，做到不添字、不漏字、不写错字。本题中的\"雀、春深、竭、知己、涯\"等字词容易写错。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>阅读下面两首诗，完成小题。</p><p><strong>【甲】</strong></p><p><strong>游山西村</strong></p><p>[宋]陆游</p><p>莫笑农家腊酒浑，丰年留客足鸡豚。</p><p>山重水复疑无路，柳暗花明又一村。</p><p>箫鼓追随春社近，衣冠简朴古风存。</p><p>从今若许闲乘月，拄杖无时夜叩门。</p><p><strong>【乙】</strong></p><p><strong>游淀湖</strong></p><p>[宋]卫泾</p><p>疎星残月尚朦胧，闲趁烟波一棹风。</p><p>始觉舟移杨柳岸，直疑身到水晶宫。</p><p>乌鸦天际墨千点，白鹭滩头玉一丛。</p><p>欸乃一声回首处，西山横在有无中。</p><p>[注]①疎（shū）：\"疏\"的异体字。②欸（ǎi）乃：形容摇橹的声音。</p><p>下面对两首诗的理解和分析不正确的一项是（ ）</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>【甲】诗颈联由自然转入人事，描绘了乡村社日将近的热闹场景，赞美了古朴的民俗。</p>",
+        "<p>【乙】诗颈联巧妙地以\"墨\"\"玉\"喻\"乌鸦\"\"白鹭\"，画面色彩对比鲜明，富有感染力。</p>",
+        "<p>两诗都用了\"疑\"字，分别写出诗人感觉前方无路时的迷惘和置身山水时的惊喜。</p>",
+        "<p>两诗都实写月光，渲染了静谧的氛围。【甲】诗中诗人乘月而归，【乙】诗中诗人乘月而游。</p>"
+      ],
+      "answer": {
+        "choice": "3"
+      },
+      "solution": "<p>两诗皆以游踪为线，甲诗写农家淳朴与山水之趣，充满生活气息；乙诗绘湖光晨色，以水墨意象营造空灵意境。陆诗豁达，卫诗清幽，各见匠心。</p><p>本题考查赏析诗歌内容。D.甲诗\"从今若许闲乘月，拄杖无时夜叩门\"的意思是，从今以后，如果可以乘着月光闲游，我一定拄着拐杖随时来敲你们的门。这是一种设想，其\"月光\"并非是真实的\"月光\"，本项的\"两诗都实写月光\"说法错误；故选D。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>阅读下面选文，完成下面小题。</p><p><strong>【甲】</strong></p><p>舜发于畎亩之中，傅说举于版筑之间，胶鬲举于鱼盐之中，管夷吾举于士，孙叔敖举于海，百里奚举于市。故天将降大任于是人也，必先苦其心<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">志</span>，劳其筋骨，饿其体肤，空乏其身，行拂乱其所为，所以动心忍性，曾益其所不能。</p><p>人恒过，然后能改；困于心，衡于虑，而后作；征于色，发于声，而后<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">喻</span>。入则无法家拂士，出则无敌国外患者，国恒亡。<u>然后知生于忧患而死于安乐也。</u></p><p>（节选自《孟子·告子下》）</p><p><strong>【乙】</strong></p><p>越王勾践与大夫种、范蠡入臣于吴。越王仰天太息，举杯垂涕，曰：\"今遭辱耻，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">为</span>天下笑，将孤之罪耶？<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">诸</span>大夫之责也？吾不知其咎，愿二三子论其意。\"大夫种、范蠡曰：\"闻古人曰：'居不幽，志不广；形不愁，思不远。'圣王贤主，皆遇困厄之难，蒙不救之耻，身拘而名尊，躯辱而声荣，处卑而不以为恶，居危而不以为薄。大王屈厄，臣诚尽谋。二国争道，未知所就。君王之危天道之数何必自伤哉？夫吉者，凶之门；福者，祸之根。<u>今大王虽在危困之际，孰知其非畅达之兆哉？</u>\"越王曰：\"孤虽入于北国，为吴穷虏，有诸大夫怀德抱术，以保社稷，孤何忧焉？\"</p><p>（节选自《吴越春秋》，有删减）</p>",
+      "type": "单选"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>下列句中加点词的意思相同的一项是（ ）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>必先苦其心<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">志</span> <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">志</span>怪者也（《北冥有鱼》）</p>",
+          "<p>而后<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">喻</span> 引<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">喻</span>失义（《出师表》）</p>",
+          "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">为</span>天下笑 可以<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">为</span>师矣（《〈论语〉十二章》）</p>",
+          "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">诸</span>大夫之责也 其西南<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">诸</span>峰（《醉翁亭记》）</p>"
+        ],
+        "answer": {
+          "choice": "3"
+        },
+        "solution": "<p>本题考查一词多义。A.意志/记载；B.了解、明白/比喻；C.被/成为；D.都指\"众多，各\"；故选D。</p>"
+      },
+      {
+        "content": "<p>把选文中画直线的句子翻译成现代汉语。</p><p>（1）然后知生于忧患而死于安乐也。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p><p>（2）今大王虽在危困之际，孰知其非畅达之兆哉？</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>（1）了解到这一切之后，就会明白常处忧愁祸患之中可以使人生存，常处安逸快乐之中可以使人死亡的道理了。</p><p>（2）现在大王虽然处于危难困厄的时候，但谁能知道这不是畅达兴盛的征兆呢？</p>"
+        },
+        "solution": "<p>本题考查学生对句子翻译能力。我们在翻译句子时要注意通假字、词类活用、一词多义、特殊句式等情况，如遇倒装句就要按现代语序疏通，如遇省略句翻译时就要把省略的成分补充完整。重点词有：（1）生：使......生存；死：使......死亡；安乐：安逸快乐；（2）危困：危难困厄；孰知：谁能知道。兆：征兆。</p>",
+        "accessories": []
+      },
+      {
+        "content": "<p>用\"/\"给【乙】文画波浪线的句子断句（断两处）。</p><p>君 王 之 危 天 道 之 数 何 必 自 伤 哉</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "君王之危/天道之数/何必自伤哉"
+          ]
+        },
+        "solution": "<p>本题考查文言文断句。根据文言文断句的方法，先梳理句子大意，结合语法，然后断句。一般来说，主谓之间，谓语和宾语、补语之间应该有停顿。句意：君王（您面临）的危险，（是）自然的定数，何必自己忧伤呢？。可知，\"君王之危\"是主语，\"天道之数\"是谓语，应断开；\"何必自伤哉\"这是对君子的劝告，应断开；故断为：君王之危/天道之数/何必自伤哉。</p>"
+      },
+      {
+        "content": "<p>【甲】【乙】两文蕴含丰富的道理。请填写表格，汲取古人的智慧。</p><table><thead><tr><th>角度</th><th>摘录语句</th><th>启示</th></tr></thead><tbody><tr><td>君主治国之道</td><td>【甲】文：出则无敌国外患者，国恒亡</td><td>要有忧患意识</td></tr><tr><td></td><td>【乙】文：有诸大夫怀德抱术，以保社稷</td><td>（1）<input size=\"25\" readonly=\"readonly\" type=\"underline\"></td></tr><tr><td>（2）<input size=\"25\" readonly=\"readonly\" type=\"underline\"></td><td>【甲】文：（3）<input size=\"25\" readonly=\"readonly\" type=\"underline\"></td><td>要积极改正错误</td></tr><tr><td></td><td>【乙】文：居不幽，志不广；形不愁，思不远</td><td>（4）<input size=\"25\" readonly=\"readonly\" type=\"underline\"></td></tr></tbody></table>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "要任用贤才",
+            "个人成长之道",
+            "人恒过，然后能改",
+            "艰苦的环境能造就人才"
+          ]
+        },
+        "solution": "<p>本题考查理解文章内容。第一空，乙文\"有诸大夫怀德抱术，以保社稷\"的意思是：有各位大夫心怀道德、胸有谋略，来保卫国家。从\"君主治国之道\"的角度来看，这表明君主想要治理好国家，需要依靠这些有品德、有才能的贤才。由此可得出\"要任用贤才\"的启示。第二空，结合题干\"要积极改正错误\"和乙文\"居不幽，志不广；形不愁，思不远\"，可知：在此强调的是个人在成长路上，遇到困难险阻的时候的态度，体现艰苦环境对塑造人才的积极作用。结合\"角度：君主治国之道\"的句式可拟写为\"个人成长之道\" 。第三空，所填的摘录语句对应\"要积极改正错误\"这一启示，应是甲文中\"人恒过，然后能改\"，这强调的是人面对错误的时候要积极改正错误。第四空，乙文\"居不幽，志不广；形不愁，思不远\"是说人在艰苦的环境中志向和思想能得到提升，表明艰苦环境对塑造人才的积极作用。由此可得出\"艰苦的环境能造就人才\"的启示。</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>2025年是中国人民抗日战争暨世界反法西斯战争胜利80周年，学校举办\"传承东北抗联精神\"纪念图册征集活动。为完成制作纪念图册的相关任务，宁宁搜集了下列材料。</p><p><strong>【材料一】</strong>从1931年九一八事变，到1945年日本侵略者投降，东北抗联辗转于白山黑水之间，进行了长达14年不屈不挠的斗争，开辟了全国最早、坚持时间最长的抗日战场，在中国人民抗日战争和世界反法西斯战争中发挥了重要作用。</p><p>&nbsp; &nbsp; 东北抗联与敌人进行了近10万次大小战斗，消灭了18万敌人，牵制了70多万日本关东军精锐部队，有力支援了全国的抗日战争，为中国和世界反法西斯战争胜利作出了不可磨灭的贡献。</p><p>&nbsp; &nbsp; 以\"忠诚于党的坚定信念，勇赴国难的民族大义，血战到底的英雄气概\"为内核的东北抗联精神，是第一批被纳入中国共产党人精神谱系的伟大精神，需要我们永远铭记与传承。</p><p>（选自《人民日报》《解放军报》，有删改）</p><p><strong>【材料二】</strong>有一群人始终挺立在一个民族的前列，永远不会低头屈服，永远不会畏缩后退。</p><p>&nbsp; &nbsp; 在\"火烤胸前暖，风吹背后寒\"的极端艰苦条件下，为了掩护主力突围西征，李兆麟率领部队面对百倍于我方的敌军，一路血战，一路高唱。</p><p>&nbsp; &nbsp; 1938年10月，已行至河边准备渡河的8名妇女团战士，为掩护大部队突围，毅然放弃渡河，背水一战、弹尽粮绝之际，面对敌人\"抓活的\"的逼降，女战士们誓死不屈。8人毁掉枪支，互相搀扶着踏入汹涌的乌斯浑河，壮烈殉国。</p><p>（选自《人民日报》《解放军报》，有删改）</p><p><strong>【材料三】</strong></p><table><tr><td><img src=\"media/image4.png\" alt=\"东北抗联密营生活场景复原蜡像\" width=\"1.65625in\" height=\"1.0625in\"><br>（图一）东北抗联密营生活场景复原蜡像<br><br>大小不一、形式各异的密营为抗日斗争提供了坚实的后勤保障。</td><td><img src=\"media/image5.png\" alt=\"地戗子式密营复原图\" width=\"1.6770833333333333in\" height=\"1.0625in\"><br>（图二）\"地戗（qiāng）子\"式密营复原图<br><br>这种密营就地取材，搭出\"人\"字形框架，上覆茅草树皮。</td></tr><tr><td><img src=\"media/image6.png\" alt=\"马架子式密营复原图\" width=\"1.6666666666666667in\" height=\"1.0625in\"><br>（图三）\"马架子\"式密营复原图<br><br>这种密营前边高抬如马头，后面低垂如马尾，因此叫\"马架子\"。</td><td><img src=\"media/image7.png\" alt=\"抗日将领魏拯民病逝密营复原图\" width=\"1.3645833333333333in\" height=\"1.0625in\"><br>（图四）抗日将领魏拯民病逝密营复原图<br><br>没有医生、药品、粮食，魏拯民病情不断加重，最终病逝，年仅32岁。</td></tr></table><p><strong>【材料四】</strong>东北抗联研究存在着\"有史无迹\"的难题，东北抗联遗址考古工作为东北抗联研究提供了翔实的考古实物资料，从考古学角度实证了抗战史实。这些考古发现生动地展现了东北抗联艰苦卓绝的战斗经历。</p><p>&nbsp; &nbsp; 据介绍，到2023年，全国登记的抗联遗址611处、纪念设施（场馆）35家、文物藏品近10万件/套，重要抗联文物重大险情基本消除，保存状况明显改善。</p><p>（选自《人民日报》《光明日报》，有删改）</p>",
+      "type": "单选"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>宁宁为图册编写了四则简介，其中与材料内容不相符的一条是（ ）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>东北抗联开辟了全国最早、坚持时间最长的抗日战场。</p>",
+          "<p>东北抗联在近10万次的大小战斗中消灭了18万敌人。</p>",
+          "<p>东北抗联遗址考古工作从考古学角度实证了抗战史实。</p>",
+          "<p>所有抗联文物重大险情全部消除，保存状况明显改善。</p>"
+        ],
+        "answer": {
+          "choice": "3"
+        },
+        "solution": "<p>本题考查辨析材料。D.结合材料四第二段\"据介绍，到2023年，全国登记的抗联遗址611处、纪念设施（场馆）35家、文物藏品近10万件/套，重要抗联文物重大险情基本消除，保存状况明显改善\"，可知：文章只是强调\"重要抗联文物重大险情基本消除\"，并非是\"所有抗联文物重大险情全部消除\"，选项的表述与材料内容不符；故选D。</p>"
+      },
+      {
+        "content": "<p>宁宁根据图册准备了一份\"抗联精神探究学习单\"在班级分享。请你依据【材料一】【材料二】将下面内容补写完整。</p><table><thead><tr><th><strong>抗联精神探究学习单</strong></th></tr></thead><tbody><tr><td>是什么 <input size=\"20\" readonly=\"readonly\" type=\"underline\">，（1）<input size=\"20\" readonly=\"readonly\" type=\"underline\">，（2）<input size=\"20\" readonly=\"readonly\" type=\"underline\"></td></tr><tr><td>为什么 因为有魏拯民、李兆麟这样的英雄个体。<br><br>因为有（3）<input size=\"20\" readonly=\"readonly\" type=\"underline\">这样的英雄群体。<br><br>因为有进行了长达14年不屈不挠斗争、英雄辈出的民族</td></tr></tbody></table>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "忠诚于党的坚定信念",
+            "勇赴国难的民族大义",
+            "血战到底的英雄气概",
+            "8名妇女团战士"
+          ]
+        },
+        "solution": "<p>本题考查概括文章内容。第一空、第二空：根据【材料一】第三段\"以'忠诚于党的坚定信念，勇赴国难的民族大义，血战到底的英雄气概'为内核的东北抗联精神\"可知：抗联精神是忠诚于党的坚定信念，勇赴国难的民族大义，血战到底的英雄气概。第三空，结合题干\"英雄群体\"，找到材料二第三段\"1938年10月，已行至河边准备渡河的8名妇女团战士，......互相搀扶着踏入汹涌的乌斯浑河，壮烈殉国\"，可知：8名妇女团战士为了掩护大部队突围，壮烈殉国。</p>"
+      },
+      {
+        "content": "<p>宁宁从【材料三】中选取图一、图二、图三，制作了题为《密营：林海雪原上的生命堡垒》的图册插页。请你配写一段说明性文字，介绍密营的形式和作用。要求：运用一种说明方法，不超过60字。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>示例一：密营大小不一、形式各异，例如\"地戗子\"式密营、\"马架子\"式密营等。密营为抗日斗争提供了坚实的后勤保障。</p><p>示例二：密营大小不一、形式各异，其中\"马架子\"式密营前边高抬如马头、后面低垂如马尾。密营为抗日斗争提供了坚实的后勤保障。</p>"
+        },
+        "solution": "<p>本题考查图文转换。结合图一可知：东北抗联的密营大小不一、形式各异，为抗日斗争提供了坚实的后勤保障。结合图片二可知：\"地戗子\"式的密营，这种密营就地取材，搭出类似\"人\"字形框架，上覆茅草树皮。结合图片三可知：\"马架子\"式密营因前边高抬如马头，后面低垂如马尾而得名。结合以上分析从形式和作用两方面对密营进行介绍，运用恰当的说明方法来介绍即可。</p>",
+        "accessories": []
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>阅读下面选文，完成下面小题。</p><p><strong>寂静的水闸</strong><sup>①</sup></p><p>梁衡</p><p>①水闸是干什么的？拦洪蓄水，调节水流。我们常见的水闸是天生与洪水搏斗、逆水而生的\"拼命三郎\"，但有谁见过巍然如山却寂静无声、与黄河相伴50年而滴水未沾的水闸呢？有，山东省齐河县豆腐窝水闸就是一个典型。</p><p>②黄河极其任性，它曾北夺海河入渤海，南夺淮河入黄海，它成就了丰沃的土地，也曾威胁着百姓的生存。人与水做着漫长的拉锯战。直到1972年的一天，在黄河下游河堤最险的地段之一——号称\"黄河咽喉\"的齐河县豆腐窝，人与水开始了一次心平气和的\"谈判\"。黄河携万里之势，挟16亿吨泥沙之威上门对话。<u>齐河人则一片诚心：\"黄河，不要再闹了。你挟沙远行到此也已很累，我给你修一座大门，出得门去大片空地，足够你横躺竖卧。行不？\"黄河说：\"不是我要闹，实在是年年沙淤堤高，逼得我走投无路。\"齐河人说：\"我们现在就动工。\"</u>振臂一呼，20万众上阵，8个月为黄河筑起一个新居，6个乡镇、近5万人搬走，空出100平方公里土地，同时盖起一座8层楼高的7孔大闸。黄河为这份诚心所感动，50年间竟没有一次来\"敲门\"。闸前黄河滚滚去，闸后草木悄悄绿。</p><p>③我曾两次到豆腐窝大闸。第一次是到堤上看一个治水史迹展，听讲解员讲述了齐河人不懈努力的治黄故事。1958年，在当地抗洪抢险中有两位民工巡堤，见一处管涌急喷，手边没有合适用料，一人急屈身坐进管口，犹如战士以身堵枪眼。另一人爬上堤岸大呼求救，何等惊心动魄！1970年，齐河堤防段研发制造的黄河第一艘吸泥船\"红心一号\"下水。这艘吸泥船每小时能出水700立方米，其吐沙量之大在当时堪称大新闻。如今这条船已退役，正静卧岸上接受游客的礼赞。</p><p>④来到离展览馆不远的大闸脚下，看到陡峭的闸墙、粗大的钢缆、冰冷的铁门。豆腐窝水闸没有故事，也没有上过什么报纸，游客更不会注意到它。工作人员说，你别看它这样安静，每年这闸门总要轰隆隆地提升几次，试试运转灵不灵。闸前的土层里预埋着炸药，遇有紧急情况，一声雷鸣，土飞门开，洪水就夺门而出。但是50年来这种情况还没有过，黄河一直遵守与人的承诺。</p><p>⑤那次离开豆腐窝水闸后我心里总有一丝的惆怅。我们平常一提治黄，就是三门峡、刘家峡、小浪底......可有谁知道这个名不见经传的\"豆腐窝\"呢？谁会想到它、歌颂它呢？\"为隐者传名，为无名者立传\"是记者的职责，我于心不忍，两年后重访豆腐窝。</p><p>⑥正是深秋，红的高粱、黄的玉米、白的棉花，大地一片五彩斑斓。大闸脚下是一条水泥路，阳光下村民晾晒的玉米、棉花堆积如山。我说这样不妨碍闸门的起吊吗？听工作人员说，近年黄河上游治理有成，下游河床降低，危险已经解除。豆腐窝大闸已光荣退役，将成文物。我立即想到闸外那100平方公里的备用土地，于是我又花了两天的时间去逛这个大闸的后院。这里已经入驻了不少高新企业。有大型游乐园，过山车惊险刺激；有野生动物园，长颈鹿的头伸到二楼阳台上去吻客人的手；有珍宝馆，我第一次看到传说中的夜明珠，在黑暗中熠熠发光。而传统农业也大放光彩，大型粮库的粮塔高耸入云，当地的美食手工挂面居然细得能穿过针眼去，而且还是空心的。最可看的是一座博物馆，在诉说黄河的历史。50年前人送黄河100平方公里的土地，50年后黄河又分毫不少地还赠于人，上面还附加了这么多的宝贝，豆腐窝变成了科技窝、财富窝、欢乐窝。人敬自然一尺，自然敬人一丈，水闸为证。</p><p>⑦这闸的设计者是谁？几经查访不得其详。我想他们和这水闸一样，本来也是不想留名的。但他们与闸都有功于世，何忍其没于尘埃？遂书见闻，是为记。</p><p>（选自《人民日报》，有删改）</p><p>[注]①文章原标题为《在齐河，有个豆腐窝水闸》。</p>",
+      "type": "单选"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>概括选文内容，填写下表。</p><table><thead><tr><th>寻访历程</th><th>所见</th><th>所闻</th></tr></thead><tbody><tr><td>第一次到访</td><td>治水史迹展</td><td>（1）<input size=\"25\" readonly=\"readonly\" type=\"underline\"></td></tr><tr><td></td><td>（2）<input size=\"25\" readonly=\"readonly\" type=\"underline\"></td><td>大闸处于备用状态</td></tr><tr><td>第二次到访</td><td>（3）<input size=\"25\" readonly=\"readonly\" type=\"underline\"></td><td>（4）<input size=\"25\" readonly=\"readonly\" type=\"underline\"></td></tr></tbody></table>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "齐河人不懈努力的治黄故事",
+            "大闸的外观（陡峭的闸墙、粗大的钢缆、冰冷的铁门）",
+            "豆腐窝地区的繁荣景象",
+            "大闸光荣退役"
+          ]
+        },
+        "solution": "<p>本题考查概括文章内容。第一空，结合\"治水史迹展\"，找到第③段\"第一次是到堤上看一个治水史迹展，听讲解员讲述了齐河人不懈努力的治黄故事\"，可得出：齐河人不懈努力的治黄故事。第二空，结合\"大闸处于备用状态\"，找到第④段\"来到离展览馆不远的大闸脚下，看到陡峭的闸墙、粗大的钢缆、冰冷的铁门\"，可知：作者看到大闸陡峭的闸墙、粗大的钢缆、冰冷的铁门，这是大闸的外观。第三空，第四空，结合\"第二次到访\"，找到第⑥段\"正是深秋，红的高粱、黄的玉米、白的棉花，大地一片五彩斑斓。......豆腐窝大闸已光荣退役，将成文物\"\"这里已经入驻了不少高新企业。......豆腐窝变成了科技窝、财富窝、欢乐窝\"，可知：作者再次来到豆腐窝，发现这里进驻不少高新企业，变成了科技窝、财富窝、欢乐窝。到处都呈现繁华的景象。豆腐窝大闸已光荣退役，将成文物。</p>"
+      },
+      {
+        "content": "<p>选文第①段为什么要写常见的水闸？</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"2\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>使常见的水闸与豆腐窝水闸形成对比；突出了豆腐窝水闸寂静无声、滴水未沾的独特性；引出豆腐窝水闸这一写作对象。</p>"
+        },
+        "solution": "<p>本题考查句段的作用。结合第①段\"水闸是干什么的？拦洪蓄水，调节水流。......有，山东省齐河县豆腐窝水闸就是一个典型\"，可知：通过将常见的水闸的功能是\"拦洪蓄水，调节水流\"的，是与洪水搏斗的\"拼命三郎\"，而豆腐窝水闸却是\"巍然如山却寂静无声、与黄河相伴50年而滴水未沾\"。这种对比突出了豆腐窝水闸寂静无声、滴水未沾的独特性。通过对比，作者引出了本文的写作对象——豆腐窝水闸的独特存在，为后文详细描述这座水闸的历史、作用和意义做了铺垫。</p>",
+        "accessories": []
+      },
+      {
+        "content": "<p>选文中画线句虚拟了一次人与黄河的对话，精读这段对话，回答下面两个问题。</p><p>（1）这段对话写了什么？</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p><p>（2）这段对话的语言特点是<input size=\"15\" readonly=\"readonly\" type=\"underline\">、<input size=\"15\" readonly=\"readonly\" type=\"underline\">。</p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>（1）黄河由于沙淤堤高将要泛滥，齐河人决定修建水闸来治理黄河。</p><p>（2）生动形象（运用拟人的语句） 诙谐幽默 口语化</p>"
+        },
+        "solution": "<p>本题考查理解句子的内容和写法。（1）\"我给你修一座大门，出得门去大片空地，足够你横躺竖卧\"\"不是我要闹，实在是年年沙淤堤高\"\"我们现在就动工\"，这交代了修筑豆腐窝水闸的原因，这是因为黄河由于年年沙淤堤高，即将要泛滥，齐河人决定修建水闸来治理黄河。\"行不\"这些话语充满口语化的特点，使文章内容富有生活气息。\"我给你修一座大门，出得门去大片空地，足够你横躺竖卧\"\"不是我要闹，实在是年年沙淤堤高，逼得我走投无路\"在此运用拟人手法，把黄河当做人来写，表现黄河与人的\"谈判\"内容，体现人们科学治河的思想。语言生动幽默，富有口语化。</p>",
+        "accessories": []
+      },
+      {
+        "content": "<p>简析选文第⑤段在结构上的作用。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"2\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>承上启下（过渡）。作者离开豆腐窝水闸后心生惆怅，承接上文他第一次到访水闸；作者产生为隐者立传的想法，引出下文重访水闸的见闻。</p>"
+        },
+        "solution": "<p>本题考查段落的作用。结合第③段\"第一次是到堤上看一个治水史迹展，听讲解员讲述了齐河人不懈努力的治黄故事\"，第④段\"工作人员说，你别看它这样安静，......土飞门开，洪水就夺门而出\"，第⑤段\"那次离开豆腐窝水闸后我心里总有一丝的惆怅。......可有谁知道这个名不见经传的'豆腐窝'呢\"\"我于心不忍，两年后重访豆腐窝\"，第⑥段\"正是深秋，红的高粱、黄的玉米、白的棉花，......豆腐窝大闸已光荣退役，将成文物\"，可知：上文介绍了作者第一次到豆腐窝水闸了解其齐河人不懈努力的治黄故事，作者立下为为隐者立传的想法。\"我心里总有一丝的惆怅\"是承接上文，强调作者离开豆腐窝水闸后心生惆怅；\"两年后重访豆腐窝\"引出下文后来重访豆腐窝，发现其变化的内容。由此可见，本段起到承上启下的作用。</p>",
+        "accessories": []
+      },
+      {
+        "content": "<p>选文中作者赞美了齐河人的哪些精神品质？请概括出三种。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"2\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>赞美了齐河人勤劳能干、英勇无畏、团结一致、不求名利、坚持不懈、善于创新等精神品质。</p>"
+        },
+        "solution": "<p>本题考查理解文章主题。结合第②段\"20万众上阵，8个月为黄河筑起一个新居，6个乡镇、近5万人搬走，空出100平方公里土地，同时盖起一座8层楼高的7孔大闸\"，可知：为了治理黄河，大家齐心协力，为黄河空出100平方公里土地，盖起大闸来治理黄河，这体现人们团结一致的精神。结合第③段\"在当地抗洪抢险中有两位民工巡堤，见一处管涌急喷，手边没有合适用料，一人急屈身坐进管口，犹如战士以身堵枪眼。另一人爬上堤岸大呼求救，何等惊心动魄\"，可知：当年人们发现险情的时候，奋不顾身，用人的力量来堵管涌急喷的问题，这体现人们英勇无畏的精神。结合第③段\"齐河堤防段研发制造的黄河第一艘吸泥船'红心一号'下水。这艘吸泥船每小时能出水700立方米，其吐沙量之大在当时堪称大新闻\"，可知：齐河堤防段研发制造的黄河吸泥船，这体现人们运用科技手段、勇于突破传统治水方式的智慧，展现了开拓进取的精神。结合第③段\"第一次是到堤上看一个治水史迹展，听讲解员讲述了齐河人不懈努力的治黄故事\"，可知：人们一直以来都在不懈治理黄河，这体现人们勤劳能干、坚持不懈的精神。结合第⑦段\"这闸的设计者是谁？几经查访不得其详。我想他们和这水闸一样，本来也是不想留名的。但他们与闸都有功于世，何忍其没于尘埃\"，可知：豆腐窝水闸默默无闻，为治理黄河贡献自己的一份力量，这体现不求名利的精神品质。</p>",
+        "accessories": []
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>阅读下面选文，完成下面小题。</p><p><strong>读书贵在破</strong></p><p>啸风</p><p>①\"读书破万卷，下笔如有神\"，杜甫此句真是字字珠玑，令人神往。一个\"破\"字妙极了，既点出了读书的量，又点出了读书的质。\"破\"至少有三个层次的内涵：第一层点出了读书之勤。把书页都翻烂了，与\"韦编三绝\"异曲同工。第二层点出了读书之透。不仅把书翻烂了，还能解其意，会其神，释疑解惑。第三层点出了读书之悟。悟出了书外之意、书外之理，是更高层次的读透。</p><p>②世上勤读者不少，但读破者不多。一些人喜欢读书，但囫囵吞枣，不求甚解；还有一些人，喜欢钻到书堆里抠字眼；另有一些人，知识满腹，但读书不疑书，唯书是从，不问实际。我们不能说这些人不是勤读者，可惜他们浪费了许多大好光阴，也只读出了第一层次。可见，读书贵在破。</p><p>③那么，该如何将书读破？</p><p>④专一有恒好破书。滴水瞄准一处，持之不懈可穿石。读书如滴水，围绕一个主题或者一个问题，广泛涉猎，精读思考，天长日久，终会破题。<u>苏轼喜欢把书分成若干专题，一个专题一个专题地熟读精思，坚持不懈，这种方法不仅帮助苏轼积累了深厚的学问，也对后世学者产生了深远的影响。</u>马克·吐温说过：\"人的思想是了不起的，只要专注于某一项事业，那就一定会做出使自己吃惊的成绩来。\"</p><p>⑤善于联想好破书。书对一些善读的人来说，是一个酵头，可以蒸出一锅香喷喷的馒头。一篇文章、一本书可以读出许多篇文章、许多本书。毛泽东知识渊博，读起书来善于联想，由此及彼、由古至今，思路开阔。达尔文研究生物进化30多年，读书积累无数，却没想出一个简单的贯串说明。一天，他无意中读到了马尔萨斯的人口论，悟出物竞天择的道理，成就了巨著《物种起源》。</p><p>⑥处处有心好破书。做生活的有心人，带着问题勤琢磨，时刻把书中疑惑之处装在脑里，放在心上，多动脑筋多思考；带着问题勤观察，观察要与读书相结合，把观察到的事物与书中所写联系起来，相互印证和比较，通过思考加工，加深对书的理解，必有新的发现和感悟；带着问题勤听勤问，问与学相辅相成，对书中的疑惑和不解，要虚心勤问。街谈巷议，必有所采，只要带着耳朵细细听，终会有所获。</p><p>⑦习惯不同，读书不一，方法多样，但有一点应成共识——读书贵在破，不破是白读。沿着将书读破的路走下去，前方会越来越宽广，思想的天空会越来越深邃、清朗。</p><p>（选自《应用写作》，有删改）</p>",
+      "type": "单选"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>厘清选文思路，完成下面图表。</p><p>【三层内涵析\"破\"义】（1）<input size=\"15\" readonly=\"readonly\" type=\"underline\">→透→悟</p><p><img src=\"media/image10.png\" alt=\"向下箭头\" width=\"0.22916666666666666in\" height=\"0.3958333333333333in\"></p><p>【三类读者引论点】中心论点：（2）<input size=\"30\" readonly=\"readonly\" type=\"underline\"></p><p><img src=\"media/image10.png\" alt=\"向下箭头\" width=\"0.22916666666666666in\" height=\"0.3958333333333333in\"></p><p>【三种做法明方向】专一有恒、（3）<input size=\"15\" readonly=\"readonly\" type=\"underline\">、（4）<input size=\"15\" readonly=\"readonly\" type=\"underline\"></p><p><img src=\"media/image10.png\" alt=\"向下箭头\" width=\"0.22916666666666666in\" height=\"0.3958333333333333in\"></p><p>重申论点，强调意义</p>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "勤",
+            "读书贵在破",
+            "善于联想",
+            "处处有心"
+          ]
+        },
+        "solution": "<p>本题理解文章内容，梳理文章结构。（1）结合第①段\"'破'至少有三个层次的内涵：第一层点出了读书之勤。......第二层点出了读书之透。......第三层点出了读书之悟。......\"，可知：\"破\"至少有三个层次的内涵，分别是\"勤\"\"透\"\"悟\"。（2）结合\"题目：读书贵在破\"，第①段\"'读书破万卷，下笔如有神'，......又点出了读书的质\"，第②段\"世上勤读者不少，但读破者不多。......可见，读书贵在破\"，可知：文章一开始由杜甫的诗歌点出\"破\"字的意蕴，然后列举人们读书的不同情况，指出许多勤读者仅停留在\"破\"的第一层次，从而提出\"读书贵在破\"的中心论点，照应题目。（3）结合第⑤段\"善于联想好破书\"，可得出：善于联想好破书。（4）结合第⑥段\"处处有心好破书\"，可得出：处处有心好破书。</p>"
+      },
+      {
+        "content": "<p>简要分析选文第④段画直线的句子是怎样论证\"专一有恒好破书\"的？</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"2\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>运用举例论证。举了苏轼以专题的形式，专一持久地读书，从而积累学问、对后世产生深远影响的事例，具体有力地证明了观点。</p>"
+        },
+        "solution": "<p>本题考查分析论证方法及其作用。这句话举了苏轼以专题的形式，专一持久地读书的例子，运用了举例论证的论证方法；结合第④段\"专一有恒好破书\"\"这种方法不仅帮助苏轼积累了深厚的学问，也对后世学者产生了深远的影响\"可知，苏轼因\"专一有恒\"取得了实际成就，具体有力地证明了\"专一有恒好破书\"的观点，使得论证更加具体和有说服力。</p>",
+        "accessories": []
+      },
+      {
+        "content": "<p>简析选文第⑤段画波浪线句子的含义，并结合自己的阅读经历谈谈你对这句话的理解。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>含义：把读书所得与平时积累联系在一起，激发联想，触类旁通，形成自己的理解和感悟。（在读书时善于联想，由此及彼、由古至今，思路开阔）</p><p>具体阅读经历：</p><p>示例一：我读了《钢铁是怎样炼成的》，主人公保尔让我联想到《红岩》中的江姐，他们都是为了革命理想而不懈奋斗的战士。</p><p>示例二：我读了选文，联想到《史记》中赵括的故事，他熟读兵书，但在指挥作战中，不知变通，最终导致赵国兵败。可见唯书是从，不问实际地读书，不仅无用，还会误事。</p>"
+        },
+        "solution": "<p>本题考查理解文中重要句子的含义。\"一篇文章、一本书\"代表阅读的原文本，\"许多篇文章、许多本书\"并非指数量上的增多，而是指从原文本中延伸出的相关知识、多元思考、深层联想与感悟。强调阅读时通过联想能够突破书籍本身的限制，挖掘出更丰富的知识和思想，触类旁通，形成自己的理解和感悟，是对\"善于联想好破书\"这一观点的具体表达，强调了读起书来善于联想的重要性。</p><p>结合自身阅读经历谈理解时，需紧扣\"联想\"和\"知识拓展\"两个关键要素。明确指出阅读的书籍或文章，说明收获与感悟，强调通过联想获得的新认知、新思考，体现\"读出许多篇文章、许多本书\"的效果即可。</p>",
+        "accessories": []
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>从下列两题中，任选其一，按要求作文。</p><p><strong>题目：\"他们\"与我</strong></p><p>要求：①自选角度，自定立意，自选文体（诗歌、戏剧除外）。②字迹工整，书写清楚，卷面整洁。③不少于600字。④不得套作、抄袭，不得透露个人信息。</p><p style='text-align: center;'><strong>\"他们\"与我</strong></p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"15\" data-punctuation=\"\" data-first-line-width=\"600\"></full-line-blank></p>",
+      "type": "简答",
+      "answer": {
+        "answer": "<p>&nbsp; &nbsp;在人生的长河中，我们常常以为自己是孤独的航行者，却不知有多少\"他们\"如繁星般照亮我们的旅程。这些\"他们\"或许是人，或许是物，或许是某个瞬间，都在不经意间成为我们生命中的灯塔，指引我们前行。</p><p>&nbsp; &nbsp;那些给予我们温暖的人，是生命中最珍贵的\"他们\"。记得初中时，我的数学成绩一度跌入谷底，是张老师每天放学后为我耐心讲解题目，用红笔在作业本上写下\"相信你能做到\"的批注。还有我的同桌小林，总是在我沮丧时递来一颗糖果，用她特有的幽默驱散我的阴霾。这些温暖的\"他们\"，如同冬日里的阳光，融化了成长路上的坚冰。</p><p>&nbsp; &nbsp;那些激发我们思考的\"他们\"，往往以挑战者的姿态出现。初二那年，我参加了全市辩论赛，对手学校的一辩手思维缜密、言辞犀利，几次将我的论点驳得体无完肤。赛后，我独自在空荡的教室里反思到深夜。正是这样的\"他们\"，像一面镜子照出我的不足，又像磨刀石般砥砺我的思想。古人云：\"三人行，必有我师\"，每一个让我们感到压力的对手，都是上天派来帮助我们成长的老师。</p><p>&nbsp; &nbsp;而大自然中的\"他们\"，则以无声的方式滋养着我们的心灵。外婆家后院的老槐树，每年春天都开满洁白的花朵，我在树下读书时，常有花瓣飘落书页间；雨后的清晨，蜗牛在湿润的泥土上画出银色的轨迹；深秋的傍晚，成群的大雁排成人字形飞过橘红色的天空。这些看似微不足道的\"他们\"，却在不经意间教会我们生命的坚韧与美好。</p><p>&nbsp; &nbsp;回望来路，正是无数个\"他们\"构成了我生命的经纬。他们或许不会永远陪伴，但留下的印记却成为永恒。在这个世界上，没有人是真正的孤岛，我们都在与无数个\"他们\"的相遇中，完成自我的塑造与成长。珍惜每一个\"他们\"，就是珍惜生命最丰厚的馈赠。</p>"
+      },
+      "solution": "<p>【写作指导】结合材料可知，题目中\"他们\"指代范围广泛，既可以是身边具体的人，如给予鼓励的队友、引发反思的对手、带来启发的评委，也可以是抽象或具体的事物，如一次全新的挑战、一片璀璨的星空、一只活泼的小猫等。这些人或事物都在\"我\"的生活中扮演着重要角色，对\"我\"产生了积极影响。\"他们\"强调的是多个人或多种事物，这是一个群体。\"与我\"明确了写作视角和内容方向，强调\"他们\"和\"我\"之间的互动与关联。文章要着重展现\"他们\"对\"我\"的影响，以及\"我\"在与\"他们\"相处过程中的感受、变化和成长。这种关系可以是行为上的引导、情感上的支持、思想上的启发等。\"与我\"的表述暗含了自我成长的主题。</p><p>【写作思路】本文建议写成记叙文。写作前要思考，\"他们\"是谁，\"他们\"对\"我\"的成长中有什么影响，文章要将重点放在\"我\"从\"他们\"身上获得了什么，\"我\"如何因为\"他们\"而发生改变，从而使文章具有深度和内涵。如果写\"他们\"是身边的人，叙写身边的人对\"我\"的影响，如父母关心\"我\"的生活，老师关心\"我\"的学业，朋友陪伴\"我\"的成长，他们让\"我\"感受到生活的美好与快乐。如果写的他们是物，可写生活中一些坚强积极向上的事物对\"我\"成长的意义。例如石缝间的植物给予\"我\"坚强的勇气；蚂蚁齐心协力搬食物，教会\"我\"要团结同学，在集体中获得成长的力量；早上穿越黑暗的太阳让\"我\"懂得，没有什么黑暗是越不过的。文章要通过具体写人写景，详写\"他们\"如何走进\"我\"的生活、触动\"我\"的内心、给\"我\"带来什么改变或感悟。行文时要用\"我\"的视角和感受整件事情，突出\"他们\"让\"我\"看到世界的美好，表现积极向上的主题。</p>",
+      "accessories": []
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>在成功演出《天下第一楼》后，兴辽中学话剧社召开经验总结会。</p><p>宁宁说：\"台上精彩的表演，来自台下的深研剧本和精心排练。\"</p><p>文文说：\"你说得有道理，但今天面对突发状况时，大家的临场发挥，也成就了演出的精彩。\"</p><p>上面这段对话引发了你怎样的联想和思考？请自拟题目，写一篇文章。</p><p>要求：①自选角度，自定立意，自选文体（诗歌、戏剧除外）。②字迹工整，书写清楚，卷面整洁。③不少于600字。④不得套作、抄袭，不得透露个人信息。</p><p style='text-align: center;'><strong>台上一分钟，功夫在\"双向\"</strong></p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"15\" data-punctuation=\"\" data-first-line-width=\"600\"></full-line-blank></p>",
+      "type": "简答",
+      "answer": {
+        "answer": "<p>&nbsp; &nbsp;《天下第一楼》的演出成功，让宁宁和文文的对话有了具象的注脚——台上的精彩从不是单一变量的结果。深研剧本是根基，临场发挥是枝叶，二者如同飞鸟的双翼，缺一便难越山海。</p><p>&nbsp; &nbsp;台下的积淀是所有精彩的起点。就像《天下第一楼》里的演员，若不反复揣摩卢孟实的傲骨与无奈，不把每句台词的语气、每个动作的幅度刻进肌肉记忆，台上的表演便会沦为空洞的模仿。程派传人张火丁为演好《锁麟囊》，曾对着镜子练水袖三个月，只为\"朱楼找球\"那三十秒的身段能兼具柔美与苍凉。这种\"台下十年功\"的深耕，是艺术创作的坐标系，让所有表达都有了精准的落点。没有对剧本的通透理解，没有千百次排练形成的肌肉记忆，所谓\"精彩\"不过是空中楼阁。</p><p>&nbsp; &nbsp;但舞台从不是复刻排练室的机器。当意外突至，临场的应变能力便成了化险为夷的关键。话剧《雷雨》某次演出时，侍萍的道具手帕不慎掉落，饰演者没有慌乱，反而顺势弯腰捡拾，口中加了句\"这旧物件总怕丢，就像人一样\"，既贴合人物心境，又让剧情更添真实感。这种\"即兴创作\"并非凭空而来，而是建立在对角色的深度共情之上——就像《天下第一楼》的演员，若对人物关系了如指掌，即便灯光突然暗了半秒，也能借着台词的顿挫自然过渡。临场发挥不是脱离轨道的任性，而是以积淀为圆心的灵活转动。</p><p>&nbsp; &nbsp;台下积淀与临场发挥，本质上是\"守\"与\"变\"的共生。深研剧本是守住艺术的内核，让表达有不变的根基；临场发挥是在坚守内核的前提下应变，让表达有鲜活的姿态。就像书法中的\"中锋用笔\"是根基，\"侧锋取势\"是变化，唯有二者结合，才能写出既有筋骨又有灵气的作品。若只重排练不重应变，演出会像按程序运行的机器人，失了灵气；若只靠临场忽视积淀，表演便成了无源之水，难有力量。</p><p>&nbsp; &nbsp;《天下第一楼》的成功启示我们：所有值得称道的成果，都是\"台下功夫\"与\"台上智慧\"的共舞。无论是舞台表演，还是人生赛场，先沉下心打好基础，再以灵活之心应对变化，方能在既定的轨道上，走出属于自己的精彩。</p>"
+      },
+      "solution": "<p>【写作指导】材料围绕兴辽中学话剧社演出《天下第一楼》后的经验总结会展开，宁宁强调台上精彩源于台下深研剧本和精心排练，文文则指出临场发挥也成就了演出的精彩。整体来看，材料旨在引导我们思考成功背后的多种因素，即扎实准备和灵活应变的重要性。立意上，我们可以从二者相辅相成的角度出发，阐述只有将台下的充分准备与台上的灵活应对结合起来，才能取得成功；也可以强调在不同情境下，二者的不同侧重，但不能忽视任何一方。</p><p>【写作思路】我们可以选择艺术创作类的素材，如绘画创作，画家在创作前需要深入研究主题、学习技法，但在创作过程中也需要根据纸张纹理、颜料效果等突发情况灵活调整笔触和色彩；还可以选择体育竞技类的素材，运动员在比赛前要进行长时间的艰苦训练，掌握扎实的技术和战术，但在比赛中也需要根据对手的变化、场上的形势做出及时的应变。比如，篮球运动员在比赛中，按照教练布置的战术进攻，但当对手防守策略改变时，要迅速调整进攻方式。也可以围绕学习成长类进行创作，学生在备考过程中，要认真复习知识点，做大量的习题，但在考试时遇到难题也需要灵活思考，尝试不同的解题思路。写作安排上，开头可以引用名言\"台上一分钟，台下十年功\"，然后引出材料内容，点明扎实准备和灵活应变对成功的重要性，引起读者的兴趣。中间部分按照选材分类叙述，如果选择了艺术、体育、学习等多个方面的素材，可以分别用一个小标题来引领每个部分的内容，使文章结构更加清晰。在叙述每个事件时，要注重细节描写，包括人物的心理活动、动作、语言等。结尾总结扎实准备和灵活应变对自己的启示和意义，表达在未来的生活中要将二者结合起来，不断追求成功的决心即可。</p>",
+      "accessories": []
+    }
+  }
+]

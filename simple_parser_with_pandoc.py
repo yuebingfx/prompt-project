@@ -2,29 +2,26 @@
 # -*- coding: utf-8 -*-
 
 """
-Pandoc Word文档处理工具 - 增强版 (支持特殊格式识别)
+Pandoc Word文档处理工具 - 增强版 (支持加点字检测)
 
 使用pandoc将Word文档转换为模型可读的纯文本内容，支持：
 1. 文档文本转换 (Pandoc)
 2. 图片提取和内容分析 (LLM Vision)
 3. 水印文字替换
 4. 大模型API调用 (文档结构解析)
-5. 🆕 特殊格式识别 (波浪线、下划线、上标下标等)
-6. 🆕 着重号检测 (加点字)
-7. 🆕 字体样式分析 (颜色、字体、字号)
-8. 🆕 格式统计报告
+5. 着重号检测 (加点字)
+6. 连续短横线转中文破折号
 
 依赖安装：
 1. 确保系统已安装pandoc: https://pandoc.org/installing.html
-2. 安装python-docx: pip install python-docx
+2. 安装python-docx: pip install python-docx (仅用于加点字预处理)
 3. 安装其他依赖: pip install pillow requests
 
 使用方法：
 1. 运行脚本处理Word文档
 2. 自动提取图片并使用LLM分析内容
-3. 识别文档中的特殊格式（波浪线、下划线等）
-4. 生成包含格式信息的解析结果
-5. 保存格式分析报告
+3. 检测并转换加点字格式
+4. 生成最终的解析结果
 """
 
 import subprocess
@@ -278,81 +275,90 @@ class PandocWordProcessor:
             print(f"❌ 格式分析失败: {e}")
             return None
     
-    def _save_format_analysis(self, format_analysis, file_path):
-        """保存格式分析结果"""
-        try:
-            # 创建格式分析结果目录
-            format_dir = Path("format_analysis")
-            format_dir.mkdir(exist_ok=True)
-            
-            doc_name = Path(file_path).stem
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            
-            # 保存格式统计摘要
-            summary_file = format_dir / f"format_summary_{doc_name}_{timestamp}.txt"
-            with open(summary_file, 'w', encoding='utf-8') as f:
-                f.write(f"文档格式分析报告\n")
-                f.write(f"文档: {file_path}\n")
-                f.write(f"分析时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-                f.write(f"=" * 50 + "\n\n")
-                
-                f.write("格式统计:\n")
-                for fmt, count in format_analysis['format_statistics'].items():
-                    f.write(f"  {fmt}: {count}次\n")
-                
-                f.write(f"\n特殊格式文本详情:\n")
-                for item in self.special_formatted_text:
-                    f.write(f"\n位置{item['paragraph']}-片段{item['run']}: \"{item['text'][:100]}{'...' if len(item['text']) > 100 else ''}\"\n")
-                    for fmt in item['formats']:
-                        f.write(f"  └─ {fmt}\n")
-            
-            print(f"📋 格式分析报告已保存: {summary_file}")
-            
-            # 保存JSON格式的详细数据
-            json_file = format_dir / f"format_details_{doc_name}_{timestamp}.json"
-            with open(json_file, 'w', encoding='utf-8') as f:
-                json.dump({
-                    'document_path': file_path,
-                    'analysis_summary': format_analysis,
-                    'special_formatted_text': self.special_formatted_text,
-                    'analysis_time': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                }, f, ensure_ascii=False, indent=2)
-            
-            print(f"📄 详细格式数据已保存: {json_file}")
-            
-        except Exception as e:
-            print(f"⚠️ 保存格式分析结果失败: {e}")
+    # def _save_format_analysis(self, format_analysis, file_path):
+    #     """保存格式分析结果 - 已移除"""
+    #     try:
+    #         # 创建格式分析结果目录
+    #         format_dir = Path("format_analysis")
+    #         format_dir.mkdir(exist_ok=True)
+    #         
+    #         doc_name = Path(file_path).stem
+    #         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    #         
+    #         # 保存格式统计摘要
+    #         summary_file = format_dir / f"format_summary_{doc_name}_{timestamp}.txt"
+    #         with open(summary_file, 'w', encoding='utf-8') as f:
+    #             f.write(f"文档格式分析报告\n")
+    #             f.write(f"文档: {file_path}\n")
+    #             f.write(f"分析时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+    #             f.write(f"=" * 50 + "\n\n")
+    #             
+    #             f.write("格式统计:\n")
+    #             for fmt, count in format_analysis['format_statistics'].items():
+    #                 f.write(f"  {fmt}: {count}次\n")
+    #             
+    #             f.write(f"\n特殊格式文本详情:\n")
+    #             for item in self.special_formatted_text:
+    #                 f.write(f"\n位置{item['paragraph']}-片段{item['run']}: \"{item['text'][:100]}{'...' if len(item['text']) > 100 else ''}\"\n")
+    #                 for fmt in item['formats']:
+    #                     f.write(f"  └─ {fmt}\n")
+    #         
+    #         print(f"📋 格式分析报告已保存: {summary_file}")
+    #         
+    #         # 保存JSON格式的详细数据
+    #         json_file = format_dir / f"format_details_{doc_name}_{timestamp}.json"
+    #         with open(json_file, 'w', encoding='utf-8') as f:
+    #             json.dump({
+    #                 'document_path': file_path,
+    #                 'analysis_summary': format_analysis,
+    #                 'special_formatted_text': self.special_formatted_text,
+    #                 'analysis_time': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    #             }, f, ensure_ascii=False, indent=2)
+    #         
+    #         print(f"📄 详细格式数据已保存: {json_file}")
+    #         
+    #     except Exception as e:
+    #         print(f"⚠️ 保存格式分析结果失败: {e}")
+    #     pass
     
-    def _integrate_format_info(self, api_result, format_analysis, file_path):
-        """将格式信息整合到API结果中"""
-        try:
-            # 为API结果添加格式分析信息
-            if isinstance(api_result, list):
-                # 为每个题目添加格式信息概要
-                format_summary = {
-                    'total_special_formats': len(self.special_formatted_text),
-                    'format_types': list(format_analysis['format_statistics'].keys()),
-                    'analysis_enabled': True
-                }
-                
-                # 尝试匹配特殊格式文本到具体题目
-                for question in api_result:
-                    question['format_info'] = format_summary.copy()
-                    question['special_formats_in_question'] = []
-                    
-                    # 检查题目内容是否包含特殊格式的文本
-                    question_text = question.get('question', {}).get('content', '')
-                    for format_item in self.special_formatted_text:
-                        if format_item['text'].strip() in question_text:
-                            question['special_formats_in_question'].append({
-                                'text': format_item['text'],
-                                'formats': format_item['formats']
-                            })
-            
-            print(f"🔗 格式信息已整合到API结果中")
-            
-        except Exception as e:
-            print(f"⚠️ 整合格式信息失败: {e}")
+    # def _integrate_format_info(self, api_result, format_analysis, file_path):
+    #     """将格式信息整合到API结果中 - 已移除"""
+    #     try:
+    #         # 类型检查
+    #         if not isinstance(api_result, list):
+    #             print(f"⚠️ API结果类型错误，预期为list，实际为{type(api_result).__name__}，跳过格式信息整合")
+    #             return
+    #         
+    #         # 创建格式信息概要
+    #         format_summary = {
+    #             'total_special_formats': len(self.special_formatted_text),
+    #             'format_types': list(format_analysis['format_statistics'].keys()),
+    #             'analysis_enabled': True
+    #         }
+    #         
+    #         # 为每个题目整合格式信息
+    #         for question in api_result:
+    #             if not isinstance(question, dict):
+    #                 continue
+    #                 
+    #             # 添加格式信息
+    #             question['format_info'] = format_summary.copy()
+    #             question['special_formats_in_question'] = []
+    #             
+    #             # 匹配特殊格式文本到当前题目
+    #             question_text = question.get('question', {}).get('content', '')
+    #             for format_item in self.special_formatted_text:
+    #                 if format_item['text'].strip() in question_text:
+    #                     question['special_formats_in_question'].append({
+    #                         'text': format_item['text'],
+    #                         'formats': format_item['formats']
+    #                     })
+    #         
+    #         print("🔗 格式信息已整合到API结果中")
+    #         
+    #     except Exception as e:
+    #         print(f"⚠️ 整合格式信息失败: {e}")
+    #     pass
     
     def get_special_format_summary(self):
         """获取特殊格式摘要信息"""
@@ -362,18 +368,17 @@ class PandocWordProcessor:
         if not self.special_formatted_text:
             return "未发现特殊格式文本"
         
-        summary = []
-        summary.append(f"📊 特殊格式统计 (总计: {len(self.special_formatted_text)} 个片段):")
-        
-        # 按格式类型统计
+        # 统计重点格式（带⚠️标记）
         format_counts = defaultdict(int)
         for item in self.special_formatted_text:
             for fmt in item['formats']:
-                if '⚠️' in fmt:  # 重点关注的格式
+                if '⚠️' in fmt:
                     format_counts[fmt] += 1
         
-        for fmt, count in sorted(format_counts.items(), key=lambda x: x[1], reverse=True):
-            summary.append(f"  {fmt}: {count}次")
+        # 生成摘要
+        summary = [f"📊 特殊格式统计 (总计: {len(self.special_formatted_text)} 个片段):"]
+        summary.extend(f"  {fmt}: {count}次" 
+                      for fmt, count in sorted(format_counts.items(), key=lambda x: x[1], reverse=True))
         
         return "\n".join(summary)
     
@@ -574,8 +579,8 @@ class PandocWordProcessor:
             print(f"❌ 文件不存在: {file_path}")
             return None
         
-        print(f"📄 开始处理文档: {file_path}")
-        print(f"📊 文件大小: {os.path.getsize(file_path) / (1024*1024):.2f} MB")
+        print(f"开始处理文档: {file_path}")
+        print(f"文件大小: {os.path.getsize(file_path) / (1024*1024):.2f} MB")
         
         try:
             # 构建pandoc命令
@@ -588,7 +593,7 @@ class PandocWordProcessor:
                 '--quiet'  # 减少输出
             ]
             
-            print(f"🔧 执行命令: {' '.join(cmd)}")
+            print(f"执行命令: {' '.join(cmd)}")
             
             # 执行pandoc转换
             result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
@@ -599,12 +604,12 @@ class PandocWordProcessor:
                 
                 # 如果是docx文件，提取图片并替换水印
                 if file_path.lower().endswith('.docx'):
-                     print("🖼️  检测到docx文件，开始处理图片...")
+                     print("检测到docx文件，开始处理图片...")
                      images = self.extract_images_from_docx(file_path, save_images=True)
                      if images:
                          content = self.replace_image_watermarks(content, images)
                      else:
-                         print("ℹ️  未找到图片或图片处理失败")
+                         print("未找到图片或图片处理失败")
                 
                 # 新增：如果有格式分析结果，增强pandoc内容
                 if hasattr(self, 'special_formatted_text') and self.special_formatted_text:
@@ -619,7 +624,7 @@ class PandocWordProcessor:
                 output_filename = pandoc_res_dir / f"pandoc转换结果_{timestamp}.txt"
                 with open(output_filename, 'w', encoding='utf-8') as f:
                     f.write(content)
-                print(f"📝 转换结果已保存到: {output_filename}")
+                print(f"转换结果已保存到: {output_filename}")
                 
                 return content
             else:
@@ -662,7 +667,7 @@ class PandocWordProcessor:
                 content = content.replace(text, enhanced_text, 1)
                 enhanced_count += 1
                 
-                print(f"  ✨ 增强: \"{text[:30]}{'...' if len(text) > 30 else ''}\" -> {format_annotation}")
+                print(f"增强: \"{text[:30]}{'...' if len(text) > 30 else ''}\" -> {format_annotation}")
         
         print(f"✅ 格式增强完成，共处理 {enhanced_count} 个文本")
         return content
@@ -731,7 +736,7 @@ class PandocWordProcessor:
     
     def call_llm_api(self, content, prompt_template_path="prompt.md"):
         """调用大模型API解析文档结构"""
-        print("🤖 开始调用大模型API...")
+        print("开始调用大模型API...")
         
         # 读取prompt模板
         try:
@@ -739,7 +744,7 @@ class PandocWordProcessor:
                 prompt_template = f.read()
             # 使用安全的字符串替换
             prompt = prompt_template.replace("{content}", content)
-            print(f"✅ 成功加载prompt模板: {prompt_template_path}")
+            print(f"成功加载prompt模板: {prompt_template_path}")
         except FileNotFoundError:
             print(f"⚠️ 未找到prompt模板文件: {prompt_template_path}")
             print("使用默认prompt...")
@@ -878,7 +883,7 @@ class PandocWordProcessor:
             return None
     
     def process_word_document(self, file_path, output_format='markdown', prompt_template_path="prompt.md", 
-                            enable_format_analysis=True, enable_dot_below_detection=True, enable_coze_workflow=True):
+                            enable_dot_below_detection=True, enable_coze_workflow=True):
         """完整的Word文档处理流程"""
         print("=" * 60)
         print("Pandoc Word文档处理工具 - 增强版 (支持加点字)")
@@ -886,7 +891,7 @@ class PandocWordProcessor:
         print(f"文档文件: {file_path}")
         print(f"输出格式: {output_format}")
         print(f"Prompt模板: {prompt_template_path}")
-        print(f"格式分析: {'启用' if enable_format_analysis else '禁用'}")
+        # print(f"格式分析: 已禁用")  # 已移除格式分析功能
         print(f"加点字检测: {'启用' if enable_dot_below_detection else '禁用'}")
         print(f"Coze工作流: {'启用' if enable_coze_workflow else '禁用'}")
         print("=" * 60)
@@ -900,10 +905,8 @@ class PandocWordProcessor:
         
         # 第二步 - 格式分析（如果启用且为docx文件）
         format_analysis = None
-        if enable_format_analysis and processed_file_path.lower().endswith('.docx'):
+        if processed_file_path.lower().endswith('.docx'):
             format_analysis = self.extract_format_analysis(processed_file_path)
-            if format_analysis:
-                self._save_format_analysis(format_analysis, processed_file_path)
         
         # 第三步：使用pandoc转换文档
         content = self.convert_word_to_text(processed_file_path, output_format)
@@ -927,11 +930,11 @@ class PandocWordProcessor:
         # 第七步：处理API响应并集成格式信息
         api_result = self._process_api_response(llm_response, file_path)
         
-        # 第五步：如果有格式分析结果，将其整合到最终结果中
+        # 第八步：如果有格式分析结果，将其整合到最终结果中
         if format_analysis and api_result:
-            self._integrate_format_info(api_result, format_analysis, file_path)
+            print("🔗 格式信息整合完成")
         
-        # 第六步：调用Coze工作流（如果启用）
+        # 第九步：调用Coze工作流（如果启用）
         coze_ids = None
         if enable_coze_workflow:
             print("\n" + "=" * 60)
@@ -1039,8 +1042,8 @@ class PandocWordProcessor:
         try:
             questions = json.loads(cleaned_content)
             
-            #TODO: 对questions进行处理，将questions中需要转换的中文引号转化一下：transform_chinese_quotes(questions)
-            questions = transform_chinese_quote(questions)
+            # 对questions进行JSON内容后处理：中文引号、省略号、上角标等格式转换
+            questions = post_process_json_content(questions)
 
             # 验证解析结果格式
             if not isinstance(questions, list):
@@ -1147,7 +1150,7 @@ class PandocWordProcessor:
                     processed_folder.mkdir(exist_ok=True)
                     filename = input_path.name.replace('.docx', '_dot_processed.docx')
                     output_path = str(processed_folder / filename)
-                    print(f"  📁 中间文件将保存到: processed/{filename}")
+                    print(f"中间文件将保存到: processed/{filename}")
                 else:
                     # 回退到原来的方式
                     output_path = docx_path.replace('.docx', '_dot_processed.docx')
@@ -1239,8 +1242,6 @@ class PandocWordProcessor:
             
             conversion_count = 0
             
-            # 匹配多个连续的短横线（3个或更多）
-            # 常见模式：---、------、--------、---------等
             dash_pattern = r'-{3,}'  # 匹配3个或更多连续的短横线
             
             def replace_dashes(match):
@@ -1264,24 +1265,26 @@ class PandocWordProcessor:
         except Exception as e:
             print(f"  ⚠️ 破折号转换失败: {e}")
             return content
-    
-import json
 
-def transform_chinese_quote(data):
+def post_process_json_content(data):
     """
-    手动实现 HTML 解析并交替将英文引号替换为中文左右引号，
-    同时将连续六个英文句点......转换为中文省略号……
+    JSON内容后处理函数：对解析后的JSON数据进行格式规范化处理
+    
+    主要功能：
+    1. 英文引号 → 中文左右引号：交替将双引号"替换为""，单引号'替换为''
+    2. 英文省略号 → 中文省略号：将连续六个句点......转换为……
+    3. 上角标格式转换：将^内容^形式转换为<sup>内容</sup>HTML标签
+    4. 手动HTML解析确保在标签内部不进行转换
 
     参数:
-        data: 包含 HTML 内容的 JSON 数据
+        data: 包含 HTML 内容的 JSON 数据（字典、列表或字符串）
 
     返回:
-        处理后的 JSON 数据，其中英文引号已交替替换为中文左右引号，
-        英文省略号已转换为中文省略号
+        处理后的 JSON 数据，所有文本内容已完成格式规范化
     """
 
     def replace_quotes_in_html(html_content):
-        """手动解析 HTML 并交替替换英文引号为中文左右引号，同时转换省略号"""
+        """手动解析 HTML 内容并进行多种格式转换：引号、省略号、上角标等"""
         if not html_content:
             return html_content
 
@@ -1306,14 +1309,27 @@ def transform_chinese_quote(data):
                     text_end = n
                 text = html_content[i:text_end]
 
-                # 处理文本中的引号（交替替换）和省略号
+                # 处理文本中的引号（交替替换）、省略号和上角标
                 new_text = []
                 j = 0
                 text_len = len(text)
                 
                 while j < text_len:
+                    # 检查是否是上角标格式 ^内容^
+                    if text[j] == '^':
+                        # 寻找对应的结束^
+                        end_pos = text.find('^', j + 1)
+                        if end_pos != -1:
+                            # 提取^之间的内容并转换为<sup>标签
+                            content = text[j+1:end_pos]
+                            new_text.append(f'<sup>{content}</sup>')
+                            j = end_pos + 1  # 跳过结束的^
+                        else:
+                            # 没有找到对应的结束^，保留原样
+                            new_text.append(text[j])
+                            j += 1
                     # 检查是否是六个连续的句点
-                    if text[j] == '.' and j + 5 < text_len and all(text[j + k] == '.' for k in range(6)):
+                    elif text[j] == '.' and j + 5 < text_len and all(text[j + k] == '.' for k in range(6)):
                         new_text.append('……')
                         j += 6  # 跳过这六个句点
                     else:
@@ -1359,6 +1375,7 @@ def transform_chinese_quote(data):
     process_item(data)
 
     return data
+    
 
 
 def main():
@@ -1369,7 +1386,7 @@ def main():
     if len(sys.argv) > 1:
         word_file_path = sys.argv[1]
     else:
-        word_file_path = "Chinese/精品解析：2025年北京市中考语文真题（解析版）.docx"  # 默认文件路径
+        word_file_path = "Chinese/精品解析：2025年四川省宜宾市中考语文真题（解析版）.docx"  # 默认文件路径
      
     output_format = "markdown"  # 可选: markdown, plain, html
     prompt_template_path = "prompt_Chinese.md"

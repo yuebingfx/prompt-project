@@ -2,8 +2,8 @@
 **核心说明**
 一套试卷有三级结构，1. 题组名（分题型/类型的大模块） 2.题目 3. 子题（可能有，可能没有）。你需要解析和拆分出试卷中的每一道题。
 试卷中题组名、题目和子题的关系阐述如下：
-1.题组名和题目是1对n的关系：一个题组名可能对应一道题目，也可能对应多道题目，如果对应一道题目，则题组名通常被放在对应的题目的题干（content）中去，如果对应的是多道题目，且每个题目之间相对独立（例如题组名是：三、阅读理解，题组名下包含若干篇相对独立的阅读理解题目），则每道题目都需要被拆分成一道题，此时题组名一般不需要放在题目的题干（content）中去，除非题组名对做题有影响，则需要放在每个题目的题干（content）中去。
-2.题目可能有子题，也可能没有子题：有的题目是嵌套结构，则包含子题，如完形填空、阅读题、m选n题等，有的题目则没有子题。后面有关于子题的详细判断标准供你参考。
+1.题组名和题目是1对n的关系：一个题组名可能对应一道题目，也可能对应多道题目，如果对应一道题目，则题组名通常被放在对应的题目的题干（content）中去，如果对应的是多道题目，且每个题目之间相对独立（例如题组名是：二、古诗文阅读，题组名下包含若干题目），则每道题目都需要被拆分成一道题，此时题组名不需要放在题目的题干（content）中去，除非题组名对做题有影响。
+2.题目可能有子题，也可能没有子题：有的题目是嵌套结构，则包含子题，如阅读题，有的题目则没有子题。后面有关于子题的详细判断标准供你参考。
 3.你的重要工作就是从试卷中识别和判断出题组名、题目和子题，根据要求和实际情况判断其是什么题型、是否包含子题，保证题目的结构拆解正确。
 
 **学科和学段信息处理要求**：
@@ -50,11 +50,6 @@
 - **语文综合运用题**：有统一主题背景，包含多个资料和多个小题，必须使用subQuestions结构
 - **字音字形题**：通常为选择题形式，考查拼音标注的正误
 - **默写填空题**：需要填入准确的诗句或文言文语句
-- **古诗文阅读题**：包含古诗理解、文言文翻译、实词虚词解释等
-- **现代文阅读题**：包含文学类、说明文、议论文等不同文体
-- **名著阅读题**：考查对经典作品人物、情节、主题的理解
-- **语言文字运用题**：包含成语使用、病句修改、句式变换等
-- **作文题**：通常为命题作文或材料作文，可能提供多个题目供选择
 
 **题目完整性和独立性要求（最重要）**：
 - **核心原则**：拆出来的每一道题必须能独立完成，不能有缺漏信息
@@ -67,7 +62,6 @@
   * **成语使用题**：必须包含语境材料，学生需要看到成语的使用语境
   * **病句修改题**：必须包含需要修改的原句
   * **词语填空题**：必须包含完整的语境材料
-  * **文言文词义题**：必须包含文言文原文
 - **正确处理示例**：
   * ✅ 字音题包含：完整材料内容 + 题目要求 + 选项
   * ✅ 成语题包含：完整语境材料 + 题目要求 + 选项
@@ -137,37 +131,47 @@
   ```
 
 **特殊格式处理要求（重要）**：
-- **🚨 括号填空（最重要）**：所有作为答题区的括号 `（）` 必须转换为 `<input type=\"bracket\" size=\"8\" />` 标签（注意：不是普通的标点括号，而是填空答题区的括号）
-- **🚨 下划线填空（最重要）**：文本中出现的任何连续下划线填空如 `___` 或 `_____` 等必须转换为 `<input size=\"X\" readonly=\"readonly\" type=\"underline\">` 标签
-- **波浪线强调**：使用 `<u style=\"text-decoration-style: wavy;\">` 标签
+- **括号填空（重要）**：选择题中的括号填空应保持为原始括号格式 `（）`（注意：不是普通的标点括号，而是填空答题区的括号）
+- **下划线填空（重要）**：填空题中的下划线填空必须转换为 `<input size="X" readonly="readonly" type="underline">` 标签
+- **加点字格式（绝对优先处理）**：`[\[DOT_BELOW\]内容\[/DOT_BELOW\]]{.underline}` **必须立即识别并转换为加点字标签**：`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">内容</span>`
+  * **🔥 极其重要**：DOT_BELOW是加点字的专用标记，**绝对不能**转换为波浪线或其他格式
+  * **🔥 正确示例**：`[\[DOT_BELOW\]温暖人心\[/DOT_BELOW\]]{.underline}` → `<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">温暖人心</span>`
+  * **❌ 错误示例**：`[\[DOT_BELOW\]温暖人心\[/DOT_BELOW\]]{.underline}` → `<u style=\"text-decoration-style: wavy;\">温暖人心</u>` **（这是严重错误！）**
+- **波浪线强调**：使用 `<u style=\"text-decoration-style: wavy;\">` 标签（**注意：仅用于真正的波浪线格式，不是DOT_BELOW**）
 - **单下划线强调**：使用 `<u>` 标签
-- **上角标格式**：`^①^` `^②^` `^③^` 等必须转换为HTML上角标：`<sup>①</sup>` `<sup>②</sup>` `<sup>③</sup>`
-- **加点字格式**：`[\[DOT_BELOW\]字符\[/DOT_BELOW\]]{.underline}` 必须转换为加点字标签：`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">字符</span>`
-- **🚨 禁止在输出结果中保留原始格式，必须要替换为HTML标签（最重要）**：
-  * ❌ 禁止出现原始括号：`（）` → ✅ 必须转换为：`<input type=\"bracket\" size=\"X\" />`X的数值需要结合实际情况决定
-  * ❌ 禁止出现原始下划线：`___` → ✅ 必须转换为：`<input size=\"X\" readonly=\"readonly\" type=\"underline\">`X的数值需要结合实际情况决定
-  * 🔥 特别强调：绝对禁止保留任何形式的下划线填空**：
-    - ❌ **严重错误**：`店铺______，一路逛过去`
-    - ❌ **严重错误**：`挤进_______的人群`  
-    - ✅ **必须转换为**：`店铺<input size=\"8\" readonly=\"readonly\" type=\"underline\">，一路逛过去`
-    - ✅ **必须转换为**：`挤进<input size=\"8\" readonly=\"readonly\" type=\"underline\">的人群`
+- **🚨 填空格式要求（最重要）**：
+  * ✅ 选择题括号填空：`（）`用于选择题答题区
+  * ✅ 填空题下划线填空：`<input size="X" readonly="readonly" type="underline">`用于填空题
+  * 🔥 特别强调：填空题必须使用HTML标签**：
+    - ✅ **正确格式**：`店铺<input size="8" readonly="readonly" type="underline">，一路逛过去`
+    - ✅ **正确格式**：`挤进<input size="8" readonly="readonly" type="underline">的人群`
   * ❌ 禁止出现：`[_____]{.underline}`
   * ❌ 禁止出现：`[___1___]{.underline}`
   * ❌ 禁止出现：`[甲]{.underline}`、`[乙]{.underline}`等变量形式
   * ❌ 禁止出现：`[内容]{.wavy-underline}`
   * ❌ 禁止出现：`[内容]{.single-underline}`
   * ❌ 禁止出现：`[内容]{.bold}`
-  * ❌ 禁止出现：`[\[DOT_BELOW\]字符\[/DOT_BELOW\]]{.underline}` 加点字格式
+  * ❌ 禁止出现：`[\[DOT_BELOW\]内容\[/DOT_BELOW\]]{.underline}` 加点内容格式
   * ❌ 禁止出现：`[内容]{.color-XXXXXX}`及其多层嵌套
-- **正确替换格式示例**：
-  * 下划线填空：`<input size=\"8\" readonly=\"readonly\" type=\"underline\">`
+- **正确格式示例**：
+  * 填空题下划线填空：`<input size="8" readonly="readonly" type="underline">`
+  * 选择题括号填空：`（）`（保持原始格式）
   * 波浪线强调：`<u style=\"text-decoration-style: wavy;\">内容</u>`
   * 单下划线强调：`<u>内容</u>`
   * 粗体强调：`<strong>内容</strong>`
   * 彩色文字：直接保留内容，忽略颜色格式
+- **加点字格式转换实例（最最最重要，必须最优先执行）**：
+  * **🔥 识别标志**：`[\[DOT_BELOW\]` 开头和 `\[/DOT_BELOW\]]{.underline}` 结尾
+  * ❌ **严重错误**：`[\[DOT_BELOW\]温暖人心\[/DOT_BELOW\]]{.underline}` → `<u style=\"text-decoration-style: wavy;\">温暖人心</u>` **（绝对禁止！）**
+  * ❌ **严重错误**：`[\[DOT_BELOW\]欣然接受\[/DOT_BELOW\]]{.underline}` → `<u style=\"text-decoration-style: wavy;\">欣然接受</u>` **（绝对禁止！）**  
+  * ✅ **必须转换为**：`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">温暖人心</span>`
+  * ✅ **必须转换为**：`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">欣然接受</span>`
+  * **🔥 重要提醒**：DOT_BELOW是加点字的专用标记，与波浪线完全不同，绝对不能混淆！
+
 - **🚨 波浪线格式转换实例（极其重要，必须严格执行）**：
   * ❌ **严重错误**：`[即使在贫乏的环境里，依然可以做一个理想主义者。]{.wavy-underline}`
   * ✅ **必须转换为**：`<u style=\"text-decoration-style: wavy;\">即使在贫乏的环境里，依然可以做一个理想主义者。</u>`
+  * **🔥 注意**：波浪线使用`{.wavy-underline}`标记，与DOT_BELOW完全不同！
 
 - **🚨 单下划线格式转换实例（同样重要）**：
   * ❌ **严重错误**：`[[卒中往往语，皆指目陈胜。]{.single-underline}]{.underline}`
@@ -182,10 +186,6 @@
   * ✅ 正确：`<strong>注意事项：</strong>`
   * ❌ 错误：`[[[[[[【答案】]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}`
   * ✅ 正确：`<strong>【答案】</strong>`
-  * ❌ 错误：`岁晚^①^ 王安石`
-  * ✅ 正确：`岁晚<sup>①</sup> 王安石`
-  * ❌ 错误：`携幼寻新菂^②^，扶衰坐野航^③^`
-  * ✅ 正确：`携幼寻新菂<sup>②</sup>，扶衰坐野航<sup>③</sup>`
   * ❌ 错误：`[\[DOT_BELOW\]会\[/DOT_BELOW\]]{.underline}天大雨`
   * ✅ 正确：`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">会</span>天大雨`
   * ❌ 错误：`[\[DOT_BELOW\]筹\[/DOT_BELOW\]]{.underline}划`
@@ -203,12 +203,10 @@
   * `[内容]{.color-XXXXXX}` 忽略颜色，直接保留内容，如果内容重要则加粗：`<strong>内容</strong>`
   * 多层嵌套格式如 `[[[[内容]{.color-A}]{.color-B}]{.color-C}]{.color-D}` 简化为：`<strong>内容</strong>`
   * 嵌套格式如 `[[内容]{.single-underline}]{.underline}` 只保留最外层效果：`<u>内容</u>`
-  * **上角标格式** `^①^` `^②^` `^③^` 等必须转换为HTML上角标：`<sup>①</sup>` `<sup>②</sup>` `<sup>③</sup>`
-  * **🆕 加点字格式** `[\[DOT_BELOW\]字符\[/DOT_BELOW\]]{.underline}` 转换为加点字标签：`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">字符</span>`
+  * **加点内容格式** `[\[DOT_BELOW\]内容\[/DOT_BELOW\]]{.underline}` 转换为加点标签：`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">内容</span>`
 - **标识符保留规则**：
   * 如果原文是 `[甲]{.underline}`，转换为 `<input size=\"8\" readonly=\"readonly\" type=\"underline\" placeholder=\"甲\">`
   * 如果原文是 `[乙]{.underline}`，转换为 `<input size=\"8\" readonly=\"readonly\" type=\"underline\" placeholder=\"乙\">`
-  * 如果原文是 `[____]{.underline}`，转换为 `<input size=\"8\" readonly=\"readonly\" type=\"underline\">`
 - **size设置规则**：
   * 单词填空：size=\"8-12\"
   * 短语填空：size=\"15-20\"
@@ -235,14 +233,16 @@
 
 **作文题识别规则（重要）**：
 - **作文题特征**：题目要求写作文、短文、文章等，通常包含"写一篇"、"完成一篇"、"写短文"等关键词
-- **作文题标签**：作文题必须使用 `<full-line-blank>` 标签，绝对不能使用 `<input size=\"X\" readonly=\"readonly\" type=\"underline\">` 标签
-- **作文题type**：作文题的type为"简答"，但答题区域使用 `<full-line-blank>` 标签
-- **常见错误**：将作文题错误识别为填空题，使用 `<input size=\"X\" readonly=\"readonly\" type=\"underline\">` 标签
+- **语文写作题特殊要求**：语文学科的写作题可不输入横线作答空
+  * **可选择不使用**：语文写作题可以不使用 `<full-line-blank>` 标签，直接结束题目内容
+- **作文题type**：作文题的type为"简答"
+- **绝对禁止**：写作题绝对不能使用 `<input size=\"X\" readonly=\"readonly\" type=\"underline\">` 标签
 
 **标签使用区分（重要）**：
 - **使用 `<full-line-blank>` 的情况**：
   * 简答题（需要写完整句子或段落）
-  * 作文题（需要写文章）
+- **可以不使用答题标签的情况**：
+  * **语文写作题**：可以选择不添加 `<full-line-blank>` 标签，直接结束题目内容
 - **使用 `<input size=\"X\" readonly=\"readonly\" type=\"underline\">` 的情况**：
   * 填空题（只需要填单词或短语）
   * 语法填空题（填入适当形式）
@@ -252,11 +252,11 @@
 
 
 **填空形式选择规则（重要）**：
-- **优先使用下划线形式**：`<input size=\"X\" readonly=\"readonly\" type=\"underline\">`
-- **仅在以下情况使用括号形式**：
-  * 原文明确显示为括号 `()` 形式的填空
-  * 题目要求从选项中选择填入括号中
-- **常见错误**：不要将原文中的下划线填空错误地转换为括号形式
+- **填空题使用下划线HTML标签**：`<input size=\"X\" readonly=\"readonly\" type=\"underline\">`
+- **选择题使用括号原始格式**：`（）`
+  * 选择题中的括号填空保持原始格式
+  * 填空题中的下划线填空必须转换为HTML标签
+- **重要区分**：填空题和选择题的填空处理方式不同
 
 
 请分析以下试卷内容，提取出试卷的二级结构（完整的一道题），返回JSON格式的数组，每个对象的格式要求如下：
@@ -343,20 +343,20 @@
 
 
 **单选题**：题目有明确的选项，学生选择其中一个正确答案
-**单选题示例**
+**单选题结构示例**
 
 {
   "question": {
-    "content": "<p>从题中所给的A、B、C、D四个选项中, 选出一个最佳答案。</p><p>下列句子中加点词语使用不正确的一项是<input type=\"bracket\" size=\"8\" /></p>",
+    "content": "<p>从题中所给的A、B、C、D四个选项中, 选出一个最佳答案。</p><p>下列句子中加点词语使用不正确的一项是（）</p>",
     "solution": "<p>这道题考查学生对词语使用的理解和掌握。需要仔细分析每个选项中加点词语在语境中的使用是否恰当，是否符合词语的本意和使用规范。</p>",
     "answer": {
       "choice": "0"
     },
     "accessories":  [
-          "<p>他在学习上一向踌躇满志，从不满足于现状。</p>",
-          "<p>这篇文章立意深刻，文笔优美，堪称佳作。</p>",
-          "<p>面对困难，他总是迎难而上，绝不退缩。</p>",
-          "<p>老师语重心长的话语，让我们深受感动。</p>"
+          "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">筹</span>（chóu）划</p>",
+          "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">召</span>（zhāo）开</p>",
+          "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">砥</span>（dǐ）砺</p>",
+          "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">提</span>（tí）供</p>"
         ],
     "type": "单选",
     "score": 2
@@ -377,10 +377,10 @@
 **作文类题目示例**
 {
   "question": {
-        "content": "<p>阅读下面材料，根据要求写作。</p><p>生活中，我们常常会遇到各种挫折和困难。有人说：\"挫折是人生的财富\"；也有人说：\"挫折让人痛苦不堪\"。你是如何看待挫折的？</p><p>要求：</p><p>1. 以\"谈挫折\"为题，写一篇议论文；</p><p>2. 观点明确，论据充分，论证合理；</p><p>3. 语言流畅，结构完整；</p><p>4. 不少于600字。</p><p style='text-align: center;'><strong>谈挫折</strong></p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"15\" data-punctuation=\"\" data-first-line-width=\"600\">&nbsp;</full-line-blank></p>",
+        "content": "<p>作文</p><p>&nbsp; &nbsp;世界是一个科学大课堂，时时学科学，处处用科学。阅读经典作品、参与社会实践、畅游海底遥望星空……我们增长科学知识，领悟科学精神，提高科学素养。</p><p>请以\"一堂科学课\"为题，写一篇作文。文体不限，诗歌除外。</p><p>要求：将作文题目写在答题卡上，作文内容积极向上，字数在$600$-$800$之间，不出现真实的学校名称、师生姓名等。</p>",
         "solution": "<p>【写作指导】这是一篇议论文写作。要求以\"谈挫折\"为题，表达自己对挫折的看法。</p><p>【写作思路】1.开头：引出话题，明确观点——挫折是人生的财富；2.主体：分层论述挫折的积极作用，可以从\"挫折让人成长\"\"挫折让人坚强\"\"挫折让人珍惜\"等角度展开；3.结尾：总结全文，强化观点。</p><p>【写作要点】①观点要明确，可以从正面论述挫折的积极意义；②论据要充分，可以运用名人事例、历史典故、生活实例等；③论证要合理，运用举例论证、对比论证、引用论证等方法；④语言要流畅，注意段落层次清晰。</p>",
         "answer": {
-          "answer": "<p>&nbsp; &nbsp;人生路上，我们难免会遇到各种挫折和困难。有人因此而消沉，有人却在挫折中成长。在我看来，挫折是人生的财富，它能让我们变得更加坚强和成熟。</p><p>&nbsp; &nbsp;首先，挫折能够磨炼我们的意志。古人云：\"宝剑锋从磨砺出，梅花香自苦寒来。\"只有经历过挫折的人，才能真正理解成功的来之不易。司马迁因李陵之祸受宫刑，这对一个男人来说是极大的屈辱，但他没有被挫折击倒，而是化悲愤为力量，最终完成了\"史家之绝唱，无韵之离骚\"的《史记》。挫折成就了司马迁，也成就了这部不朽的史学巨著。</p><p>&nbsp; &nbsp;其次，挫折能够让我们更加珍惜拥有的一切。平顺的生活往往让人产生惰性，而挫折却能唤醒我们内心深处的斗志。当我们失去某些东西时，才会真正明白它们的珍贵。正如一句话所说：\"失去了才知道珍惜。\"挫折让我们学会感恩，学会珍惜身边的人和事。</p><p>&nbsp; &nbsp;最后，挫折是通向成功的必经之路。没有人能够一帆风顺地走向成功，每一个成功者的背后都有着无数次失败和挫折的积累。爱迪生发明电灯泡时失败了上千次，但他从不气馁，最终取得了成功。挫折不是成功的绊脚石，而是成功的垫脚石。</p><p>&nbsp; &nbsp;因此，我们应该以积极的心态面对挫折，把它当作人生的财富。只有这样，我们才能在挫折中成长，在困难中坚强，最终走向成功的彼岸。</p>"
+          "answer": "<p><p>【答案】例文：</p><p style=\"text-align: center;\">一堂课学科</p>&nbsp; &nbsp;\"同学们，今天我们要用最普通的材料，搭建一座能承重的纸桥。\"科学老师举起两张A4纸，教室里的空气突然变得轻盈，像被施了魔法。</p><p>&nbsp; &nbsp;我摩挲着薄如蝉翼的纸张，指尖触到同桌小雨递来的目光——那里面跳动着和我一样的困惑。前桌的小明已经迫不及待地卷起纸筒，可刚放上两支铅笔，纸筒就像被施了瘦身咒的巫师，瘪塌塌地瘫在桌上。教室里此起彼伏的叹息声，像被风吹散的蒲公英。</p><p>\"试试把纸折成波浪形。\"老师的声音像投入湖面的石子，激起层层涟漪。我望着手中被均匀折叠的纸张，突然想起上周参观桥梁博物馆时，解说员说过拱形结构能分散压力。阳光透过窗户斜斜地切进来，在折痕上跳跃成金色的琴弦。</p><p>&nbsp; &nbsp;当我和小雨把十二个波浪纸并排粘合时，教室后墙的挂钟正指向三点十五分。小明抱着装满橡皮的塑料盒小跑过来，盒子里的彩色橡皮丁零当啷响成一片。\"三块、五块、十块……\"我们屏住呼吸，看着纸桥在重负下微微颤动，却始终倔强地挺直脊梁。当第二十块橡皮稳稳落定时，不知谁带头鼓起了掌，掌声像涨潮的海水漫过整个教室。</p><p>&nbsp; &nbsp;\"知道为什么波浪形能承受更多重量吗？\"老师用教鞭轻点投影幕布，那些弯曲的线条瞬间活过来，在光影中舒展成优美的弧线，\"就像古罗马的拱门、悉尼的歌剧院，自然界的贝壳、蜂巢，科学就在这些优美的曲线里跳舞。\"</p><p>&nbsp; &nbsp;我摸着纸桥上的折痕，突然明白科学不是实验室里冰冷的仪器，而是藏在每道褶皱里的智慧。就像此刻窗外飘过的云朵，看似柔软无形，却能托起整个天空的重量。放学的铃声响起时，我的书包里除了皱巴巴的纸桥模型，还装着会发光的疑问：如果用不同材质的纸张，如果改变波浪的疏密……</p><p>&nbsp; &nbsp;科学课的余韵在走廊里轻轻回荡，我知道，这堂课的终点，正是无数新问题的起点。</p>"
         },
         "accessories": [],
         "type": "简答"
@@ -440,7 +440,7 @@
 **默写填空题示例**
 {
   "question": {
-    "content": "<p>默写填空。</p><p>①纷纷暮雪下辕门，<input size=\"20\" readonly=\"readonly\" type=\"underline\">。（岑参《白雪歌送武判官归京》）</p><p>②亭亭净植，<input size=\"25\" readonly=\"readonly\" type=\"underline\">。（周敦颐《爱莲说》）</p><p>③古人常用竹子制作乐器，很多乐器名称使用带\"竹字头\"的字。如古诗词中的\"<input size=\"30\" readonly=\"readonly\" type=\"underline\">\"一句，就出现了这样的乐器名称。（本试卷中出现的句子除外）</p>",
+    "content": "<p>①纷纷暮雪下辕门，<input size=\"20\" readonly=\"readonly\" type=\"underline\">。（岑参《白雪歌送武判官归京》）</p><p>②亭亭净植，<input size=\"25\" readonly=\"readonly\" type=\"underline\">。（周敦颐《爱莲说》）</p><p>③古人常用竹子制作乐器，很多乐器名称使用带\"竹字头\"的字。如古诗词中的\"<input size=\"30\" readonly=\"readonly\" type=\"underline\">\"一句，就出现了这样的乐器名称。（本试卷中出现的句子除外）</p>",
     "solution": "<p>本题考查名句名篇默写。默写题作答时，一是要透彻理解诗文的内容；二是要认真审题，找出符合题意的诗文句子；三是答题内容要准确，做到不添字、不漏字、不写错字。</p>",
     "answer": {
       "blanks": [
@@ -456,7 +456,7 @@
 **语文综合运用题示例（正确格式）**
 {
   "question": {
-    "content": "<p><strong>一、基础·运用（共13分）</strong></p><p>学校组织编写\"城市漫步地\"推荐手册，有同学推荐了北京市有代表性的书店，并搜集了相关资料。请你协助整理。</p><p><strong>资料一</strong></p><p>&nbsp; &nbsp; 1937年4月，新华书店诞生于延安。1948年12月，毛泽东同志在西柏坡题写了\"新华书店\"四个大字，中共中央宣传部将其作为平津解放以后全国各地建立的新华书店的招牌用字。经<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">筹</span>（chóu）划，1949年2月，北平第一家新华书店在王府井大街开业。同年10月，全国新华书店第一届出版工作会议在北京<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">召</span>（zhāo）开。七十多年来，北京新华书店始终传承红色基因，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">砥</span>（dǐ）砺\"新华精神\"，坚守为人民服务的初心，宣传党的路线方针政策，为广大读者提<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">供</span>（gōng）科学文化知识，极大地满足了人民群众的精神文化需求，促进了首都人民思想道德素质和科学文化素质的提高，在文化建设中发挥了重要作用。</p><p><strong>资料二</strong></p><p>&nbsp; &nbsp; 中国书店创立于1952年，主要从事古旧书籍的经营及古籍的复制出版。2008年，中国书店申报的古籍修复技艺被列入国家级非物质文化遗产名录。如今，中国书店既保留了古籍影印复制等传统业务，又担负起文学典籍整理、北京传统文化研究等多项任务，还出版了《北京方志提要》《北京旧志汇刊》及大量新印古籍和研究传统文化的著作。中国书店在中华优秀传统文化的<input size=\"8\" readonly=\"readonly\" type=\"underline\">、<input size=\"8\" readonly=\"readonly\" type=\"underline\">和<input size=\"8\" readonly=\"readonly\" type=\"underline\">等方面做出了积极努力。</p><p><strong>资料三</strong></p><p>&nbsp; &nbsp; 在北京市政府的支持下，有些书店迁入古建筑所在的院落。时尚的阅读空间与古树、古建筑相映成趣。这些书店承担着\"阅读传承\"与\"文物活化\"的双重使命，除图书外，还收藏老照片、旧报刊、胡同门牌等多种历史资料。图书与历史资料相得益彰，共同讲述着北京作为古城、古都的发展历史。这些书店大多自出心裁，选择具有地域特色的主题陈列图书和其他展品，如\"京味文学\"\"口述历史\"\"史地民俗\"等。读者捕风捉影，可以领略老北京的城市风貌。</p><p><strong>资料四</strong></p><p>&nbsp; &nbsp; 漫步胡同，胡同尽头有一座独立的四合院，它居然是一家书店。这家书店的院落布局融入了现代元素，房屋主体采用黛色砖瓦，装饰物以红色为主色调，古朴、时尚、喜庆。阅读区域暖黄色的灯光温柔地洒在木质书架上，琳琅满目的书籍散发着墨香。它特有的文化氛围不仅吸引着读者，还吸引着大量游客和摄影爱好者。<u>胡同里的这家书店创新了设计风格，营造了广大群众的文化体验。</u></p><p><strong>后记</strong></p><p>&nbsp; &nbsp; 赓续红色血脉的新华书店让我们领悟\"新华精神\"的当代内涵；<input size=\"25\" readonly=\"readonly\" type=\"underline\">；古建筑旁、胡同里的创意书店让我们感受城市文化的地域特色。选择书店作为城市漫步地，你就选择了观察一座城市的独特视角。</p>",
+    "content": "<p>学校组织编写\"城市漫步地\"推荐手册，有同学推荐了北京市有代表性的书店，并搜集了相关资料。请你协助整理。</p><p><strong>资料一</strong></p><p>&nbsp; &nbsp; 1937年4月，新华书店诞生于延安。1948年12月，毛泽东同志在西柏坡题写了\"新华书店\"四个大字，中共中央宣传部将其作为平津解放以后全国各地建立的新华书店的招牌用字。经<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">筹</span>（chóu）划，1949年2月，北平第一家新华书店在王府井大街开业。同年10月，全国新华书店第一届出版工作会议在北京<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">召</span>（zhāo）开。七十多年来，北京新华书店始终传承红色基因，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">砥</span>（dǐ）砺\"新华精神\"，坚守为人民服务的初心，宣传党的路线方针政策，为广大读者提<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">供</span>（gōng）科学文化知识，极大地满足了人民群众的精神文化需求，促进了首都人民思想道德素质和科学文化素质的提高，在文化建设中发挥了重要作用。</p><p><strong>资料二</strong></p><p>&nbsp; &nbsp; 中国书店创立于1952年，主要从事古旧书籍的经营及古籍的复制出版。2008年，中国书店申报的古籍修复技艺被列入国家级非物质文化遗产名录。如今，中国书店既保留了古籍影印复制等传统业务，又担负起文学典籍整理、北京传统文化研究等多项任务，还出版了《北京方志提要》《北京旧志汇刊》及大量新印古籍和研究传统文化的著作。中国书店在中华优秀传统文化的_______、_______和_______等方面做出了积极努力。</p><p><strong>资料三</strong></p><p>&nbsp; &nbsp; 在北京市政府的支持下，有些书店迁入古建筑所在的院落。时尚的阅读空间与古树、古建筑<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">相映成趣</span>。这些书店承担着\"阅读传承\"与\"文物活化\"的双重使命，除图书外，还收藏老照片、旧报刊、胡同门牌等多种历史资料。图书与历史资料<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">相得益彰</span>，共同讲述着北京作为古城、古都的发展历史。这些书店大多<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">自出心裁</span>，选择具有地域特色的主题陈列图书和其他展品，如\"京味文学\"\"口述历史\"\"史地民俗\"等。读者<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">捕风捉影</span>，可以领略老北京的城市风貌。</p><p><strong>资料四</strong></p><p>&nbsp; &nbsp; 漫步胡同，胡同尽头有一座独立的四合院，它居然是一家书店。这家书店的院落布局融入了现代元素，房屋主体采用黛色砖瓦，装饰物以红色为主色调，古朴、时尚、喜庆。阅读区域暖黄色的灯光温柔地洒在木质书架上，琳琅满目的书籍散发着墨香。它特有的文化氛围不仅吸引着读者，还吸引着大量游客和摄影爱好者。<u>胡同里的这家书店创新了设计风格，营造了广大群众的文化体验。</u></p><p><strong>后记</strong></p><p>&nbsp; &nbsp; 赓续红色血脉的新华书店让我们领悟\"新华精神\"的当代内涵；_____________________；古建筑旁、胡同里的创意书店让我们感受城市文化的地域特色。选择书店作为城市漫步地，你就选择了观察一座城市的独特视角。</p>",
     "type": "单选"
   },
   "subQuestions": [
@@ -468,19 +468,19 @@
       "accessories": []
     },
     {
-      "content": "<p>你审核资料中标注的字音。下列加点字读音标注不正确的一项是<input type=\"bracket\" size=\"8\" /></p>",
+      "content": "<p>你审核资料中标注的字音。下列加点字读音标注不正确的一项是（）</p>",
       "type": "单选",
       "accessories": [
-        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">筹</span>（chóu）划</p>",
-        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">召</span>（zhāo）开</p>",
-        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">砥</span>（dǐ）砺</p>",
-        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">提</span>（tí）供</p>"
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">筹</span>划</p>",
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">召</span>开</p>",
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">砥</span>砺</p>",
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">提</span>供</p>"
       ],
       "answer": {"choice": "1"},
       "solution": "<p>本题考查字音。B项中\"召开\"的\"召\"应读作zhào，而不是zhāo。</p>"
     },
     {
-      "content": "<p>你在文段中的横线处填入一组词语。下列恰当的一项是<input type=\"bracket\" size=\"8\" /></p>",
+      "content": "<p>你在文段中的横线处填入一组词语。下列恰当的一项是（）</p>",
       "type": "单选",
       "accessories": [
         "<p>保护 研究 传播</p>",
@@ -494,7 +494,7 @@
   ]
 }
 
-**文言文阅读题示例**
+**包含子题的阅读题示例**
 {
   "question": {
     "content": "<p>阅读下面一则《论语》，完成下面小题。</p><p>曾子曰：\"吾日三省吾身：为人谋而不忠乎？与朋友交而不信乎？传不习乎？\"（《学而》）</p>",
@@ -502,7 +502,7 @@
   },
   "subQuestions": [
     {
-      "content": "<p>\"吾日三省吾身\"中的\"日\"与下列词语中加点的\"日\"，意思相同的一项是<input type=\"bracket\" size=\"8\" /></p>",
+      "content": "<p>\"吾日三省吾身\"中的\"日\"与下列词语中加点的\"日\"，意思相同的一项是（）</p>",
       "type": "单选",
       "accessories": [
         "<p>日月同辉</p>",
@@ -514,7 +514,7 @@
       "solution": "<p>本题考查一词多义。\"吾日三省吾身\"中的\"日\"，意思是\"每天\"；\"日新月异\"中的\"日\"指每天，含义相同。</p>"
     },
     {
-      "content": "<p>下列对\"传不习乎\"的理解，正确的一项是<input type=\"bracket\" size=\"8\" /></p>",
+      "content": "<p>下列对\"传不习乎\"的理解，正确的一项是（）</p>",
       "type": "单选",
       "accessories": [
         "<p>对老师传授的知识应该经常复习。</p>",
@@ -528,27 +528,6 @@
   ]
 }
 
-**现代文阅读理解题示例**
-{
-  "question": {
-    "content": "<p>阅读下面的材料，完成下面小题。</p><p><strong>材料一</strong></p><p>&nbsp; &nbsp; 气候变化是对全人类的挑战，每个人都承受着气候变化带来的影响，也影响着气候变化。我国颁布了相关文件，从政策层面指导、推动气候变化教育。《国家应对气候变化规划（2014-2020年）》提出将气候变化教育纳入国民教育体系，并建议气候变化知识进学校、进课堂。</p><p><strong>材料二</strong></p><p>&nbsp; &nbsp; 2024年，全国气候变化教育研究联盟成立。\"联盟\"发布《气候变化教育指导纲要（试行）》，从教育目标和实施方式两方面做出指导，推动气候变化教育政策向实践转化。</p>",
-    "type": "单选"
-  },
-  "subQuestions": [
-    {
-      "content": "<p>根据以上材料，下列说法不符合文意的一项是<input type=\"bracket\" size=\"8\" /></p>",
-      "type": "单选",
-      "accessories": [
-        "<p>每位公民都是气候变化的影响者，应接受并开展气候变化教育。</p>",
-        "<p>学习者接受气候变化教育应将气候变化与个体生命体验相结合。</p>",
-        "<p>全国气候变化教育研究联盟的主要工作是组织联盟学校交流经验。</p>",
-        "<p>青少年应学习气候变化知识，在家庭、学校、社区采取积极行动。</p>"
-      ],
-      "answer": {"choice": "2"},
-      "solution": "<p>本题考查内容理解和辨析。根据材料二可知，全国气候变化教育研究联盟的主要工作是发布指导纲要，推动政策向实践转化，而不是组织学校交流经验。</p>"
-    }
-  ]
-}
 
 
 
@@ -586,7 +565,7 @@
 - 如果题目中明确包含(1)、(2)、①②等、1.2.等子题目标号，或者有多个独立的问题，则使用subQuestions格式
 - 如果题目只是一个完整的问题（即使可能较复杂），则不使用subQuestions，直接在question对象中提供solution和answer
 - **⚠️ 题目说明识别规则**：如果遇到"从下面两个题目中任选一题"等类似选做题目，必须将其整体识别为一道题，即使下面有多个选择题目
-- **⚠️ 二选一写作题特殊规则**：包含"任选一题"、"二选一"的写作题，绝对不能使用subQuestions结构，必须作为一整道简答题
+- **⚠️ 二选一写作题特殊规则**：包含"任选一题"、"二选一"、"任选其一"等类似含义的写作题，绝对不能使用subQuestions结构，必须作为一整道简答题
 
 **⚠️ 重要区分：何时使用subQuestions结构**：
 
@@ -619,7 +598,7 @@
 [
   {
     "question": {
-      "content": "<p>下列句子中，成语使用恰当的一项是<input type=\"bracket\" size=\"8\" /></p>",
+      "content": "<p>下列句子中，成语使用恰当的一项是（）</p>",
       "type": "单选",
       "accessories": ["<p>他在这次考试中名落孙山，全班同学都为他高兴。</p>", "<p>面对老师的批评，小明虚怀若谷，认真反思自己的不足。</p>", "<p>这道数学题对他来说简直是易如反掌，不值一提。</p>", "<p>听了这个笑话，大家都忍俊不禁地哭了起来。</p>"],
       "answer": {"choice": "1"},
@@ -628,7 +607,7 @@
   },
   {
     "question": {
-      "content": "<p>下列句子中，没有语病的一项是<input type=\"bracket\" size=\"8\" /></p>",
+      "content": "<p>下列句子中，没有语病的一项是（）</p>",
       "type": "单选",
       "accessories": ["<p>通过这次社会实践活动，使我们深刻地认识到保护环境的重要性。</p>", "<p>为了防止校园意外事件不再发生，学校加强了安全管理。</p>", "<p>这篇文章内容生动，语言优美，给读者留下了深刻的印象。</p>", "<p>能否取得好成绩，关键在于平时是否努力学习。</p>"],
       "answer": {"choice": "2"},
@@ -723,11 +702,11 @@
 - **禁止拆分原因**：如果拆分成两个子题，学生会误认为两道都需要回答，失去了"二选一"的选择性
 - **正确处理方式**：将整个题目（包括说明和两个选择）作为一道完整的简答题录入
 
-**示例：二选一写作题**：
+**示例：二选一写作题（不带答题线）**：
 
 {
   "question": {
-    "content": "<p>五、写作（50分）</p><p>从下面两个题目中任选一题，按要求作答。不少于600字。将题目抄写在答题卡上。</p><p><strong>题目一：</strong>请以\"那一刻，我长大了\"为题，写一篇记叙文。</p><p>要求：</p><p>①内容具体，有真情实感；</p><p>②除诗歌外，文体不限；</p><p>③不少于600字；</p><p>④凡涉及真实的人名、校名、地名，一律用A、B、C等英文大写字母代替。</p><p><strong>题目二：</strong>有人说，青春是一首歌，歌声里有欢笑也有眼泪；有人说，青春是一幅画，画面里有色彩也有线条。请以\"青春\"为话题，自拟题目，写一篇文章。</p><p>要求：</p><p>①除诗歌外，文体不限，写议论文或记叙文；</p><p>②不少于600字；</p><p>③凡涉及真实的人名、校名、地名，一律用A、B、C等英文大写字母代替。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"15\" data-punctuation=\"\" data-first-line-width=\"600\"></full-line-blank></p>",
+    "content": "<p>从下面两个题目中任选一题，按要求作答。不少于600字。</p><p><strong>题目一：</strong>请以\"成长的足迹\"为题，写一篇记叙文。</p><p>要求：</p><p>①内容具体，有真情实感；</p><p>②除诗歌外，文体不限；</p><p>③不少于600字；</p><p>④文中不得出现真实的人名、校名、地名。</p><p><strong>题目二：</strong>生活中处处有美，可能是自然之美，也可能是心灵之美。请以\"发现美\"为话题，自拟题目，写一篇文章。</p><p>要求：</p><p>①除诗歌外，文体不限；</p><p>②不少于600字；</p><p>③文中不得出现真实的人名、校名、地名。</p>",
     "type": "简答",
     "answer": { 
       "answer": "" 
@@ -817,8 +796,8 @@
 - score: 题目分数
 - 如果包含图片，则按照对应格式写明
 - 只要涉及选项的内容，都放到accessory的options中，不要放在content中，包括选项中的图片，也要放在accessory中。
-- 题干和选项中如果出现括号答题区，例如（）（而不是普通括号，即不是答题区的，例如（8）），则用<input type=\"bracket\" size=\"8\" />，而不能用文字表示括号，默认size为8，需要更大篇幅可以修改。
-- 如果出现**下划线填空**（无论长短），都用<input size=\"X\" readonly=\"readonly\" type=\"underline\">表示，size根据预期答案长度调整：
+- 题干和选项中如果出现括号答题区，例如（）（而不是普通括号，即不是答题区的，例如（8）），则保持原始括号格式（），不能用HTML标签。
+- 如果是**填空题中的下划线填空**（无论长短），都用<input size=\"X\" readonly=\"readonly\" type=\"underline\">表示，size根据预期答案长度调整：
   * **单词填空**：size=\"8-12\"（如invention, beautiful）
   * **短语填空**：size=\"15-20\"（如in the past, look forward to）
   * **句子填空**：size=\"25-35\"（如完整的句子回答）
@@ -828,29 +807,31 @@
 
 7. **填空题特殊要求**：
    - **格式严格匹配（重要）**：
-     * 如果原文是下划线 `_____`，必须用 `<input size=\"X\" readonly=\"readonly\" type=\"underline\">`
-     * 如果原文是括号 `()`，必须用 `<input type=\"bracket\" size=\"X\" />`
+     * 填空题中的下划线 `_____`，必须用 `<input size=\"X\" readonly=\"readonly\" type=\"underline\">`
+     * 选择题中的括号 `（）`，保持原始括号格式
    - **常见错误示例**：
-     * ❌ 错误：原文是下划线，却用了括号：`My sister is good at singing. <input type=\"bracket\" size=\"8\" /> can even sing some French songs.`
-     * ✅ 正确：原文是下划线，用下划线：`My sister is good at singing. <input size=\"8\" readonly=\"readonly\" type=\"underline\"> can even sing some French songs.`
+     * ❌ 错误：填空题用了原始下划线：`My sister is good at singing. _____ can even sing some French songs.`
+     * ✅ 正确：填空题用HTML标签：`My sister is good at singing. <input size="8" readonly="readonly" type="underline"> can even sing some French songs.`
    - **判断标准**：
-     * 如果原文显示为 `\_\_\_\_\_\_\_\_` 或 `___` 等下划线形式，必须使用 `type=\"underline\"`
-     * 如果原文显示为 `()` 或 `（  ）` 等括号形式，才使用 `type=\"bracket\"`
+     * 如果是填空题，下划线填空必须使用 `<input type=\"underline\">`
+     * 如果是选择题，括号填空保持原始格式 `（）`
 
 8. **语文学科特殊处理要求**：
-   - **🚨 特殊格式转换（最重要且最容易错误）**：
-     * **必须将pandoc格式的特殊标记转换为HTML标签，这是试卷格式的核心要求！**
-     * **`[内容]{.wavy-underline}` → `<u style=\"text-decoration-style: wavy;\">内容</u>`** ← **绝对不能遗漏这个转换！**
-     * **`[内容]{.single-underline}` → `<u>内容</u>`** ← **绝对不能遗漏这个转换！**
-     * **🔥 下划线填空转换（语言运用题中最容易遗漏）**：
-       - **`______` → `<input size=\"8\" readonly=\"readonly\" type=\"underline\">`** ← **绝对不能遗漏！**
-       - **`店铺______` → `店铺<input size=\"8\" readonly=\"readonly\" type=\"underline\">`** ← **绝对不能遗漏！**
-       - **`挤进_______的人群` → `挤进<input size=\"8\" readonly=\"readonly\" type=\"underline\">的人群`** ← **绝对不能遗漏！**
+   - ** 加点字格式转换（最重要且绝对优先）**：
+     * ** 第一优先级 **：立即识别`[\[DOT_BELOW\]内容\[/DOT_BELOW\]]{.underline}`并转换为`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">内容</span>`
+     * ** 严重错误防范**：DOT_BELOW标记绝对不能转换为波浪线！这是最常见的严重错误！
+     * ** 关键识别**：看到`[\[DOT_BELOW\]`就立即识别为加点字，不要和其他格式混淆
+     * ** 实际案例**：
+       - `[\[DOT_BELOW\]温暖人心\[/DOT_BELOW\]]{.underline}` ✅→ 加点字标签 ❌禁止→ `<u style=\"text-decoration-style: wavy;\">`
+       - `[\[DOT_BELOW\]欣然接受\[/DOT_BELOW\]]{.underline}` ✅→ 加点字标签 ❌禁止→ `<u style=\"text-decoration-style: wavy;\">`
+   - **🚨 其他特殊格式转换（第二优先级）**：
+     * `[内容]{.wavy-underline}` → `<u style=\"text-decoration-style: wavy;\">内容</u>`** ← **注意：这与DOT_BELOW完全不同！**
+     * `[内容]{.single-underline}` → `<u>内容</u>`** ← **绝对不能遗漏这个转换！**
      * `[内容]{.bold}` → `<strong>内容</strong>`
      * `[内容]{.color-XXXXXX}` → `<strong>内容</strong>`（忽略颜色，重要内容加粗）
      * 多层嵌套如 `[[[[内容]{.color-A}]{.color-B}]{.color-C}]{.color-D}` → `<strong>内容</strong>`
      * `[[内容]{.single-underline}]{.underline}` → `<u>内容</u>`（优先外层）
-     * **🔥 绝对禁止在最终JSON中保留pandoc的特殊格式标记！这是最常见的错误！**
+     * **绝对禁止在最终JSON中保留pandoc的特殊格式标记！这是最常见的错误！**
    - **字音字形题**：
      * 准确提取所有选项内容，不能遗漏任何拼音标注
      * 题干中的加点字要用适当HTML标签标注，如`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">筹</span>划`
@@ -860,30 +841,6 @@
      * 根据预期答案长度设置合适的size值（诗句通常size=\"15-25\"）
      * 保持诗歌的断行格式，每句诗独立成行
      * 题目要求和提示信息必须完整保留
-   - **文言文阅读题**：
-     * 注意保留文言文的断句和标点
-     * 文言文实词虚词解释要准确
-     * 文言文原文要保持古代汉语的格式特点
-     * 注释和译文要分别标注清楚
-     * 词义辨析题要准确提取各个选项的解释内容
-   - **现代文阅读题**：
-     * 保持原文的段落结构和格式
-     * 阅读材料的每个段落必须以`<p>&nbsp; &nbsp;`开头进行首行缩进
-     * 题目中涉及的加点词语要用`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\"></span>`标签标注
-     * **画波浪线的句子要用`<u style=\"text-decoration-style: wavy;\">`标签，绝对不能保留`{.wavy-underline}`格式**
-   - **古诗词鉴赏题**：
-     * 诗歌格式要规范，注意断行和韵律
-     * 诗歌要保持原有的平仄格式
-     * 每句诗独立成行，保持诗歌的视觉美感
-   - **作文题**：
-     * 必须使用`<full-line-blank>`标签
-     * 作文要求和评分标准要完整保留
-     * 字数要求要明确标注（通常不少于600字）
-     * 二选一作文题绝对不能拆分为subQuestions
-   - **语言文字运用题**：
-     * 字音字形题要注意易错字和多音字
-     * 成语使用题要准确提取语境和选项
-     * 病句修改题要保留原句和修改要求
 
 
 
@@ -914,22 +871,16 @@
 
 
 **⚠️ 语文学科最终检查清单**：
-1. **🚨 括号和填空转换检查（最关键）**：
-   - **🚨 最重要**：检查所有答题区的括号`（）`是否都转换为`<input type=\"bracket\" size=\"8\" />`
-   - **🚨 最重要**：检查所有答题区的下划线`___`是否都转换为`<input size=\"X\" readonly=\"readonly\" type=\"underline\">`
-   - **🚨 最重要**：绝对不能保留原始的`（）`或`___`格式在最终输出中
-   - **🔥 特别检查语言运用题的下划线填空**：
-     * ❌ **严重错误**：`店铺______，一路逛过去`
-     * ❌ **严重错误**：`挤进_______的人群` 
-     * ❌ **严重错误**：`融入宋人_______的市井`
-     * ✅ **必须确保**：`店铺<input size=\"8\" readonly=\"readonly\" type=\"underline\">，一路逛过去`
-     * ✅ **必须确保**：`挤进<input size=\"8\" readonly=\"readonly\" type=\"underline\">的人群`
-     * ✅ **必须确保**：`融入宋人<input size=\"8\" readonly=\"readonly\" type=\"underline\">的市井`
-1.5. **🔥 波浪线格式转换检查（极其关键）**：
-   - **🔥 最关键**：检查所有`[内容]{.wavy-underline}`是否都转换为`<u style=\"text-decoration-style: wavy;\">内容</u>`
-   - **🔥 最关键**：检查所有`[内容]{.single-underline}`是否都转换为`<u>内容</u>`
-   - **🔥 最关键**：绝对不能在最终JSON中保留任何`{.wavy-underline}`或`{.single-underline}`格式
-   - **🔥 这是最容易被遗漏的转换，必须仔细检查每一个实例！**
+1. **加点字格式转换检查（最最最关键，第一优先级）**：
+   - **绝对优先**：检查所有`[\[DOT_BELOW\]内容\[/DOT_BELOW\]]{.underline}`是否都转换为`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">内容</span>`
+   - **严重错误检查**：绝对不能将DOT_BELOW转换为波浪线格式`<u style=\"text-decoration-style: wavy;\">`
+   - **关键识别**：所有包含`[\[DOT_BELOW\]`的内容都是加点字，必须使用text-emphasis标签
+   - **常见错误**：DOT_BELOW被误转换为波浪线是最严重的错误，必须避免！
+2. **🔥 波浪线格式转换检查（第二优先级）**：
+   - **🔥 重要**：检查所有`[内容]{.wavy-underline}`是否都转换为`<u style=\"text-decoration-style: wavy;\">内容</u>`
+   - **🔥 重要**：检查所有`[内容]{.single-underline}`是否都转换为`<u>内容</u>`
+   - **🔥 重要**：绝对不能在最终JSON中保留任何`{.wavy-underline}`或`{.single-underline}`格式
+   - **🔥 注意区分**：`{.wavy-underline}`是波浪线，`[\[DOT_BELOW\]]`是加点字，完全不同！
    - **实际错误示例**：
      * ❌ `<p>截zhì（ ）目前，我国全球重要...</p>`
      * ✅ `<p>截zhì<input type=\"bracket\" size=\"8\" />目前，我国全球重要...</p>`
@@ -958,18 +909,6 @@
    - 填空处使用`<input size=\"X\" readonly=\"readonly\" type=\"underline\">`格式
    - 诗句断行格式正确，每句独立成行
    - 答案与原文完全一致，不能有任何错字
-6. **文言文阅读检查**：
-   - 保持原文的断句和古代汉语特点
-   - 词义解释准确，选项完整
-   - 如有翻译要求，现代汉语表达规范
-7. **现代文阅读检查**：
-   - 阅读材料段落首行缩进格式正确
-   - 加点词语用`<strong>`标签标注
-   - 共享材料的题目使用subQuestions结构
-8. **作文题检查**：
-   - 二选一作文绝对不能拆分为subQuestions
-   - 使用`<full-line-blank>`答题区域格式
-   - 保留完整的写作要求和字数限制
 
 
 **JSON格式完整性检查（重要）**：
@@ -989,15 +928,6 @@ subQuestion的content可以只写答题区域，而不需要重复抄写question
 
 
 **语文学科题型分类说明**：
-- **语文综合运用题**：`"type": "单选"`或`"简答"`，必须使用subQuestions，包含多个资料和多个小题
-- **字音字形题**：`"type": "单选"`，考查拼音、字形正误识别
-- **默写填空题**：`"type": "填空"`，需要填入准确的诗句或文言文语句
-- **文言文阅读题**：通常使用 `subQuestions` 结构，包含词义、翻译、理解等子题
-- **现代文阅读题**：根据材料共享情况决定是否使用 `subQuestions` 结构
-- **古诗词鉴赏题**：可能为单题或多题结构，注意诗歌格式保持
-- **语言文字运用题**：包括成语使用、病句修改等，通常为`"type": "单选"`或`"type": "简答"`
-- **名著阅读题**：`"type": "简答"`，考查对文学作品的理解
-- **作文题**：`"type": "简答"`，二选一题目绝对不能拆分为subQuestions
 
 **语文综合运用题识别要点**：
 - **关键特征**：有统一的主题背景 + 多个资料 + 多个小题围绕主题
@@ -1019,12 +949,6 @@ subQuestion的content可以只写答题区域，而不需要重复抄写question
   * 题目说明中的答题要求
   * 题目结尾的注意事项
 - **检查方法**：确保每个题目的content字段都包含完整的题目说明，包括完形填空题
-
-- **最终检查清单**：
-  * 检查JSON键名是否保持英文双引号
-  * 检查JSON数据结构中的引号是否保持英文双引号
-  * 检查HTML属性引号是否保持英文双引号
-
 
 
 
