@@ -3,7 +3,7 @@
 一套试卷有三级结构，1. 题组名（分题型/类型的大模块） 2.题目 3. 子题（可能有，可能没有）。你需要解析和拆分出试卷中的每一道题。
 试卷中题组名、题目和子题的关系阐述如下：
 1.题组名和题目是1对n的关系：一个题组名可能对应一道题目，也可能对应多道题目，如果对应一道题目，则题组名通常被放在对应的题目的题干（content）中去，如果对应的是多道题目，且每个题目之间相对独立（例如题组名是：二、古诗文阅读，题组名下包含若干题目），则每道题目都需要被拆分成一道题，此时题组名不需要放在题目的题干（content）中去，除非题组名对做题有影响。
-2.题目可能有子题，也可能没有子题：有的题目是嵌套结构，则包含子题，如阅读题，有的题目则没有子题。后面有关于子题的详细判断标准供你参考。
+2.题目可能有子题，也可能没有子题：有的题目是嵌套结构，则包含子题，如阅读题、语文综合运用题，有的题目则没有子题。后面有关于子题的详细判断标准供你参考。
 3.你的重要工作就是从试卷中识别和判断出题组名、题目和子题，根据要求和实际情况判断其是什么题型、是否包含子题，保证题目的结构拆解正确。
 
 **学科和学段信息处理要求**：
@@ -47,7 +47,11 @@
 
 **语文学科特色题型识别**：
 语文试卷通常包含以下特色题型，需要特别注意处理方式：
-- **语文综合运用题**：有统一主题背景，包含多个资料和多个小题，必须使用subQuestions结构
+- ** 语文综合运用题（最重要）**：有统一主题背景介绍，包含多个资料和多个小题，**绝对必须**使用subQuestions结构
+  * **关键识别标志**：题目开头有统一的主题背景介绍（如"学校组织编写..."、"班级准备开展..."等）
+  * **常见格式**：背景介绍 + 资料一、资料二、资料三... + 多个子题
+  * **❌ 严重错误**：将每个子题拆分为独立题目，每个都有subjectId和phaseId
+  * **✅ 正确做法**：整体作为一道题，只有一个subjectId和phaseId，所有子题在subQuestions中
 - **字音字形题**：通常为选择题形式，考查拼音标注的正误
 - **默写填空题**：需要填入准确的诗句或文言文语句
 
@@ -377,7 +381,7 @@
 **作文类题目示例**
 {
   "question": {
-        "content": "<p>作文</p><p>&nbsp; &nbsp;世界是一个科学大课堂，时时学科学，处处用科学。阅读经典作品、参与社会实践、畅游海底遥望星空……我们增长科学知识，领悟科学精神，提高科学素养。</p><p>请以\"一堂科学课\"为题，写一篇作文。文体不限，诗歌除外。</p><p>要求：将作文题目写在答题卡上，作文内容积极向上，字数在$600$-$800$之间，不出现真实的学校名称、师生姓名等。</p>",
+        "content": "<p>作文</p><p>&nbsp; &nbsp;世界是一个科学大课堂，时时学科学，处处用科学。阅读经典作品、参与社会实践、畅游海底遥望星空……我们增长科学知识，领悟科学精神，提高科学素养。</p><p>请以\"一堂科学课\"为题，写一篇作文。文体不限，诗歌除外。</p><p>要求：将作文题目写在答题卡上，作文内容积极向上，字数在600-800之间，不出现真实的学校名称、师生姓名等。</p>",
         "solution": "<p>【写作指导】这是一篇议论文写作。要求以\"谈挫折\"为题，表达自己对挫折的看法。</p><p>【写作思路】1.开头：引出话题，明确观点——挫折是人生的财富；2.主体：分层论述挫折的积极作用，可以从\"挫折让人成长\"\"挫折让人坚强\"\"挫折让人珍惜\"等角度展开；3.结尾：总结全文，强化观点。</p><p>【写作要点】①观点要明确，可以从正面论述挫折的积极意义；②论据要充分，可以运用名人事例、历史典故、生活实例等；③论证要合理，运用举例论证、对比论证、引用论证等方法；④语言要流畅，注意段落层次清晰。</p>",
         "answer": {
           "answer": "<p><p>【答案】例文：</p><p style=\"text-align: center;\">一堂课学科</p>&nbsp; &nbsp;\"同学们，今天我们要用最普通的材料，搭建一座能承重的纸桥。\"科学老师举起两张A4纸，教室里的空气突然变得轻盈，像被施了魔法。</p><p>&nbsp; &nbsp;我摩挲着薄如蝉翼的纸张，指尖触到同桌小雨递来的目光——那里面跳动着和我一样的困惑。前桌的小明已经迫不及待地卷起纸筒，可刚放上两支铅笔，纸筒就像被施了瘦身咒的巫师，瘪塌塌地瘫在桌上。教室里此起彼伏的叹息声，像被风吹散的蒲公英。</p><p>\"试试把纸折成波浪形。\"老师的声音像投入湖面的石子，激起层层涟漪。我望着手中被均匀折叠的纸张，突然想起上周参观桥梁博物馆时，解说员说过拱形结构能分散压力。阳光透过窗户斜斜地切进来，在折痕上跳跃成金色的琴弦。</p><p>&nbsp; &nbsp;当我和小雨把十二个波浪纸并排粘合时，教室后墙的挂钟正指向三点十五分。小明抱着装满橡皮的塑料盒小跑过来，盒子里的彩色橡皮丁零当啷响成一片。\"三块、五块、十块……\"我们屏住呼吸，看着纸桥在重负下微微颤动，却始终倔强地挺直脊梁。当第二十块橡皮稳稳落定时，不知谁带头鼓起了掌，掌声像涨潮的海水漫过整个教室。</p><p>&nbsp; &nbsp;\"知道为什么波浪形能承受更多重量吗？\"老师用教鞭轻点投影幕布，那些弯曲的线条瞬间活过来，在光影中舒展成优美的弧线，\"就像古罗马的拱门、悉尼的歌剧院，自然界的贝壳、蜂巢，科学就在这些优美的曲线里跳舞。\"</p><p>&nbsp; &nbsp;我摸着纸桥上的折痕，突然明白科学不是实验室里冰冷的仪器，而是藏在每道褶皱里的智慧。就像此刻窗外飘过的云朵，看似柔软无形，却能托起整个天空的重量。放学的铃声响起时，我的书包里除了皱巴巴的纸桥模型，还装着会发光的疑问：如果用不同材质的纸张，如果改变波浪的疏密……</p><p>&nbsp; &nbsp;科学课的余韵在走廊里轻轻回荡，我知道，这堂课的终点，正是无数新问题的起点。</p>"
@@ -419,24 +423,6 @@
 
 **语文学科特色题型示例：**
 
-**字音题示例（正确格式 - 包含完整材料）**
-{
-  "question": {
-    "content": "<p><strong>资料一</strong></p><p>&nbsp; &nbsp; 1937年4月，新华书店诞生于延安。1948年12月，毛泽东同志在西柏坡题写了\"新华书店\"四个大字，中共中央宣传部将其作为平津解放以后全国各地建立的新华书店的招牌用字。经<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">筹</span>（chóu）划，1949年2月，北平第一家新华书店在王府井大街开业。同年10月，全国新华书店第一届出版工作会议在北京<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">召</span>（zhāo）开。七十多年来，北京新华书店始终传承红色基因，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">砥</span>（dǐ）砺\"新华精神\"，坚守为人民服务的初心，宣传党的路线方针政策，为广大读者提<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">供</span>（gōng）科学文化知识，极大地满足了人民群众的精神文化需求，促进了首都人民思想道德素质和科学文化素质的提高，在文化建设中发挥了重要作用。</p><p>你审核资料中标注的字音。下列加点字读音标注不正确的一项是<input type=\"bracket\" size=\"8\" /></p>",
-    "solution": "<p>本题考查字音。需要逐一分析每个选项中加点字的读音是否正确。B项中\"召开\"的\"召\"应读作zhào，而不是zhāo。</p>",
-    "answer": {
-      "choice": "1"
-    },
-    "accessories": [
-      "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">筹</span>（chóu）划</p>",
-      "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">召</span>（zhāo）开</p>",
-      "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">砥</span>（dǐ）砺</p>",
-      "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">提</span>（tí）供</p>"
-    ],
-    "type": "单选"
-  }
-}
-
 **默写填空题示例**
 {
   "question": {
@@ -454,51 +440,137 @@
 }
 
 **语文综合运用题示例（正确格式）**
+
 {
-  "question": {
-    "content": "<p>学校组织编写\"城市漫步地\"推荐手册，有同学推荐了北京市有代表性的书店，并搜集了相关资料。请你协助整理。</p><p><strong>资料一</strong></p><p>&nbsp; &nbsp; 1937年4月，新华书店诞生于延安。1948年12月，毛泽东同志在西柏坡题写了\"新华书店\"四个大字，中共中央宣传部将其作为平津解放以后全国各地建立的新华书店的招牌用字。经<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">筹</span>（chóu）划，1949年2月，北平第一家新华书店在王府井大街开业。同年10月，全国新华书店第一届出版工作会议在北京<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">召</span>（zhāo）开。七十多年来，北京新华书店始终传承红色基因，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">砥</span>（dǐ）砺\"新华精神\"，坚守为人民服务的初心，宣传党的路线方针政策，为广大读者提<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">供</span>（gōng）科学文化知识，极大地满足了人民群众的精神文化需求，促进了首都人民思想道德素质和科学文化素质的提高，在文化建设中发挥了重要作用。</p><p><strong>资料二</strong></p><p>&nbsp; &nbsp; 中国书店创立于1952年，主要从事古旧书籍的经营及古籍的复制出版。2008年，中国书店申报的古籍修复技艺被列入国家级非物质文化遗产名录。如今，中国书店既保留了古籍影印复制等传统业务，又担负起文学典籍整理、北京传统文化研究等多项任务，还出版了《北京方志提要》《北京旧志汇刊》及大量新印古籍和研究传统文化的著作。中国书店在中华优秀传统文化的_______、_______和_______等方面做出了积极努力。</p><p><strong>资料三</strong></p><p>&nbsp; &nbsp; 在北京市政府的支持下，有些书店迁入古建筑所在的院落。时尚的阅读空间与古树、古建筑<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">相映成趣</span>。这些书店承担着\"阅读传承\"与\"文物活化\"的双重使命，除图书外，还收藏老照片、旧报刊、胡同门牌等多种历史资料。图书与历史资料<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">相得益彰</span>，共同讲述着北京作为古城、古都的发展历史。这些书店大多<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">自出心裁</span>，选择具有地域特色的主题陈列图书和其他展品，如\"京味文学\"\"口述历史\"\"史地民俗\"等。读者<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">捕风捉影</span>，可以领略老北京的城市风貌。</p><p><strong>资料四</strong></p><p>&nbsp; &nbsp; 漫步胡同，胡同尽头有一座独立的四合院，它居然是一家书店。这家书店的院落布局融入了现代元素，房屋主体采用黛色砖瓦，装饰物以红色为主色调，古朴、时尚、喜庆。阅读区域暖黄色的灯光温柔地洒在木质书架上，琳琅满目的书籍散发着墨香。它特有的文化氛围不仅吸引着读者，还吸引着大量游客和摄影爱好者。<u>胡同里的这家书店创新了设计风格，营造了广大群众的文化体验。</u></p><p><strong>后记</strong></p><p>&nbsp; &nbsp; 赓续红色血脉的新华书店让我们领悟\"新华精神\"的当代内涵；_____________________；古建筑旁、胡同里的创意书店让我们感受城市文化的地域特色。选择书店作为城市漫步地，你就选择了观察一座城市的独特视角。</p>",
-    "type": "单选"
-  },
-  "subQuestions": [
-    {
-      "content": "<p>在资料封面上用正楷字书写标题：\"城市漫步地\"推荐资料。</p>",
-      "type": "简答",
-      "answer": {"answer": "<p>\"城市漫步地\"推荐资料</p>"},
-      "solution": "<p>本题考查汉字临摹。注意：用正楷书字体书写，工整美观；汉字的笔画顺序要清楚，书写要规范。注意\"城、漫\"等字。</p>",
-      "accessories": []
+    "question": {
+        "accessories": [],
+        "answer": {
+            "answer": "",
+            "blanks": [],
+            "choice": ""
+        },
+        "content": "<p>北京的城市建设日新月异，新的文化活动场所不断出现。通过广泛观察，你所在的学习小组撰写了\"北京文化生活观察手记\"。现在你根据小组成员的意见完善。</p>",
+        "solution": "",
+        "type": "简答"
     },
-    {
-      "content": "<p>你审核资料中标注的字音。下列加点字读音标注不正确的一项是（）</p>",
-      "type": "单选",
-      "accessories": [
-        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">筹</span>划</p>",
-        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">召</span>开</p>",
-        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">砥</span>砺</p>",
-        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">提</span>供</p>"
-      ],
-      "answer": {"choice": "1"},
-      "solution": "<p>本题考查字音。B项中\"召开\"的\"召\"应读作zhào，而不是zhāo。</p>"
-    },
-    {
-      "content": "<p>你在文段中的横线处填入一组词语。下列恰当的一项是（）</p>",
-      "type": "单选",
-      "accessories": [
-        "<p>保护 研究 传播</p>",
-        "<p>研究 保护 传播</p>",
-        "<p>研究 传播 保护</p>",
-        "<p>保护 传播 研究</p>"
-      ],
-      "answer": {"choice": "0"},
-      "solution": "<p>本题考查词义辨析。根据文段内容，应该是先\"保护\"、再\"研究\"、最后\"传播\"的逻辑顺序。</p>"
-    }
-  ]
+    "subQuestions": [
+        {
+            "accessories": [],
+            "answer": {
+                "answer": "北京文化生活观察手记",
+                "blanks": [
+                    "<p>北京文化生活观察手记</p>"
+                ],
+                "choice": ""
+            },
+            "content": "<p>在封面上用正楷字书写\"北京文化生活观察手记\"十个字。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"379\"></full-line-blank></p>",
+            "solution": "<p>本题考查汉字书写。</p><p>①用正楷工整美观书写；②汉字的笔画顺序要清楚，书写要规范；③不写繁体字。注意“察”等易错字的书写。</p>",
+            "type": "简答"
+        },
+        {
+            "accessories": [
+                "<p>因为表达的是\"有代表性的事物或事件\"的意思，所以\"典型\"一词中有错字。</p>",
+                "<p>因为表达的是\"最重要的、最好的部分\"的意思，所以\"精髓\"一词中有错字。</p>",
+                "<p>因为表达的是\"世代居于此地的人\"的意思，所以\"原驻民\"一词中有错字。</p>",
+                "<p>因为表达的是\"深入到某种氛围之中\"的意思，所以\"沉浸式\"一词中有错字。</p>"
+            ],
+            "answer": {
+                "answer": "",
+                "blanks": [],
+                "choice": "2"
+            },
+            "content": "<p style=\"text-align: center;\">手记一 北京坊</p><p>&nbsp;&nbsp;位于天安门西南800米处的北京坊是历史文化街区保护与更新的<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">典型</span>。它的整体设计延续原有建筑风格，保留了中式建筑的神韵和<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">精髓</span>，又融入了当代建筑美学的相关元素。北京坊\"一主街、三广场、多胡同\"的布局，旨在恢复历史建筑风貌，保存社区<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">原住民</span>的文化生态，打造<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">沉浸式</span>体验的商业街区。北京坊既是北京核心地带文化生活的缩影，也是独具特色的\"中国式生活体验区\"。</p><p>小组成员请你确认文段中加点词语是否有错字。你根据词义判断，下列说法正确的一项是（）。</p>",
+            "solution": "<p>本题考查字形辨析。</p><p>C.根据意思\"世代居于此地的人\"，可知\"原驻民\"应该为\"原住民\"；</p><p>其他三项中提到的词语都没有错误；</p><p>题目要求选择正确的一项。</p><p>故选C。</p>",
+            "type": "单选"
+        },
+        {
+            "accessories": [
+                "<p>振聋发聩</p>",
+                "<p>雨后春笋</p>",
+                "<p>波澜壮阔</p>",
+                "<p>车水马龙</p>"
+            ],
+            "answer": {
+                "answer": "",
+                "blanks": [],
+                "choice": "3"
+            },
+            "content": "<p style=\"text-align: center;\">手记二《新青年》编辑部旧址</p><p>&nbsp;&nbsp;东城区箭杆胡同20号是《新青年》编辑部旧址。在这里，《新青年》吹响思想启蒙的号角，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">振聋发聩</span>。此后，各地进步报刊如<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">雨后春笋</span>般涌现，新文化运动<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">波澜壮阔</span>。如今，作为<span>​\"</span>北大红楼与中国共产党早期北京革命活动旧址<span>​\"</span>之一，箭杆胡同20号一经开放就受到广泛关注，参观者<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">车水马龙</span>。大家重温历史，深刻认识《新青年》在新文化运动以及推动马克思主义在中国传播过程中的突出作用。</p><p>你检查了文段中成语使用的情况。下列成语使用<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">不恰当</span>的一项是（）。</p>",
+            "solution": "<p>本题考查成语的正确使用。</p><p>A.振聋发聩：指发出的声音很大，使耳聋的人也能够听到。比喻用言论文章唤起头脑糊涂、是非不明的人，使他们清醒过来。此处形容《新青年》这本书唤醒了头脑糊涂的人，符合语境；</p><p>B.雨后春笋：指春雨过后，竹笋长得又多又快。常比喻新事物大量涌现。这里形容各地进步报刊大量涌现，符合语境；</p><p>C.波澜壮阔：指水势浩渺广阔。比喻声势浩大或规模宏伟。这里形容新文化运动规模宏伟，符合语境；</p><p>D.车水马龙：指车辆像流水，马连成游龙。形容车马往来不绝，非常繁华热闹。这里形容参观者很多，用错对象，可用\"络绎不绝\"；</p><p>故选D。</p>",
+            "type": "单选"
+        },
+        {
+            "accessories": [
+                "<p>触动</p>",
+                "<p>冲锋</p>",
+                "<p>干扰</p>",
+                "<p>打击</p>"
+            ],
+            "answer": {
+                "answer": "",
+                "blanks": [],
+                "choice": "0"
+            },
+            "content": "<p style=\"text-align: center;\">手记三 建国路75号数字艺术园区</p><p>&nbsp;&nbsp;建国路75号北京第一热电厂对首都建设和发展有过历史性贡献。按照城市发展规划，老厂区被改造为数字艺术园区。<span>①</span>园区以数字艺术为核心，工业遗产为载体，创意产业和低碳技术为保障，新潮消费为特色，集多种功能于一体。<span>②</span>粗细不等的供水、蒸汽管道凌空架起，6个40多米高的储煤罐并排而立，保留了老电厂曾经的壮观景象。<span>③</span>不远处的现代化摩天大楼与这些巨型设施\"同框\"，带来强烈的视觉冲击。转型后的\"热电厂\"____，____，____，已经成为人们喜爱的文化生活场所。</p><p>小组成员讨论应如何理解文段中的\"冲击\"。你根据语境判断，下列正确的一项是（）。</p>",
+            "solution": "<p>本题考查词义理解。</p><p>触动：指碰动；外界某种因素而激发（思想、情感等）。冲锋：指突入敌阵，以短兵冲杀；作战部队向近距离的目标敌人作迅猛进攻的战斗行动。干扰：扰乱；打扰。打击：本意是攻击；殴打；使受挫折。</p><p>结合语境可知，此处强调现代化摩天大楼与老电厂\"同框\"从视觉上给人们带来震撼，这种震撼更是一种触动。</p><p>故选A。</p>",
+            "type": "单选"
+        },
+        {
+            "accessories": [
+                "<p>恢弘 新奇 多元</p>",
+                "<p>多元 恢弘 新奇</p>",
+                "<p>恢弘 多元 新奇</p>",
+                "<p>多元 新奇 恢弘</p>"
+            ],
+            "answer": {
+                "answer": "",
+                "blanks": [],
+                "choice": "1"
+            },
+            "content": "<p>根据小组意见，对应文段第①②③句，你将一组词语填在句中的横线处。下列恰当的一项是（）。</p>",
+            "solution": "<p>本题考查词句衔接。</p><p>恢弘：宽阔；博广。新奇：新颖奇妙、新鲜奇妙。多元：多样的；不单一的。</p><p>结合手记三句<span>①\"</span>园区以数字艺术为核心，工业遗产为载体，创意产业和低碳技术为保障，新潮消费为特色，集多种功能于一体\"可知这里注意解释的是数字艺术园区的\"多种功能\"，故与\"多元\"对应；结合句<span>②\"</span>粗细不等的供水、蒸汽管道凌空架起，6个40多米高的储煤罐并排而立，保留了老电厂曾经的壮观景象\"可知这里介绍了\"壮观的景象\"，故与\"恢弘\"对应；结合句<span>③\"</span>不远处的现代化摩天大楼与这些巨型设施<span>‘</span>同框<span>’</span>，带来强烈的视觉冲击\"可知这些\"热电厂\"能给人强烈的视觉冲击，而且这\"同框\"的景象是之前没有的，故非常\"新奇\"。</p><p>故选B。</p>",
+            "type": "单选"
+        },
+        {
+            "accessories": [],
+            "answer": {
+                "answer": "北京城市图书馆改善了北京的文化生活，是图书馆事业发展的新典范。",
+                "blanks": [
+                    "<p>北京城市图书馆改善了北京的文化生活，是图书馆事业发展的新典范。</p>"
+                ],
+                "choice": ""
+            },
+            "content": "<p style=\"text-align: center;\">手记四 北京城市图书馆</p><p>&nbsp;&nbsp;建在北京城市副中心的北京城市图书馆，拥有世界最大的单体图书馆阅览室，设有2400个阅读坐席；建有国内藏书量最大的智能化立体书库，可存放715万册图书，从精准定位取书到由机器人配送至阅览区只需15分钟。<u>北京城市图书馆促进了北京的文化生活，是图书馆事业发展的新样本。</u></p><p>文段中的画线句存在问题，请你修改。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"379\"></full-line-blank></p>",
+            "solution": "<p>本题考查病句修改。</p><p>搭配不当，\"促进\"和\"生活\"不搭配，\"北京市图书馆\"和\"新样本\"不搭配；可改为：……改善了/丰富了……文化生活；北京城市图书馆……是……新典范/新标杆。</p>",
+            "type": "填空"
+        },
+        {
+            "accessories": [
+                "<p>第①句</p>",
+                "<p>第②句</p>",
+                "<p>第③句</p>",
+                "<p>第④句</p>"
+            ],
+            "answer": {
+                "answer": "",
+                "blanks": [],
+                "choice": "1"
+            },
+            "content": "<p style=\"text-align: center;\">结语</p><p>&nbsp;&nbsp;①融入当代建筑美学元素的北京坊，经过整体改造，成为北京的新景点。<span>②</span>箭杆胡同20号是新文化运动的摇篮，记录了光辉历史，承载着红色记忆。<span>③</span>北京第一热电厂曾经的壮观与辉煌让人难以忘怀。<span>④</span>智能化立体书库是现代化图书馆的标准配置，堪称新时代的藏书楼。</p><p>&nbsp; 北京的文化生活场所建设，兼顾历史文化街区的保护与更新，推动红色文化的薪火相传，注重工业遗产的综合改造，重视公共文化空间的智能化升级<span>……</span>这些无不展现出首都北京的人文气象。</p><p>文段中的第①～④句是小组成员对各个文化生活场所的描述。你从修辞的角度判断，下列使用修辞手法的一项是（）。</p>",
+            "solution": "<p>本题考查语法知识。</p><p>B.结合句<span>②\"</span>箭杆胡同20号是新文化运动的摇篮，记录了光辉历史，承载着红色记忆\"可知把\"箭杆胡同20号\"比作\"新文化运动的摇篮\"，采用了暗喻的手法。</p><p>故选B。</p>",
+            "type": "单选"
+        }
+    ]
 }
 
 **包含子题的阅读题示例**
 {
   "question": {
     "content": "<p>阅读下面一则《论语》，完成下面小题。</p><p>曾子曰：\"吾日三省吾身：为人谋而不忠乎？与朋友交而不信乎？传不习乎？\"（《学而》）</p>",
-    "type": "单选"
+    "type": "简答",
+    "answer": {"answer": ""},
+    "solution": "",
+    "accessories": []
   },
   "subQuestions": [
     {
@@ -539,25 +611,31 @@
 
 **情况1：题目包含多个子问题**
 - question: 主题目对象，包含：
-  - content: 主题目内容
-  - type: 根据子题目的内容，确定是选择、简答等
+  - content: 主题目内容（包含阅读材料、题目背景等）
+  - type: 根据整体题目性质确定（通常为"简答"）
+  - answer: 空对象 {"answer": ""} （主题目本身通常没有答案）
+  - solution: 空字符串 "" （主题目本身通常没有解析）
+  - accessories: 空数组 [] （主题目通常没有选项）
 - subQuestions: 子题目数组，每个子题目包含：
   - content: 子题目内容
-  - solution: 解析过程
+  - type: 根据子题实际类型确定（"单选"、"填空"、"简答"等）
   - answer: 包含答案信息的对象
-    - content: 标准答案内容
-    - type: 固定为302（数字类型）
-  - accessory: 附件数组（通常为空数组）
-  - type: 固定为"简答"
+    - answer: 简答题答案内容（HTML格式）
+    - choice: 选择题答案（"0"表示A，"1"表示B等）
+    - blanks: 填空题答案数组（每个元素是一个空的答案）
+  - solution: 解析过程（HTML格式）
+  - accessories: 选项数组（仅单选题或多选题需要）
 
 **情况2：题目是单一问题（没有子问题）**
 - question: 主题目对象，包含：
   - content: 题目内容
-  - type: 根据题目性质确定（如"简答"、"填空"等）
-  - solution: 解析过程
+  - type: 根据题目性质确定（如"简答"、"填空"、"单选"等）
   - answer: 包含答案信息的对象
-    - content: 标准答案内容
-    - type: 固定为302（数字类型）
+    - answer: 简答题答案内容（HTML格式）
+    - choice: 选择题答案（"0"表示A，"1"表示B等）
+    - blanks: 填空题答案数组（每个元素是一个空的答案）
+  - solution: 解析过程（HTML格式）
+  - accessories: 选项数组（仅单选题或多选题需要）
 
 - score: 题目总分数（可选）
 
@@ -565,13 +643,13 @@
 - 如果题目中明确包含(1)、(2)、①②等、1.2.等子题目标号，或者有多个独立的问题，则使用subQuestions格式
 - 如果题目只是一个完整的问题（即使可能较复杂），则不使用subQuestions，直接在question对象中提供solution和answer
 - **⚠️ 题目说明识别规则**：如果遇到"从下面两个题目中任选一题"等类似选做题目，必须将其整体识别为一道题，即使下面有多个选择题目
-- **⚠️ 二选一写作题特殊规则**：包含"任选一题"、"二选一"、"任选其一"等类似含义的写作题，绝对不能使用subQuestions结构，必须作为一整道简答题
+- **⚠️ 二选一写作题特殊规则**：包含"任选一题"、"二选一"、"任选其一"等类似含义的写作题，绝对不能使用subQuestions结构，必须作为一整道题，即便原试卷分成了两道题也要合并成一道题。
 
 **⚠️ 重要区分：何时使用subQuestions结构**：
 
   **⚠️ 核心判断原则**：
-- **有共享材料** = 使用subQuestions
-- **无共享材料** = 独立题目，绝对不用subQuestions
+- **有统一主题背景介绍** = 必须使用subQuestions，绝对不能拆分为独立题目
+- **有共享阅读材料** = 使用subQuestions
 
 **✅ 必须使用subQuestions的情况**：
 - **语文综合运用题**：有统一主题背景，包含多个资料和多个小题的综合题
@@ -579,7 +657,7 @@
 
 
 **❌ 绝对禁止使用subQuestions的情况**：
-- **独立单选题**：即使有相同的题目说明，但是题和题之间是相对独立的（如"从A、B、C、D四个选项中选出最佳答案"）
+- **独立单选题**：题和题之间是相对独立的
 - **独立填空题**：每道题都是独立的，没有共享材料
 - **独立简答题**：每道题都是独立的问题
 - **选词填空题**：虽然有方框选项，但整体是一道完整题目
@@ -620,8 +698,11 @@
 **示例：包含多个子问题的简答题**
 {
   "question": {
-    "content": "<p>阅读下面的文章，完成下列各题。</p><p style=\"text-align: center;\"><strong>匠心传承</strong></p><p>&nbsp; &nbsp; 徐建的家里陈列着许多精美的稻草微缩古建筑模型，从湖北的黄鹤楼到北京故宫的角楼，每一件作品都细致入微，凝聚着他巧妙的双手和匠心独运的技艺。</p><p>&nbsp; &nbsp; \"所有的门窗和其他部件都是用高粱秆制作的，徐建指着位于河北省廊坊市永清县基地里那座高达一米的黄鹤楼模型说道。这件特殊的作品用了数十万根高粱秆，耗费了他两年的时间才完成，全程没有使用一颗钉子或一滴胶水，完全依靠榫卯结构的巧妙结合，\"这位三十多岁的手艺人解释道。</p><p>&nbsp; &nbsp; 高粱秆艺术需要极大的耐心，尤其是制作古建筑形象的作品。通常需要几个月甚至一到两年的时间才能完成。此外，所有的横梁和立柱都需要在灯火上加热后拉直，只有这样，每扇门窗才能正常开合。</p><p>&nbsp; &nbsp; 高粱秆艺术从选材到制作都遵循严格的标准。徐建在自己的农田里种植高粱，精选品质最好的来制作稻草作品。高粱秆从最细的$1.8$毫米到最粗的$12$毫米不等，几乎每件作品都包含数百道工艺步骤。徐建也不会浪费剩余的秆子，而是将它们制作成风车。</p><p>&nbsp; &nbsp; \"用心去做，没有什么是无用的\"，徐建说。在许多人眼中，高粱秆只是农业废料，但通过工匠的创意，它能够变成珍宝。</p>",
-    "type": "简答"
+    "content": "<p>阅读下面的文章，完成下列各题。</p><p style=\"text-align: center;\"><strong>匠心传承</strong></p><p>&nbsp; &nbsp; 徐建的家里陈列着许多精美的稻草微缩古建筑模型，从湖北的黄鹤楼到北京故宫的角楼，每一件作品都细致入微，凝聚着他巧妙的双手和匠心独运的技艺。</p><p>&nbsp; &nbsp; \"所有的门窗和其他部件都是用高粱秆制作的，徐建指着位于河北省廊坊市永清县基地里那座高达一米的黄鹤楼模型说道。这件特殊的作品用了数十万根高粱秆，耗费了他两年的时间才完成，全程没有使用一颗钉子或一滴胶水，完全依靠榫卯结构的巧妙结合，\"这位三十多岁的手艺人解释道。</p><p>&nbsp; &nbsp; 高粱秆艺术需要极大的耐心，尤其是制作古建筑形象的作品。通常需要几个月甚至一到两年的时间才能完成。此外，所有的横梁和立柱都需要在灯火上加热后拉直，只有这样，每扇门窗才能正常开合。</p><p>&nbsp; &nbsp; 高粱秆艺术从选材到制作都遵循严格的标准。徐建在自己的农田里种植高粱，精选品质最好的来制作稻草作品。高粱秆从最细的1.8毫米到最粗的12毫米不等，几乎每件作品都包含数百道工艺步骤。徐建也不会浪费剩余的秆子，而是将它们制作成风车。</p><p>&nbsp; &nbsp; \"用心去做，没有什么是无用的\"，徐建说。在许多人眼中，高粱秆只是农业废料，但通过工匠的创意，它能够变成珍宝。</p>",
+    "type": "简答",
+    "answer": {"answer": ""},
+    "solution": "",
+    "accessories": []
   },
   "subQuestions": [
     {
@@ -652,8 +733,8 @@
       "type": "简答"
     },
     {
-      "content": "<p>你同意徐建在最后一段说的话吗？请说明理由。（$30$字左右）</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
-      "solution": "<p>这是一道开放性题目，学生需要表达自己的观点并说明理由。答案应该围绕徐建说的\"用心去做，没有什么是无用的\"这句话展开，约$30$字左右。</p>",
+      "content": "<p>你同意徐建在最后一段说的话吗？请说明理由。（30字左右）</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+      "solution": "<p>这是一道开放性题目，学生需要表达自己的观点并说明理由。答案应该围绕徐建说的\"用心去做，没有什么是无用的\"这句话展开，约30字左右。</p>",
       "answer": {
         "answer": "<p>同意。用心和创意能让看似无用的材料变成艺术珍品，体现了人的智慧和毅力，变废为宝的理念值得学习。</p>"
       },
@@ -666,7 +747,10 @@
 {
   "question": {
     "content": "<p>阅读下面这首诗，完成下面的题目。</p><p style=\"text-align: center;\"><strong>春夜洛城闻笛</strong></p><p style=\"text-align: center;\">李白</p><p style=\"text-align: center;\">谁家玉笛暗飞声，散入春风满洛城。</p><p style=\"text-align: center;\">此夜曲中闻折柳，何人不起故园情。</p>",
-    "type": "简答"
+    "type": "简答",
+    "answer": {"answer": ""},
+    "solution": "",
+    "accessories": []
   },
   "subQuestions": [
     {
@@ -685,7 +769,7 @@
 **示例：单一问题的简答题**
 {
   "question": {
-    "content": "<p>&nbsp; &nbsp; 鲁迅先生在《朝花夕拾》中回忆了自己的童年生活和求学经历，其中《从百草园到三味书屋》描写了儿时在百草园的自由快乐和在三味书屋读书的拘束无聊，形成了鲜明的对比。文中写道：\"不必说碧绿的菜畦，光滑的石井栏，高大的皂荚树，紫红的桑椹；也不必说鸣蝉在树叶里长吟，肥胖的黄蜂伏在菜花上，轻捷的叫天子忽然从草间直窜向云霄里去了。单是周围的短短的泥墙根一带，就有无限趣味。\"</p><p>请结合这段文字，分析鲁迅运用了哪些写作手法来表现百草园的有趣？（不少于$150$字）</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"600\"></full-line-blank></p>",
+    "content": "<p>&nbsp; &nbsp; 鲁迅先生在《朝花夕拾》中回忆了自己的童年生活和求学经历，其中《从百草园到三味书屋》描写了儿时在百草园的自由快乐和在三味书屋读书的拘束无聊，形成了鲜明的对比。文中写道：\"不必说碧绿的菜畦，光滑的石井栏，高大的皂荚树，紫红的桑椹；也不必说鸣蝉在树叶里长吟，肥胖的黄蜂伏在菜花上，轻捷的叫天子忽然从草间直窜向云霄里去了。单是周围的短短的泥墙根一带，就有无限趣味。\"</p><p>请结合这段文字，分析鲁迅运用了哪些写作手法来表现百草园的有趣？（不少于150字）</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"600\"></full-line-blank></p>",
     "type": "简答",
     "solution": "<p>本题考查学生对写作手法的理解和分析能力。鲁迅在这段文字中主要运用了以下写作手法：</p><p>1. 对比手法：通过"不必说...也不必说...单是..."的句式，形成层次递进，突出重点；</p><p>2. 色彩描写：运用\"碧绿\"\"光滑\"\"紫红\"等颜色词，使画面生动鲜明；</p><p>3. 动静结合：既有静态的\"菜畦、石井栏、皂荚树\"，也有动态的\"鸣蝉长吟、黄蜂伏花、叫天子直窜\"；</p><p>4. 多感官描写：视觉、听觉等感官并用，增强表现力；</p><p>5. 详略得当：重点描写\"泥墙根一带\"，突出百草园的无限趣味。</p>",
     "answer": {
@@ -700,7 +784,7 @@
 - **识别标准**：题目中包含"从下面两个题目中任选一题"、"二选一"等选择性指示
 - **必须作为一整道题目**：二选一的写作题绝对不能使用subQuestions结构拆分
 - **禁止拆分原因**：如果拆分成两个子题，学生会误认为两道都需要回答，失去了"二选一"的选择性
-- **正确处理方式**：将整个题目（包括说明和两个选择）作为一道完整的简答题录入
+- **正确处理方式**：将整个题目（包括说明和两个选择）作为一道完整的简答题录入，即便原试卷分成了两道题也要合并成一道题。
 
 **示例：二选一写作题（不带答题线）**：
 
@@ -715,18 +799,6 @@
     "accessories": []
   }
 }
-
-**❌ 错误处理方式**：
-
-// ❌ 禁止：将二选一题目拆分为subQuestions
-{
-  "question": { "content": "题目说明", "type": "简答" },
-  "subQuestions": [
-    { "content": "题目1...", "type": "简答" },
-    { "content": "题目2...", "type": "简答" }
-  ]
-}
-
 
 **严格JSON输出格式规范：**
 
@@ -758,7 +830,8 @@
 
 4. **数学公式**：
    - **数学公式转义要求**：
-     - 公式和任何数字默认使用latex格式，$$括起，例如$12$，如果希望公式在下一行展示，则使用$$12$$。
+     - 数学公式使用latex格式，用$公式内容$或$$公式内容$$包围，例如$x^2$，如果希望公式在下一行展示，则使用$$x^2$$
+     - 普通数字直接使用阿拉伯数字，不需要用$符号包围，例如12、150、600等
      - 在JSON中，HTML属性的引号必须转义：class="..." → class=\"...\"
      - 所有反斜杠必须双重转义：\frac → \\frac
      - 百分号必须转义：% → \%
@@ -797,7 +870,7 @@
 - 如果包含图片，则按照对应格式写明
 - 只要涉及选项的内容，都放到accessory的options中，不要放在content中，包括选项中的图片，也要放在accessory中。
 - 题干和选项中如果出现括号答题区，例如（）（而不是普通括号，即不是答题区的，例如（8）），则保持原始括号格式（），不能用HTML标签。
-- 如果是**填空题中的下划线填空**（无论长短），都用<input size=\"X\" readonly=\"readonly\" type=\"underline\">表示，size根据预期答案长度调整：
+- 如果是**填空题中的下划线填空**，都用<input size=\"X\" readonly=\"readonly\" type=\"underline\">表示，size根据预期答案长度调整：
   * **单词填空**：size=\"8-12\"（如invention, beautiful）
   * **短语填空**：size=\"15-20\"（如in the past, look forward to）
   * **句子填空**：size=\"25-35\"（如完整的句子回答）
@@ -861,7 +934,7 @@
 
 请确保严格按照JSON Schema格式输出。
 需要从答案和解析中分离出专门的答案及解析。answer和solution必须输出，不能略。
-所有的数字必须都使用$$括起来的latex公式输出。
+普通数字直接使用阿拉伯数字格式输出，只有数学公式才使用$$括起来的latex格式。
 在遇到阅读题等题目时，不得省略任何题干素材内容。
 文章内容需要保持原有的段落结构和格式，例如阅读材料使用&nbsp; &nbsp;进行首行缩进
 **重要检查项**：处理完题目后，务必检查题干中的所有段落是否都正确添加了首行缩进`&nbsp; &nbsp;`，这是格式要求的重要部分。
@@ -894,11 +967,16 @@
      * ❌ `<p>19. 班级准备开展\"有趣的《西游记》\"读书分享会</p>`
      * ✅ `<p>班级准备开展\"有趣的《西游记》\"读书分享会</p>`
      * ❌ `<p>四、名著阅读（6分）</p>` → ✅ `<p><strong>名著阅读</strong></p>`
-3. **语文综合运用题检查（重点）**：
-   - **最重要**：识别统一主题背景+多个资料+多个小题的结构
-   - 必须作为一道题，使用subQuestions结构
-   - 主题目包含完整的背景介绍和所有资料
-   - 每个小题单独处理，不能拆分为独立题目
+3. **🔥 语文综合运用题检查（最关键）**：
+   - **🔥 核心要求**：识别统一主题背景介绍+多个资料+多个子题的结构
+   - **🔥 绝对必须**：整体作为一道题，使用subQuestions结构
+   - **🔥 严重错误检查**：绝对不能将每个子题拆分为独立题目
+   - **🔥 正确识别标志**：
+     * 题目开头有统一的主题背景介绍
+     * 包含多个资料文段（资料一、资料二、资料三等）
+     * 有多个编号子题围绕主题展开
+   - **🔥 错误示例**：每个子题都有独立的subjectId和phaseId → **这是严重错误！**
+   - **🔥 正确做法**：只有一个subjectId和phaseId，所有子题在subQuestions数组中
 4. **字音题检查**：
    - **最重要**：必须包含完整的材料内容，让学生能看到所有拼音标注
    - 材料中的加点字用`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\"></span>`标签正确标注
@@ -920,6 +998,12 @@ subQuestion不是一个必须的结构，如果一道题没有多个小问，则
 subQuestion的content可以只写答题区域，而不需要重复抄写question的content。
 你需要输出全部题对应的object，不能少题漏题。
 
+**语文综合运用题处理要求（最关键）**：
+- **绝对禁止**：将语文综合运用题拆分为多个独立题目
+- **正确做法**：识别统一主题背景，整体作为一道题，使用subQuestions结构
+- **错误标志**：如果看到多个题目都有相同的主题背景，说明处理错误了
+
+
 **重要提醒 - 序号重新映射检查**：
 在处理每道题目时，必须检查题目内容中是否包含序号引用（如"第X段对话"、"第X小题"、"第X题"等），并根据当前题目的实际结构重新映射这些序号。确保：
 - 题目content中的序号与实际结构对应
@@ -929,15 +1013,15 @@ subQuestion的content可以只写答题区域，而不需要重复抄写question
 
 **语文学科题型分类说明**：
 
-**语文综合运用题识别要点**：
-- **关键特征**：有统一的主题背景 + 多个资料 + 多个小题围绕主题
-- **常见标志**：
-  * 题目开头有主题性导语
-  * 包含多个材料或资料（资料一、二、三、四等）
+**🔥 语文综合运用题识别要点（极其重要）**：
+- **🔥 关键特征**：有统一的主题背景介绍 + 多个资料 + 多个子题围绕主题展开
+- **🔥 常见标志**：
+  * 题目开头有统一的主题性导语
+  * 包含多个材料或资料（资料一、资料二、资料三、资料四等）
   * 有多个编号小题（1. 2. 3. 4. 5. 6. 7.等）
-  * 所有小题都围绕同一个主题背景
-- **处理原则**：必须作为一道题，使用subQuestions结构
-- **错误做法**：将每个小题拆分为独立的题目
+  * 所有小题都围绕同一个主题背景展开
+- **🔥 绝对要求**：必须作为一道题，使用subQuestions结构
+- **🔥 严重错误**：将每个小题拆分为独立的题目（每个都有subjectId和phaseId）
 
 
 **题目说明提取规则**：

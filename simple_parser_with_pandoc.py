@@ -1318,12 +1318,11 @@ def post_process_json_content(data):
                     # 检查是否是上角标格式 ^内容^
                     if text[j] == '^':
                         # 寻找对应的结束^
-                        end_pos = text.find('^', j + 1)
-                        if end_pos != -1:
-                            # 提取^之间的内容并转换为<sup>标签
-                            content = text[j+1:end_pos]
+                        # end_pos = text.find('^', j + 1)
+                        if text[j + 2] == '^':
+                            content = text[j+1]
                             new_text.append(f'<sup>{content}</sup>')
-                            j = end_pos + 1  # 跳过结束的^
+                            j = j + 3  # 跳过结束的^
                         else:
                             # 没有找到对应的结束^，保留原样
                             new_text.append(text[j])
@@ -1386,7 +1385,7 @@ def main():
     if len(sys.argv) > 1:
         word_file_path = sys.argv[1]
     else:
-        word_file_path = "Chinese/精品解析：2025年四川省宜宾市中考语文真题（解析版）.docx"  # 默认文件路径
+        word_file_path = "Chinese/精品解析：2025年湖北省武汉市中考语文真题（解析版）.docx"  # 默认文件路径
      
     output_format = "markdown"  # 可选: markdown, plain, html
     prompt_template_path = "prompt_Chinese.md"
