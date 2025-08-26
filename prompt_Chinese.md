@@ -146,9 +146,6 @@
 - **🚨 填空格式要求（最重要）**：
   * ✅ 选择题括号填空：`（）`用于选择题答题区
   * ✅ 填空题下划线填空：`<input size="X" readonly="readonly" type="underline">`用于填空题
-  * 🔥 特别强调：填空题必须使用HTML标签**：
-    - ✅ **正确格式**：`店铺<input size="8" readonly="readonly" type="underline">，一路逛过去`
-    - ✅ **正确格式**：`挤进<input size="8" readonly="readonly" type="underline">的人群`
   * ❌ 禁止出现：`[_____]{.underline}`
   * ❌ 禁止出现：`[___1___]{.underline}`
   * ❌ 禁止出现：`[甲]{.underline}`、`[乙]{.underline}`等变量形式
@@ -185,7 +182,7 @@
 
 - **其他常见错误转换示例**：
   * ❌ 错误：`古梨树 [甲]{.underline} （星罗棋布/浩如烟海）`
-  * ✅ 正确：`古梨树 <input size=\"8\" readonly=\"readonly\" type=\"underline\" placeholder=\"甲\"> （星罗棋布/浩如烟海）`
+  * ✅ 正确：`古梨树 <span style="border-bottom: 1px #000 solid; padding-left: 20px; padding-right: 20px">甲</span> （星罗棋布/浩如烟海）`
   * ❌ 错误：`[注意事项：]{.bold}`
   * ✅ 正确：`<strong>注意事项：</strong>`
   * ❌ 错误：`[[[[[[【答案】]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}`
@@ -199,8 +196,7 @@
   * ❌ 错误：`"甘肃皋兰什川古梨园系统"`
   * ✅ 正确：`\"甘肃皋兰什川古梨园系统\"`
 - **特殊格式处理规则**：
-  * `[内容]{.underline}` 中如果内容是变量（如甲、乙、①、②等），转换为填空：`<input size=\"8\" readonly=\"readonly\" type=\"underline\" placeholder=\"变量\">`
-  * `[内容]{.underline}` 中如果内容是下划线（如___、____等），转换为填空：`<input size=\"8\" readonly=\"readonly\" type=\"underline\">`
+  * `[内容]{.underline}` 如果内容有变量（如甲、乙、①、②等），转换为`<span style="border-bottom: 1px #000 solid; padding-left: 20px; padding-right: 20px">甲</span>`
   * `[内容]{.wavy-underline}` 转换为波浪线强调：`<u style=\"text-decoration-style: wavy;\">内容</u>`
   * `[内容]{.single-underline}` 转换为下划线强调：`<u>内容</u>`
   * `[内容]{.bold}` 转换为粗体：`<strong>内容</strong>`
@@ -209,8 +205,8 @@
   * 嵌套格式如 `[[内容]{.single-underline}]{.underline}` 只保留最外层效果：`<u>内容</u>`
   * **加点内容格式** `[\[DOT_BELOW\]内容\[/DOT_BELOW\]]{.underline}` 转换为加点标签：`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">内容</span>`
 - **标识符保留规则**：
-  * 如果原文是 `[甲]{.underline}`，转换为 `<input size=\"8\" readonly=\"readonly\" type=\"underline\" placeholder=\"甲\">`
-  * 如果原文是 `[乙]{.underline}`，转换为 `<input size=\"8\" readonly=\"readonly\" type=\"underline\" placeholder=\"乙\">`
+  * 如果原文是 `[甲]{.underline}`，转换为 `<span style="border-bottom: 1px #000 solid; padding-left: 20px; padding-right: 20px">甲</span>`
+  * 如果原文是 `[乙]{.underline}`，转换为 `<span style="border-bottom: 1px #000 solid; padding-left: 20px; padding-right: 20px">乙</span>`
 - **size设置规则**：
   * 单词填空：size=\"8-12\"
   * 短语填空：size=\"15-20\"
