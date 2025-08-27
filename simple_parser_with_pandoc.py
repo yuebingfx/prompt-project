@@ -66,6 +66,7 @@ class PandocWordProcessor:
         self.format_detection_enabled = DOCX_AVAILABLE
         self.special_formatted_text = []
         self.format_statistics = defaultdict(int)
+        self.paragraph_formatting = []  # 新增：存储段落格式信息
         
         if self.format_detection_enabled:
             self._init_format_styles()
@@ -229,6 +230,70 @@ class PandocWordProcessor:
         
         return None
     
+    def _analyze_paragraph_formatting(self, paragraph, para_index=0):
+        """分析段落的格式，包括首行缩进"""
+        if not DOCX_AVAILABLE:
+            return []
+        
+        para_formats = []
+        
+        try:
+            # 获取段落格式
+            para_format = paragraph.paragraph_format
+            
+            # 检查首行缩进
+            if para_format.first_line_indent:
+                indent_value = para_format.first_line_indent
+                # 转换为磅数（如果可能）
+                try:
+                    indent_pt = indent_value.pt if hasattr(indent_value, 'pt') else None
+                    if indent_pt and indent_pt > 0:
+                        para_formats.append(f"首行缩进: {indent_pt:.1f}磅")
+                        # 标记这是一个重要的格式信息
+                        para_formats.append("⚠️ 首行缩进段落")
+                except:
+                    para_formats.append("首行缩进: 自定义值")
+                    para_formats.append("⚠️ 首行缩进段落")
+            
+            # 检查左缩进
+            if para_format.left_indent:
+                try:
+                    left_indent_pt = para_format.left_indent.pt if hasattr(para_format.left_indent, 'pt') else None
+                    if left_indent_pt and left_indent_pt > 0:
+                        para_formats.append(f"左缩进: {left_indent_pt:.1f}磅")
+                except:
+                    para_formats.append("左缩进: 自定义值")
+            
+            # 检查右缩进
+            if para_format.right_indent:
+                try:
+                    right_indent_pt = para_format.right_indent.pt if hasattr(para_format.right_indent, 'pt') else None
+                    if right_indent_pt and right_indent_pt > 0:
+                        para_formats.append(f"右缩进: {right_indent_pt:.1f}磅")
+                except:
+                    para_formats.append("右缩进: 自定义值")
+            
+            # 检查对齐方式
+            if para_format.alignment:
+                alignment_names = {
+                    0: "左对齐",
+                    1: "居中",
+                    2: "右对齐",
+                    3: "两端对齐",
+                    4: "分散对齐"
+                }
+                alignment_name = alignment_names.get(para_format.alignment, f"对齐方式{para_format.alignment}")
+                para_formats.append(f"对齐: {alignment_name}")
+            
+            # 统计格式使用
+            for fmt in para_formats:
+                self.format_statistics[fmt] += 1
+            
+        except Exception as e:
+            print(f"  ⚠️ 段落格式分析失败: {e}")
+        
+        return para_formats
+    
     def extract_format_analysis(self, docx_path):
         """提取文档的格式分析信息"""
         if not self.format_detection_enabled:
@@ -244,9 +309,27 @@ class PandocWordProcessor:
             # 重置统计信息
             self.special_formatted_text = []
             self.format_statistics = defaultdict(int)
+            self.paragraph_formatting = []  # 重置段落格式信息
             
             for para in doc.paragraphs:
                 paragraph_count += 1
+                
+                # 分析段落格式（首行缩进等）
+                para_formats = self._analyze_paragraph_formatting(para, paragraph_count)
+                if para_formats:
+                    # 保存段落格式信息，包括段落文本
+                    para_text = para.text.strip()
+                    if para_text:  # 只保存非空段落
+                        self.paragraph_formatting.append({
+                            'paragraph_index': paragraph_count,
+                            'text': para_text,
+                            'formats': para_formats,
+                            'has_first_line_indent': any('首行缩进' in fmt for fmt in para_formats),
+                            'is_centered': any('对齐: 居中' in fmt for fmt in para_formats),
+                            'is_right_aligned': any('对齐: 右对齐' in fmt for fmt in para_formats)
+                        })
+                
+                # 分析段落中的文本格式
                 for run_index, run in enumerate(para.runs):
                     self._analyze_text_formatting(run, paragraph_count, run_index)
             
@@ -261,13 +344,25 @@ class PandocWordProcessor:
                                 location = f"表格{table_count}-行{row_index}-列{cell_index}"
                                 self._analyze_text_formatting(run, location, run_index)
             
+            # 统计首行缩进段落、居中段落和居右段落
+            indent_paragraphs = len([p for p in self.paragraph_formatting if p['has_first_line_indent']])
+            centered_paragraphs = len([p for p in self.paragraph_formatting if p['is_centered']])
+            right_aligned_paragraphs = len([p for p in self.paragraph_formatting if p['is_right_aligned']])
+            
             print(f"✅ 格式分析完成: {paragraph_count}个段落, {table_count}个表格")
             print(f"📊 发现 {len(self.special_formatted_text)} 个包含特殊格式的文本片段")
+            print(f"📏 发现 {indent_paragraphs} 个包含首行缩进的段落")
+            print(f"📐 发现 {centered_paragraphs} 个居中对齐的段落")
+            print(f"📑 发现 {right_aligned_paragraphs} 个居右对齐的段落")
             
             return {
                 'total_paragraphs': paragraph_count,
                 'total_tables': table_count,
                 'special_format_count': len(self.special_formatted_text),
+                'paragraph_format_count': len(self.paragraph_formatting),
+                'indent_paragraph_count': indent_paragraphs,
+                'centered_paragraph_count': centered_paragraphs,
+                'right_aligned_paragraph_count': right_aligned_paragraphs,
                 'format_statistics': dict(self.format_statistics)
             }
             
@@ -365,22 +460,34 @@ class PandocWordProcessor:
         if not self.format_detection_enabled:
             return "格式检测功能未启用"
         
-        if not self.special_formatted_text:
-            return "未发现特殊格式文本"
+        summary_lines = []
         
-        # 统计重点格式（带⚠️标记）
-        format_counts = defaultdict(int)
-        for item in self.special_formatted_text:
-            for fmt in item['formats']:
-                if '⚠️' in fmt:
-                    format_counts[fmt] += 1
+        # 统计首行缩进段落、居中段落和居右段落
+        if hasattr(self, 'paragraph_formatting') and self.paragraph_formatting:
+            indent_count = len([p for p in self.paragraph_formatting if p['has_first_line_indent']])
+            centered_count = len([p for p in self.paragraph_formatting if p['is_centered']])
+            right_aligned_count = len([p for p in self.paragraph_formatting if p['is_right_aligned']])
+            summary_lines.append(f"📏 首行缩进段落: {indent_count} 个")
+            summary_lines.append(f"📐 居中对齐段落: {centered_count} 个")
+            summary_lines.append(f"📑 居右对齐段落: {right_aligned_count} 个")
         
-        # 生成摘要
-        summary = [f"📊 特殊格式统计 (总计: {len(self.special_formatted_text)} 个片段):"]
-        summary.extend(f"  {fmt}: {count}次" 
-                      for fmt, count in sorted(format_counts.items(), key=lambda x: x[1], reverse=True))
+        # 统计特殊格式文本
+        if self.special_formatted_text:
+            # 统计重点格式（带⚠️标记）
+            format_counts = defaultdict(int)
+            for item in self.special_formatted_text:
+                for fmt in item['formats']:
+                    if '⚠️' in fmt:
+                        format_counts[fmt] += 1
+            
+            summary_lines.append(f"📊 特殊格式文本: {len(self.special_formatted_text)} 个片段")
+            summary_lines.extend(f"  {fmt}: {count}次" 
+                              for fmt, count in sorted(format_counts.items(), key=lambda x: x[1], reverse=True))
         
-        return "\n".join(summary)
+        if not summary_lines:
+            return "未发现特殊格式或首行缩进"
+        
+        return "\n".join(summary_lines)
     
     def get_supported_formats(self):
         """获取支持的文档格式"""
@@ -638,15 +745,213 @@ class PandocWordProcessor:
             print(f"❌ 转换异常: {e}")
             return None
     
+    def _clean_dot_below_markers(self, text):
+        """清理加点字标记，用于匹配比较"""
+        import re
+        # 移除加点字标记：[\[DOT_BELOW\]字\[/DOT_BELOW\]]{.underline}
+        # 只保留中间的字符
+        pattern = r'\[\\\[DOT_BELOW\\\]([\u4e00-\u9fff])\\\[/DOT_BELOW\\\]\]\{\.underline\}'
+        cleaned = re.sub(pattern, r'\1', text)
+        return cleaned
+    
+    def _normalize_quotes(self, text):
+        """标准化引号，用于匹配比较"""
+        # 将各种中文引号统一为标准引号
+        quote_mappings = {
+            '“': '"',  # 左双引号 (8220) -> 普通双引号 (34)
+            '”': '"',  # 右双引号 (8221) -> 普通双引号 (34)
+            '‘': "'",  # 左单引号 (8216) -> 普通单引号 (39)
+            '’': "'",  # 右单引号 (8217) -> 普通单引号 (39)
+            '「': '"',  # 日式左引号
+            '」': '"',  # 日式右引号
+            '『': '"',  # 日式左双引号
+            '』': '"',  # 日式右双引号
+        }
+        
+        result = text
+        for old_quote, new_quote in quote_mappings.items():
+            result = result.replace(old_quote, new_quote)
+        return result
+    
+    def _find_best_match_in_content(self, para_text, content):
+        """在内容中找到段落的最佳匹配位置"""
+        
+        # 特殊处理：优先尝试匹配独立行
+        lines = content.split('\n')
+        for line in lines:
+            line_stripped = line.strip()
+            if line_stripped == para_text:
+                return para_text, "独立行"
+            # 尝试标准化后匹配独立行
+            normalized_line = self._normalize_quotes(line_stripped)
+            if normalized_line == self._normalize_quotes(para_text):
+                return para_text, "独立行引号"
+        
+        # 根据文本长度调整匹配策略
+        if len(para_text) <= 5:
+            # 短标题：使用完整长度和递减长度
+            lengths = [len(para_text)]
+            if len(para_text) > 2:
+                lengths.append(len(para_text) - 1)
+            if len(para_text) > 3:
+                lengths.append(len(para_text) - 2)
+        else:
+            # 长文本：使用原有策略
+            lengths = [20, 15, 10, 8]
+        
+        for length in lengths:
+            if len(para_text) < length:
+                continue
+                
+            para_start = para_text[:length]
+            
+            # 方法1：直接匹配
+            if para_start in content:
+                # 检查是否已经被标记
+                if not any(f"【{marker}】{para_start}" in content for marker in ["首行缩进", "居中", "居右"]):
+                    return para_start, f"精确{length}"
+            
+            # 方法2：标准化引号后匹配
+            normalized_para_start = self._normalize_quotes(para_start)
+            if normalized_para_start != para_start:  # 说明有引号变化
+                if normalized_para_start in content:
+                    if not any(f"【{marker}】{normalized_para_start}" in content for marker in ["首行缩进", "居中", "居右"]):
+                        return normalized_para_start, f"引号{length}"
+            
+            # 方法3：清理加点字标记后匹配
+            cleaned_para_start = self._clean_dot_below_markers(para_start)
+            if cleaned_para_start != para_start:  # 说明有加点字
+                # 在内容中查找清理后的文本
+                if cleaned_para_start in content:
+                    if not any(f"【{marker}】{cleaned_para_start}" in content for marker in ["首行缩进", "居中", "居右"]):
+                        return cleaned_para_start, f"清理{length}"
+            
+            # 方法4：同时标准化引号和清理加点字
+            both_processed = self._normalize_quotes(self._clean_dot_below_markers(para_start))
+            if both_processed != para_start:
+                if both_processed in content:
+                    if not any(f"【{marker}】{both_processed}" in content for marker in ["首行缩进", "居中", "居右"]):
+                        return both_processed, f"综合{length}"
+                
+                # 尝试用正则表达式匹配，允许加点字标记存在
+                import re
+                # 将原始文本转换为可以匹配加点字形式的正则表达式
+                pattern_chars = []
+                for char in both_processed:
+                    if '\u4e00' <= char <= '\u9fff':  # 中文字符
+                        # 这个字符可能是加点字，创建可选的加点字模式
+                        dot_pattern = f'(?:{re.escape(char)}|\[\\\[DOT_BELOW\\\]{re.escape(char)}\\\[/DOT_BELOW\\\]\]{{\.underline}})'
+                        pattern_chars.append(dot_pattern)
+                    else:
+                        pattern_chars.append(re.escape(char))
+                
+                regex_pattern = ''.join(pattern_chars)
+                matches = re.findall(regex_pattern, content)
+                
+                if matches:
+                    # 找到匹配，但需要找到实际在内容中的原始形式
+                    match_pos = re.search(regex_pattern, content)
+                    if match_pos:
+                        actual_match = match_pos.group(0)
+                        if not any(f"【{marker}】{actual_match}" in content for marker in ["首行缩进", "居中", "居右"]):
+                            return actual_match, f"正则{length}"
+        
+        # 如果所有方法都失败，尝试部分匹配（用于调试）
+        import re
+        escaped_text = re.escape(para_text[:min(5, len(para_text))])
+        if re.search(escaped_text, content):
+            return None, "部分存在但无法匹配"
+        
+        return None, None
+    
     def _enhance_content_with_format_info(self, content):
         """根据格式分析结果增强pandoc内容"""
         print(f"🔍 开始分析 {len(self.special_formatted_text)} 个特殊格式文本")
+        print(f"📏 开始分析 {len(self.paragraph_formatting)} 个段落格式")
         
+        # 第一步：处理段落首行缩进
+        indent_enhanced_count = 0
+        for para_info in self.paragraph_formatting:
+            if para_info['has_first_line_indent']:
+                para_text = para_info['text'].strip()
+                
+                # 跳过过短的文本
+                if len(para_text) < 8:
+                    continue
+                
+                # 使用改进的匹配算法
+                match_result, match_type = self._find_best_match_in_content(para_text, content)
+                
+                if match_result:
+                    # 在匹配的文本前添加标记
+                    enhanced_start = f"【首行缩进】{match_result}"
+                    content = content.replace(match_result, enhanced_start, 1)
+                    indent_enhanced_count += 1
+                    print(f"缩进标记({match_type}): \"{match_result[:30]}...\"")
+                else:
+                    print(f"❌ 未匹配: \"{para_text[:20]}...\"")
+        
+        # 第一步半：处理居中段落
+        centered_enhanced_count = 0
+        for para_info in self.paragraph_formatting:
+            if para_info['is_centered']:
+                para_text = para_info['text'].strip()
+                
+                # 跳过过短的文本
+                if len(para_text) < 2:
+                    continue
+                
+                # 避免重复标记（如果已经有首行缩进标记）
+                # 检查是否已经被首行缩进标记了（可能只是部分文本被标记）
+                if any(f"【首行缩进】{para_text[:length]}" in content for length in [20, 15, 10, 8] if len(para_text) >= length):
+                    continue
+                
+                # 使用改进的匹配算法
+                match_result, match_type = self._find_best_match_in_content(para_text, content)
+                
+                if match_result:
+                    # 在匹配的文本前添加标记
+                    enhanced_start = f"【居中】{match_result}"
+                    content = content.replace(match_result, enhanced_start, 1)
+                    centered_enhanced_count += 1
+                    print(f"居中标记({match_type}): \"{match_result[:30]}...\"")
+                else:
+                    print(f"❌ 居中未匹配: \"{para_text[:20]}...\"")
+        
+        # 第一步三：处理居右段落
+        right_aligned_enhanced_count = 0
+        for para_info in self.paragraph_formatting:
+            if para_info['is_right_aligned']:
+                para_text = para_info['text'].strip()
+                
+                # 跳过过短的文本
+                if len(para_text) < 2:
+                    continue
+                
+                # 避免重复标记（如果已经有其他标记）
+                if any(f"【首行缩进】{para_text[:length]}" in content for length in [20, 15, 10, 8] if len(para_text) >= length):
+                    continue
+                if any(f"【居中】{para_text[:length]}" in content for length in [20, 15, 10, 8] if len(para_text) >= length):
+                    continue
+                
+                # 使用改进的匹配算法
+                match_result, match_type = self._find_best_match_in_content(para_text, content)
+                
+                if match_result:
+                    # 在匹配的文本前添加标记
+                    enhanced_start = f"【居右】{match_result}"
+                    content = content.replace(match_result, enhanced_start, 1)
+                    right_aligned_enhanced_count += 1
+                    print(f"居右标记({match_type}): \"{match_result[:30]}...\"")
+                else:
+                    print(f"❌ 居右未匹配: \"{para_text[:20]}...\"")
+        
+        # 第二步：处理文本特殊格式
         # 按文本长度排序，从长到短，避免短文本替换影响长文本
         sorted_formats = sorted(self.special_formatted_text, 
                               key=lambda x: len(x['text']), reverse=True)
         
-        enhanced_count = 0
+        format_enhanced_count = 0
         
         for format_item in sorted_formats:
             text = format_item['text'].strip()
@@ -665,11 +970,15 @@ class PandocWordProcessor:
                 
                 # 执行替换（只替换第一个匹配，避免重复替换）
                 content = content.replace(text, enhanced_text, 1)
-                enhanced_count += 1
+                format_enhanced_count += 1
                 
-                print(f"增强: \"{text[:30]}{'...' if len(text) > 30 else ''}\" -> {format_annotation}")
+                print(f"格式增强: \"{text[:30]}{'...' if len(text) > 30 else ''}\" -> {format_annotation}")
         
-        print(f"✅ 格式增强完成，共处理 {enhanced_count} 个文本")
+        print(f"✅ 格式增强完成:")
+        print(f"  📏 首行缩进标记: {indent_enhanced_count} 个段落")
+        print(f"  📐 居中对齐标记: {centered_enhanced_count} 个段落")
+        print(f"  📑 居右对齐标记: {right_aligned_enhanced_count} 个段落")
+        print(f"  🎨 特殊格式标记: {format_enhanced_count} 个文本")
         return content
     
     def _generate_format_annotation(self, formats):
@@ -1385,7 +1694,7 @@ def main():
     if len(sys.argv) > 1:
         word_file_path = sys.argv[1]
     else:
-        word_file_path = "Chinese/processed/精品解析：2025年甘肃省兰州市中考语文真题（解析版）_dot_processed.docx"  # 默认文件路径
+        word_file_path = "Chinese/精品解析：2025年北京市中考语文真题（解析版）.docx"  # 默认文件路径
      
     output_format = "markdown"  # 可选: markdown, plain, html
     prompt_template_path = "prompt_Chinese.md"
