@@ -137,7 +137,9 @@
 **特殊格式处理要求（重要）**：
 - **括号填空（重要）**：选择题中的括号填空应保持为原始括号格式 `（）`（注意：不是普通的标点括号，而是填空答题区的括号）
 - **下划线填空（重要）**：
-  * **填空题类型**：下划线填空必须转换为 `<input size="X" readonly="readonly" type="underline">` 标签
+  * **包含子题的主题目**：保留原始`______`下划线形式，不转换为HTML标签
+  * **子题目填空题**：在`subQuestions`中，`"type": "填空"`时必须转换为 `<input size="X" readonly="readonly" type="underline">` 标签
+  * **独立填空题**：无`subQuestions`的独立填空题才转换为HTML标签
   * **选择题类型**：下划线填空保持原始形式 `______`，不转换为HTML标签
 - **加点字格式（绝对优先处理）**：`[\[DOT_BELOW\]内容\[/DOT_BELOW\]]{.underline}` **必须立即识别并转换为加点字标签**：`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">内容</span>`
   * **🔥 极其重要**：DOT_BELOW是加点字的专用标记，**绝对不能**转换为波浪线或其他格式
@@ -147,8 +149,10 @@
 - **单下划线强调**：使用 `<u>` 标签
 - **🚨 填空格式要求（最重要）**：
   * ✅ 选择题括号填空：`（）`用于选择题答题区
+  * ✅ 包含子题的主题目：`______`保持原始格式，不转换为HTML标签
+  * ✅ 子题目填空题：`<input size="X" readonly="readonly" type="underline">`用于subQuestions中的填空题
+  * ✅ 独立填空题：`<input size="X" readonly="readonly" type="underline">`用于无subQuestions的填空题
   * ✅ 选择题下划线填空：`______`保持原始格式，不转换为HTML标签
-  * ✅ 填空题下划线填空：`<input size="X" readonly="readonly" type="underline">`用于填空题
   * ❌ 禁止出现：`[_____]{.underline}`
   * ❌ 禁止出现：`[___1___]{.underline}`
   * ❌ 禁止出现：`[甲]{.underline}`、`[乙]{.underline}`等变量形式
@@ -158,7 +162,9 @@
   * ❌ 禁止出现：`[\[DOT_BELOW\]内容\[/DOT_BELOW\]]{.underline}` 加点内容格式
   * ❌ 禁止出现：`[内容]{.color-XXXXXX}`及其多层嵌套
 - **正确格式示例**：
-  * 填空题下划线填空：`<input size="8" readonly="readonly" type="underline">`
+  * 包含子题的主题目：`______`（保持原始格式）
+  * 子题目填空题：`<input size="8" readonly="readonly" type="underline">`
+  * 独立填空题：`<input size="8" readonly="readonly" type="underline">`
   * 选择题括号填空：`（）`（保持原始格式）
   * 选择题下划线填空：`______`（保持原始格式）
   * 波浪线强调：`<u style=\"text-decoration-style: wavy;\">内容</u>`
@@ -256,12 +262,16 @@
 
 
 **填空形式选择规则（重要）**：
-- **填空题使用下划线HTML标签**：`<input size=\"X\" readonly=\"readonly\" type=\"underline\">`
-- **选择题填空保持原始格式**：
-  * 选择题中的括号填空：`（）`保持原始格式
-  * 选择题中的下划线填空：`______`保持原始格式，不转换为HTML标签
-  * 填空题中的下划线填空：必须转换为HTML标签
-- **重要区分**：填空题和选择题的填空处理方式不同
+- **结构优先原则**：根据题目结构决定填空处理方式
+- **具体规则**：
+  * **包含子题的主题目**：保留原始`______`下划线格式，不转换为HTML标签
+  * **子题目中的填空题**：`"type": "填空"`时转换为`<input size=\"X\" readonly=\"readonly\" type=\"underline\">`标签
+  * **独立填空题**：无subQuestions的独立填空题转换为HTML标签
+  * **选择题填空**：无论在哪个层级，都保持原始格式`______`或`（）`
+- **🚨 关键区分**：
+  * **有subQuestions的question**：content中保留原始下划线`______`
+  * **subQuestions中的填空子题**：必须转换为`<input>`标签
+  * **独立question且type为填空**：转换为`<input>`标签
 
 
 请分析以下试卷内容，提取出试卷的二级结构（完整的一道题），返回JSON格式的数组，每个对象的格式要求如下：
@@ -427,17 +437,41 @@
 **默写填空题示例**
 {
   "question": {
-    "content": "<p>①纷纷暮雪下辕门，<input size=\"20\" readonly=\"readonly\" type=\"underline\">。（岑参《白雪歌送武判官归京》）</p><p>②亭亭净植，<input size=\"25\" readonly=\"readonly\" type=\"underline\">。（周敦颐《爱莲说》）</p><p>③古人常用竹子制作乐器，很多乐器名称使用带\"竹字头\"的字。如古诗词中的\"<input size=\"30\" readonly=\"readonly\" type=\"underline\">\"一句，就出现了这样的乐器名称。（本试卷中出现的句子除外）</p>",
-    "solution": "<p>本题考查名句名篇默写。默写题作答时，一是要透彻理解诗文的内容；二是要认真审题，找出符合题意的诗文句子；三是答题内容要准确，做到不添字、不漏字、不写错字。</p>",
-    "answer": {
-      "blanks": [
-        "风掣红旗冻不翻",
-        "可远观而不可亵玩焉",
-        "箫鼓追随春社近"
-      ]
+    "content": "<p><strong>默写</strong></p><p>默写填空。</p>",
+    "type": "简答",
+    "answer": {"answer": ""},
+    "solution": "",
+    "accessories": []
+  },
+  "subQuestions": [
+    {
+      "content": "<p>①纷纷暮雪下辕门，<input size=\"20\" readonly=\"readonly\" type=\"underline\">。（岑参《白雪歌送武判官归京》）</p>",
+      "type": "填空",
+      "answer": {
+        "blanks": ["风掣红旗冻不翻"]
+      },
+      "solution": "<p>考查岑参《白雪歌送武判官归京》名句默写。</p>",
+      "accessories": []
     },
-    "type": "填空"
-  }
+    {
+      "content": "<p>②亭亭净植，<input size=\"25\" readonly=\"readonly\" type=\"underline\">。（周敦颐《爱莲说》）</p>",
+      "type": "填空",
+      "answer": {
+        "blanks": ["可远观而不可亵玩焉"]
+      },
+      "solution": "<p>考查周敦颐《爱莲说》名句默写。</p>",
+      "accessories": []
+    },
+    {
+      "content": "<p>③古人常用竹子制作乐器，很多乐器名称使用带\"竹字头\"的字。如古诗词中的\"<input size=\"30\" readonly=\"readonly\" type=\"underline\">\"一句，就出现了这样的乐器名称。（本试卷中出现的句子除外）</p>",
+      "type": "填空",
+      "answer": {
+        "blanks": ["箫鼓追随春社近"]
+      },
+      "solution": "<p>考查带\"竹字头\"乐器名称的古诗句，\"箫鼓\"中的\"箫\"即为竹制乐器。</p>",
+      "accessories": []
+    }
+  ]
 }
 
 **语文综合运用题示例（正确格式）**
@@ -883,18 +917,22 @@
 
 7. **填空题特殊要求**：
    - **格式严格匹配（重要）**：
-     * 填空题中的下划线 `_____`，必须用 `<input size=\"X\" readonly=\"readonly\" type=\"underline\">`
-     * 选择题中的括号 `（）`，保持原始括号格式
-     * 选择题中的下划线 `______`，保持原始下划线格式
+     * **包含子题的主题目**：保留原始下划线 `______`，不转换为HTML标签
+     * **子题目填空题**：`"type": "填空"`时必须用 `<input size=\"X\" readonly=\"readonly\" type=\"underline\">`
+     * **独立填空题**：无subQuestions且`"type": "填空"`时必须用HTML标签
+     * **选择题**：括号 `（）` 和下划线 `______` 保持原始格式
    - **常见错误示例**：
-     * ❌ 错误：填空题用了原始下划线：`My sister is good at singing. _____ can even sing some French songs.`
-     * ✅ 正确：填空题用HTML标签：`My sister is good at singing. <input size="8" readonly="readonly" type="underline"> can even sing some French songs.`
+     * ❌ 错误：包含子题的主题目转换了下划线：`<p>诗人再写对'日月之行'和' ①<input size='8' readonly='readonly' type='underline'>'的想象。</p>`
+     * ✅ 正确：包含子题的主题目保留原始下划线：`<p>诗人再写对'日月之行'和' ①______'的想象。</p>`
+     * ❌ 错误：子题目填空题用了原始下划线：`<p>在横线处填写恰当的内容：______</p>`
+     * ✅ 正确：子题目填空题用HTML标签：`<p>在横线处填写恰当的内容：<input size="8" readonly="readonly" type="underline"></p>`
      * ❌ 错误：选择题下划线用了HTML标签：`Choose the best answer: <input size="8" readonly="readonly" type="underline">`
      * ✅ 正确：选择题下划线保持原始：`Choose the best answer: ______`
    - **判断标准**：
-     * 如果是填空题，下划线填空必须使用 `<input type=\"underline\">`
-     * 如果是选择题，括号填空保持原始格式 `（）`
-     * 如果是选择题，下划线填空保持原始格式 `______`
+     * **有subQuestions的question**：content中保留原始下划线`______`，不转换
+     * **subQuestions中type为填空**：必须使用 `<input type=\"underline\">`
+     * **独立question且type为填空**：必须使用 `<input type=\"underline\">`
+     * **选择题**：无论在哪个层级，括号`（）`和下划线`______`都保持原始格式
 
 8. **语文学科特殊处理要求**：
    - ** 加点字格式转换（最重要且绝对优先）**：
@@ -975,12 +1013,18 @@
 
 
 **⚠️ 语文学科最终检查清单**：
-1. **加点字格式转换检查（最最最关键，第一优先级）**：
+1. **🚨 填空题结构化处理检查（第一优先级）**：
+   - **🚨 最关键检查**：根据题目结构正确处理下划线
+   - **🚨 包含子题的主题目**：question有subQuestions时，主题目的content中必须保留原始`______`
+   - **🚨 子题目填空检查**：subQuestions中`"type": "填空"`的题目，必须转换`______`为`<input>`标签
+   - **🚨 独立填空题检查**：无subQuestions的question且`"type": "填空"`，必须转换为`<input>`标签
+   - **🚨 常见错误**：包含子题的主题目错误转换了下划线；子题目填空题使用了原始下划线
+2. **加点字格式转换检查（第二优先级）**：
    - **绝对优先**：检查所有`[\[DOT_BELOW\]内容\[/DOT_BELOW\]]{.underline}`是否都转换为`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">内容</span>`
    - **严重错误检查**：绝对不能将DOT_BELOW转换为波浪线格式`<u style=\"text-decoration-style: wavy;\">`
    - **关键识别**：所有包含`[\[DOT_BELOW\]`的内容都是加点字，必须使用text-emphasis标签
    - **常见错误**：DOT_BELOW被误转换为波浪线是最严重的错误，必须避免！
-2. **🔥 波浪线格式转换检查（第二优先级）**：
+3. **🔥 波浪线格式转换检查（第三优先级）**：
    - **🔥 重要**：检查所有`[内容]{.wavy-underline}`是否都转换为`<u style=\"text-decoration-style: wavy;\">内容</u>`
    - **🔥 重要**：检查所有`[内容]{.single-underline}`是否都转换为`<u>内容</u>`
    - **🔥 重要**：绝对不能在最终JSON中保留任何`{.wavy-underline}`或`{.single-underline}`格式
@@ -990,7 +1034,7 @@
      * ✅ `<p>截zhì<input type=\"bracket\" size=\"8\" />目前，我国全球重要...</p>`
      * ❌ `<p>古梨树历史yōu（ ）久</p>`
      * ✅ `<p>古梨树历史yōu<input type=\"bracket\" size=\"8\" />久</p>`
-2. **🚨 题号删除检查（最关键）**：
+4. **🚨 题号删除检查（第四优先级）**：
    - **🚨 最重要**：检查所有题目内容是否还包含题号（如"1."、"2."、"8."、"19."、"25."等）
    - **🚨 最重要**：检查所有解析和答案是否还包含题号（如"31."、"32."、"33."等）
    - **🚨 最重要**：检查是否还包含大题标号（如"一、"、"二、"、"三、"、"四、"、"五、"等）
@@ -998,7 +1042,7 @@
      * ❌ `<p>19. 班级准备开展\"有趣的《西游记》\"读书分享会</p>`
      * ✅ `<p>班级准备开展\"有趣的《西游记》\"读书分享会</p>`
      * ❌ `<p>四、名著阅读（6分）</p>` → ✅ `<p><strong>名著阅读</strong></p>`
-3. **🔥 语文综合运用题检查（最关键）**：
+5. **🔥 语文综合运用题检查（第五优先级）**：
    - **🔥 核心要求**：识别统一主题背景介绍+多个资料+多个子题的结构
    - **🔥 绝对必须**：整体作为一道题，使用subQuestions结构
    - **🔥 严重错误检查**：绝对不能将每个子题拆分为独立题目
@@ -1008,13 +1052,13 @@
      * 有多个编号子题围绕主题展开
    - **🔥 错误示例**：每个子题都有独立的subjectId和phaseId → **这是严重错误！**
    - **🔥 正确做法**：只有一个subjectId和phaseId，所有子题在subQuestions数组中
-4. **字音题检查**：
+6. **字音题检查**：
    - **最重要**：必须包含完整的材料内容，让学生能看到所有拼音标注
    - 材料中的加点字用`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\"></span>`标签正确标注
    - **重要**：遇到 `[\[DOT_BELOW\]字符\[/DOT_BELOW\]]{.underline}` 格式时，必须转换为加点字标签
    - 确保题目能够独立回答，不依赖外部材料
    - 答案选择正确的错误选项
-5. **默写题检查**：
+7. **默写题检查**：
    - 填空处使用`<input size=\"X\" readonly=\"readonly\" type=\"underline\">`格式
    - 诗句断行格式正确，每句独立成行
    - 答案与原文完全一致，不能有任何错字
