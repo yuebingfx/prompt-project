@@ -2,26 +2,25 @@
 # -*- coding: utf-8 -*-
 
 """
-Pandoc Word文档处理工具 - 增强版 (支持加点字检测)
+Pandoc Word文档处理工具 - 增强版 (支持加点字检测，图片处理已禁用)
 
 使用pandoc将Word文档转换为模型可读的纯文本内容，支持：
 1. 文档文本转换 (Pandoc)
-2. 图片提取和内容分析 (LLM Vision)
-3. 水印文字替换
-4. 大模型API调用 (文档结构解析)
-5. 着重号检测 (加点字)
-6. 连续短横线转中文破折号
+2. 大模型API调用 (文档结构解析)
+3. 着重号检测 (加点字)
+4. 连续短横线转中文破折号
+
+注：图片提取和内容分析功能已禁用以提高运行效率
 
 依赖安装：
 1. 确保系统已安装pandoc: https://pandoc.org/installing.html
 2. 安装python-docx: pip install python-docx (仅用于加点字预处理)
-3. 安装其他依赖: pip install pillow requests
+3. 安装其他依赖: pip install requests
 
 使用方法：
 1. 运行脚本处理Word文档
-2. 自动提取图片并使用LLM分析内容
-3. 检测并转换加点字格式
-4. 生成最终的解析结果
+2. 检测并转换加点字格式
+3. 生成最终的解析结果
 """
 
 import subprocess
@@ -498,178 +497,190 @@ class PandocWordProcessor:
         file_ext = Path(file_path).suffix.lower()
         return file_ext in self.get_supported_formats()
     
+    # 注释掉图片提取功能以提高运行效率
     def extract_images_from_docx(self, docx_path, save_images=False):
-        """从docx文件中提取图片"""
-        print(f"🖼️  从docx文件中提取图片...")
+        """从docx文件中提取图片 - 已注释以提高运行效率"""
+        print(f"🖼️  图片处理已禁用以提高运行效率")
+        return []
         
-        images = []
-        if save_images:
-            # 创建media文件夹
-            media_dir = Path("media")
-            media_dir.mkdir(exist_ok=True)
-            print(f"📁 创建图片保存目录: {media_dir}")
-        
-        try:
-            # docx文件本质上是一个zip文件
-            with zipfile.ZipFile(docx_path, 'r') as zip_file:
-                # 查找media文件夹中的图片
-                for file_info in zip_file.filelist:
-                    if file_info.filename.startswith('word/media/'):
-                        file_name = file_info.filename.split('/')[-1]
-                        file_ext = Path(file_name).suffix.lower()
-                        
-                        # 只处理图片文件
-                        if file_ext in ['.png', '.jpg', '.jpeg', '.gif', '.bmp']:
-                            try:
-                                # 读取图片数据
-                                with zip_file.open(file_info.filename) as img_file:
-                                    img_data = img_file.read()
-                                
-                                # 转换为PIL Image对象
-                                img = Image.open(BytesIO(img_data))
-                                
-                                # 如果需要保存图片到本地
-                                if save_images:
-                                    img_path = media_dir / file_name
-                                    with open(img_path, 'wb') as f:
-                                        f.write(img_data)
-                                    print(f"  💾 保存图片: {img_path}")
-                                
-                                images.append({
-                                    'filename': file_name,
-                                    'path': file_info.filename,
-                                    'image': img,
-                                    'data': img_data,
-                                    'size': img.size,
-                                    'format': img.format
-                                })
-                                
-                                print(f"  📷 提取图片: {file_name} ({img.size[0]}x{img.size[1]})")
-                                
-                            except Exception as e:
-                                print(f"  ⚠️  图片 {file_name} 读取失败: {e}")
-                                continue
-                
-                print(f"✅ 共提取 {len(images)} 张图片")
-                return images
-                
-        except Exception as e:
-            print(f"❌ 提取图片失败: {e}")
-            return []
+        # print(f"🖼️  从docx文件中提取图片...")
+        # 
+        # images = []
+        # if save_images:
+        #     # 创建media文件夹
+        #     media_dir = Path("media")
+        #     media_dir.mkdir(exist_ok=True)
+        #     print(f"📁 创建图片保存目录: {media_dir}")
+        # 
+        # try:
+        #     # docx文件本质上是一个zip文件
+        #     with zipfile.ZipFile(docx_path, 'r') as zip_file:
+        #         # 查找media文件夹中的图片
+        #         for file_info in zip_file.filelist:
+        #             if file_info.filename.startswith('word/media/'):
+        #                 file_name = file_info.filename.split('/')[-1]
+        #                 file_ext = Path(file_name).suffix.lower()
+        #                 
+        #                 # 只处理图片文件
+        #                 if file_ext in ['.png', '.jpg', '.jpeg', '.gif', '.bmp']:
+        #                     try:
+        #                         # 读取图片数据
+        #                         with zip_file.open(file_info.filename) as img_file:
+        #                             img_data = img_file.read()
+        #                         
+        #                         # 转换为PIL Image对象
+        #                         img = Image.open(BytesIO(img_data))
+        #                         
+        #                         # 如果需要保存图片到本地
+        #                         if save_images:
+        #                             img_path = media_dir / file_name
+        #                             with open(img_path, 'wb') as f:
+        #                                 f.write(img_data)
+        #                             print(f"  💾 保存图片: {img_path}")
+        #                         
+        #                         images.append({
+        #                             'filename': file_name,
+        #                             'path': file_info.filename,
+        #                             'image': img,
+        #                             'data': img_data,
+        #                             'size': img.size,
+        #                             'format': img.format
+        #                         })
+        #                         
+        #                         print(f"  📷 提取图片: {file_name} ({img.size[0]}x{img.size[1]})")
+        #                         
+        #                     except Exception as e:
+        #                         print(f"  ⚠️  图片 {file_name} 读取失败: {e}")
+        #                         continue
+        #         
+        #         print(f"✅ 共提取 {len(images)} 张图片")
+        #         return images
+        #         
+        # except Exception as e:
+        #     print(f"❌ 提取图片失败: {e}")
+        #     return []
     
+    # 注释掉LLM图片分析功能以提高运行效率
     def analyze_image_with_llm(self, image_data, image_name):
-        """使用LLM分析图片内容"""
-        print(f"  🤖 使用LLM分析图片: {image_name}")
+        """使用LLM分析图片内容 - 已注释以提高运行效率"""
+        print(f"  🤖 图片分析已禁用以提高运行效率: {image_name}")
+        return f"图片内容: {image_name}"
         
-        try:
-            # 将图片转换为base64
-            img_buffer = BytesIO()
-            if isinstance(image_data, bytes):
-                # 如果已经是bytes，直接使用
-                img_base64 = base64.b64encode(image_data).decode()
-            else:
-                # 如果是PIL Image，先保存为bytes
-                image_data.save(img_buffer, format='PNG')
-                img_base64 = base64.b64encode(img_buffer.getvalue()).decode()
-            
-            # 构建API请求
-            headers = {
-                "Authorization": f"Bearer {self.api_key}",
-                "Content-Type": "application/json"
-            }
-            
-            # 使用vision API分析图片
-            data = {
-                "model": "doubao-seed-1-6-250615",
-                "messages": [
-                    {
-                        "role": "user",
-                        "content": [
-                            {
-                                "type": "text",
-                                "text": "请分析这张图片的内容，用简洁的中文描述图片中显示的内容。如果是试卷题目，请描述题目类型和主要内容。"
-                            },
-                            {
-                                "type": "image_url",
-                                "image_url": {
-                                    "url": f"data:image/png;base64,{img_base64}"
-                                }
-                            }
-                        ]
-                    }
-                ],
-                "max_tokens": 500,
-                "temperature": 0.1
-            }
-            
-            # 调用API
-            response = requests.post(
-                f"{self.base_url}/v3/chat/completions",
-                headers=headers,
-                json=data,
-                timeout=60
-            )
-            
-            if response.status_code == 200:
-                result = response.json()
-                if 'choices' in result and len(result['choices']) > 0:
-                    content = result['choices'][0]['message']['content']
-                    print(f"  ✅ 图片分析完成: {content[:100]}...")
-                    return content
-                else:
-                    print(f"  ⚠️  API响应格式异常")
-                    return f"图片内容: {image_name}"
-            else:
-                print(f"  ❌ API调用失败: {response.status_code}")
-                return f"图片内容: {image_name}"
-                
-        except Exception as e:
-            print(f"  ❌ 图片分析异常: {e}")
-            return f"图片内容: {image_name}"
+        # print(f"  🤖 使用LLM分析图片: {image_name}")
+        # 
+        # try:
+        #     # 将图片转换为base64
+        #     img_buffer = BytesIO()
+        #     if isinstance(image_data, bytes):
+        #         # 如果已经是bytes，直接使用
+        #         img_base64 = base64.b64encode(image_data).decode()
+        #     else:
+        #         # 如果是PIL Image，先保存为bytes
+        #         image_data.save(img_buffer, format='PNG')
+        #         img_base64 = base64.b64encode(img_buffer.getvalue()).decode()
+        #     
+        #     # 构建API请求
+        #     headers = {
+        #         "Authorization": f"Bearer {self.api_key}",
+        #         "Content-Type": "application/json"
+        #     }
+        #     
+        #     # 使用vision API分析图片
+        #     data = {
+        #         "model": "doubao-seed-1-6-250615",
+        #         "messages": [
+        #             {
+        #                 "role": "user",
+        #                 "content": [
+        #                     {
+        #                         "type": "text",
+        #                         "text": "请分析这张图片的内容，用简洁的中文描述图片中显示的内容。如果是试卷题目，请描述题目类型和主要内容。"
+        #                     },
+        #                     {
+        #                         "type": "image_url",
+        #                         "image_url": {
+        #                             "url": f"data:image/png;base64,{img_base64}"
+        #                         }
+        #                     }
+        #                 ]
+        #             }
+        #         ],
+        #         "max_tokens": 500,
+        #         "temperature": 0.1
+        #     }
+        #     
+        #     # 调用API
+        #     response = requests.post(
+        #         f"{self.base_url}/v3/chat/completions",
+        #         headers=headers,
+        #         json=data,
+        #         timeout=60
+        #     )
+        #     
+        #     if response.status_code == 200:
+        #         result = response.json()
+        #         if 'choices' in result and len(result['choices']) > 0:
+        #             content = result['choices'][0]['message']['content']
+        #             print(f"  ✅ 图片分析完成: {content[:100]}...")
+        #             return content
+        #         else:
+        #             print(f"  ⚠️  API响应格式异常")
+        #             return f"图片内容: {image_name}"
+        #     else:
+        #         print(f"  ❌ API调用失败: {response.status_code}")
+        #         return f"图片内容: {image_name}"
+        #         
+        # except Exception as e:
+        #     print(f"  ❌ 图片分析异常: {e}")
+        #     return f"图片内容: {image_name}"
     
+    # 注释掉图片水印替换功能以提高运行效率
     def replace_image_watermarks(self, content, images):
-        """替换内容中的图片水印为图片内容描述"""
-        print("🔄 替换图片水印...")
+        """替换内容中的图片水印为图片内容描述 - 已注释以提高运行效率"""
+        print("🔄 图片水印替换已禁用以提高运行效率")
+        return content
         
-        if not images:
-            print("  ℹ️  没有图片需要处理")
-            return content
-        
-        # 查找图片引用模式
-        # 匹配类似 ![学科网(www.zxxk.com)--教育资源门户...](media/image6.png) 的模式
-        image_pattern = r'!\[([^\]]+)\]\(([^)]+)\)'
-        
-        def replace_image_ref(match):
-            watermark_text = match.group(1)
-            image_path = match.group(2)
-            
-            # 提取图片文件名
-            image_filename = Path(image_path).name
-            
-            # 查找对应的图片
-            for img_info in images:
-                if img_info['filename'] == image_filename:
-                    # 使用LLM分析图片内容
-                    image_description = self.analyze_image_with_llm(img_info['image'], image_filename)
-                    
-                    # 替换水印文字为图片描述
-                    new_text = f"![{image_description}]({image_path})"
-                    print(f"  🔄 替换: {watermark_text[:50]}... -> {image_description[:50]}...")
-                    return new_text
-            
-            # 如果没找到对应图片，保留原样
-            print(f"  ⚠️  未找到图片: {image_filename}")
-            return match.group(0)
-        
-        # 执行替换
-        modified_content = re.sub(image_pattern, replace_image_ref, content)
-        
-        # 统计替换次数
-        original_count = len(re.findall(image_pattern, content))
-        modified_count = len(re.findall(image_pattern, modified_content))
-        
-        print(f"✅ 水印替换完成，处理了 {len(images)} 张图片")
-        return modified_content
+        # print("🔄 替换图片水印...")
+        # 
+        # if not images:
+        #     print("  ℹ️  没有图片需要处理")
+        #     return content
+        # 
+        # # 查找图片引用模式
+        # # 匹配类似 ![学科网(www.zxxk.com)--教育资源门户...](media/image6.png) 的模式
+        # image_pattern = r'!\[([^\]]+)\]\(([^)]+)\)'
+        # 
+        # def replace_image_ref(match):
+        #     watermark_text = match.group(1)
+        #     image_path = match.group(2)
+        #     
+        #     # 提取图片文件名
+        #     image_filename = Path(image_path).name
+        #     
+        #     # 查找对应的图片
+        #     for img_info in images:
+        #         if img_info['filename'] == image_filename:
+        #             # 使用LLM分析图片内容
+        #             image_description = self.analyze_image_with_llm(img_info['image'], image_filename)
+        #             
+        #             # 替换水印文字为图片描述
+        #             new_text = f"![{image_description}]({image_path})"
+        #             print(f"  🔄 替换: {watermark_text[:50]}... -> {image_description[:50]}...")
+        #             return new_text
+        #     
+        #     # 如果没找到对应图片，保留原样
+        #     print(f"  ⚠️  未找到图片: {image_filename}")
+        #     return match.group(0)
+        # 
+        # # 执行替换
+        # modified_content = re.sub(image_pattern, replace_image_ref, content)
+        # 
+        # # 统计替换次数
+        # original_count = len(re.findall(image_pattern, content))
+        # modified_count = len(re.findall(image_pattern, modified_content))
+        # 
+        # print(f"✅ 水印替换完成，处理了 {len(images)} 张图片")
+        # return modified_content
     
     def convert_word_to_text(self, file_path, output_format='markdown'):
         """使用pandoc将Word文档转换为文本，并增强格式标注"""
@@ -709,14 +720,14 @@ class PandocWordProcessor:
                 content = result.stdout
                 print(f"✅ 转换成功: {len(content)} 字符")
                 
-                # 如果是docx文件，提取图片并替换水印
+                # 如果是docx文件，提取图片并替换水印 - 已注释以提高运行效率
                 if file_path.lower().endswith('.docx'):
-                     print("检测到docx文件，开始处理图片...")
-                     images = self.extract_images_from_docx(file_path, save_images=True)
-                     if images:
-                         content = self.replace_image_watermarks(content, images)
-                     else:
-                         print("未找到图片或图片处理失败")
+                     print("检测到docx文件，图片处理已禁用以提高运行效率")
+                     # images = self.extract_images_from_docx(file_path, save_images=True)
+                     # if images:
+                     #     content = self.replace_image_watermarks(content, images)
+                     # else:
+                     #     print("未找到图片或图片处理失败")
                 
                 # 新增：如果有格式分析结果，增强pandoc内容
                 if hasattr(self, 'special_formatted_text') and self.special_formatted_text:
@@ -776,88 +787,102 @@ class PandocWordProcessor:
     def _find_best_match_in_content(self, para_text, content):
         """在内容中找到段落的最佳匹配位置"""
         
+        # 添加空格处理
+        para_text_cleaned = ' '.join(para_text.split())
+        
         # 特殊处理：优先尝试匹配独立行
         lines = content.split('\n')
         for line in lines:
             line_stripped = line.strip()
-            if line_stripped == para_text:
+            line_cleaned = ' '.join(line_stripped.split())
+            
+            # 尝试直接匹配
+            if line_stripped == para_text or line_cleaned == para_text_cleaned:
                 return para_text, "独立行"
+            
             # 尝试标准化后匹配独立行
             normalized_line = self._normalize_quotes(line_stripped)
-            if normalized_line == self._normalize_quotes(para_text):
-                return para_text, "独立行引号"
+            normalized_para = self._normalize_quotes(para_text)
+            normalized_line_cleaned = ' '.join(normalized_line.split())
+            normalized_para_cleaned = ' '.join(normalized_para.split())
+            
+            if normalized_line_cleaned == normalized_para_cleaned:
+                return para_text, "独立行引号清理"
         
-        # 根据文本长度调整匹配策略
-        if len(para_text) <= 5:
-            # 短标题：使用完整长度和递减长度
+        # 优化长度策略 - 对短文本更灵活
+        if len(para_text) <= 8:
+            # 短文本：优先完整匹配，然后逐步减少
             lengths = [len(para_text)]
-            if len(para_text) > 2:
-                lengths.append(len(para_text) - 1)
             if len(para_text) > 3:
-                lengths.append(len(para_text) - 2)
+                lengths.extend([len(para_text) - 1, len(para_text) - 2])
+            if len(para_text) > 5:
+                lengths.append(5)
         else:
-            # 长文本：使用原有策略
-            lengths = [20, 15, 10, 8]
+            # 长文本：使用更多选项
+            lengths = [25, 20, 15, 12, 10, 8]
         
         for length in lengths:
             if len(para_text) < length:
                 continue
                 
             para_start = para_text[:length]
+            para_start_cleaned = ' '.join(para_start.split())
             
             # 方法1：直接匹配
             if para_start in content:
-                # 检查是否已经被标记
                 if not any(f"【{marker}】{para_start}" in content for marker in ["首行缩进", "居中", "居右"]):
                     return para_start, f"精确{length}"
             
+            # 方法1.5：空格清理后匹配
+            if para_start_cleaned != para_start and para_start_cleaned in content:
+                if not any(f"【{marker}】{para_start_cleaned}" in content for marker in ["首行缩进", "居中", "居右"]):
+                    return para_start, f"空格清理{length}"
+            
             # 方法2：标准化引号后匹配
             normalized_para_start = self._normalize_quotes(para_start)
-            if normalized_para_start != para_start:  # 说明有引号变化
+            if normalized_para_start != para_start:
                 if normalized_para_start in content:
                     if not any(f"【{marker}】{normalized_para_start}" in content for marker in ["首行缩进", "居中", "居右"]):
                         return normalized_para_start, f"引号{length}"
+                
+                # 同时标准化引号和清理空格
+                normalized_cleaned = ' '.join(normalized_para_start.split())
+                if normalized_cleaned != normalized_para_start and normalized_cleaned in content:
+                    if not any(f"【{marker}】{normalized_cleaned}" in content for marker in ["首行缩进", "居中", "居右"]):
+                        return para_start, f"引号空格{length}"
             
             # 方法3：清理加点字标记后匹配
             cleaned_para_start = self._clean_dot_below_markers(para_start)
-            if cleaned_para_start != para_start:  # 说明有加点字
-                # 在内容中查找清理后的文本
+            if cleaned_para_start != para_start:
                 if cleaned_para_start in content:
                     if not any(f"【{marker}】{cleaned_para_start}" in content for marker in ["首行缩进", "居中", "居右"]):
                         return cleaned_para_start, f"清理{length}"
             
-            # 方法4：同时标准化引号和清理加点字
+            # 方法4：综合处理（引号+加点字+空格）
             both_processed = self._normalize_quotes(self._clean_dot_below_markers(para_start))
+            both_processed_cleaned = ' '.join(both_processed.split())
+            
             if both_processed != para_start:
                 if both_processed in content:
                     if not any(f"【{marker}】{both_processed}" in content for marker in ["首行缩进", "居中", "居右"]):
                         return both_processed, f"综合{length}"
                 
-                # 尝试用正则表达式匹配，允许加点字标记存在
-                import re
-                # 将原始文本转换为可以匹配加点字形式的正则表达式
-                pattern_chars = []
-                for char in both_processed:
-                    if '\u4e00' <= char <= '\u9fff':  # 中文字符
-                        # 这个字符可能是加点字，创建可选的加点字模式
-                        dot_pattern = f'(?:{re.escape(char)}|\[\\\[DOT_BELOW\\\]{re.escape(char)}\\\[/DOT_BELOW\\\]\]{{\.underline}})'
-                        pattern_chars.append(dot_pattern)
-                    else:
-                        pattern_chars.append(re.escape(char))
-                
-                regex_pattern = ''.join(pattern_chars)
-                matches = re.findall(regex_pattern, content)
-                
-                if matches:
-                    # 找到匹配，但需要找到实际在内容中的原始形式
-                    match_pos = re.search(regex_pattern, content)
-                    if match_pos:
-                        actual_match = match_pos.group(0)
-                        if not any(f"【{marker}】{actual_match}" in content for marker in ["首行缩进", "居中", "居右"]):
-                            return actual_match, f"正则{length}"
+                if both_processed_cleaned != both_processed and both_processed_cleaned in content:
+                    if not any(f"【{marker}】{both_processed_cleaned}" in content for marker in ["首行缩进", "居中", "居右"]):
+                        return para_start, f"综合空格{length}"
+        
+        # 特殊处理：序号段落（①②③⑭等）
+        import re
+        if re.match(r'^[①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳]', para_text):
+            content_without_number = para_text[1:].strip()
+            for attempt_length in [len(content_without_number), min(10, len(content_without_number))]:
+                if len(content_without_number) >= attempt_length > 0:
+                    text_to_find = content_without_number[:attempt_length]
+                    if text_to_find in content:
+                        if not any(f"【{marker}】{text_to_find}" in content for marker in ["首行缩进", "居中", "居右"]):
+                            return para_text, f"序号匹配{attempt_length}"
         
         # 如果所有方法都失败，尝试部分匹配（用于调试）
-        import re
         escaped_text = re.escape(para_text[:min(5, len(para_text))])
         if re.search(escaped_text, content):
             return None, "部分存在但无法匹配"
@@ -869,69 +894,16 @@ class PandocWordProcessor:
         print(f"🔍 开始分析 {len(self.special_formatted_text)} 个特殊格式文本")
         print(f"📏 开始分析 {len(self.paragraph_formatting)} 个段落格式")
         
-        # 第一步：处理段落首行缩进
-        indent_enhanced_count = 0
-        for para_info in self.paragraph_formatting:
-            if para_info['has_first_line_indent']:
-                para_text = para_info['text'].strip()
-                
-                # 跳过过短的文本
-                if len(para_text) < 8:
-                    continue
-                
-                # 使用改进的匹配算法
-                match_result, match_type = self._find_best_match_in_content(para_text, content)
-                
-                if match_result:
-                    # 在匹配的文本前添加标记
-                    enhanced_start = f"【首行缩进】{match_result}"
-                    content = content.replace(match_result, enhanced_start, 1)
-                    indent_enhanced_count += 1
-                    print(f"缩进标记({match_type}): \"{match_result[:30]}...\"")
-                else:
-                    print(f"❌ 未匹配: \"{para_text[:20]}...\"")
-        
-        # 第一步半：处理居中段落
-        centered_enhanced_count = 0
-        for para_info in self.paragraph_formatting:
-            if para_info['is_centered']:
-                para_text = para_info['text'].strip()
-                
-                # 跳过过短的文本
-                if len(para_text) < 2:
-                    continue
-                
-                # 避免重复标记（如果已经有首行缩进标记）
-                # 检查是否已经被首行缩进标记了（可能只是部分文本被标记）
-                if any(f"【首行缩进】{para_text[:length]}" in content for length in [20, 15, 10, 8] if len(para_text) >= length):
-                    continue
-                
-                # 使用改进的匹配算法
-                match_result, match_type = self._find_best_match_in_content(para_text, content)
-                
-                if match_result:
-                    # 在匹配的文本前添加标记
-                    enhanced_start = f"【居中】{match_result}"
-                    content = content.replace(match_result, enhanced_start, 1)
-                    centered_enhanced_count += 1
-                    print(f"居中标记({match_type}): \"{match_result[:30]}...\"")
-                else:
-                    print(f"❌ 居中未匹配: \"{para_text[:20]}...\"")
-        
-        # 第一步三：处理居右段落
+        # 🚨 重要：优先处理居右段落，避免被首行缩进误匹配
+        # 第一步：处理居右段落
         right_aligned_enhanced_count = 0
         for para_info in self.paragraph_formatting:
             if para_info['is_right_aligned']:
                 para_text = para_info['text'].strip()
+                print(f"🔍 检查居右文本: \"{para_text}\" (长度: {len(para_text)})")
                 
                 # 跳过过短的文本
-                if len(para_text) < 2:
-                    continue
-                
-                # 避免重复标记（如果已经有其他标记）
-                if any(f"【首行缩进】{para_text[:length]}" in content for length in [20, 15, 10, 8] if len(para_text) >= length):
-                    continue
-                if any(f"【居中】{para_text[:length]}" in content for length in [20, 15, 10, 8] if len(para_text) >= length):
+                if len(para_text) < 1:
                     continue
                 
                 # 使用改进的匹配算法
@@ -942,9 +914,68 @@ class PandocWordProcessor:
                     enhanced_start = f"【居右】{match_result}"
                     content = content.replace(match_result, enhanced_start, 1)
                     right_aligned_enhanced_count += 1
-                    print(f"居右标记({match_type}): \"{match_result[:30]}...\"")
+                    print(f"✅ 居右标记({match_type}): \"{match_result[:30]}...\"")
                 else:
-                    print(f"❌ 居右未匹配: \"{para_text[:20]}...\"")
+                    print(f"❌ 居右未匹配: \"{para_text[:30]}...\" (长度: {len(para_text)})")
+        
+        # 第二步：处理居中段落
+        centered_enhanced_count = 0
+        for para_info in self.paragraph_formatting:
+            if para_info['is_centered']:
+                para_text = para_info['text'].strip()
+                
+                # 跳过过短的文本
+                if len(para_text) < 2:
+                    continue
+                
+                # 避免重复标记（如果已经有居右标记）
+                check_lengths = [min(10, len(para_text)), min(8, len(para_text))] if len(para_text) > 5 else [len(para_text)]
+                if any(f"【居右】{para_text[:length]}" in content for length in check_lengths if len(para_text) >= length):
+                    print(f"  → 跳过：已有居右标记")
+                    continue
+                
+                # 使用改进的匹配算法
+                match_result, match_type = self._find_best_match_in_content(para_text, content)
+                
+                if match_result:
+                    # 在匹配的文本前添加标记
+                    enhanced_start = f"【居中】{match_result}"
+                    content = content.replace(match_result, enhanced_start, 1)
+                    centered_enhanced_count += 1
+                    print(f"✅ 居中标记({match_type}): \"{match_result[:30]}...\"")
+                else:
+                    print(f"❌ 居中未匹配: \"{para_text[:20]}...\"")
+        
+        # 第三步：处理段落首行缩进（最后处理，避免误抢其他格式）
+        indent_enhanced_count = 0
+        for para_info in self.paragraph_formatting:
+            if para_info['has_first_line_indent']:
+                para_text = para_info['text'].strip()
+                
+                # 跳过过短的文本
+                if len(para_text) < 8:
+                    continue
+                
+                # 避免重复标记（如果已经有其他标记）
+                check_lengths = [min(10, len(para_text)), min(8, len(para_text))] if len(para_text) > 5 else [len(para_text)]
+                if any(f"【居右】{para_text[:length]}" in content for length in check_lengths if len(para_text) >= length):
+                    print(f"  → 跳过：已有居右标记")
+                    continue
+                if any(f"【居中】{para_text[:length]}" in content for length in check_lengths if len(para_text) >= length):
+                    print(f"  → 跳过：已有居中标记")
+                    continue
+                
+                # 使用改进的匹配算法
+                match_result, match_type = self._find_best_match_in_content(para_text, content)
+                
+                if match_result:
+                    # 在匹配的文本前添加标记
+                    enhanced_start = f"【首行缩进】{match_result}"
+                    content = content.replace(match_result, enhanced_start, 1)
+                    indent_enhanced_count += 1
+                    print(f"✅ 缩进标记({match_type}): \"{match_result[:30]}...\"")
+                else:
+                    print(f"❌ 缩进未匹配: \"{para_text[:20]}...\"")
         
         # 第二步：处理文本特殊格式
         # 按文本长度排序，从长到短，避免短文本替换影响长文本
@@ -975,9 +1006,9 @@ class PandocWordProcessor:
                 print(f"格式增强: \"{text[:30]}{'...' if len(text) > 30 else ''}\" -> {format_annotation}")
         
         print(f"✅ 格式增强完成:")
-        print(f"  📏 首行缩进标记: {indent_enhanced_count} 个段落")
-        print(f"  📐 居中对齐标记: {centered_enhanced_count} 个段落")
         print(f"  📑 居右对齐标记: {right_aligned_enhanced_count} 个段落")
+        print(f"  📐 居中对齐标记: {centered_enhanced_count} 个段落")
+        print(f"  📏 首行缩进标记: {indent_enhanced_count} 个段落")
         print(f"  🎨 特殊格式标记: {format_enhanced_count} 个文本")
         return content
     
@@ -1694,7 +1725,7 @@ def main():
     if len(sys.argv) > 1:
         word_file_path = sys.argv[1]
     else:
-        word_file_path = "Chinese/精品解析：2025年甘肃省兰州市中考语文真题（解析版）.docx"  # 默认文件路径
+        word_file_path = "Chinese/精品解析：2025年吉林省长春市中考语文真题（解析版）.docx"  # 默认文件路径
      
     output_format = "markdown"  # 可选: markdown, plain, html
     prompt_template_path = "prompt_Chinese.md"
