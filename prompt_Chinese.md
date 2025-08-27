@@ -136,7 +136,9 @@
 
 **特殊格式处理要求（重要）**：
 - **括号填空（重要）**：选择题中的括号填空应保持为原始括号格式 `（）`（注意：不是普通的标点括号，而是填空答题区的括号）
-- **下划线填空（重要）**：填空题中的下划线填空必须转换为 `<input size="X" readonly="readonly" type="underline">` 标签
+- **下划线填空（重要）**：
+  * **填空题类型**：下划线填空必须转换为 `<input size="X" readonly="readonly" type="underline">` 标签
+  * **选择题类型**：下划线填空保持原始形式 `______`，不转换为HTML标签
 - **加点字格式（绝对优先处理）**：`[\[DOT_BELOW\]内容\[/DOT_BELOW\]]{.underline}` **必须立即识别并转换为加点字标签**：`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">内容</span>`
   * **🔥 极其重要**：DOT_BELOW是加点字的专用标记，**绝对不能**转换为波浪线或其他格式
   * **🔥 正确示例**：`[\[DOT_BELOW\]温暖人心\[/DOT_BELOW\]]{.underline}` → `<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">温暖人心</span>`
@@ -145,6 +147,7 @@
 - **单下划线强调**：使用 `<u>` 标签
 - **🚨 填空格式要求（最重要）**：
   * ✅ 选择题括号填空：`（）`用于选择题答题区
+  * ✅ 选择题下划线填空：`______`保持原始格式，不转换为HTML标签
   * ✅ 填空题下划线填空：`<input size="X" readonly="readonly" type="underline">`用于填空题
   * ❌ 禁止出现：`[_____]{.underline}`
   * ❌ 禁止出现：`[___1___]{.underline}`
@@ -157,6 +160,7 @@
 - **正确格式示例**：
   * 填空题下划线填空：`<input size="8" readonly="readonly" type="underline">`
   * 选择题括号填空：`（）`（保持原始格式）
+  * 选择题下划线填空：`______`（保持原始格式）
   * 波浪线强调：`<u style=\"text-decoration-style: wavy;\">内容</u>`
   * 单下划线强调：`<u>内容</u>`
   * 粗体强调：`<strong>内容</strong>`
@@ -253,9 +257,10 @@
 
 **填空形式选择规则（重要）**：
 - **填空题使用下划线HTML标签**：`<input size=\"X\" readonly=\"readonly\" type=\"underline\">`
-- **选择题使用括号原始格式**：`（）`
-  * 选择题中的括号填空保持原始格式
-  * 填空题中的下划线填空必须转换为HTML标签
+- **选择题填空保持原始格式**：
+  * 选择题中的括号填空：`（）`保持原始格式
+  * 选择题中的下划线填空：`______`保持原始格式，不转换为HTML标签
+  * 填空题中的下划线填空：必须转换为HTML标签
 - **重要区分**：填空题和选择题的填空处理方式不同
 
 
@@ -865,7 +870,9 @@
 - score: 题目分数
 - 如果包含图片，则按照对应格式写明
 - 只要涉及选项的内容，都放到accessory的options中，不要放在content中，包括选项中的图片，也要放在accessory中。
-- 题干和选项中如果出现括号答题区，例如（）（而不是普通括号，即不是答题区的，例如（8）），则保持原始括号格式（），不能用HTML标签。
+- 题干和选项中如果出现答题区（括号或下划线），则按照题型保持相应格式：
+  * 选择题中的括号答题区：`（）`保持原始格式
+  * 选择题中的下划线答题区：`______`保持原始格式，不能用HTML标签
 - 如果是**填空题中的下划线填空**，都用<input size=\"X\" readonly=\"readonly\" type=\"underline\">表示，size根据预期答案长度调整：
   * **单词填空**：size=\"8-12\"（如invention, beautiful）
   * **短语填空**：size=\"15-20\"（如in the past, look forward to）
@@ -878,12 +885,16 @@
    - **格式严格匹配（重要）**：
      * 填空题中的下划线 `_____`，必须用 `<input size=\"X\" readonly=\"readonly\" type=\"underline\">`
      * 选择题中的括号 `（）`，保持原始括号格式
+     * 选择题中的下划线 `______`，保持原始下划线格式
    - **常见错误示例**：
      * ❌ 错误：填空题用了原始下划线：`My sister is good at singing. _____ can even sing some French songs.`
      * ✅ 正确：填空题用HTML标签：`My sister is good at singing. <input size="8" readonly="readonly" type="underline"> can even sing some French songs.`
+     * ❌ 错误：选择题下划线用了HTML标签：`Choose the best answer: <input size="8" readonly="readonly" type="underline">`
+     * ✅ 正确：选择题下划线保持原始：`Choose the best answer: ______`
    - **判断标准**：
      * 如果是填空题，下划线填空必须使用 `<input type=\"underline\">`
      * 如果是选择题，括号填空保持原始格式 `（）`
+     * 如果是选择题，下划线填空保持原始格式 `______`
 
 8. **语文学科特殊处理要求**：
    - ** 加点字格式转换（最重要且绝对优先）**：
