@@ -803,7 +803,7 @@ class PandocWordProcessor:
             
             # 尝试直接匹配
             if line_stripped == para_text or line_cleaned == para_text_cleaned:
-                return para_text, "独立行"
+                return line_stripped, "独立行"
             
             # 尝试标准化后匹配独立行
             normalized_line = self._normalize_quotes(line_stripped)
@@ -812,19 +812,19 @@ class PandocWordProcessor:
             normalized_para_cleaned = ' '.join(normalized_para.split())
             
             if normalized_line_cleaned == normalized_para_cleaned:
-                return para_text, "独立行引号清理"
+                return line_stripped, "独立行引号清理"
             
             # 🔧 新增：DOT_BELOW清理后匹配
             cleaned_line = self._clean_dot_below_markers(line_stripped)
             cleaned_para = self._clean_dot_below_markers(para_text)
             if cleaned_line == cleaned_para:
-                return para_text, "独立行DOT_BELOW清理"
+                return line_stripped, "独立行DOT_BELOW清理"
             
             # 综合处理：DOT_BELOW + 引号 + 空格
             both_cleaned_line = ' '.join(self._normalize_quotes(self._clean_dot_below_markers(line_stripped)).split())
             both_cleaned_para = ' '.join(self._normalize_quotes(self._clean_dot_below_markers(para_text)).split())
             if both_cleaned_line == both_cleaned_para:
-                return para_text, "独立行综合清理"
+                return line_stripped, "独立行综合清理"
         
         # 优化长度策略 - 对短文本更灵活
         if len(para_text) <= 8:
@@ -1050,10 +1050,10 @@ class PandocWordProcessor:
                 print(f"格式增强: \"{text[:30]}{'...' if len(text) > 30 else ''}\" -> {format_annotation}")
         
         print(f"✅ 格式增强完成:")
-        print(f"  📑 居右对齐标记: {right_aligned_enhanced_count} 个段落")
-        print(f"  📐 居中对齐标记: {centered_enhanced_count} 个段落")
-        print(f"  📏 首行缩进标记: {indent_enhanced_count} 个段落")
-        print(f"  🎨 特殊格式标记: {format_enhanced_count} 个文本")
+        print(f" 居右对齐标记: {right_aligned_enhanced_count} 个段落")
+        print(f" 居中对齐标记: {centered_enhanced_count} 个段落")
+        print(f" 首行缩进标记: {indent_enhanced_count} 个段落")
+        print(f" 特殊格式标记: {format_enhanced_count} 个文本")
         return content
     
     def _generate_format_annotation(self, formats):
@@ -1130,25 +1130,11 @@ class PandocWordProcessor:
             prompt = prompt_template.replace("{content}", content)
             print(f"成功加载prompt模板: {prompt_template_path}")
         except FileNotFoundError:
-            print(f"⚠️ 未找到prompt模板文件: {prompt_template_path}")
-            print("使用默认prompt...")
-            prompt = f"""
-一套试卷有三级结构，1. 分题型/类型的大模块 2.完整的一道题 3. 完整的一道题中的多个小题。你需要解析后两级结构。
-请分析以下文档内容，提取出试卷的二级结构（完整的一道题），返回JSON格式的数组，每个对象包含以下字段：
-- total_number: 总题号，唯一，及此题按照试卷题目展示顺序的总题号。（字符串）
-- module_number: 模块中的题号，即在一级结构中的题号。（字符串） 
-- question_first_sentence: 题目的第一个分句（字符串）
-- question_page: 题目所在的页码（int数组）
-- answer_first_sentence: 题目答案的第一个分句（字符串，如果没有答案则为空字符串）
-- explanation_first_sentence: 题目解析的第一个分句（字符串，如果没有解析则为空字符串）
-- answer_page: 题目答案解析所在的页码（int数组，如果没有答案则为null）
-
-文档内容：
-{content}
-
-请只返回JSON数组，不要包含其他说明文字。
-如果题目/答案跨页，则在页码中需要记录两页信息。
-"""
+            print(f"❌ 未找到prompt模板文件: {prompt_template_path}")
+            print("❌ 这是一个严重错误！必须使用正确的prompt模板！")
+            print("❌ 默认prompt与优化后的要求不匹配，会导致选项缺失等问题")
+            print("💡 请确保prompt_Chinese.md文件存在且可读")
+            return None
         
         headers = {
             "Authorization": f"Bearer {self.api_key}",
@@ -1424,10 +1410,11 @@ class PandocWordProcessor:
 
         # 3. 解析JSON并保存结果
         try:
-            questions = json.loads(cleaned_content)
+            # caution: 如果直接使用json.loads(cleaned_content)，会报错，因为cleaned_content是字符串，不是JSON对象   
+            # questions = json.loads(cleaned_content)
             
             # 对questions进行JSON内容后处理：中文引号、省略号、上角标等格式转换
-            questions = post_process_json_content(questions)
+            questions = post_process_json_content(cleaned_content)
 
             # 验证解析结果格式
             if not isinstance(questions, list):
@@ -1672,66 +1659,72 @@ def post_process_json_content(data):
         if not html_content:
             return html_content
 
-        result = []
-        i = 0
-        n = len(html_content)
-        single_quote_count = 0  # 用于跟踪引号出现次数
-        double_quote_count = 0  # 用于跟踪引号出现次数
+        try:
+            result = []
+            i = 0
+            n = len(html_content)
+            single_quote_count = 0  # 用于跟踪引号出现次数
+            double_quote_count = 0  # 用于跟踪引号出现次数
 
-        while i < n:
-            if html_content[i] == '<':
-                # 处理标签部分（原样保留）
-                tag_end = html_content.find('>', i)
-                if tag_end == -1:
-                    tag_end = n
-                result.append(html_content[i:tag_end + 1])
-                i = tag_end + 1
-            else:
-                # 处理文本内容
-                text_end = html_content.find('<', i)
-                if text_end == -1:
-                    text_end = n
-                text = html_content[i:text_end]
+            while i < n:
+                if html_content[i] == '<':
+                    # 处理标签部分（原样保留）
+                    tag_end = html_content.find('>', i)
+                    if tag_end == -1:
+                        tag_end = n
+                    result.append(html_content[i:tag_end + 1])
+                    i = tag_end + 1
+                else:
+                    # 处理文本内容
+                    text_end = html_content.find('<', i)
+                    if text_end == -1:
+                        text_end = n
+                    text = html_content[i:text_end]
 
-                # 处理文本中的引号（交替替换）、省略号和上角标
-                new_text = []
-                j = 0
-                text_len = len(text)
-                
-                while j < text_len:
-                    # 检查是否是上角标格式 ^内容^
-                    if text[j] == '^':
-                        # 寻找对应的结束^
-                        # end_pos = text.find('^', j + 1)
-                        if text[j + 2] == '^':
-                            content = text[j+1]
-                            new_text.append(f'<sup>{content}</sup>')
-                            j = j + 3  # 跳过结束的^
+                    # 处理文本中的引号（交替替换）、省略号和上角标
+                    new_text = []
+                    j = 0
+                    text_len = len(text)
+                    
+                    while j < text_len:
+                        # 检查是否是上角标格式 ^内容^
+                        if text[j] == '^':
+                            # 寻找对应的结束^，确保不越界
+                            if j + 2 < text_len and text[j + 2] == '^':
+                                content = text[j+1]
+                                new_text.append(f'<sup>{content}</sup>')
+                                j = j + 3  # 跳过结束的^
+                            else:
+                                # 没有找到对应的结束^，保留原样
+                                new_text.append(text[j])
+                                j += 1
+                        # 检查是否是六个连续的句点
+                        elif text[j] == '.' and j + 5 < text_len and all(text[j + k] == '.' for k in range(6)):
+                            new_text.append('……')
+                            j += 6  # 跳过这六个句点
                         else:
-                            # 没有找到对应的结束^，保留原样
-                            new_text.append(text[j])
+                            # 处理引号
+                            char = text[j]
+                            if char == '"':
+                                double_quote_count += 1
+                                converted_quote = '“' if double_quote_count % 2 == 1 else '”'
+                                new_text.append(converted_quote)
+                            elif char == "'":
+                                single_quote_count += 1
+                                converted_quote = "‘" if single_quote_count % 2 == 1 else "’"
+                                new_text.append(converted_quote)
+                            else:
+                                new_text.append(char)
                             j += 1
-                    # 检查是否是六个连续的句点
-                    elif text[j] == '.' and j + 5 < text_len and all(text[j + k] == '.' for k in range(6)):
-                        new_text.append('……')
-                        j += 6  # 跳过这六个句点
-                    else:
-                        # 处理引号
-                        char = text[j]
-                        if char == '"':
-                            double_quote_count += 1
-                            new_text.append('“' if double_quote_count % 2 == 1 else '”')
-                        elif char == "'":
-                            single_quote_count += 1
-                            new_text.append("‘" if single_quote_count % 2 == 1 else "’")
-                        else:
-                            new_text.append(char)
-                        j += 1
 
-                result.append(''.join(new_text))
-                i = text_end
+                    result.append(''.join(new_text))
+                    i = text_end
 
-        return ''.join(result)
+            return ''.join(result)
+        except Exception as e:
+            print(f"⚠️ HTML内容处理失败: {e}")
+            print(f"问题内容: {repr(html_content[:100])}")
+            return html_content  # 出错时返回原始内容
 
     # 如果是字符串形式的 JSON，先解析为字典
     if isinstance(data, str):
@@ -1742,18 +1735,30 @@ def post_process_json_content(data):
 
     # 递归处理 JSON 中的每个字段
     def process_item(item):
-        if isinstance(item, dict):
-            for key, value in item.items():
-                if isinstance(value, str):
-                    item[key] = replace_quotes_in_html(value)
-                elif isinstance(value, (dict, list)):
-                    process_item(value)
-        elif isinstance(item, list):
-            for i in range(len(item)):
-                if isinstance(item[i], str):
-                    item[i] = replace_quotes_in_html(item[i])
-                elif isinstance(item[i], (dict, list)):
-                    process_item(item[i])
+        try:
+            if isinstance(item, dict):
+                for key, value in item.items():
+                    try:
+                        if isinstance(value, str):
+                            item[key] = replace_quotes_in_html(value)
+                        elif isinstance(value, (dict, list)):
+                            process_item(value)
+                    except Exception as e:
+                        print(f"⚠️ 处理字段 {key} 失败: {e}")
+                        # 字段处理失败时保留原值，不影响其他字段
+            elif isinstance(item, list):
+                for i in range(len(item)):
+                    try:
+                        if isinstance(item[i], str):
+                            item[i] = replace_quotes_in_html(item[i])
+                        elif isinstance(item[i], (dict, list)):
+                            process_item(item[i])
+                    except Exception as e:
+                        print(f"⚠️ 处理数组元素 {i} 失败: {e}")
+                        # 数组元素处理失败时保留原值，不影响其他元素
+        except Exception as e:
+            print(f"⚠️ 处理数据项失败: {e}")
+            # 整体处理失败时什么都不做，保持原始数据
 
     process_item(data)
 
