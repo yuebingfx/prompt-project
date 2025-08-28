@@ -759,10 +759,15 @@ class PandocWordProcessor:
     def _clean_dot_below_markers(self, text):
         """清理加点字标记，用于匹配比较"""
         import re
-        # 移除加点字标记：[\[DOT_BELOW\]字\[/DOT_BELOW\]]{.underline}
-        # 只保留中间的字符
-        pattern = r'\[\\\[DOT_BELOW\\\]([\u4e00-\u9fff])\\\[/DOT_BELOW\\\]\]\{\.underline\}'
-        cleaned = re.sub(pattern, r'\1', text)
+        
+        # 格式1：完整pandoc格式 [\[DOT_BELOW\]字\[/DOT_BELOW\]]{.underline}
+        pattern1 = r'\[\\\[DOT_BELOW\\\]([\u4e00-\u9fff])\\\[/DOT_BELOW\\\]\]\{\.underline\}'
+        cleaned = re.sub(pattern1, r'\1', text)
+        
+        # 格式2：简化格式 [DOT_BELOW]字[/DOT_BELOW]
+        pattern2 = r'\[DOT_BELOW\]([\u4e00-\u9fff])\[/DOT_BELOW\]'
+        cleaned = re.sub(pattern2, r'\1', cleaned)
+        
         return cleaned
     
     def _normalize_quotes(self, text):
@@ -808,6 +813,18 @@ class PandocWordProcessor:
             
             if normalized_line_cleaned == normalized_para_cleaned:
                 return para_text, "独立行引号清理"
+            
+            # 🔧 新增：DOT_BELOW清理后匹配
+            cleaned_line = self._clean_dot_below_markers(line_stripped)
+            cleaned_para = self._clean_dot_below_markers(para_text)
+            if cleaned_line == cleaned_para:
+                return para_text, "独立行DOT_BELOW清理"
+            
+            # 综合处理：DOT_BELOW + 引号 + 空格
+            both_cleaned_line = ' '.join(self._normalize_quotes(self._clean_dot_below_markers(line_stripped)).split())
+            both_cleaned_para = ' '.join(self._normalize_quotes(self._clean_dot_below_markers(para_text)).split())
+            if both_cleaned_line == both_cleaned_para:
+                return para_text, "独立行综合清理"
         
         # 优化长度策略 - 对短文本更灵活
         if len(para_text) <= 8:
@@ -857,6 +874,14 @@ class PandocWordProcessor:
                 if cleaned_para_start in content:
                     if not any(f"【{marker}】{cleaned_para_start}" in content for marker in ["首行缩进", "居中", "居右"]):
                         return cleaned_para_start, f"清理{length}"
+                
+                # 🔧 新增：如果直接在content中找不到，尝试逐行匹配
+                lines = content.split('\n')
+                for line in lines:
+                    line_cleaned = self._clean_dot_below_markers(line.strip())
+                    if cleaned_para_start in line_cleaned:
+                        if not any(f"【{marker}】{cleaned_para_start}" in content for marker in ["首行缩进", "居中", "居右"]):
+                            return cleaned_para_start, f"逐行清理{length}"
             
             # 方法4：综合处理（引号+加点字+空格）
             both_processed = self._normalize_quotes(self._clean_dot_below_markers(para_start))
@@ -975,7 +1000,26 @@ class PandocWordProcessor:
                     indent_enhanced_count += 1
                     print(f"✅ 缩进标记({match_type}): \"{match_result[:30]}...\"")
                 else:
-                    print(f"❌ 缩进未匹配: \"{para_text[:20]}...\"")
+                    print(f"❌ 缩进未匹配: \"{para_text[:30]}...\"")
+                    # 调试DOT_BELOW匹配问题
+                    if "DOT_BELOW" in para_text or "曾子曰" in para_text:
+                        print(f"  → 调试DOT_BELOW匹配:")
+                        print(f"     原文本: {repr(para_text[:60])}")
+                        cleaned_text = self._clean_dot_below_markers(para_text)
+                        print(f"     清理后: {repr(cleaned_text[:60])}")
+                        
+                        # 检查清理后的文本是否在content中
+                        if cleaned_text in content:
+                            print(f"     ✅ 清理后文本在content中找到")
+                        else:
+                            print(f"     ❌ 清理后文本仍未在content中找到")
+                            # 进一步调试：检查content中是否有类似文本
+                            lines = content.split('\n')
+                            for i, line in enumerate(lines):
+                                if "曾子曰" in line:
+                                    print(f"     Content中的相关行[{i}]: {repr(line[:80])}")
+                                    cleaned_line = self._clean_dot_below_markers(line)
+                                    print(f"     清理后的行: {repr(cleaned_line[:80])}")
         
         # 第二步：处理文本特殊格式
         # 按文本长度排序，从长到短，避免短文本替换影响长文本
@@ -1725,7 +1769,7 @@ def main():
     if len(sys.argv) > 1:
         word_file_path = sys.argv[1]
     else:
-        word_file_path = "Chinese/精品解析：2025年吉林省长春市中考语文真题（解析版）.docx"  # 默认文件路径
+        word_file_path = "Chinese/精品解析：2025年北京市中考语文真题（解析版）.docx"  # 默认文件路径
      
     output_format = "markdown"  # 可选: markdown, plain, html
     prompt_template_path = "prompt_Chinese.md"
