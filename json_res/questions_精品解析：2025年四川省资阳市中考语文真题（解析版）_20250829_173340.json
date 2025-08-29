@@ -1,0 +1,401 @@
+[
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>阅读下面文字，完成各题。</p><p>&nbsp; &nbsp;在音乐里面，我们也有这种感想。凡是唱歌奏<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">乐</span>，音<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">调</span>由宏壮急<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">促</span>而变到低<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">微</span>以至于无声的时候，我们精神上就有一种沉<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">默</span>渊<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">穆</span>和平愉快的景象。白香山在《琵琶行》里形容琵琶声音暂时停顿的情况说：“冰泉冷<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">涩</span>弦凝绝，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">凝</span>绝不通声暂<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">歇</span>。别有幽愁暗恨生，此时无声胜有声。”这就是形容音乐上无言之美的滋味。所谓无言，不一定指不说话，是注<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">重</span>在含<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">蓄</span>不露。雕刻以静体抟神，有些是流露的，有些是含蓄的。这种分别在眼睛上尤其容易看见。中国有一句<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">谚</span>语说，“金刚怒目，不如菩萨低眉”，所谓怒目，便是流露；所谓低眉，便是含蓄。</p><p style=\"text-align: right;\">（摘编自朱光潜《无言之美》）</p>",
+      "type": "综合"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>文中加点字的读音，正确的一项是（ ）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>奏<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">乐</span>（lè） 音<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">调</span>（diào） 急<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">促</span>（cù）</p>",
+          "<p>低<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">微</span>（wéi） 沉<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">默</span>（mò） 渊<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">穆</span>（mù）</p>",
+          "<p>冷<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">涩</span>（sè） <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">凝</span>（yí）绝 暂<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">歇</span>（xiē）</p>",
+          "<p>注<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">重</span>（zhòng） 含<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">蓄</span>（xù） <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">谚</span>（yàn）语</p>"
+        ],
+        "answer": {
+          "choice": "3"
+        },
+        "solution": "<p>本题考查字音。A.奏乐（lè）——yuè；B.低微（wéi）——wēi；C.凝（yì）绝——níng；故选D。</p>"
+      },
+      {
+        "content": "<p>文中画横线语句的字形书写，不正确的一项是（ ）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>在音乐里面，我们也有这种感想</p>",
+          "<p>这就是形容音乐上无言之美的滋味</p>",
+          "<p>雕刻以静体抟神，有些是流露的</p>",
+          "<p>这种分别在眼睛上尤其容易看见</p>"
+        ],
+        "answer": {
+          "choice": "2"
+        },
+        "solution": "<p>本题考查字形。C.以静体抟神——以静体传神；故选C。</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>阅读下面文字，完成各题。</p><p>&nbsp; &nbsp;濛溪河遗址群第一地点（即濛溪河遗址）距今8万至6万年，是现代人（ ）的关键阶段。遗址饱水的埋藏环境如同<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">时光胶囊</span>，将远古人类的生活画卷完整定格，是国际罕见的、同时包含丰富石器、动物与植物遗存的“百科全书式”遗址。在这里，肉、菜、果、药都俱全，早期现代人的完整“食谱”惊艳了世界。许多植物在人们今天的生活中（ ）持续利用，对药用植物信息的提取更是开创了人类演化历史研究的新领域、新纪录，意味着“神农尝百草”的行为可能在数万年前已经开始，（ ）出一幅“食药同源”的古老智慧图景。石器、骨器及木器上多样的刻画和穿孔是东亚首次集中性、系统性出现的象征性行为证据，结合动植物等其他发现和利用证据，（ ）了东亚早期现代人意识及社会行为的复杂性。过去，一度有观点认为东亚古人类陷入了发展“瓶颈”，但濛溪河遗址群的发现有力地证明，______。</p><p style=\"text-align: right;\">（摘编自李韵、王笑妃《考古实证中华文明的博大气象》）</p>",
+      "type": "综合"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>下列依次填入文中括号内的词语，全都恰当的一项是（ ）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>演绎 依然 勾勒 展示</p>",
+          "<p>演绎 居然 描摹 展示</p>",
+          "<p>演化 居然 描摹 展现</p>",
+          "<p>演化 依然 勾勒 展现</p>"
+        ],
+        "answer": {
+          "choice": "3"
+        },
+        "solution": "<p>本题考查词语运用。演化：指生物或事物随时间逐渐演变、发展（侧重自然进程，如物种演化、人类进化）。演绎：①逻辑推理（演绎法）；②人为发挥、表演（如演绎故事）。第一空：“现代人（）的关键阶段”是描述人类进化过程，属自然演变，故选演化。依然：表示状态持续不变。居然：强调意外、出乎意料。第二空：“许多植物在今天生活中（ ）持续利用”，体现“从古到今持续使用”的常态，无意外感，故选依然。勾勒：用线条画轮廓；概括描绘整体面貌。描摹：照着样子细致刻画；模仿。第三空：“（ ）出一幅‘食药同源’的古老智慧图景”，侧重概括呈现整体画面，而非细致模仿，故选勾勒。展现：自然地表现、流露，侧重内在特质的呈现。展示：主动陈列、彰显，侧重人为动作。第四空：“（ ）了东亚早期现代人意识及社会行为的复杂性”，是自然体现意识与行为的复杂，非主动展示，故选展现。故选D。</p>"
+      },
+      {
+        "content": "<p>下列填入文中横线上的语句，衔接最恰当的一项是（ ）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>他们并未“沉寂”，相反，可能是充满创造力的“领跑者”</p>",
+          "<p>可能是充满创造力的“领跑者”，相反，他们并未“沉寂”</p>",
+          "<p>相反，他们并未“沉寂”，可能是充满创造力的“领跑者”</p>",
+          "<p>相反，可能是充满创造力的“领跑者”，他们并未“沉寂”</p>"
+        ],
+        "answer": {
+          "choice": "0"
+        },
+        "solution": "<p>本题考查句子衔接。前文核心观点为“东亚古人类陷入‘沉寂’”，横线处需反驳此观点。A.先以“他们并未‘沉寂’”直接否定前文论断，再用“相反”转折递进，引出“可能是充满创造力的‘领跑者’”的新判断，先破后立，逻辑连贯，衔接自然，最恰当；B.先提出“可能是领跑者”的新观点，再用“相反”转折否定“沉寂”，逻辑顺序颠倒，未先回应前文论断，衔接突兀；C.“相反”置于句首后直接否定“沉寂”，虽有转折，但未先明确对前文观点的直接回应；D.“相反”后先立新观点，再补充否定“沉寂”，既颠倒逻辑顺序，又缺乏清晰的先破后立结构，语句衔接混乱；故选A。</p>"
+      },
+      {
+        "content": "<p>下列句子中加点词语与文中加点的“时光胶囊”，所用修辞手法相同的一项是（ ）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>然而<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">圆规</span>很不平，显出鄙夷的神色。</p>",
+          "<p>我的思想感情的<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">潮水</span>，在放纵奔流着。</p>",
+          "<p>他们的草屋，稀稀疏疏的，在雨里<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">静默</span>着。</p>",
+          "<p>惜秦皇汉武，略输文采；唐宗宋祖，稍逊<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">风骚</span>。</p>"
+        ],
+        "answer": {
+          "choice": "1"
+        },
+        "solution": "<p>本题考查修辞手法。文中“时光胶囊”运用了比喻的修辞手法，将“遗址饱水的埋藏环境”比作“胶囊”，用“胶囊封存物品”的特性，比喻环境对远古信息的“封存”作用。A.“圆规”运用借代，以“圆规”的外形特征，代指人物杨二嫂，与比喻不同。B.“思想感情的潮水”运用了比喻的修辞手法，将“思想感情”比作“潮水”，用潮水的“汹涌奔流”，比喻情感的澎湃，与文中修辞一致。C.“静默”运用了拟人的修辞手法，赋予“草屋”人的情态“静默”，与比喻不同。D.“风骚”运用了借代的修辞手法，以“风骚”代指文学才华，与比喻不同。故选B。</p>"
+      },
+      {
+        "content": "<p>文中画横线的句子有语病，请进行修改，使语言表达准确流畅，逻辑严密，可少量增删词语，不得改变原意。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>在这里，肉、菜、果、药俱全，早期现代人完整“食谱”惊艳了世界。</p>"
+        },
+        "solution": "<p>本题考查病句的辨析与修改。重复啰嗦，“都”和“俱全”重复，将“都”删去。</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p><strong>默写</strong></p><p>根据提示，默写句子。</p>",
+      "type": "填空"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>《爱莲说》中，周敦颐认为，牡丹是“花之富贵者也”，而莲是“<input size=\"20\" readonly=\"readonly\" type=\"underline\">”。</p>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "花之君子者也"
+          ]
+        },
+        "solution": "<p>本题考查《爱莲说》名句默写。</p>"
+      },
+      {
+        "content": "<p>毕业晚会上，小雨面露忧伤地说：“‘<input size=\"20\" readonly=\"readonly\" type=\"underline\">？把酒问青天’，不知我们何时再相聚！”小雯看着小雨说：“别难过！真挚的友谊可以跨越时空界限，正如王勃所说‘<input size=\"15\" readonly=\"readonly\" type=\"underline\">，<input size=\"15\" readonly=\"readonly\" type=\"underline\">’（《送杜少府之任蜀州》）。”</p>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "明月几时有",
+            "海内存知己",
+            "天涯若比邻"
+          ]
+        },
+        "solution": "<p>本题考查苏轼《水调歌头》和王勃《送杜少府之任蜀州》名句默写。</p>"
+      },
+      {
+        "content": "<p>古诗词中，有很多描写劳动场景的诗句，比如“<input size=\"20\" readonly=\"readonly\" type=\"underline\">，<input size=\"20\" readonly=\"readonly\" type=\"underline\">”。</p>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "足蒸暑土气",
+            "背灼炎天光"
+          ]
+        },
+        "solution": "<p>本题考查描写劳动场景的古诗句默写。根据题干“描写劳动场景”的提示可知，有“锄禾日当午，汗滴禾下土”“晨兴理荒秽，带月荷锄归”等。</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p>班级开展“远离肥胖，拥抱健康”的专题学习活动，请你完成以下任务。</p><p><strong>材料一：</strong></p><p><img src=\"media/image3.png\" width=\"3.0729166666666665in\" height=\"2.09375in\" alt=\"肥胖率增长 新华社发 王鹏作\"/></p><p style=\"text-align: center;\">肥胖率增长 新华社发 王鹏作</p><p><strong>材料二：</strong></p><p>&nbsp; &nbsp;世界卫生组织在研究影响人的健康因素过程中发现，不合理的膳食、缺乏运动，是导致超重和肥胖的重要原因。不合理的膳食结构往往伴随着高热量、高脂肪、高糖分等摄入过多。</p><p><strong>材料三：</strong></p><p>&nbsp; &nbsp;《四川省教育厅关于确保中小学生每天综合体育活动不低于2小时的通知》要求，全面保障综合体育活动时间和质量，确保我省中小学生每天综合体育活动不低于2小时。</p><p><strong>材料四：</strong></p><p>&nbsp; &nbsp;2025年4月是第36个爱国卫生月，全国爱卫办开展了以“健康”为主题的活动，旨在让广大公众了解超重肥胖对健康的危害，呼吁公众关注自己和家人的体重健康，要把体重管理好。</p>",
+      "type": "综合"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>材料一中的漫画主要反映出哪些问题？请简要概括。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"2\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>反映出青少年超重肥胖比例高，肥胖问题突出且亟待关注。</p>"
+        },
+        "solution": "<p>本题考查图文转换。首先提取画面信息，漫画中医生表述“近年来我国近五分之一青少年面临超重肥胖”，搭配胖孩子称重的视觉形象；然后归纳核心问题，从数据（近五分之一）和群体（青少年）维度，提炼青少年超重肥胖比例高、形势严峻的结论即可。</p>"
+      },
+      {
+        "content": "<p>根据材料四，请你为第36个爱国卫生月写一则宣传语。要求：至少使用一种修辞手法，不超过30字。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>卫生绘春景，健康驻心间——爱国卫生月，共筑生活美！</p>"
+        },
+        "solution": "<p>本题考查宣传标语。标语要围绕“远离肥胖，关注体重健康”，呼应爱国卫生月“健康”主题。可以选择对偶、双关、比喻等增强感染力。注意字数要求，语言简洁有力即可。</p>"
+      },
+      {
+        "content": "<p>暑假期间，小罗在妈妈的陪伴下去医院就诊。14岁的小罗身高170厘米，体重达86公斤，查出脂肪肝。医生诊断为“体重严重超标，属于肥胖”。请你根据上述材料，为小罗开一份体重管理“处方”。要求：语言得体，内容具体，不超过100字。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>小罗你好！你现在体重超标且有脂肪肝，可得多注意健康。平时要少吃炸鸡、甜品这些高油高糖食物，多吃新鲜蔬果。每天坚持慢跑、跳绳或打球至少2小时，规律运动。调整好饮食和作息，慢慢就能健康减重，一定要坚持呀！</p>"
+        },
+        "solution": "<p>由材料二“不合理膳食结构往往伴随着高热量、高脂肪、高糖分等摄入过多，是导致超重和肥胖的重要原因”，可劝说小罗调整饮食结构，减少油炸食品、甜品、奶茶等高油高糖食物的摄入。由材料三“确保我省中小学生每天综合体育活动不低于2小时”，可以建议小罗坚持规律运动，每天安排至少2小时体育活动（如慢跑、跳绳、篮球等），提升身体代谢。</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p><strong>名著阅读</strong></p><p>班级开展“保尔·柯察金的成长史”专题探究活动，请你完成以下任务。</p>",
+      "type": "综合"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>下面是小文同学做的读书笔记，请你将空缺部分补写完整。</p><table><tr><td>保尔·柯察金的成长史</td></tr><tr><td>经历</td><td>身份</td><td>精彩片段</td><td>阅读心得</td></tr><tr><td><span style=\"border-bottom: 1px #000 solid; padding-left: 20px; padding-right: 20px\">①</span></td><td>英勇战斗的红军战士</td><td>他走遍了乌克兰，只有两次离开过这革命的风暴。第一次是他大腿上受了伤，第二次是在严寒的一九二〇年的二月染上了发高烧的伤寒。</td><td>保尔在战场上两次因伤病离队。</td></tr><tr><td>工地磨炼</td><td>忘我工作的筑路工人</td><td>人最宝贵的是生命。生命每个人只有一次。人的一生应当这样度过：当回忆往事的时候，他不会因为虚度年华而悔恨，也不会因为碌碌无为而羞愧；在临死的时候，他能够说：“我的整个生命和全部精力，都已经献给了世界上最壮丽的事业——为人类的解放而斗争。”</td><td><span style=\"border-bottom: 1px #000 solid; padding-left: 20px; padding-right: 20px\">②</span></td></tr><tr><td>病榻抗争</td><td><span style=\"border-bottom: 1px #000 solid; padding-left: 20px; padding-right: 20px\">③</span></td><td>电报纸上只有简单几个字：小说大受赞赏。即将出版。祝贺成功。他的心又怦怦地跳起来了。他日夜盼望的梦想已经实现了！铁环已经被砸碎，现在他拿起新的武器，回到战斗的队伍里，开始了新的生活。</td><td>保尔文学创作成功，重获新生。</td></tr></table>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "战地冲锋",
+            "保尔在工地磨炼中悟透生命价值，愿将全部热忱献给人类解放的崇高信仰。",
+            "文学创作者"
+          ]
+        },
+        "solution": "<p>本题考查名著内容概括。①从“英勇战斗的红军战士”身份，及片段中“走遍乌克兰的革命风暴，两次因伤病离队”的情节，对应原著中保尔投身战争、在前线冲锋陷阵的阶段，故经历可概括为“战场搏杀”。②片段是保尔在工地磨炼时的“生命宣言”，核心是“将生命献给人类解放事业”。结合“忘我工作的筑路工人”身份，心得可提炼为：保尔在冰天雪地的工地，用血肉之躯领悟生命真谛——唯有将个人融入伟大理想（人类解放），生命才不朽。这是信仰的力量，更是革命者的精神丰碑。③从“病榻抗争”“文学创作成功，重获新生”，对应原著保尔最后以文学创作重归革命队伍。故身份是用文字战斗的“文学战线上的钢铁战士”，体现他用写作延续革命使命，以笔为武器的重生。</p>"
+      },
+      {
+        "content": "<p>请你根据上面读书笔记并结合原著内容，为保尔选配一幅体现其精神成长的人生坐标图，并简述理由。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>应选图②。保尔历经战争、筑路、伤病等困境，却凭毅力与信念在挫折中成长，精神不断升华，整体呈上升态势。图②有波动且整体上升，与他的精神成长特点一致。</p>"
+        },
+        "solution": "<p>本题考查名著人物形象分析。在《钢铁是怎样炼成的》中，保尔从一个贫苦的少年逐渐成长为坚定的共产主义战士。他经历了无数艰难困苦，如战场上的枪林弹雨，在艰苦环境中修筑铁路，以及严重的伤病折磨等。但他始终没有放弃，反而在这些磨难中不断磨炼自己的意志，精神愈发坚韧。他的成长并非一帆风顺，而是在挫折与困境中螺旋式上升，不断进步。图①人物精神曲线起伏较大，有高峰也有低谷，甚至最后呈下降趋势。这种曲线不符合保尔的精神成长，保尔并没有在经历挫折后精神萎靡、走向衰落。图②人物精神曲线有波动，整体呈上升趋势。这与保尔的成长相符，他在面对各种困难时，虽然会遭遇挫折，但每一次经历都让他更加成熟、更加坚强，精神境界不断提升。所以应选择图②。</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p><strong>现代文阅读</strong></p><p><strong>（一）</strong></p><p>阅读下面文字，完成各题。</p><p><strong>材料一：</strong></p><p style=\"text-align: center;\">“具身智能”到底是啥？</p><p style=\"text-align: center;\">韩维正</p><p>&nbsp; &nbsp;①“具身智能”，无疑是今年的热词。</p><p>&nbsp; &nbsp;②“具身智能”这个概念的对立面，是“离身智能”。它们要区分的，是“智能”与“身体”的不同关系。比如ChatGPT、DeepSeek这些大模型就属于离身智能，它们能处理文字、图片等数据，能跟用户聊天、输出信息，但无法直接作用于物理世界。AlphaGo精于棋局推演，但面对真实棋盘时或许连棋子都拿不稳。而具身智能则必须要有物理实体，通过“身体”感受世界，并与物理世界进行交互。</p><p>&nbsp; &nbsp;③打个通俗的比方，离身智能只需“动嘴皮子”，是个“理论家”；具身智能需要在物理世界“干活”，是个“实干家”。一个依靠抽象计算，在虚拟空间进行推演，一个通过身体与环境碰撞，在物理世界开展实践。用武侠世界来类比，离身智能就像熟读武学经典、精通破招知识的王语嫣，但能根据环境变化得心应手使出“降龙十八掌”的乔峰，才算是具身智能。</p><p>&nbsp; &nbsp;④那么，具身智能跟人形机器人又是什么关系呢？这就涉及到“身”的分类问题。从物理形态角度看，具身智能可以“七十二变”，与不同的硬件本体结合。这个硬件可以是一个机器手臂、数控机床、四足机器狗、六翼无人机、轮式机器人，当然也可以是人形机器人。所以，智能机器人、人形机器人都可以看做是具身智能的分支。当前，业界普遍认为，人形机器人是智能机器人的最高形态。据此我们可以梳理出一条关系链条：在概念范畴上，人工智能、具身智能、智能机器人、人形机器人，形成了从大到小、依次包含的关系。</p><p>&nbsp; &nbsp;⑤具身智能究竟能帮我们做些什么？具身智能的价值，在于让“智能”从“会说话”走向“会做事”，真正融入现实物理世界。它的应用场景，正从工业领域向日常生活、医疗、救灾等领域延伸。</p><p>&nbsp; &nbsp;⑥比如，传统工厂的机械臂只能按预设程序重复动作，一旦零件摆放位置稍有偏差就会出错。有了具身智能，机械臂就升级为“智能工人”，可以通过视觉传感器自行辨别零件位置，通过压力传感器感知抓取力度，自主学习如何处理不同形状的物体，完成更多非标准化任务，如设备检修、柔性生产等。</p><p>&nbsp; &nbsp;⑦又比如，在极端环境中替人冒险。机器狗进入地震废墟搜寻幸存者：无人机搭载热成像仪在森林火灾中定位火源；轮式机器人在核污染区域采集数据——这些场景中，具身智能设备大有用武之地，可代替人类在高温、高压、高辐射等恶劣环境中完成高危任务。未来，随着技术的进一步完善，具身智能设备很可能成为灾害救援的先头部队。</p><p>&nbsp; &nbsp;⑧尽管前景广阔，具身智能的发展依然面临着多重挑战。硬件成本高昂、电池续航瓶颈，制约着设备的推广；机器人在复杂现实环境中快速学习、自主决策，仍然是AI领域的难题；当机器人与人类并肩工作，必须确保其动作足够“温柔”，以免误伤人类，这就要求传感器的精度、紧急制动系统的反应速度能达到毫米级、毫秒级的标准……这些都需要技术研发与伦理规范同步推进。</p><p style=\"text-align: right;\">（摘自《人民日报》海外版，有删减）</p><p><strong>材料二：</strong></p><p style=\"text-align: center;\">机器人马拉松：健步前行起于“蹒跚学步”</p><p style=\"text-align: center;\">钟超</p><p>&nbsp; &nbsp;①4月19日，2025北京亦庄半程马拉松暨人形机器人半程马拉松鸣枪开赛。来自北京亦庄的“天工Utra”以2时40分42秒的成绩冲线，夺得全球首个人形机器人半程马拉松赛事桂冠。</p><p>&nbsp; &nbsp;②让人形机器人与运动员同场竞技，打破了传统马拉松赛事的固有框架和规则。在赛制上，2025北京亦庄半程马拉松遵循“同步报名、同一赛道、同时起跑”原则，人形机器人将与运动员在起点同时鸣枪起跑。为了保障人机安全，比赛全程采用铁马隔离或绿化带隔离的方式，让机器人与运动员共享同一路线，但分别在各自的赛道上行进，彼此互不干扰。</p><p>&nbsp; &nbsp;③马拉松比赛，拼的是运动员的体能和耐力，而机器人是用电机驱动的非生命体，自然不存在体能比拼。但是，长达21公里多的半程马拉松，对现阶段的人形机器人而言，绝对是一种技术上的挑战。在赛前路测中，几乎每个机器人都在中途进行了几次换电操作，还有的机器人在上坡、下坡过程中，出现关节连接处的断落。这些“跑”出来的问题和数据，都被研发团队一一记录，成为推动人形机器人技术进一步完善的基石。</p><p>&nbsp; &nbsp;④让人形机器人跑马拉松，与其说是人机竞技，不如说是机器的自我迭代。从技术角度看，目前人形机器人虽然已经可以完成抓握、跳跃甚至前后空翻等复杂动作，但长距离动态平衡仍属于前沿课题，这对机器人的运动控制、环境感知、能源续航等核心技术都提出了很高要求。举办这一赛事，既可以作为一种对我国人形机器人性能的集中检阅，同时也可以在赛事中搜寻技术瓶颈，凝聚各方资源，寻求技术突破的可行路径。</p><p>&nbsp; &nbsp;⑤人形机器人是具身智能的关键载体。今年的《政府工作报告》提出，建立未来产业投入增长机制，培育生物制造、量子科技、具身智能、6G等未来产业。具身智能，就是一种具身化的智能体，能像人类一样，通过这个“身体”感知外部世界，并能根据外部信息作出决策和行动。从机械臂、无人车到四足机器人，再到两足的人形机器人，可以看出具身智能在不断快速迭代进步，正朝着具有强大思维和行动能力的智能体演进，未来还将有无限的潜能和发展空间。如果善加利用，它将对智能制造、智慧医疗、智慧养老等领域发挥重要作用。</p><p>&nbsp; &nbsp;⑥从这个角度看，人形机器人跑马拉松，也是一堂具身智能的成长课。如同人类，从童蒙时期的蹒跚学步，到长大成人后健步如飞，总是需要一个循序渐进、不断成长的过程，具身智能也一样。推动“具身智能＋”的多场景应用，在实践中总结经验，突破关键核心技术瓶颈，我们定能做大做强具身智能产业，为经济发展和民生改善增添动力。</p><p style=\"text-align: right;\">（摘自《光明日报》，有删减）</p>",
+      "type": "综合"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>下列对材料一相关内容的理解和分析，不正确的一项是（ ）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>离身智能依靠抽象计算，在虚拟空间推演，比如AlphaGo、DeepSeek。</p>",
+          "<p>从概念范畴看，具身智能依次包含人工智能、智能机器人和人形机器人。</p>",
+          "<p>具身智能设备可替人完成高危任务，未来很可能成为灾害救援先头部队。</p>",
+          "<p>从离身智能的“纸上谈兵”，到具身智能的“身体力行”，还任重而道远。</p>"
+        ],
+        "answer": {
+          "choice": "1"
+        },
+        "solution": "<p>本题考查信息筛选与辨析。B.有误，材料一第④段明确“在概念范畴上，人工智能、具身智能、智能机器人、人形机器人，形成了从大到小、依次包含的关系”，而非“具身智能依次包含人工智能、智能机器人和人形机器人”。</p>"
+      },
+      {
+        "content": "<p>根据材料二内容，下列说法正确的一项是（ ）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>人形机器人马拉松赛事，对于推动经济发展和民生改善具有现实意义。</p>",
+          "<p>人形机器人与运动员同场竞技马拉松，运动员在耐力上远不如机器人。</p>",
+          "<p>人形机器人跑马拉松，是对机器人强大思维和行动等能力的集中检阅。</p>",
+          "<p>具身智能如同人类，从蹒跚学步到健步如飞，需循序渐进、不断成长。</p>"
+        ],
+        "answer": {
+          "choice": "3"
+        },
+        "solution": "<p>本题考查信息筛选与辨析。A.材料二第⑤段提到具身智能“将对智能制造、智慧医疗、智慧养老等领域发挥重要作用”，但“人形机器人马拉松赛事”本身是技术检验，未直接说“对推动经济发展和民生改善具有现实意义”。B.材料二第③段“马拉松比赛，拼的是运动员的体能和耐力，而机器人是用电机驱动的非生命体，自然不存在体能比拼”，指出机器人不存在体能比拼，且未提及运动员耐力不如机器人。C.由材料二第④段“这对机器人的运动控制、环境感知、能源续航等核心技术都提出了很高要求。举办这一赛事，既可以作为一种对我国人形机器人性能的集中检阅”，第⑤段“正朝着具有强大思维和行动能力的智能体演进”可知，“强大思维和行动等能力”是未来目标，当前赛事是检验“运动控制、环境感知、能源续航等核心技术”。此项“是对机器人强大思维和行动等能力的集中检阅”有误。</p>"
+      },
+      {
+        "content": "<p>与离身智能相比，具身智能具有哪些特点？请结合材料一简要概括。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>具身智能必须有物理实体，需通过“身体”感知并与物理世界交互。它是“实干家”，在物理世界实践，通过身体与环境碰撞行动；“会做事”，真正融入现实物理世界，可与不同硬件结合；离身智能无实体，仅虚拟推演、处理数据，无法直接作用于物理世界。</p>"
+        },
+        "solution": "<p>本题考查材料提炼与概括。由材料一第②段“离身智能，它们能处理文字、图片等数据，能跟用户聊天、输出信息，但无法直接作用于物理世界”“而具身智能则必须要有物理实体，通过‘身体’感受世界，并与物理世界进行交互”可知，具身智能与离身智能相比，具有物理实体，能通过“身体”感知并交互物理世界，而离身智能无实体，无法直接作用于物理世界。由材料一第③段“离身智能只需‘动嘴皮子’，是个‘理论家’；具身智能需要在物理世界‘干活’，是个‘实干家’。一个依靠抽象计算，在虚拟空间进行推演，一个通过身体与环境碰撞，在物理世界开展实践”可知，具身智能是“实干家”，在物理世界实践，通过身体与环境碰撞行动，不像离身智能仅靠抽象计算在虚拟空间推演。由材料一第②段“离身智能，它们能处理文字、图片等数据，能跟用户聊天、输出信息”，第③段“离身智能只需‘动嘴皮子’，是个‘理论家’”，第⑤段“具身智能的价值，在于让‘智能’从‘会说话’走向‘会做事’，真正融入现实物理世界”可知，具身智能能“会做事”，融入现实物理世界，而离身智能仅能“动嘴皮子”处理数据、输出信息。</p>"
+      },
+      {
+        "content": "<p>我国做大做强具身智能产业，还需要在哪些方面努力？请结合上述材料简要概括。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>需攻克硬件成本、续航瓶颈，提升技术精度，同步推进伦理规范；借实践找瓶颈、聚资源；建立产业投入增长机制；推动多场景应用，在实践中突破核心技术瓶颈。</p>"
+        },
+        "solution": "<p>本题考查材料提炼与概括。由材料一第⑧段“硬件成本高昂、电池续航瓶颈，制约着设备的推广……这些都需要技术研发与伦理规范同步推进”可知，需攻克硬件成本、续航瓶颈，提升传感器精度和制动反应速度，同时推进技术研发与伦理规范同步发展。由材料二第④段“举办这一赛事，既可以作为一种对我国人形机器人性能的集中检阅，同时也可以在赛事中搜寻技术瓶颈，凝聚各方资源，寻求技术突破的可行路径”可知，要通过赛事等实践检阅性能、搜寻瓶颈，凝聚资源以寻求技术突破路径。由材料二第⑤段“建立未来产业投入增长机制，培育生物制造、量子科技、具身智能、6G等未来产业”可知，需建立未来产业投入增长机制，加大对具身智能产业的投入与培育。由材料二第⑥段“推动‘具身智能＋’的多场景应用，在实践中总结经验，突破关键核心技术瓶颈”可知，要推动多场景应用，在实践中总结经验以突破核心技术瓶颈。</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p><strong>（二）</strong></p><p>阅读下面文字，完成各题。</p><p style=\"text-align: center;\">风灯</p><p style=\"text-align: center;\">周保松</p><p>夜幕降临时，天亮娘小心翼翼取下那盏挂在墙上的风灯，仔仔细细擦拭一遍，点亮了，挂在门前的老槐树上。闪烁的灯火穿透黑暗，射向四周，天亮家门前顿时亮堂起来。</p><p>&nbsp; &nbsp;天亮知道，爹的忌日又到了。爹走后，只有到这一天，娘才会点亮风灯。</p><p>&nbsp; &nbsp;天亮爹被日寇杀害已经三年了。</p><p>&nbsp; &nbsp;天亮爹是八路军地下交通员。那天擦黑时，他收到一份情报：鬼子晚上要来偷袭八路军一个营地。这个营地在一个山坳里，离天亮家所在的村庄有十几里路，地势险要，只有一条道通向那里。天亮爹不敢耽搁，拎着一盏风灯，匆匆赶往八路军营地。</p><p>&nbsp; &nbsp;临行时，天亮娘嘱咐天亮爹：“早点回来。”可一夜过去了，他也没回来。</p><p>&nbsp; &nbsp;第二天上午，几名八路军战士抬着天亮爹的遗体来到天亮家。一位干部模样的八路军说，天亮爹是在离他们营地不到三里的一座烽火台上，被鬼子杀害的。他分析说，可能当时天亮爹发现鬼子跟上来时，已经来不及赶到营地，就登上附近的那座烽火台，用风灯向营地的哨兵传递了紧急信号——那盏风灯也是一盏信号灯。漆黑的夜晚突然亮起一盏灯，鬼子肯定能想到是有人在传递消息。为了不惊动营地里的八路军，他们没有开枪，而是派人爬上烽火台，用刺刀杀害了天亮爹。从现场来看，牺牲前，天亮爹和敌人进行过英勇的搏斗。那位八路军干部讲述完这一切，一名小战士把那盏丢落在烽火台上的风灯递给了天亮娘。</p><p>&nbsp; &nbsp;看着被摔坏的风灯，天亮娘泪如雨下。之后，她带着天亮特地去了趟集镇，修好了破损的风灯。</p><p>&nbsp; &nbsp;天亮问过娘，为啥到了爹的忌日就点亮风灯。娘告诉他，这样，爹回家就不会迷路了。娘的解释，天亮深信不疑。他陪着娘默默地等待爹的归来。挂在门前树上的风灯随着微风轻轻摇曳。天亮偷偷擦了擦湿润的眼睛。</p><p>&nbsp; &nbsp;“娘，咱已经十七岁了，让咱去参加八路军吧。”</p><p>&nbsp; &nbsp;“咱和凤儿爹娘商量好了，等把你和凤儿的婚事办了，就送你去队伍上。”</p><p>&nbsp; &nbsp;“娘，不能这样。上战场杀鬼子，万一咱回不来，不就害了凤儿？”</p><p>&nbsp; &nbsp;娘抬眼看看天亮，说：“你和凤儿的婚事是娘最大的一桩心事。咱知道你想给爹报仇，这事得和老赵商量一下再说。”老赵也是八路军地下交通员。</p><p>&nbsp; &nbsp;在天亮的再三要求下，娘同意他去参军。这天晚上，老赵按约定来到天亮家。该叮嘱的娘都说了，老赵就带着天亮走了。刚跨出家门，娘突然冲出来拉着天亮的手，哽咽着说：“儿子，娘等你回来……和凤儿完婚！”站在娘背后的凤儿再也忍不住了，泪水像断了线的珠子滚落下来。</p><p>&nbsp; &nbsp;此后，天亮便开始了他的戎马生涯。</p><p>&nbsp; &nbsp;一天，老赵来到天亮家，递给天亮娘一个小布袋，说是天亮托他带给她的。解开布袋，里面装着五颗子弹壳。老赵说：“天亮厉害着呢！参军半年多，已经打死五个鬼子。”可是，老赵隐瞒了一件事。在最近的一次战斗中，天亮负伤了。伤口还没痊愈，他就偷偷跑出医院，回到部队。</p><p>&nbsp; &nbsp;每次有天亮的消息，天亮娘都会在第一时间告诉凤儿。这天，天亮娘来到凤儿家，跟凤儿说，天亮被提拔为班长了。随后，她把一套精美的窗花递给凤儿：“这是天亮请一位大娘剪的花样，托老赵带回来让咱给你。”凤儿酷爱剪纸，端详着花样，如获至宝。天亮娘还告诉凤儿：“天亮捎来口信，说鬼子是兔子的尾巴长不了了，等打跑了他们，他就回来看咱们。”凤儿羞涩地点点头。</p><p>&nbsp; &nbsp;不久后，老赵带来了一个天大的消息：鬼子投降了。</p><p>&nbsp; &nbsp;当天晚上，天亮娘取下风灯，破例点亮了，挂在门前的老槐树上。风有点大，吹得灯火忽明忽灭，但它始终<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">顽强地</span>亮着。天亮娘泪流满面，抬头看着风灯，喃喃地说：“他爹，那帮强盗被咱天亮他们打跑了，你的仇报了……”凤儿搀扶着她，说：“娘，您回屋歇着，咱在这儿等着爹和天亮。”可是她执意要待在门外，凤儿便陪着她。</p><p>&nbsp; &nbsp;这次，娘没有在子夜过后熄灭风灯，而是一直让它亮着，直到灯火点亮黎明的曙光。</p><p style=\"text-align: right;\">（摘自《金山》）</p>",
+      "type": "综合"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>文章第①段画横线的句子运用动作描写，请简要分析其表达效果。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>这一系列动作细致展现天亮娘对风灯的珍视。“小心翼翼取下”“仔仔细细擦拭”流露对丈夫的深切思念，“擦拭”“挂”的动作则暗含庄重的纪念意味，为后文风灯承载的情感与意义铺垫，营造出哀伤又温情的氛围。</p>"
+        },
+        "solution": "<p>本题考查句子赏析。文章第①段画横线的句子“夜幕降临时，天亮娘小心翼翼取下那盏挂在墙上的风灯，仔仔细细擦拭一遍，点亮了，挂在门前的老槐树上”，“取下”“擦拭”“点亮”“挂”，这一系列连贯动作，精准呈现天亮娘准备风灯的过程。“小心翼翼取下”体现天亮娘对风灯的珍视，风灯是丈夫的遗物，更是精神寄托；“仔仔细细擦拭”暗含她对丈夫的思念，借擦拭风灯重温与丈夫的过往；“点亮”“挂”的动作，是在爹忌日时的“仪式”，联系第⑧段“天亮问过娘，为啥到了爹的忌日，就点亮风灯。娘告诉他，这样，爹回家就不会迷路了”可知，点亮风灯为了让爹“回家不迷路”，传递出深沉的怀念与牵挂。开篇用这些动作，营造出静谧、哀伤又庄重的氛围，为后文讲述风灯背后的英雄故事埋下情感伏笔，凸显“思念与传承”的底色。</p>"
+      },
+      {
+        "content": "<p>天亮爹临行时，天亮娘嘱咐；天亮参军时，天亮娘也叮嘱。请简要分析天亮娘的心理活动。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>天亮爹临行时，“早点回来”的嘱咐满是担忧与牵挂，盼丈夫平安。天亮参军时，“等你回来和凤儿完婚”的哽咽叮嘱，既有对儿子报国的理解，更藏着盼他平安归、成家庭的深切期盼，柔中含刚。</p>"
+        },
+        "solution": "<p>本题考查人物心理活动。由第⑤段“临行时，天亮娘嘱咐天亮爹：‘早点回来。’”可知，这简短的话语，体现出天亮娘对丈夫执行危险任务的担忧，盼他平安归来的牵挂，是妻子对丈夫朴素又深沉的关切，怕他遭遇意外，希望他能按时回到家中，饱含着对家庭团圆的期盼。由第⑬段“刚跨出家门，娘突然冲出来拉着天亮的手，哽咽着说：‘儿子，娘等你回来……和凤儿完婚！’”可知，此时天亮娘既理解儿子报国杀敌、为父报仇的决心，又满是不舍与牵挂。“等你回来……和凤儿完婚”，是把对儿子平安的祈愿、对家庭传承（儿子成家）的期待相融合，在送儿奔赴家国大义时，偷偷将个人对家庭圆满的心愿作为盼归的执念，展现出母亲在大义与小爱间复杂又深沉的心理。两次嘱咐都源于“爱”——对家人的爱，对家国的大义。前者是小家夫妻情，后者是在大义前，母亲忍痛送儿参军，又偷偷把“完婚”当作盼归的执念，体现平凡百姓在战争中的家国情怀与人性温度。</p>"
+      },
+      {
+        "content": "<p>请简要赏析下面句子中加点词语的表达效果。</p><p>风有点大，吹得灯火忽明忽灭，但它始终<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">顽强地</span>亮着。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>“顽强地”将灯火拟人化，既写实其在风中抵御摇曳的状态，又象征百姓在苦难中坚守的信念与抗战军民不屈的意志，以小见大，让灯火承载起厚重情感，增强语句感染力与象征意味。</p>"
+        },
+        "solution": "<p>本题考查词句理解与赏析。文章第⑱段“风有点大，吹得灯火忽明忽灭，但它始终顽强地亮着”，“顽强地”一词将风灯的灯火拟人化，赋予其人类坚韧不屈的品格。从环境描写来看，“风有点大”营造出夜晚的恶劣环境，灯火在风中“忽明忽灭”，却“始终顽强地亮着”，形成强烈对比。这既是实写风灯在物理层面抵御风力、持续燃烧的状态，更象征风灯的顽强不灭，如同天亮爹等革命先烈面对日寇侵略时不屈的精神，也代表着天亮娘、凤儿等普通百姓在苦难中坚守的信念与希望，更暗喻着中华民族在抗战岁月里顽强抗争、永不屈服的民族意志。“顽强地”一词以小见大，将风灯这一具体事物与人物精神、民族气节相联结，让平凡的灯火承载起厚重的情感与主题，增强了语句的感染力和象征意味。</p>"
+      },
+      {
+        "content": "<p>文章结尾作者写天亮娘“破例点亮”风灯并“一直让它亮着”，有何妙处？请结合全文简要分析。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>“破例点亮”打破常规，因胜利而激动，告慰逝者；“一直亮着”既表等待亲人的坚守，又象征希望延续与革命精神长明。与开篇呼应，让风灯从思念载体升华为民族记忆，情感更厚重。</p>"
+        },
+        "solution": "<p>本题考查句段作用。结合第②段“爹的忌日又到了。爹走后，只有到这一天，娘才会点亮风灯”和第⑱段“当天晚上，天亮娘取下风灯，破例点亮了，挂在门前的老槐树上”可知，“破例点亮”打破了风灯仅在爹忌日点亮的常规。这一行为变化，因第⑰段“鬼子投降了”这一重大事件而起，既体现出天亮娘在抗战胜利时的激动与欣慰，也暗含着以灯火告慰丈夫“你的仇报了”的情感，让风灯从单纯的思念载体升级为胜利的见证。由第⑱段“凤儿搀扶着她，说：‘娘，您回屋歇着，咱在这儿等着爹和天亮。’可是她执意要待在门外”和第⑲段“这次，娘没有在子夜过后熄灭风灯，而是一直让它亮着，直到灯火点亮黎明的曙光”可知，“一直让它亮着”的行为，表面是天亮娘坚守在门外等待亲人，深层则象征着希望的延续。灯火从黑夜亮到黎明，呼应着抗战从黑暗走向光明的历程，也暗喻着革命精神如灯火长明，同时与开篇忌日点灯形成首尾呼应，让风灯的象征意义从个人思念升华为民族记忆，使情感表达更厚重，主题更深刻。</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p><strong>古代诗文阅读</strong></p><p><strong>（一）</strong></p><p>阅读下面文言文，完成各题。</p><p><strong>【甲】</strong></p><p>&nbsp; &nbsp;①景春曰：“公孙衍、张仪岂不<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">诚</span>大丈夫哉？一怒而诸侯惧，安居而天下熄。”</p><p>&nbsp; &nbsp;②孟子曰：“是焉得为大丈夫乎？子未学礼乎？丈夫之<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">冠</span>也，父命之；女子之嫁也，母命之，往送之门，戒之曰：‘往之女家，必敬必戒，无违夫子！’以顺为正者，妾妇之道也。居天下之广居，立天下之正位，行天下之大道。得志，与民由之；不得志，独行其道。富贵不能淫，贫贱不能移，威武不能屈，此之谓大丈夫。”</p><p style=\"text-align: right;\">（选自《孟子·滕文公下》）</p><p><strong>【乙】</strong></p><p>&nbsp; &nbsp;齐大饥黔敖为食于路以待饿者而食之。有饿者蒙袂辑屦<sup>①</sup>，贸贸然<sup>②</sup>来。黔敖左奉食，右执<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">饮</span>，曰：“嗟！来食。”扬其目而视之，曰：“予唯不食嗟来之食，以至于斯也。”从而谢焉。终不食<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">而</span>死。</p><p style=\"text-align: right;\">（节选自《礼记·檀弓下》）</p><p>注：①蒙袂辑屦：用衣袖蒙着脸，拖着鞋。②贸贸然：眼睛看不清而莽撞前行的样子。</p>",
+      "type": "综合"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>下列对文中画波浪线部分的断句，正确的一项是（ ）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>齐大饥/黔敖为食于路/以待饿者而食之</p>",
+          "<p>齐大饥/黔敖为食于路以待/饿者而食之</p>",
+          "<p>齐大饥黔敖/为食于路以待饿者/而食之</p>",
+          "<p>齐大饥黔敖为食/于路以待饿者/而食之</p>"
+        ],
+        "answer": {
+          "choice": "0"
+        },
+        "solution": "<p>本题考查文言文断句。要根据句意及结构来分析划分停顿。句意：齐国出现了严重的饥荒。黔敖在路边准备好饭食，来等待路过饥饿的人来吃。“齐大饥”，主谓结构完整，交代故事背景，后断开；“黔敖为食于路”主谓结构完整，讲述黔敖的行为，后断开；“以待饿者而食之”是黔敖的目的。故断为：齐大饥/黔敖为食于路/以待饿者而食之。</p>"
+      },
+      {
+        "content": "<p>下列对文中加点的词语及相关内容的解说，不正确的一项是（ ）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>诚，真正，确实，与《愚公移山》中“帝感其诚”的“诚”意思不相同。</p>",
+          "<p>冠，行冠礼，表示成年。《送东阳马生序》中“既加冠”的礼仪与此相同。</p>",
+          "<p>饮，喝，与《〈论语〉十二章》中“一箪食，一瓢饮”的“饮”意思相同。</p>",
+          "<p>“终不食而死”与欧阳修《醉翁亭》中“泉香而酒洌”的“而”用法不同。</p>"
+        ],
+        "answer": {
+          "choice": "2"
+        },
+        "solution": "<p>本题考查一词多义。A.“公孙衍、张仪岂不诚大丈夫哉？”的意思为：公孙衍、张仪难道不是真正有大志、有作为、有气节的男子吗？诚：真正，确实。“帝感其诚”的意思为：天帝被他的诚心感动。诚：诚心。因此意思不相同；B.“丈夫之冠也”的意思为：男子行加冠礼时。冠：行冠礼，表示成年。“既加冠”的意思是：加冠礼之后。冠：行冠礼，表示成年。二者意思相同；C.“黔敖左奉食，右执饮”的意思为：黔敖左手端着吃食，右手端着汤。饮：这里指可以喝的东西（水、汤）。“一箪食，一瓢饮”的意思为：一碗翻，一瓢水（汤）。饮：这里指可以喝的东西（水、汤）。二者意思相同，但并非“喝”的意思，错误；D.“终不食而死”的意思为：最终也没有吃，之后饿死了。而：连词，表顺承，然后。“泉香而酒洌”的意思为：泉水清并且酒水也清。而：连词，表示并列关系，并且。二者用法不相同。</p>"
+      },
+      {
+        "content": "<p>将甲、乙两文中画横线的句子翻译成现代汉语。</p><p>（1）是焉得为大丈夫乎？子未学礼乎？<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p></p><p>（2）予唯不食嗟来之食，以至于斯也。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>（1）这哪里能算是有志气有作为的男子呢？你没有学过礼吗？</p><p>（2）我就是不接受那种带有侮辱性的施舍，才落到这个地步！</p>"
+        },
+        "solution": "<p>本题考查文言翻译。我们在翻译句子时要注意通假字、词类活用、一词多义、特殊句式等情况，如遇倒装句就要按现代语序疏通，如遇省略句翻译时就要把省略的成分补充完整。重点词有：（1）是：这；大丈夫：有大志、有作为、有气节的男子；子：你。（2）予，我；唯，只；食，吃；嗟来之食，被轻蔑施舍来的食物；斯，这样。</p>"
+      },
+      {
+        "content": "<p>乙文中饿者不吃嗟来之食而饿死。请结合甲、乙两文，简要谈谈你的看法。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>乙文中饿者拒食嗟来之食，正是甲文孟子“大丈夫”标准的生动体现。饿者面对黔敖带有侮辱性的施舍，以“扬其目而视之”的姿态坚守尊严，做到了“贫贱不能移”——即便身处绝境，也不向傲慢低头，不违背内心的道德准则。孟子强调“独行其道”，饿者用生命践行了这一点：不为苟活而屈从于无礼的施舍，守住了人格的底线。这种在困厄中坚守本心、维护尊严的骨气，正体现了“大丈夫”的精神，彰显了人应有的气节与操守。</p>"
+        },
+        "solution": "<p>结合【甲】、【乙】两文来看，饿者不食嗟来之食而死的行为，正是孟子所推崇的“大丈夫”精神的生动体现，值得深刻肯定。根据【甲】文第②段“富贵不能淫，贫贱不能移，威武不能屈”可知，孟子认为“富贵不能使他的思想迷惑，贫贱不能使他的操守动摇，威武不能使他的意志屈服”是“大丈夫”的核心标准。其中“贫贱不能移”强调人在贫困卑贱的处境中，不能改变自己的操守与尊严。结合【乙】文“齐大饥”予唯不食嗟来之食，以至于斯也“”终不食而死“可知，饿者身处饥荒的绝境，但当黔敖以傲慢的”嗟！来食“施舍时，他宁可饿死也不接受带有侮辱性的食物。这种在极端贫困中对人格尊严的坚守，正是”贫贱不能移“的具体实践；根据【甲】文第②段”不得志，独行其道“可知，孟子认为在无人理解自己的情况之下，应当坚持自己的原则，走自己的正道。结合【乙】文”予唯不食嗟来之食，以至于斯也“可知，饿者在无人理解、生存压力巨大的环境中，他始终坚持自己的处世原则，不因外界的逼迫（饥饿）而放弃对尊严的坚守，恰是”大丈夫“在”不得志“时的精神写照——即便无法改变现实，也要守住内心的”正位“与”大道“。</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p><strong>（二）</strong></p><p>阅读下面这首词，完成各题。</p><p style=\"text-align: center;\">破阵子·为陈同甫赋壮词以寄之</p><p style=\"text-align: center;\">辛弃疾</p><p style=\"text-align: center;\">醉里挑灯看剑，梦回吹角连营。八百里分麾下炙，五十弦翻塞外声，沙场秋点兵。</p><p style=\"text-align: center;\">马作的卢飞快，弓如霹雳弦惊。了却君王天下事，赢得生前身后名。可怜白发生！</p>",
+      "type": "综合"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>下列对这首词的理解与赏析，不正确的一项是（ ）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>开篇一、二句，写词人夜里酒醉后挑亮灯芯观看宝剑，梦中回到响起号角的军营。</p>",
+          "<p>“八百里”“五十弦”这两句，写词人在军营里与部下分食酒食、听乐器演奏军乐。</p>",
+          "<p>“沙场秋点兵”，叙写一位志在必得的将军正在秋天的战场上清点出征士卒的人数。</p>",
+          "<p>“的卢飞快”“霹雳弦惊”分别从形、声两方面写马快弓响，侧面表现出战斗激烈。</p>"
+        ],
+        "answer": {
+          "choice": "2"
+        },
+        "solution": "<p>本题考查内容理解。C.有误，“沙场”是战场，“秋”点明时节，“点兵”是战前整军，检阅军队，彰显军威，而非“清点出征人数”。</p>"
+      },
+      {
+        "content": "<p>这首词紧扣“壮”来写，词人的情感落差巨大。请简要分析。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>这首词先绘醉梦军营、沙场征战的壮景，抒建功立业的壮志；结尾“可怜白发生”突现现实的悲凉，前“壮”后“悲”，落差巨大，尽展理想与现实的冲突，以及英雄未酬的遗憾。</p>"
+        },
+        "solution": "<p>本题考查情感主旨。从“醉里挑灯看剑”的英雄自赏，到“梦回吹角连营”“沙场秋点兵”的军营整肃，再到“马快弓鸣”的战斗想象，构建豪迈激烈的战争场景，尽显军威雄壮之场景。“了却君王天下事，赢得生前身后名”，直抒收复失地、建功立业的宏大抱负，意气风发，凸显志向之壮；“可怜白发生”情感陡转，现实中词人壮志未酬，白发已生，理想的“壮怀”与现实的“衰颓”形成强烈反差。前半阕以“壮景、壮志”渲染激昂，结尾以“白发”暴露现实的冰冷，从“壮”的巅峰急坠至“悲”的谷底，落差震撼，凸显英雄迟暮、壮志难酬的悲怆。</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 2,
+    "question": {
+      "content": "<p><strong>写作</strong></p><p>&nbsp; &nbsp;导演饺子5年蛰伏打磨作品，《哪吒2》创下中国影史票房纪录；王兴兴团队深耕人工智能，迈出中国机器人惊艳世界的试步……雄鹰终将翱翔，只是在用自己的方式练习振翅。</p><p>这引发了你怎样的联想和思考？请结合自己的经历或感悟写一篇文章。</p><p>要求：①选准角度，确定立意，明确文体，自拟标题；②综合运用多种表达方式；③不要套作，不得抄袭；④不得泄露个人信息；⑤书写工整，不少于600字。</p>",
+      "type": "简答",
+      "answer": {
+        "answer": "<p><p style=\"text-align: center;\">振翅的声音</p><p>&nbsp; &nbsp;古筝考级前的那个夏天，我总在练琴时听见窗外的蝉鸣，像在嘲笑我指尖的笨拙。《渔舟唱晚》的旋律被我弹得支离破碎，琴码歪歪扭扭，指尖的血泡磨破了又结痂，琴声却始终干涩如晒裂的土地。</p><p>&nbsp; &nbsp;“放弃吧，你不是这块料。”我对着镜子里沮丧的自己说。这时手机弹出新闻，导演饺子花五年时间打磨《哪吒2》，让中国动画惊艳世界。我忽然想起小区那棵被台风折断的老槐树——当初它只剩光秃秃的树桩时，谁也没想到断口会冒出新芽。</p><p>&nbsp; &nbsp;爷爷看出我的烦躁，带我去看老槐树。新枝已长到半人高，叶片在风里轻轻摇晃。“你听，”爷爷说，“新芽生长时，枝干会发出细微的声响。”我凑近细听，果然有若有若无的簌簌声，像生命在悄悄发力。</p><p>&nbsp; &nbsp;从那天起，我把考级曲谱复印下来贴在琴上，标满密密麻麻的指法批注。每天放学后练琴两小时，手腕酸了就按揉虎口，指尖痛了就泡温水。遇到难点段落，就像老槐树的根须在土里扎根那样，一句一句拆解练习。月光透过窗户洒在琴键上，我仿佛看见老槐树的新芽在夜色里悄悄舒展。</p><p>&nbsp; &nbsp;暴雨天我仍坚持练琴，窗外雨声噼里啪啦，屋里琴声渐渐流畅。忽然想起暴雨中老槐树的新叶，被雨水打得弯腰却从不低头。我试着放松僵硬的手腕，让指尖像新叶般轻柔落弦，《渔舟唱晚》的旋律竟如流水般淌出。</p><p>&nbsp; &nbsp;考级那天，我路过老槐树下，新枝已长成小绿伞。走进考场时，我深吸一口气，仿佛听见无数新芽生长的声音。当最后一个音符消散在空气中，评委老师微笑点头的瞬间，我终于明白：雄鹰翱翔前要无数次振翅，新芽破土需要默默积蓄力量。</p><p>&nbsp; &nbsp;成长从不是一蹴而就的奇迹，而是像老槐树那样，在挫折中扎根，在坚持中生长。那些看似沉寂的时光，都是在为未来的绽放积蓄力量，就像此刻我听见的，不仅是琴声，更是生命拔节的声音。</p></p>"
+      },
+      "solution": "<p>【写作指导】这段材料通过导演饺子五年打磨《哪吒2》和王兴兴团队深耕人工智能两个案例，共同指向“厚积薄发”的核心立意。审题时需要抓住三个关键点：首先是“蛰伏”“深耕”等词体现的长期积累过程，其次是“创纪录”“惊艳世界”的成果展现，最后是“雄鹰练习振翅”的比喻意义。最佳立意角度应当聚焦在“积累与爆发”的辩证关系上，可以延伸出多个分论点：量变到质变的必然规律、专注深耕的专业精神、耐得住寂寞的坚守品质等。要避免单纯赞美成功或空谈坚持，而应深入探讨积累过程中的心态调整、方法选择等具体问题。若结合当下社会浮躁风气，还可立意“慢即是快”的逆向思维，批判急功近利现象。注意题干要求“结合自身经历”，立意时要预留个人感悟的接口。</p><p>【写作思路】构思时可采取“双线并行”结构：一条线用名人事例论证积累的重要性，如达·芬奇画蛋、王羲之临池、袁隆平十年育种等；另一条线结合自身经历，如备战学科竞赛的反复练习、艺术特长的枯燥基本功训练等。选材要体现“蛰伏期”的具体细节：导演饺子查阅1000份医学资料设计哪吒表情，对应自己为学习英语整理的3大本笔记；王兴兴团队测试500种步态算法，类比书法练习中写坏的200张宣纸。重点段落可设计对比：前段描写孤独学习的教室或琴房场景，后段展现比赛获奖、演出现场的聚光灯时刻。若写议论文，每个事例后要加入“蛰伏价值”的分析；若写记叙文，可通过某个道具（如磨破的舞鞋、画废的草图本）串联全文。注意避免堆砌事例，每个材料后都应回归到“振翅练习”的比喻本体。</p>"
+    }
+  }
+]
