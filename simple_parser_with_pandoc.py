@@ -760,15 +760,100 @@ class PandocWordProcessor:
         """清理加点字标记，用于匹配比较"""
         import re
         
-        # 格式1：完整pandoc格式 [\[DOT_BELOW\]字\[/DOT_BELOW\]]{.underline}
-        pattern1 = r'\[\\\[DOT_BELOW\\\]([\u4e00-\u9fff])\\\[/DOT_BELOW\\\]\]\{\.underline\}'
+        # 格式1：完整pandoc格式 [\[DOT_BELOW\]字符\[/DOT_BELOW\]]{.underline}
+        pattern1 = r'\[\\\[DOT_BELOW\\\]([\u4e00-\u9fff]+)\\\[/DOT_BELOW\\\]\]\{\.underline\}'
         cleaned = re.sub(pattern1, r'\1', text)
         
-        # 格式2：简化格式 [DOT_BELOW]字[/DOT_BELOW]
-        pattern2 = r'\[DOT_BELOW\]([\u4e00-\u9fff])\[/DOT_BELOW\]'
+        # 格式2：简化格式 [DOT_BELOW]字符[/DOT_BELOW] (支持多个字符)
+        pattern2 = r'\[DOT_BELOW\]([\u4e00-\u9fff]+)\[/DOT_BELOW\]'
         cleaned = re.sub(pattern2, r'\1', cleaned)
         
+        # 格式3：处理不完整的DOT_BELOW标记（如截断的文本）
+        pattern3 = r'\[DOT_BELOW\]([\u4e00-\u9fff]*)\[/DOT.*?'
+        cleaned = re.sub(pattern3, r'\1', cleaned)
+        
+        # 格式4：清理剩余的DOT_BELOW开始标记
+        pattern4 = r'\[DOT_BELOW\]'
+        cleaned = re.sub(pattern4, '', cleaned)
+        
         return cleaned
+    
+    def _should_enable_detailed_debug(self, para_text):
+        """
+        通用调试条件判断：基于文本特征和复杂度决定是否启用详细调试
+        """
+        # 文本长度相关条件
+        text_length = len(para_text)
+        if text_length < 5:  # 过短文本通常不需要详细调试
+            return False
+        if text_length > 50:  # 长文本更需要调试
+            return True
+            
+        # 包含特殊格式标记
+        special_markers = ['DOT_BELOW', '【', '】', '[', ']', '\\[', '\\]']
+        if any(marker in para_text for marker in special_markers):
+            return True
+            
+        # 包含复杂标点或格式
+        complex_chars = ['①', '②', '③', '④', '⑤', '⑥', '⑦', '⑧', '⑨', '⑩', 
+                        '“', '”', '‘', '’', '（', '）', '——', '…']
+        if any(char in para_text for char in complex_chars):
+            return True
+            
+        # 包含引号或特殊符号
+        if '“' in para_text or "”" in para_text or '「' in para_text or '」' in para_text:
+            return True
+            
+        # 中等长度的文本，有一定调试价值
+        if 20 <= text_length <= 50:
+            return True
+            
+        return False
+    
+    def _has_high_text_similarity(self, text1, text2):
+        """
+        通用文本相似度判断：基于多种指标计算文本相似度
+        """
+        if not text1 or not text2:
+            return False
+            
+        # 长度相似性检查
+        len1, len2 = len(text1), len(text2)
+        if abs(len1 - len2) > max(len1, len2) * 0.5:  # 长度差异超过50%
+            return False
+            
+        # 字符集重叠检查
+        chars1, chars2 = set(text1), set(text2)
+        overlap = len(chars1 & chars2)
+        union = len(chars1 | chars2)
+        if union > 0:
+            char_similarity = overlap / union
+            if char_similarity > 0.7:  # 字符重叠度超过70%
+                return True
+                
+        # 子串包含检查
+        shorter, longer = (text1, text2) if len1 < len2 else (text2, text1)
+        if len(shorter) >= 5:  # 只对有意义长度的文本做子串检查
+            # 检查较短文本的前半部分是否在较长文本中
+            half_len = len(shorter) // 2
+            if half_len >= 3 and shorter[:half_len] in longer:
+                return True
+            # 检查较短文本的后半部分是否在较长文本中    
+            if half_len >= 3 and shorter[-half_len:] in longer:
+                return True
+                
+        # 中文词汇重叠检查（针对中文文档）
+        import re
+        chinese_words1 = re.findall(r'[\u4e00-\u9fff]{2,}', text1)
+        chinese_words2 = re.findall(r'[\u4e00-\u9fff]{2,}', text2)
+        
+        if chinese_words1 and chinese_words2:
+            word_overlap = len(set(chinese_words1) & set(chinese_words2))
+            word_total = len(set(chinese_words1) | set(chinese_words2))
+            if word_total > 0 and word_overlap / word_total > 0.5:  # 词汇重叠超过50%
+                return True
+                
+        return False
     
     def _normalize_quotes(self, text):
         """标准化引号，用于匹配比较"""
@@ -907,11 +992,88 @@ class PandocWordProcessor:
                         if not any(f"【{marker}】{text_to_find}" in content for marker in ["首行缩进", "居中", "居右"]):
                             return para_text, f"序号匹配{attempt_length}"
         
+        # 🆕 回退匹配策略：更宽松的匹配算法
+        # 只在调试模式下显示详细信息
+        should_debug_fallback = self._should_enable_detailed_debug(para_text)
+        if should_debug_fallback:
+            print(f"     尝试回退匹配策略...")
+        
+        # 回退策略1：模糊字符匹配
+        para_chars = set(para_text)
+        content_lines = content.split('\n')
+        best_match = None
+        best_score = 0
+        
+        for line in content_lines:
+            line_stripped = line.strip()
+            if len(line_stripped) < 5:  # 跳过过短的行
+                continue
+                
+            # 计算字符重叠率
+            line_chars = set(line_stripped)
+            overlap = len(para_chars & line_chars)
+            total_chars = len(para_chars | line_chars)
+            if total_chars > 0:
+                score = overlap / total_chars
+                
+                # 如果重叠率很高且长度相近
+                if score > 0.8 and abs(len(line_stripped) - len(para_text)) < max(5, len(para_text) * 0.2):
+                    if score > best_score:
+                        best_score = score
+                        best_match = line_stripped
+        
+        if best_match:
+            if should_debug_fallback:
+                print(f"     ✅ 模糊匹配成功 (相似度: {best_score:.2f})")
+            return best_match, f"模糊匹配({best_score:.2f})"
+        
+        # 回退策略2：关键词匹配
+        # 提取中文字符作为关键词
+        chinese_chars = re.findall(r'[\u4e00-\u9fff]+', para_text)
+        if chinese_chars:
+            # 取最长的中文词汇作为关键词
+            key_phrase = max(chinese_chars, key=len)
+            if len(key_phrase) >= 3:  # 至少3个字
+                for line in content_lines:
+                    line_stripped = line.strip()
+                    if key_phrase in line_stripped and len(line_stripped) > len(key_phrase):
+                        # 检查上下文相似性
+                        context_before = para_text[:para_text.find(key_phrase)]
+                        context_after = para_text[para_text.find(key_phrase) + len(key_phrase):]
+                        
+                        line_key_pos = line_stripped.find(key_phrase)
+                        line_before = line_stripped[:line_key_pos]
+                        line_after = line_stripped[line_key_pos + len(key_phrase):]
+                        
+                        # 简单的上下文匹配
+                        before_match = any(c in line_before for c in context_before[-3:]) if context_before else True
+                        after_match = any(c in line_after for c in context_after[:3]) if context_after else True
+                        
+                        if before_match and after_match:
+                            if should_debug_fallback:
+                                print(f"     ✅ 关键词匹配成功 (关键词: {key_phrase})")
+                            return line_stripped, f"关键词匹配({key_phrase})"
+        
+        # 回退策略3：数字序号匹配 
+        number_match = re.match(r'^([①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳]|[0-9]+[\.、])', para_text)
+        if number_match:
+            number_prefix = number_match.group(0)
+            remaining_text = para_text[len(number_prefix):].strip()
+            
+            for line in content_lines:
+                line_stripped = line.strip()
+                if remaining_text and len(remaining_text) > 3 and remaining_text[:10] in line_stripped:
+                    if should_debug_fallback:
+                        print(f"     ✅ 序号内容匹配成功")
+                    return line_stripped, "序号内容匹配"
+        
         # 如果所有方法都失败，尝试部分匹配（用于调试）
         escaped_text = re.escape(para_text[:min(5, len(para_text))])
         if re.search(escaped_text, content):
             return None, "部分存在但无法匹配"
         
+        if should_debug_fallback:
+            print(f"     ❌ 所有匹配策略都失败")
         return None, None
     
     def _enhance_content_with_format_info(self, content):
@@ -1001,25 +1163,63 @@ class PandocWordProcessor:
                     print(f"✅ 缩进标记({match_type}): \"{match_result[:30]}...\"")
                 else:
                     print(f"❌ 缩进未匹配: \"{para_text[:30]}...\"")
-                    # 调试DOT_BELOW匹配问题
-                    if "DOT_BELOW" in para_text or "曾子曰" in para_text:
-                        print(f"  → 调试DOT_BELOW匹配:")
-                        print(f"     原文本: {repr(para_text[:60])}")
-                        cleaned_text = self._clean_dot_below_markers(para_text)
-                        print(f"     清理后: {repr(cleaned_text[:60])}")
+                    # 通用调试条件：基于文本特征和复杂度判断是否需要详细调试
+                    should_debug = self._should_enable_detailed_debug(para_text)
+                    if should_debug:
+                        print(f"  → 详细调试匹配过程:")
+                        print(f"     原文本: {repr(para_text[:80])}")
+                        print(f"     文本长度: {len(para_text)}")
                         
-                        # 检查清理后的文本是否在content中
-                        if cleaned_text in content:
-                            print(f"     ✅ 清理后文本在content中找到")
+                        # 显示各种清理步骤
+                        cleaned_text = self._clean_dot_below_markers(para_text)
+                        normalized_text = self._normalize_quotes(para_text)
+                        fully_cleaned = self._normalize_quotes(cleaned_text)
+                        
+                        print(f"     DOT_BELOW清理后: {repr(cleaned_text[:80])}")
+                        print(f"     引号标准化后: {repr(normalized_text[:80])}")
+                        print(f"     完全清理后: {repr(fully_cleaned[:80])}")
+                        
+                        # 检查各种匹配可能性
+                        content_lines = content.split('\n')
+                        found_similar = []
+                        
+                        for i, line in enumerate(content_lines):
+                            line_stripped = line.strip()
+                            if not line_stripped:
+                                continue
+                                
+                            # 检查各种匹配（移除硬编码的内容判断）
+                            matches = []
+                            if cleaned_text in line_stripped:
+                                matches.append("DOT_BELOW清理")
+                            if fully_cleaned in line_stripped:
+                                matches.append("完全清理")
+                            if para_text[:20] in line_stripped:
+                                matches.append("前20字符")
+                            if line_stripped[:20] in para_text:
+                                matches.append("行前20字符")
+                                
+                            # 通用相似度检查，移除具体内容判断
+                            if matches or self._has_high_text_similarity(para_text, line_stripped):
+                                found_similar.append(f"     第{i+1}行: {repr(line_stripped[:80])} [{', '.join(matches) if matches else '高相似度'}]")
+                        
+                        if found_similar:
+                            print(f"     找到相似内容:")
+                            for similar in found_similar[:3]:  # 只显示前3个
+                                print(similar)
                         else:
-                            print(f"     ❌ 清理后文本仍未在content中找到")
-                            # 进一步调试：检查content中是否有类似文本
-                            lines = content.split('\n')
-                            for i, line in enumerate(lines):
-                                if "曾子曰" in line:
-                                    print(f"     Content中的相关行[{i}]: {repr(line[:80])}")
+                            print(f"     ❌ 未找到任何相似内容")
+                            
+                        # 尝试模糊匹配
+                        for j, line in enumerate(content_lines):
+                            line_stripped = line.strip()
+                            if len(line_stripped) > 10 and abs(len(line_stripped) - len(para_text)) < 10:
+                                # 计算相似度（简单的字符重叠）
+                                overlap = len(set(para_text) & set(line_stripped))
+                                if overlap > len(para_text) * 0.7:
+                                    print(f"     🔍 高相似度行: {repr(line_stripped[:60])} (重叠字符: {overlap}/{len(para_text)})")
                                     cleaned_line = self._clean_dot_below_markers(line)
-                                    print(f"     清理后的行: {repr(cleaned_line[:80])}")
+                                    print(f"     第{j+1}行清理后: {repr(cleaned_line[:80])}")
         
         # 第二步：处理文本特殊格式
         # 按文本长度排序，从长到短，避免短文本替换影响长文本
@@ -1774,7 +1974,7 @@ def main():
     if len(sys.argv) > 1:
         word_file_path = sys.argv[1]
     else:
-        word_file_path = "Chinese/精品解析：2025年北京市中考语文真题（解析版）.docx"  # 默认文件路径
+        word_file_path = "Chinese/精品解析：2025年吉林省长春市中考语文真题（解析版）.docx"  # 默认文件路径
      
     output_format = "markdown"  # 可选: markdown, plain, html
     prompt_template_path = "prompt_Chinese.md"
