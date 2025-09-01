@@ -1815,7 +1815,7 @@ def post_process_json_content(data):
     JSON内容后处理函数：对解析后的JSON数据进行格式规范化处理
     
     主要功能：
-    1. 英文引号 → 中文左右引号：交替将双引号"替换为""，单引号'替换为''
+    1. 英文引号 → 中文左右引号：智能转换，避免破坏JSON结构
     2. 英文省略号 → 中文省略号：将连续六个句点......转换为……
     3. 上角标格式转换：将^内容^形式转换为<sup>内容</sup>HTML标签
     4. 手动HTML解析确保在标签内部不进行转换
@@ -1825,10 +1825,14 @@ def post_process_json_content(data):
 
     返回:
         处理后的 JSON 数据，所有文本内容已完成格式规范化
+        
+    注意：
+        - 引号转换只在HTML内容的文本部分进行，不影响HTML标签
+        - 使用安全的引号转换算法，避免破坏JSON结构
     """
 
-    def replace_quotes_in_html(html_content):
-        """手动解析 HTML 内容并进行多种格式转换：引号、省略号、上角标等"""
+    def replace_quotes_in_html(html_content, convert_quotes=True):
+        """手动解析 HTML 内容并进行格式转换：引号、省略号、上角标等"""
         if not html_content:
             return html_content
 
@@ -1876,16 +1880,31 @@ def post_process_json_content(data):
                             new_text.append('……')
                             j += 6  # 跳过这六个句点
                         else:
-                            # 处理引号
+                            # 安全的引号转换：只在纯文本内容中进行，避免破坏HTML属性
                             char = text[j]
-                            if char == '"':
-                                double_quote_count += 1
-                                converted_quote = '“' if double_quote_count % 2 == 1 else '”'
-                                new_text.append(converted_quote)
-                            elif char == "'":
-                                single_quote_count += 1
-                                converted_quote = "‘" if single_quote_count % 2 == 1 else "’"
-                                new_text.append(converted_quote)
+                            if convert_quotes and char == '"':
+                                # 检查是否在HTML属性中（简单检查：前后是否有=）
+                                before_context = ''.join(new_text[-10:]) if len(new_text) >= 10 else ''.join(new_text)
+                                after_context = text[j+1:j+11] if j+11 < text_len else text[j+1:]
+                                
+                                # 如果不是HTML属性（没有 = 符号），则进行引号转换
+                                if '=' not in before_context and '=' not in after_context:
+                                    double_quote_count += 1
+                                    converted_quote = '“' if double_quote_count % 2 == 1 else '”'
+                                    new_text.append(converted_quote)
+                                else:
+                                    new_text.append(char)  # 保持原样
+                            elif convert_quotes and char == "'":
+                                # 类似的单引号处理
+                                before_context = ''.join(new_text[-10:]) if len(new_text) >= 10 else ''.join(new_text)
+                                after_context = text[j+1:j+11] if j+11 < text_len else text[j+1:]
+                                
+                                if '=' not in before_context and '=' not in after_context:
+                                    single_quote_count += 1
+                                    converted_quote = "‘" if single_quote_count % 2 == 1 else "’"
+                                    new_text.append(converted_quote)
+                                else:
+                                    new_text.append(char)  # 保持原样
                             else:
                                 new_text.append(char)
                             j += 1
@@ -1906,6 +1925,12 @@ def post_process_json_content(data):
         except json.JSONDecodeError:
             return data
 
+    # 定义需要进行引号转换的字段（只对这些字段进行处理）
+    QUOTE_CONVERSION_FIELDS = {
+        'content', 'solution', 'analysis', 'answer', 'explanation', 
+        'title', 'description', 'question_text', 'option_text'
+    }
+    
     # 递归处理 JSON 中的每个字段
     def process_item(item):
         try:
@@ -1913,7 +1938,12 @@ def post_process_json_content(data):
                 for key, value in item.items():
                     try:
                         if isinstance(value, str):
-                            item[key] = replace_quotes_in_html(value)
+                            # 只对特定字段进行引号转换，其他字段只做省略号和上角标转换
+                            if key.lower() in QUOTE_CONVERSION_FIELDS or any(field in key.lower() for field in QUOTE_CONVERSION_FIELDS):
+                                item[key] = replace_quotes_in_html(value, convert_quotes=True)
+                            else:
+                                # 只进行省略号和上角标转换，不进行引号转换
+                                item[key] = replace_quotes_in_html(value, convert_quotes=False)
                         elif isinstance(value, (dict, list)):
                             process_item(value)
                     except Exception as e:
@@ -1923,7 +1953,8 @@ def post_process_json_content(data):
                 for i in range(len(item)):
                     try:
                         if isinstance(item[i], str):
-                            item[i] = replace_quotes_in_html(item[i])
+                            # 对数组中的字符串进行处理（默认进行引号转换）
+                            item[i] = replace_quotes_in_html(item[i], convert_quotes=True)
                         elif isinstance(item[i], (dict, list)):
                             process_item(item[i])
                     except Exception as e:
@@ -1947,7 +1978,7 @@ def main():
     if len(sys.argv) > 1:
         word_file_path = sys.argv[1]
     else:
-        word_file_path = "Chinese/精品解析：2025年四川省资阳市中考语文真题（解析版）.docx"  # 默认文件路径
+        word_file_path = "Chinese/精品解析：2025年甘肃省兰州市中考语文真题（解析版）.docx"  # 默认文件路径
      
     output_format = "markdown"  # 可选: markdown, plain, html
     prompt_template_path = "prompt_Chinese.md"
