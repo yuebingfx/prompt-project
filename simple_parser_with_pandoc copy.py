@@ -2,26 +2,35 @@
 # -*- coding: utf-8 -*-
 
 """
-Pandoc Word文档处理工具 - 增强版 (支持加点字检测，图片处理已禁用)
+Pandoc Word文档处理工具 - 增强版 (支持文本框和边框检测)
 
 使用pandoc将Word文档转换为模型可读的纯文本内容，支持：
 1. 文档文本转换 (Pandoc)
 2. 大模型API调用 (文档结构解析)
 3. 着重号检测 (加点字标记保留)
 4. 连续短横线转中文破折号
+5. 文本框和边框内容检测 (新增)
+6. Word文档XML结构直接解析 (新增)
+
+新增功能：
+- 通过python-docx直接解析Word文档XML结构
+- 检测和识别文档中的文本框内容
+- 检测和识别文档中的边框段落
+- 将检测到的特殊结构转换为HTML格式
+- 解决pandoc转换表格时长横线问题
 
 注：图片提取和内容分析功能已禁用以提高运行效率
-注：格式增强功能生成pandoc标记，供后续模型处理
+注：加点字转换为HTML功能已移除，标记保留供后续模型处理
 
 依赖安装：
 1. 确保系统已安装pandoc: https://pandoc.org/installing.html
-2. 安装python-docx: pip install python-docx (仅用于加点字预处理)
+2. 安装python-docx: pip install python-docx (用于格式预处理和文本框检测)
 3. 安装其他依赖: pip install requests
 
 使用方法：
 1. 运行脚本处理Word文档
-2. 检测并保留所有格式标记（原始pandoc格式）
-3. 生成最终的解析结果
+2. 自动检测文本框、边框、加点字等特殊格式
+3. 生成包含完整格式信息的解析结果
 """
 
 import subprocess
@@ -67,6 +76,8 @@ class PandocWordProcessor:
         self.special_formatted_text = []
         self.format_statistics = defaultdict(int)
         self.paragraph_formatting = []  # 新增：存储段落格式信息
+        self.textbox_content = []  # 新增：存储文本框内容
+        self.bordered_content = []  # 新增：存储边框内容
         
         if self.format_detection_enabled:
             self._init_format_styles()
@@ -294,6 +305,147 @@ class PandocWordProcessor:
         
         return para_formats
     
+    def _analyze_textboxes_and_borders(self, doc):
+        """分析文本框和边框内容"""
+        try:
+            # 通过XML解析来检测文本框和形状
+            from docx.oxml import parse_xml
+            from docx.oxml.ns import nsdecls, qn
+            
+            # 检查文档XML中的文本框和形状元素
+            document_xml = doc.element
+            
+            # 寻找文本框元素 (w:textbox)
+            textbox_elements = document_xml.xpath('//w:textbox', namespaces=document_xml.nsmap)
+            if textbox_elements:
+                print(f"📦 发现 {len(textbox_elements)} 个文本框元素")
+                
+                for i, textbox in enumerate(textbox_elements):
+                    # 提取文本框内的内容
+                    textbox_text = self._extract_textbox_content(textbox)
+                    if textbox_text:
+                        self.textbox_content.append({
+                            'index': i + 1,
+                            'content': textbox_text,
+                            'type': 'textbox'
+                        })
+                        print(f"  📦 文本框 {i+1}: {textbox_text[:50]}...")
+            
+            # 寻找带边框的段落 (通过段落边框属性)
+            self._analyze_paragraph_borders(doc)
+            
+            # 寻找形状元素中的文本内容
+            shape_elements = document_xml.xpath('//w:r/w:drawing/wp:inline/a:graphic/a:graphicData/wps:wsp', 
+                                               namespaces=document_xml.nsmap)
+            if shape_elements:
+                print(f"🔷 发现 {len(shape_elements)} 个形状元素")
+                
+                for i, shape in enumerate(shape_elements):
+                    # 检查形状中是否有文本
+                    shape_text = self._extract_shape_text_content(shape)
+                    if shape_text:
+                        self.textbox_content.append({
+                            'index': i + 1,
+                            'content': shape_text,
+                            'type': 'shape_text'
+                        })
+                        print(f"  🔷 形状文本 {i+1}: {shape_text[:50]}...")
+            
+        except Exception as e:
+            print(f"⚠️ 文本框和边框分析失败: {e}")
+    
+    def _extract_textbox_content(self, textbox_element):
+        """从文本框元素中提取文本内容"""
+        try:
+            # 获取文本框中的所有文本节点
+            text_nodes = textbox_element.xpath('.//w:t', namespaces=textbox_element.nsmap)
+            text_content = ''.join(node.text or '' for node in text_nodes)
+            return text_content.strip()
+        except Exception as e:
+            print(f"  ⚠️ 提取文本框内容失败: {e}")
+            return ""
+    
+    def _extract_shape_text_content(self, shape_element):
+        """从形状元素中提取文本内容"""
+        try:
+            # 查找形状中的文本内容
+            text_nodes = shape_element.xpath('.//a:t', namespaces=shape_element.nsmap)
+            text_content = ''.join(node.text or '' for node in text_nodes)
+            return text_content.strip()
+        except Exception as e:
+            print(f"  ⚠️ 提取形状文本内容失败: {e}")
+            return ""
+    
+    def _analyze_paragraph_borders(self, doc):
+        """分析段落边框"""
+        try:
+            for i, para in enumerate(doc.paragraphs):
+                para_text = para.text.strip()
+                if not para_text:
+                    continue
+                
+                # 检查段落边框属性
+                para_format = para.paragraph_format
+                has_border = False
+                
+                # 检查是否有边框设置
+                try:
+                    # 通过XML检查边框
+                    para_xml = para._element
+                    border_elements = para_xml.xpath('.//w:pBdr', namespaces=para_xml.nsmap)
+                    if border_elements:
+                        has_border = True
+                        border_info = self._analyze_border_properties(border_elements[0])
+                        
+                        self.bordered_content.append({
+                            'paragraph_index': i + 1,
+                            'content': para_text,
+                            'border_info': border_info,
+                            'type': 'bordered_paragraph'
+                        })
+                        print(f"  🔲 边框段落 {i+1}: {para_text[:50]}...")
+                        
+                except Exception as e:
+                    print(f"  ⚠️ 分析段落边框失败: {e}")
+                    
+                # 额外检查：如果段落包含大量连续的横线字符，也可能是伪边框
+                if len(para_text) > 20 and para_text.count('-') / len(para_text) > 0.8:
+                    self.bordered_content.append({
+                        'paragraph_index': i + 1,
+                        'content': para_text,
+                        'border_info': {'type': 'dash_border', 'dash_count': para_text.count('-')},
+                        'type': 'dash_border_paragraph'
+                    })
+                    print(f"  ➖ 横线边框段落 {i+1}: {para_text[:50]}...")
+                        
+        except Exception as e:
+            print(f"⚠️ 段落边框分析失败: {e}")
+    
+    def _analyze_border_properties(self, border_element):
+        """分析边框属性"""
+        try:
+            border_info = {}
+            
+            # 检查各种边框
+            border_types = ['top', 'bottom', 'left', 'right']
+            for border_type in border_types:
+                border_node = border_element.xpath(f'.//w:{border_type}', 
+                                                  namespaces=border_element.nsmap)
+                if border_node:
+                    border_info[border_type] = {
+                        'exists': True,
+                        'style': border_node[0].get(qn('w:val'), 'single'),
+                        'size': border_node[0].get(qn('w:sz'), '4')
+                    }
+                else:
+                    border_info[border_type] = {'exists': False}
+            
+            return border_info
+            
+        except Exception as e:
+            print(f"  ⚠️ 分析边框属性失败: {e}")
+            return {'error': str(e)}
+    
     def extract_format_analysis(self, docx_path):
         """提取文档的格式分析信息"""
         if not self.format_detection_enabled:
@@ -310,6 +462,8 @@ class PandocWordProcessor:
             self.special_formatted_text = []
             self.format_statistics = defaultdict(int)
             self.paragraph_formatting = []  # 重置段落格式信息
+            self.textbox_content = []  # 重置文本框内容
+            self.bordered_content = []  # 重置边框内容
             
             for para in doc.paragraphs:
                 paragraph_count += 1
@@ -344,6 +498,9 @@ class PandocWordProcessor:
                                 location = f"表格{table_count}-行{row_index}-列{cell_index}"
                                 self._analyze_text_formatting(run, location, run_index)
             
+            # 新增：分析文本框和边框内容
+            self._analyze_textboxes_and_borders(doc)
+            
             # 统计首行缩进段落、居中段落和居右段落
             indent_paragraphs = len([p for p in self.paragraph_formatting if p['has_first_line_indent']])
             centered_paragraphs = len([p for p in self.paragraph_formatting if p['is_centered']])
@@ -354,6 +511,8 @@ class PandocWordProcessor:
             print(f"📏 发现 {indent_paragraphs} 个包含首行缩进的段落")
             print(f"📐 发现 {centered_paragraphs} 个居中对齐的段落")
             print(f"📑 发现 {right_aligned_paragraphs} 个居右对齐的段落")
+            print(f"📦 发现 {len(self.textbox_content)} 个文本框内容")
+            print(f"🔲 发现 {len(self.bordered_content)} 个边框内容")
             
             return {
                 'total_paragraphs': paragraph_count,
@@ -363,6 +522,8 @@ class PandocWordProcessor:
                 'indent_paragraph_count': indent_paragraphs,
                 'centered_paragraph_count': centered_paragraphs,
                 'right_aligned_paragraph_count': right_aligned_paragraphs,
+                'textbox_count': len(self.textbox_content),
+                'bordered_content_count': len(self.bordered_content),
                 'format_statistics': dict(self.format_statistics)
             }
             
@@ -483,6 +644,34 @@ class PandocWordProcessor:
             summary_lines.append(f"📊 特殊格式文本: {len(self.special_formatted_text)} 个片段")
             summary_lines.extend(f"  {fmt}: {count}次" 
                               for fmt, count in sorted(format_counts.items(), key=lambda x: x[1], reverse=True))
+        
+        # 统计文本框内容
+        if hasattr(self, 'textbox_content') and self.textbox_content:
+            textbox_count = len(self.textbox_content)
+            summary_lines.append(f"📦 文本框内容: {textbox_count} 个")
+            
+            # 按类型统计
+            textbox_types = {}
+            for item in self.textbox_content:
+                item_type = item['type']
+                textbox_types[item_type] = textbox_types.get(item_type, 0) + 1
+            
+            for type_name, count in textbox_types.items():
+                summary_lines.append(f"  {type_name}: {count} 个")
+        
+        # 统计边框内容
+        if hasattr(self, 'bordered_content') and self.bordered_content:
+            border_count = len(self.bordered_content)
+            summary_lines.append(f"🔲 边框内容: {border_count} 个")
+            
+            # 按类型统计
+            border_types = {}
+            for item in self.bordered_content:
+                item_type = item['type']
+                border_types[item_type] = border_types.get(item_type, 0) + 1
+            
+            for type_name, count in border_types.items():
+                summary_lines.append(f"  {type_name}: {count} 个")
         
         if not summary_lines:
             return "未发现特殊格式或首行缩进"
@@ -1081,6 +1270,8 @@ class PandocWordProcessor:
         """根据格式分析结果增强pandoc内容"""
         print(f"🔍 开始分析 {len(self.special_formatted_text)} 个特殊格式文本")
         print(f"📏 开始分析 {len(self.paragraph_formatting)} 个段落格式")
+        print(f"📦 开始分析 {len(self.textbox_content)} 个文本框内容")
+        print(f"🔲 开始分析 {len(self.bordered_content)} 个边框内容")
         
         # 🌊 首先：识别XML预处理标记的波浪线填空（优先级最高）
         import re
@@ -1270,28 +1461,15 @@ class PandocWordProcessor:
         sorted_formats = sorted(self.special_formatted_text, 
                               key=lambda x: len(x['text']), reverse=True)
         
+        format_enhanced_count = 0
+        
         for format_item in sorted_formats:
             text = format_item['text'].strip()
             formats = format_item['formats']
-                        
-            # 🌊 特殊处理：纯空格的波浪线格式转换为&nbsp;格式（优先处理，避免被过短文本条件跳过）
-            if any("波浪线格式" in fmt for fmt in formats) and text.replace(' ', '').replace('\u00A0', '') == '':
-                space_count = max(3, len(text))  # 计算空格数量，最少3个
-                nbsp_content = "&nbsp;" * space_count
-                enhanced_text = f"[{nbsp_content}]{{.wavy-underline}}"
-                print(f"  🌊 波浪线填空：{len(text)}个空格 → {space_count}个&nbsp;")
-                content = content.replace(text, enhanced_text, 1)
-                format_enhanced_count += 1
-                continue
-                
-            # 🌊 优化：基于格式分析的波浪线格式检测（已由通用检测处理）
-            # 移除硬编码的特定文本模式，改为依赖通用检测
-                    
+            
             # 跳过空文本或过短文本
             if len(text) < 2:
                 continue
-            
-
             
             # 生成格式标注
             format_annotation = self._generate_format_annotation(formats)
@@ -1306,12 +1484,125 @@ class PandocWordProcessor:
                 
                 print(f"格式增强: \"{text[:30]}{'...' if len(text) > 30 else ''}\" -> {format_annotation}")
         
+        # 第三步：处理文本框和边框内容
+        textbox_enhanced_count = 0
+        bordered_enhanced_count = 0
+        
+        # 处理文本框内容
+        if self.textbox_content:
+            print(f"📦 开始处理 {len(self.textbox_content)} 个文本框...")
+            content = self._enhance_textbox_content(content)
+            textbox_enhanced_count = len(self.textbox_content)
+        
+        # 处理边框内容
+        if self.bordered_content:
+            print(f"🔲 开始处理 {len(self.bordered_content)} 个边框内容...")
+            content = self._enhance_bordered_content(content)
+            bordered_enhanced_count = len(self.bordered_content)
+        
         print(f"✅ 格式增强完成:")
         print(f" 居右对齐标记: {right_aligned_enhanced_count} 个段落")
         print(f" 居中对齐标记: {centered_enhanced_count} 个段落")
         print(f" 首行缩进标记: {indent_enhanced_count} 个段落")
         print(f" 特殊格式标记: {format_enhanced_count} 个文本")
+        print(f" 文本框处理: {textbox_enhanced_count} 个")
+        print(f" 边框内容处理: {bordered_enhanced_count} 个")
         return content
+    
+    def _enhance_textbox_content(self, content):
+        """增强文本框内容的格式显示"""
+        enhanced_content = content
+        
+        for textbox_item in self.textbox_content:
+            textbox_text = textbox_item['content'].strip()
+            textbox_type = textbox_item['type']
+            
+            if not textbox_text or len(textbox_text) < 2:
+                continue
+                
+            # 尝试在内容中找到对应的文本
+            matched_content, match_reason = self._find_matching_content_in_pandoc(textbox_text, enhanced_content)
+            
+            if matched_content:
+                # 创建文本框HTML结构
+                textbox_html = self._create_textbox_html(matched_content, textbox_type)
+                
+                # 替换原始内容
+                enhanced_content = enhanced_content.replace(matched_content, textbox_html, 1)
+                print(f"  📦 文本框增强: \"{matched_content[:30]}{'...' if len(matched_content) > 30 else ''}\" -> HTML文本框")
+            else:
+                print(f"  ⚠️ 未找到匹配的文本框内容: \"{textbox_text[:30]}{'...' if len(textbox_text) > 30 else ''}\"")
+        
+        return enhanced_content
+    
+    def _enhance_bordered_content(self, content):
+        """增强边框内容的格式显示"""
+        enhanced_content = content
+        
+        for border_item in self.bordered_content:
+            border_text = border_item['content'].strip()
+            border_type = border_item['type']
+            
+            if not border_text or len(border_text) < 2:
+                continue
+            
+            # 处理横线边框的特殊情况
+            if border_type == 'dash_border_paragraph':
+                print(f"  ➖ 跳过横线边框段落，这些已由pandoc处理: \"{border_text[:30]}...\"")
+                continue
+            
+            # 尝试在内容中找到对应的文本
+            matched_content, match_reason = self._find_matching_content_in_pandoc(border_text, enhanced_content)
+            
+            if matched_content:
+                # 创建边框HTML结构
+                border_html = self._create_bordered_html(matched_content, border_item['border_info'])
+                
+                # 替换原始内容
+                enhanced_content = enhanced_content.replace(matched_content, border_html, 1)
+                print(f"  🔲 边框增强: \"{matched_content[:30]}{'...' if len(matched_content) > 30 else ''}\" -> HTML边框")
+            else:
+                print(f"  ⚠️ 未找到匹配的边框内容: \"{border_text[:30]}{'...' if len(border_text) > 30 else ''}\"")
+        
+        return enhanced_content
+    
+    def _create_textbox_html(self, content, textbox_type='textbox'):
+        """创建文本框的HTML结构"""
+        # 根据文本框类型选择不同的样式
+        if textbox_type == 'shape_text':
+            return f'''<div class="shape-textbox" style="border: 2px solid #4A90E2; background-color: #F0F8FF; padding: 15px; margin: 10px 0; border-radius: 8px;">
+                <p style="margin: 0; font-weight: 500;">{content}</p>
+            </div>'''
+        else:
+            return f'''<div class="document-textbox" style="border: 2px solid #666; background-color: #F9F9F9; padding: 15px; margin: 10px 0; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                <p style="margin: 0;">{content}</p>
+            </div>'''
+    
+    def _create_bordered_html(self, content, border_info):
+        """创建边框内容的HTML结构"""
+        # 根据边框信息生成样式
+        border_style = "border: 2px solid #333;"
+        
+        if isinstance(border_info, dict) and 'error' not in border_info:
+            # 根据边框属性调整样式
+            border_parts = []
+            for side in ['top', 'bottom', 'left', 'right']:
+                if border_info.get(side, {}).get('exists', False):
+                    size = border_info[side].get('size', '4')
+                    # 将Word的size转换为CSS的像素值 (Word size * 0.5)
+                    pixel_size = max(1, int(size) // 4)
+                    border_parts.append(f"border-{side}: {pixel_size}px solid #333;")
+            
+            if border_parts:
+                border_style = " ".join(border_parts)
+        
+        return f'''<table class="bordered-content" style="{border_style} width: 100%; margin: 10px 0; border-collapse: collapse;">
+            <tr>
+                <td style="padding: 15px; {border_style}">
+                    <p style="margin: 0;">{content}</p>
+                </td>
+            </tr>
+        </table>'''
     
     def _generate_format_annotation(self, formats):
         """根据格式列表生成标注"""
@@ -1519,7 +1810,6 @@ class PandocWordProcessor:
         print(f"输出格式: {output_format}")
         print(f"Prompt模板: {prompt_template_path}")
         # print(f"格式分析: 已禁用")  # 已移除格式分析功能
-        print(f"格式标记: 启用增强标注（生成pandoc格式）")
         print(f"加点字标记保留: {'启用' if enable_dot_below_detection else '禁用'}")
         print(f"Coze工作流: {'启用' if enable_coze_workflow else '禁用'}")
         print("=" * 60)
@@ -1820,11 +2110,6 @@ class PandocWordProcessor:
                     # 关键：只匹配有xml:space="preserve"的wave格式（真正的填空）
                     wavy_pattern = r'(<w:r><w:rPr>(?:[^<]|<[^/][^>]*>)*<w:u w:val="wave"/>(?:[^<]|<[^/][^>]*>)*</w:rPr><w:t[^>]*xml:space="preserve"[^>]*>)(\s+)(</w:t></w:r>)'
                     
-                    def is_pure_space_wave(match):
-                        text_content = match[1]  # 空格内容
-                        # 确保内容只包含空格字符（空格、制表符、换行符）
-                        return text_content.strip() == ''
-                    
                     def replace_wavy_spaces(match):
                         before_text = match.group(1)  # <w:r><w:rPr>...<w:t>
                         spaces = match.group(2)       # 空格内容
@@ -1916,7 +2201,7 @@ def post_process_json_content(data):
     JSON内容后处理函数：对解析后的JSON数据进行格式规范化处理
     
     主要功能：
-    1. 英文引号 → 中文左右引号：交替将双引号"替换为""，单引号'替换为''
+    1. 英文引号 → 中文左右引号：智能转换，避免破坏JSON结构
     2. 英文省略号 → 中文省略号：将连续六个句点......转换为……
     3. 上角标格式转换：将^内容^形式转换为<sup>内容</sup>HTML标签
     4. 手动HTML解析确保在标签内部不进行转换
@@ -1926,10 +2211,14 @@ def post_process_json_content(data):
 
     返回:
         处理后的 JSON 数据，所有文本内容已完成格式规范化
+        
+    注意：
+        - 引号转换只在HTML内容的文本部分进行，不影响HTML标签
+        - 使用安全的引号转换算法，避免破坏JSON结构
     """
 
-    def replace_quotes_in_html(html_content):
-        """手动解析 HTML 内容并进行多种格式转换：引号、省略号、上角标等"""
+    def replace_quotes_in_html(html_content, convert_quotes=True):
+        """手动解析 HTML 内容并进行格式转换：引号、省略号、上角标等"""
         if not html_content:
             return html_content
 
@@ -1977,16 +2266,31 @@ def post_process_json_content(data):
                             new_text.append('……')
                             j += 6  # 跳过这六个句点
                         else:
-                            # 处理引号
+                            # 安全的引号转换：只在纯文本内容中进行，避免破坏HTML属性
                             char = text[j]
-                            if char == '"':
-                                double_quote_count += 1
-                                converted_quote = '“' if double_quote_count % 2 == 1 else '”'
-                                new_text.append(converted_quote)
-                            elif char == "'":
-                                single_quote_count += 1
-                                converted_quote = "‘" if single_quote_count % 2 == 1 else "’"
-                                new_text.append(converted_quote)
+                            if convert_quotes and char == '"':
+                                # 检查是否在HTML属性中（简单检查：前后是否有=）
+                                before_context = ''.join(new_text[-10:]) if len(new_text) >= 10 else ''.join(new_text)
+                                after_context = text[j+1:j+11] if j+11 < text_len else text[j+1:]
+                                
+                                # 如果不是HTML属性（没有 = 符号），则进行引号转换
+                                if '=' not in before_context and '=' not in after_context:
+                                    double_quote_count += 1
+                                    converted_quote = '“' if double_quote_count % 2 == 1 else '”'
+                                    new_text.append(converted_quote)
+                                else:
+                                    new_text.append(char)  # 保持原样
+                            elif convert_quotes and char == "'":
+                                # 类似的单引号处理
+                                before_context = ''.join(new_text[-10:]) if len(new_text) >= 10 else ''.join(new_text)
+                                after_context = text[j+1:j+11] if j+11 < text_len else text[j+1:]
+                                
+                                if '=' not in before_context and '=' not in after_context:
+                                    single_quote_count += 1
+                                    converted_quote = "‘" if single_quote_count % 2 == 1 else "’"
+                                    new_text.append(converted_quote)
+                                else:
+                                    new_text.append(char)  # 保持原样
                             else:
                                 new_text.append(char)
                             j += 1
@@ -2000,17 +2304,19 @@ def post_process_json_content(data):
             print(f"问题内容: {repr(html_content[:100])}")
             return html_content  # 出错时返回原始内容
 
-    # 🔧 修复：如果是字符串形式的 JSON，先尝试直接解析
+    # 如果是字符串形式的 JSON，先解析为字典
     if isinstance(data, str):
         try:
-            # 直接解析JSON字符串，避免在解析前修改引号
             data = json.loads(data)
-            print("✅ JSON解析成功，开始处理内容引号转换")
-        except json.JSONDecodeError as e:
-            print(f"❌ JSON解析失败: {e}")
-            print("⚠️ 跳过引号转换处理，返回原始字符串")
+        except json.JSONDecodeError:
             return data
 
+    # 定义需要进行引号转换的字段（只对这些字段进行处理）
+    QUOTE_CONVERSION_FIELDS = {
+        'content', 'solution', 'analysis', 'answer', 'explanation', 
+        'title', 'description', 'question_text', 'option_text'
+    }
+    
     # 递归处理 JSON 中的每个字段
     def process_item(item):
         try:
@@ -2018,7 +2324,12 @@ def post_process_json_content(data):
                 for key, value in item.items():
                     try:
                         if isinstance(value, str):
-                            item[key] = replace_quotes_in_html(value)
+                            # 只对特定字段进行引号转换，其他字段只做省略号和上角标转换
+                            if key.lower() in QUOTE_CONVERSION_FIELDS or any(field in key.lower() for field in QUOTE_CONVERSION_FIELDS):
+                                item[key] = replace_quotes_in_html(value, convert_quotes=True)
+                            else:
+                                # 只进行省略号和上角标转换，不进行引号转换
+                                item[key] = replace_quotes_in_html(value, convert_quotes=False)
                         elif isinstance(value, (dict, list)):
                             process_item(value)
                     except Exception as e:
@@ -2028,7 +2339,8 @@ def post_process_json_content(data):
                 for i in range(len(item)):
                     try:
                         if isinstance(item[i], str):
-                            item[i] = replace_quotes_in_html(item[i])
+                            # 对数组中的字符串进行处理（默认进行引号转换）
+                            item[i] = replace_quotes_in_html(item[i], convert_quotes=True)
                         elif isinstance(item[i], (dict, list)):
                             process_item(item[i])
                     except Exception as e:
@@ -2052,10 +2364,10 @@ def main():
     if len(sys.argv) > 1:
         word_file_path = sys.argv[1]
     else:
-        word_file_path = "Chinese/精品解析：2025年四川省宜宾市中考语文真题（解析版）.docx"  # 默认文件路径
+        word_file_path = "Chinese/2023-2024学年广东省深圳市福田区三年级（上）期中语文试卷.docx"  # 默认文件路径
      
     output_format = "markdown"  # 可选: markdown, plain, html
-    prompt_template_path = "prompt_Chinese copy1.md"
+    prompt_template_path = "prompt_Chinese.md"
     
     # 创建处理器实例
     processor = PandocWordProcessor()

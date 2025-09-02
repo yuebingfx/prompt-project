@@ -1082,6 +1082,51 @@ class PandocWordProcessor:
         print(f"🔍 开始分析 {len(self.special_formatted_text)} 个特殊格式文本")
         print(f"📏 开始分析 {len(self.paragraph_formatting)} 个段落格式")
         
+        # 🌊 首先：识别XML预处理标记的波浪线填空（优先级最高）
+        import re
+        format_enhanced_count = 0
+        
+        # 识别XML预处理阶段插入的波浪线空格标记（支持pandoc转义）
+        wavy_space_pattern = r'\\?\[WAVY_SPACE_(\d+)\\?\]'
+        wavy_space_matches = re.findall(wavy_space_pattern, content)
+        
+        if wavy_space_matches:
+            print(f"  🌊 发现 {len(wavy_space_matches)} 个XML预处理的波浪线填空标记")
+            
+            def replace_wavy_space_marker(match):
+                space_count = int(match.group(1))  # 提取真实的空格数量
+                nbsp_content = "&nbsp;" * space_count
+                enhanced_text = f"[{nbsp_content}]{{.wavy-underline}}"
+                print(f"  🌊 转换波浪线填空：原始{space_count}个空格 → {space_count}个&nbsp;")
+                return enhanced_text
+            
+            # 修正：使用完整模式匹配替换，处理转义的方括号
+            content = re.sub(wavy_space_pattern, replace_wavy_space_marker, content)
+            format_enhanced_count += len(wavy_space_matches)
+        else:
+            # 备用：基于格式分析的波浪线填空检测
+            wavy_space_texts = []
+            for item in self.special_formatted_text:
+                if any("波浪线格式" in fmt for fmt in item['formats']):
+                    text = item['text']
+                    # 检查是否为纯空格文本（可能的填空）
+                    if text.replace(' ', '').replace('\u00A0', '') == '':
+                        wavy_space_texts.append((text, len(text)))
+                        print(f"  🌊 格式分析发现波浪线填空：{len(text)}个空格")
+            
+            # 处理检测到的波浪线填空
+            for original_text, space_count in wavy_space_texts:
+                nbsp_content = "&nbsp;" * space_count
+                enhanced_text = f"[{nbsp_content}]{{.wavy-underline}}"
+                print(f"  🌊 转换波浪线填空：{space_count}个&nbsp;")
+                content = content.replace(original_text, enhanced_text, 1)
+                format_enhanced_count += 1
+            
+            if not wavy_space_texts:
+                print(f"  ⚠️ 未检测到波浪线填空，跳过处理")
+        
+        # ⚠️ 注意：删除重复的波浪线处理逻辑，使用通用的格式标注处理机制
+        
         # 🚨 重要：优先处理居右段落，避免被首行缩进误匹配
         # 第一步：处理居右段落
         right_aligned_enhanced_count = 0
@@ -1240,15 +1285,36 @@ class PandocWordProcessor:
             # 生成格式标注
             format_annotation = self._generate_format_annotation(formats)
             
-            if format_annotation and text in content:
-                # 创建增强的文本标注
-                enhanced_text = f"[{text}]{{{format_annotation}}}"
+            # 🔧 字符标准化：处理pandoc转换导致的字符差异
+            # 中文引号 → 英文引号，中文省略号 → 英文点号
+            normalized_text = text.replace('“', '"').replace('”', '"').replace('……', '......')
+            
+            # 🛡️ 防重复处理：检查文本是否已经被标记过
+            if format_annotation:
+                # 检查原始文本或标准化文本是否已经有格式标记
+                if f"[{text}]{{" in content or f"[{normalized_text}]{{" in content:
+                    print(f"  ⚠️ 跳过已标记文本: \"{text[:30]}{'...' if len(text) > 30 else ''}\"")
+                    continue
                 
-                # 执行替换（只替换第一个匹配，避免重复替换）
-                content = content.replace(text, enhanced_text, 1)
-                format_enhanced_count += 1
-                
-                print(f"格式增强: \"{text[:30]}{'...' if len(text) > 30 else ''}\" -> {format_annotation}")
+                # 智能匹配：先尝试原始文本，再尝试标准化文本
+                target_text = None
+                if text in content:
+                    target_text = text
+                elif normalized_text in content:
+                    target_text = normalized_text
+                    
+                if target_text:
+                    # 创建增强的文本标注
+                    enhanced_text = f"[{target_text}]{{{format_annotation}}}"
+                    
+                    # 执行替换（只替换第一个匹配，避免重复替换）
+                    content = content.replace(target_text, enhanced_text, 1)
+                    format_enhanced_count += 1
+                    
+                    if target_text != text:
+                        print(f"🔧 字符标准化成功: \"{text[:30]}{'...' if len(text) > 30 else ''}\" -> {format_annotation}")
+                    else:
+                        print(f"格式增强: \"{text[:30]}{'...' if len(text) > 30 else ''}\" -> {format_annotation}")
         
         print(f"✅ 格式增强完成:")
         print(f" 居右对齐标记: {right_aligned_enhanced_count} 个段落")
@@ -1261,11 +1327,14 @@ class PandocWordProcessor:
         """根据格式列表生成标注"""
         annotations = []
         
-        # 处理下划线类型
+        # 🌊 特殊处理：波浪线格式优先，只返回波浪线标记
         for fmt in formats:
             if "波浪线格式" in fmt:
-                annotations.append(".wavy-underline")
-            elif "点状线格式" in fmt:
+                return ".wavy-underline"  # 直接返回，不添加其他格式
+        
+        # 处理其他下划线类型
+        for fmt in formats:
+            if "点状线格式" in fmt:
                 annotations.append(".dotted-underline")
             elif "下划线: 单下划线" in fmt:
                 annotations.append(".single-underline")
@@ -1756,12 +1825,51 @@ class PandocWordProcessor:
                         
                         return f"{before_em}{underline_xml}{after_em}{marked_text}{after_text}"
                     
-                    modified_content, replacement_count = re.subn(run_with_em_pattern, replace_run_with_em, xml_content, flags=re.DOTALL)
+                    # 🌊 安全的波浪线XML预处理（修正版）
+                    modified_content = xml_content
+                    
+                    # 🔧 修复：允许rPr内有其他标签，但确保在同一个w:r内
+                    # 关键：只匹配有xml:space="preserve"的wave格式（真正的填空）
+                    wavy_pattern = r'(<w:r><w:rPr>(?:[^<]|<[^/][^>]*>)*<w:u w:val="wave"/>(?:[^<]|<[^/][^>]*>)*</w:rPr><w:t[^>]*xml:space="preserve"[^>]*>)(\s+)(</w:t></w:r>)'
+                    
+                    def replace_wavy_spaces(match):
+                        before_text = match.group(1)  # <w:r><w:rPr>...<w:t>
+                        spaces = match.group(2)       # 空格内容
+                        after_text = match.group(3)   # </w:t></w:r>
+                        
+                        # 🔍 严格检查：只处理纯空格的波浪线（真正的填空）
+                        if spaces.strip() != '':
+                            # 如果不是纯空格，则不处理，保持原样
+                            return match.group(0)
+                        
+                        space_count = len(spaces)
+                        # 保持XML结构完整，只替换文本内容
+                        marked_text = f"[WAVY_SPACE_{space_count}]"
+                        return f"{before_text}{marked_text}{after_text}"
+                    
+                    # 🔍 调试：检查波浪线匹配和处理过程
+                    test_matches = re.findall(wavy_pattern, modified_content, flags=re.DOTALL)
+                    print(f"  🔍 调试：找到 {len(test_matches)} 个波浪线模式")
+                    for i, match in enumerate(test_matches):
+                        content = match[1]
+                        is_pure_space = content.strip() == ''
+                        print(f"    匹配 {i+1}: 内容长度={len(content)}, 纯空格={is_pure_space}, 内容='{content[:20]}...'")
+                    
+                    # 先处理波浪线（在XML结构完整时）
+                    modified_content, wavy_count = re.subn(wavy_pattern, replace_wavy_spaces, modified_content, flags=re.DOTALL)
+                    
+                    # 再处理加点字
+                    modified_content, dot_count = re.subn(run_with_em_pattern, replace_run_with_em, modified_content, flags=re.DOTALL)
+                    
+                    replacement_count = dot_count + wavy_count
                     
                     if replacement_count > 0:
                         with open(document_xml_path, 'w', encoding='utf-8') as f:
                             f.write(modified_content)
-                        print(f"  ✅ 处理了 {replacement_count} 个加点字")
+                        if dot_count > 0:
+                            print(f"  ✅ 处理了 {dot_count} 个加点字")
+                        if wavy_count > 0:
+                            print(f"  🌊 标记了 {wavy_count} 个波浪线填空（XML预处理）")
                 
                 # 重新打包docx文件
                 with zipfile.ZipFile(output_path, 'w', zipfile.ZIP_DEFLATED) as zip_file:
@@ -1978,7 +2086,7 @@ def main():
     if len(sys.argv) > 1:
         word_file_path = sys.argv[1]
     else:
-        word_file_path = "Chinese/精品解析：2025年甘肃省兰州市中考语文真题（解析版）.docx"  # 默认文件路径
+        word_file_path = "Chinese/精品解析：2025年吉林省长春市中考语文真题（解析版）.docx"  # 默认文件路径
      
     output_format = "markdown"  # 可选: markdown, plain, html
     prompt_template_path = "prompt_Chinese.md"
