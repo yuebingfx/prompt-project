@@ -1,0 +1,348 @@
+[
+  {
+    "subjectId": 1,
+    "phaseId": 1,
+    "question": {
+      "content": "<p>请认真听录音朗读短文两遍，然后按要求回答下列问题。</p>",
+      "type": "综合"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>汉服，是汉民族的传统服装，又称<input size=\"15\" readonly=\"readonly\" type=\"underline\">。</p>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "略"
+          ]
+        },
+        "solution": "<p>本题考查对录音内容的理解和记忆能力。</p>"
+      },
+      {
+        "content": "<p>汉服一脉相承，按时期可依次分为______等。（）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>唐制、魏晋风、宋制、明制汉服</p>",
+          "<p>魏晋风、唐制、宋制、明制汉服</p>",
+          "<p>魏晋风、宋制、明制、唐制汉服</p>"
+        ],
+        "answer": {
+          "choice": "1"
+        },
+        "solution": "<p>本题考查对汉服发展历史的了解。汉服按时期可依次分为魏晋风、唐制、宋制、明制汉服，因此正确答案为B选项。</p>"
+      },
+      {
+        "content": "<p>根据录音内容判断对错，对的打“√”，错的打“×”。唐代服饰用色浓烈大方，呈现出雍容华美的特点。______</p>",
+        "type": "判断",
+        "answer": {
+          "choice": "1"
+        },
+        "solution": "<p>本题考查对录音内容的理解和判断能力。唐代服饰确实用色浓烈大方，呈现出雍容华美的特点，因此该表述正确。</p>"
+      },
+      {
+        "content": "<p>根据录音内容判断对错，对的打“√”，错的打“×”。宋代汉服在形制设计和风格上同唐代汉服完全一样。______</p>",
+        "type": "判断",
+        "answer": {
+          "choice": "0"
+        },
+        "solution": "<p>本题考查对录音内容的理解和判断能力。宋代汉服在形制设计和风格上与唐代汉服有明显区别，因此该表述错误。</p>"
+      },
+      {
+        "content": "<p>根据录音内容判断对错，对的打“√”，错的打“×”。有人认为，让汉服回归现代生活才是对其最好的保护与传承。______</p>",
+        "type": "判断",
+        "answer": {
+          "choice": "1"
+        },
+        "solution": "<p>本题考查对录音内容的理解和判断能力。录音中提到有人认为让汉服回归现代生活是对其最好的保护与传承，因此该表述正确。</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 1,
+    "question": {
+      "content": "<p>读一读，写一写，注意把字写得正确、美观。</p><p>让我们用心体会自rán<input size=\"8\" readonly=\"readonly\" type=\"underline\">的奇妙：飞yáng<input size=\"8\" readonly=\"readonly\" type=\"underline\">的shù zhī<input size=\"15\" readonly=\"readonly\" type=\"underline\">，是柳姑娘张开双bì<input size=\"8\" readonly=\"readonly\" type=\"underline\">，在风中起wǔ<input size=\"8\" readonly=\"readonly\" type=\"underline\">；遍野jīn huáng<input size=\"15\" readonly=\"readonly\" type=\"underline\">的luò yè<input size=\"15\" readonly=\"readonly\" type=\"underline\">，是大山chuān dài<input size=\"15\" readonly=\"readonly\" type=\"underline\">的xiān yàn<input size=\"15\" readonly=\"readonly\" type=\"underline\">秋衣；jīng<input size=\"8\" readonly=\"readonly\" type=\"underline\">莹的雨滴，是云宝宝伤心时liú<input size=\"8\" readonly=\"readonly\" type=\"underline\">下的lèi<input size=\"8\" readonly=\"readonly\" type=\"underline\">水；皑皑的白雪，那是冬爷爷给大地pū<input size=\"8\" readonly=\"readonly\" type=\"underline\">上的一床nuǎn huo<input size=\"15\" readonly=\"readonly\" type=\"underline\">棉被。</p>",
+      "type": "填空",
+      "answer": {
+        "blanks": [
+          "然",
+          "扬",
+          "树枝",
+          "臂",
+          "舞",
+          "金黄",
+          "落叶",
+          "穿戴",
+          "鲜艳",
+          "晶",
+          "流",
+          "泪",
+          "铺",
+          "暖和"
+        ]
+      },
+      "solution": "<p>本题考查根据拼音写汉字的能力。需要学生熟练掌握拼音和汉字的对应关系，注意字形的正确书写。</p><p>“然”是上下结构，上面是“月”，下面是“灬”；“扬”是左右结构，右边是“昜”不是“易”；“树枝”两个字都是木字旁；“臂”是上下结构，注意下面部分的写法；“舞”中间是四竖；“金黄”都是颜色相关的字；“落叶”都是草字头；“穿戴”都是衣字旁；“鲜艳”都是左右结构；“晶”是三个“日”组成；“流”是三点水旁；“泪”是三点水加“目”；“铺”是金字旁；“暖和”都是左右结构。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 1,
+    "question": {
+      "content": "<p>下列加点字读音有误的一项是（）</p>",
+      "type": "单选",
+      "accessories": [
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">喷</span>香（pèn） <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">挑</span>战（tiǎo） 一<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">骨</span>碌（gū）</p>",
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">诱</span>惑（yòu） <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">担</span>心（dān） 放暑<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">假</span>（jià）</p>",
+        "<p><span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">介</span>绍（jiè） <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">缤</span>纷（bīng） 明<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">晃</span>晃（huàng）</p>"
+      ],
+      "answer": {
+        "choice": "2"
+      },
+      "solution": "<p>本题考查学生对于汉字读音的掌握情况。</p><p>A选项中，“喷香”的“喷”读pèn，“挑战”的“挑”读tiǎo，“一骨碌”的“骨”读gū，均正确。</p><p>B选项中，“诱惑”的“诱”读yòu，“担心”的“担”读dān，“放假”的“假”读jià，均正确。</p><p>C选项中，“缤纷”的“缤”应读bīn，“明晃晃”的“晃”应读huǎng，因此该选项读音有误。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 1,
+    "question": {
+      "content": "<p>下列带有口字旁的字，与叫唤的动作有关的一项是（）</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>吱 哗 呜</p>",
+        "<p>咽 啃 咬</p>",
+        "<p>叫 吵 啼</p>"
+      ],
+      "answer": {
+        "choice": "2"
+      },
+      "solution": "<p>本题考查学生对于偏旁部首及偏旁部首所表示的意思的掌握情况。</p><p>A选项中，“吱”“哗”“呜”都是拟声词，模拟各种声音，与叫唤动作无关。</p><p>B选项中，“咽”“啃”“咬”都是嘴部的动作，但主要与进食有关，不是叫唤动作。</p><p>C选项中，“叫”“吵”“啼”都与叫唤的动作有关，“叫”是发出声音，“吵”是大声叫嚷，“啼”是鸟兽叫，因此该选项正确。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 1,
+    "question": {
+      "content": "<p>下列句子中，标点符号使用有误的一项是（）</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>小裁缝回答说：“好吧，我一定会制伏两个巨人的。”</p>",
+        "<p>“我认为我必须重新到外面的世界去”：丑小鸭说。</p>",
+        "<p>“我好几天没吃东西了，”拇指姑娘对田鼠说道，“请给我点吃的好吗？”</p>"
+      ],
+      "answer": {
+        "choice": "1"
+      },
+      "solution": "<p>本题考查标点符号的正确使用。</p><p>A选项中，直接引语前用冒号，引号内的句子用句号结尾，标点使用正确。</p><p>B选项中，当引语在前，说话人在后时，引语末尾的标点应放在引号内，且说话人前不用冒号，应改为：“我认为我必须重新到外面的世界去。”丑小鸭说。因此该选项标点使用有误。</p><p>C选项中，引语被分成两部分，中间插入说话人，前一部分引语后用逗号，说话人后用逗号，后一部分引语前用引号，标点使用正确。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 1,
+    "question": {
+      "content": "<p>三年级某班同学团结一心，夺得了拔河比赛冠军。班长说道：“果然是______，我们要把这种精神延续下去。”（）</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>人心齐，泰山移</p>",
+        "<p>灯不拨不亮，理不辩不明</p>",
+        "<p>一时强弱在于力，万古胜负在于理</p>"
+      ],
+      "answer": {
+        "choice": "0"
+      },
+      "solution": "<p>本题考查谚语的理解和运用。</p><p>A选项“人心齐，泰山移”意思是只要人们心往一处，共同努力，就能发挥出极大的力量，符合班级团结一心夺冠的语境。</p><p>B选项“灯不拨不亮，理不辩不明”意思是道理需要辩论才能明白，与团结无关。</p><p>C选项“一时强弱在于力，万古胜负在于理”意思是短期的胜负看力量，长期的胜负看道理，与团结无关。</p><p>因此正确答案为A选项。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 1,
+    "question": {
+      "content": "<p>下列说法错误的一项是（）</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>阅读童话故事，不仅可以丰富我们的想象，还能收获许多启示。</p>",
+        "<p>写字时横画要写得端正，竖画要写得平稳，注意横直竖平。</p>",
+        "<p>边读边预测故事内容，可以帮助我们更好地理解文章意思。</p>"
+      ],
+      "answer": {
+        "choice": "1"
+      },
+      "solution": "<p>本题考查阅读策略和方法、汉字书写等知识。</p><p>A选项说法正确，阅读童话故事确实可以丰富想象，收获启示。</p><p>B选项说法错误，正确的说法是：写字时横画要写得平稳，竖画要写得端正，做到横平竖直。</p><p>C选项说法正确，边读边预测故事内容是有效的阅读策略，可以帮助更好地理解文章意思。</p><p>因此错误的一项是B选项。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 1,
+    "question": {
+      "content": "<p>三年级（1）班周末到野外开展“寻找秋天”综合性学习活动，请你参与进来吧！</p>",
+      "type": "综合"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>【由“秋”见四季】游览过程中，第一小组同学拍摄了硕果累累的秋景，接着大家发现了相机里不同季节的美图，请你用积累的词语形容吧！</p><p><img src=\"media/image2.png\" width=\"2.4902777777777776in\" height=\"1.2194444444444446in\" alt=\"秋景图\"/></p><p>秋：凉爽、硕果累累</p><p><img src=\"media/image3.png\" width=\"2.1881944444444446in\" height=\"1.0840277777777778in\" alt=\"春景图\"/></p><p>春：<input size=\"20\" readonly=\"readonly\" type=\"underline\"></p><p><img src=\"media/image4.png\" width=\"2.511111111111111in\" height=\"1.1569444444444446in\" alt=\"夏景图\"/></p><p>夏：<input size=\"20\" readonly=\"readonly\" type=\"underline\"></p><p><img src=\"media/image5.png\" width=\"2.1465277777777776in\" height=\"1.229861111111111in\" alt=\"冬景图\"/></p><p>冬：<input size=\"20\" readonly=\"readonly\" type=\"underline\"></p>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "明媚、春暖花开",
+            "炎热、骄阳似火",
+            "寒冷、白雪皑皑"
+          ]
+        },
+        "solution": "<p>本题考查学生对四季特点的感知和词语积累能力。</p><p>春天的特点是温暖、花开，常用词语有“明媚”“春暖花开”“百花争艳”等；夏天的特点是炎热，常用词语有“炎热”“骄阳似火”“烈日炎炎”等；冬天的特点是寒冷、下雪，常用词语有“寒冷”“白雪皑皑”“冰天雪地”等。</p>"
+      },
+      {
+        "content": "<p>【由“趣”建小组】几位对拍照感兴趣的同学组成了“摄影侠”兴趣小组，其他同学纷纷效仿，成立自己的兴趣小组。请你结合描述为他们取个响亮的小组名称吧。</p><p>1.<input size=\"15\" readonly=\"readonly\" type=\"underline\">：用画笔记录身边美景。</p><p>2.<input size=\"15\" readonly=\"readonly\" type=\"underline\">：用文字描绘眼前景色。</p><p>3.<input size=\"15\" readonly=\"readonly\" type=\"underline\">：用歌声赞颂美丽景物。</p>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "神笔马良",
+            "文字之舟",
+            "天籁之声"
+          ]
+        },
+        "solution": "<p>本题考查学生的创意命名能力。</p><p>第一个小组用画笔记录美景，可以命名为“神笔马良”，取自著名的神笔马良故事，寓意画技高超；第二个小组用文字描绘景色，可以命名为“文字之舟”，寓意用文字承载情感和景色；第三个小组用歌声赞颂景物，可以命名为“天籁之声”，寓意歌声美妙动听。</p>"
+      },
+      {
+        "content": "<p>【由“景”诵诗歌】在美景如画的乡野间，“诗歌吟诵”小组面对秋景联想起了诗，开始讨论起来，请你帮他们把诗句补充完整吧。</p><p>诗中包含一幅幅精美绝伦的画作，既有“<input size=\"25\" readonly=\"readonly\" type=\"underline\">，最是橙黄橘绿时”的缤纷色彩，也有“远上寒山石径斜，<input size=\"25\" readonly=\"readonly\" type=\"underline\">”的美丽风光。诗中饱含作者丰富的情感，既有“牧童<input size=\"15\" readonly=\"readonly\" type=\"underline\">，<input size=\"15\" readonly=\"readonly\" type=\"underline\">”的轻快喜悦，又有“萧萧梧叶送寒声，<input size=\"25\" readonly=\"readonly\" type=\"underline\">”的忧愁思念。</p>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "一年好景君须记",
+            "白云生处有人家",
+            "骑黄牛",
+            "歌声振林樾",
+            "江上秋风动客情"
+          ]
+        },
+        "solution": "<p>本题考查学生对古诗的背诵和积累能力。</p><p>“一年好景君须记，最是橙黄橘绿时”出自宋代苏轼的《赠刘景文》；“远上寒山石径斜，白云生处有人家”出自唐代杜牧的《山行》；“牧童骑黄牛，歌声振林樾”出自清代袁枚的《所见》；“萧萧梧叶送寒声，江上秋风动客情”出自宋代叶绍翁的《夜书所见》。</p>"
+      },
+      {
+        "content": "<p>【由“名”见故事】在诵诗过程中，轩轩问起诗人“苏轼”名字的来历，老师给大家详细讲解了，同学们听后，纷纷谈论起自己名字的由来，以下是峰峰的发言。</p><p>————————————————————————————————————————————————————</p><p>我叫吕岱峰，这是给我取的。岱的意思是泰山，爷爷希望想要我做人做事稳如泰山，有男子汉的担当。峰是指山峰，表示一座山的最顶端，他希望我能构好好学习，不断向上。</p><p>————————————————————————————————————————————————————</p><p>峰峰的发言中有几处错误，请你用修改符号改正。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>我叫吕岱峰，这是爷爷给我取的。岱的意思是泰山，爷爷希望我做人做事稳如泰山，有男子汉的担当。峰是指山峰，表示一座山的最顶端，他希望我能够好好学习，不断向上。</p>"
+        },
+        "solution": "<p>本题考查学生修改病句的能力。</p><p>峰峰的发言中有三处错误：</p><p>1. “这是给我取的”缺少主语，应改为“这是爷爷给我取的”；</p><p>2. “爷爷希望想要我”中“希望”和“想要”意思重复，应删去“想要”；</p><p>3. “能构好好学习”中“能构”是错别字，应改为“能够”。</p>"
+      },
+      {
+        "content": "<p>同学们对你的名字很感兴趣，请你也来讲讲藏在你名字里的故事吧！<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>我有一个好听的名字——杨莉叶。“莉”这个字会让大家不由自主地想起一种美丽的花——茉莉花。这个字代表着忠诚和质朴，它寓意着亲切与美好，象征着一切美好事物都会顺心如意。名字中第三个字“叶”，既是妈妈的姓氏，又是妈妈寄予我的期望。这个字寓意可爱、和善，象征着温文儒雅、乐于助人。爸爸妈妈的姓氏一前一后，“莉”字夹在中间，就犹如小小的我时刻被爸爸妈妈陪伴着，一路保驾护航，助力我健康成长。</p>"
+        },
+        "solution": "<p>本题考查学生的语言表达能力和对自己名字的理解。</p><p>回答时可以从名字的由来、每个字的含义、父母的期望等方面展开，注意语句通顺，表达真情实感。</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 1,
+    "question": {
+      "content": "<p>课内阅读。</p><p>&nbsp; &nbsp;红头在牛肚子里随着草一起移动，从第一个胃到了<u>第二个胃</u>，又从第二个胃回到了<u>牛嘴里</u>。这一下，红头又看见了光亮。可是，它已经一动也不能动了。</p><p>&nbsp; &nbsp;这时，青头爬到牛鼻子上，用它的身体在牛鼻孔里蹭来蹭去。</p><p>&nbsp; &nbsp;“阿嚏！”牛打了一个喷嚏，红头随着一团草一下子给喷了出来。</p><p>&nbsp; &nbsp;红头看见自己的朋友，高兴得流下了眼泪：“谢谢你……”</p><p>&nbsp; &nbsp;青头笑眯眯地说：“不要哭，就当你在牛肚子里作了一次旅行吧！”</p>",
+      "type": "综合"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>请你结合选段内容，理一理红头的旅行路线。</p><p>第一个胃→<input size=\"15\" readonly=\"readonly\" type=\"underline\">→<input size=\"15\" readonly=\"readonly\" type=\"underline\"></p>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "第二个胃",
+            "牛嘴里"
+          ]
+        },
+        "solution": "<p>本题考查学生对文章内容的理解和梳理能力。</p><p>从文中“红头在牛肚子里随着草一起移动，从第一个胃到了第二个胃，又从第二个胃回到了牛嘴里”可以直接找到红头的旅行路线：第一个胃→第二个胃→牛嘴里。</p>"
+      },
+      {
+        "content": "<p>从哪里可以看出青头和红头是非常要好的朋友？用“______”在文中画出一处，并谈谈你的理解。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>文中“这时，青头爬到牛鼻子上，用它的身体在牛鼻孔里蹭来蹭去。”这句话可以看出青头和红头是非常要好的朋友。因为青头得知红头被老牛吃到肚子里，它很着急，想尽办法来救红头，它利用老牛反刍的特点，让老牛打喷嚏，使红头得以出来。这体现了好朋友之间的真诚帮助和深厚友谊。</p>"
+        },
+        "solution": "<p>本题考查学生对文章内容的理解和分析能力。</p><p>文中有多处可以看出青头和红头是非常要好的朋友，如“青头笑眯眯地说：‘不要哭，就当你在牛肚子里作了一次旅行吧！’”这句话体现了青头在红头脱险后对它的安慰；“这时，青头爬到牛鼻子上，用它的身体在牛鼻孔里蹭来蹭去。”这句话体现了青头为救红头所做的努力。分析时要结合具体语句，说明自己的理解。</p>"
+      },
+      {
+        "content": "<p>读画“～～～”的句子，红头还会说什么？请你发挥想象，补全句子。</p><p>红头看见自己的朋友，高兴得流下了眼泪：“谢谢你，<input size=\"30\" readonly=\"readonly\" type=\"underline\">”</p>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "多亏你救了我。要不是你，我可能就永远出不来了。你真是我的好朋友！"
+          ]
+        },
+        "solution": "<p>本题考查学生的想象能力和语言表达能力。</p><p>补全句子时要结合上下文，想象红头脱险后的心情和想要对青头说的话。可以表达感谢、后怕、对友谊的珍视等情感，注意语句通顺，符合人物身份。</p>"
+      },
+      {
+        "content": "<p>你认为红头能够成功从牛肚子里出来的原因是什么？<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"2\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>红头能够成功从牛肚子里出来的原因有两个：一是青头的帮助，青头利用自己的知识，知道牛有反刍的特点，通过刺激牛的鼻孔让牛打喷嚏，从而将红头喷了出来；二是红头自身的幸运，它随着草在牛肚子里移动，最终回到了牛嘴里，被喷了出来。</p>"
+        },
+        "solution": "<p>本题考查学生对文章内容的理解和分析能力。</p><p>从文中可以看出，红头能够成功脱险，一方面是因为青头的帮助，青头不仅安慰红头，还利用自己的知识救了红头；另一方面是因为牛的生理特点，牛会反刍，红头随着草在牛肚子里移动，最终有机会被喷出来。回答时要结合这两个方面进行分析。</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 1,
+    "question": {
+      "content": "<p>课外阅读。</p><p style=\"text-align: center;\">苏菲的杰作</p><p>&nbsp; &nbsp;①苏菲不是普通的蜘蛛，它能织出非常奇妙的网。</p><p>&nbsp; &nbsp;②苏菲长大后，搬到了公寓里。它想为公寓织一条新窗帘，房东太太看到它，立刻尖叫一声：“蜘蛛！”然后吓得爬到了屋顶上。</p><p>&nbsp; &nbsp;③苏菲爬上楼梯，钻进船长的衣橱里。当它想为船长织一套蓝色的新衣服时，</p><p>读到这里，我的预测是：<input size=\"30\" readonly=\"readonly\" type=\"underline\">。</p><p>我的依据是：<input size=\"30\" readonly=\"readonly\" type=\"underline\"></p><p>&nbsp; &nbsp;④<u>苏菲匆匆忙忙地逃走了，它飞快地爬出衣橱（chú），穿过走廊，钻进厨师的拖鞋里</u>。厨师的拖鞋又脏又破，它想为厨师织一双新拖鞋。“你这只黑蜘蛛，”厨师气呼呼地大骂，“臭东西。”他用力把苏菲甩了出来。</p><p>&nbsp; &nbsp;⑤苏菲好伤心，它越过地毯，爬进三楼一个年轻女人的房间里。这个女人刚生了一个宝宝。当苏菲疲惫不堪地躲进装满毛线的箩筐里准备睡觉时，她发现了苏菲。</p><p>&nbsp; &nbsp;⑥没想到这个女人没有打骂它，她抱着宝宝<u>微笑地看着苏菲</u>，那笑容像阳光般温暖。苏菲决定为宝宝织条毛毯。它织啊织啊，终于织出了一条柔软美丽的毯子，上面有月光般银白的光线，有星星般闪亮的光芒。</p><p>&nbsp; &nbsp;⑦年轻女人在篮子里发现了这条毯子，她满怀爱意和惊喜，把毯子盖在熟睡的宝宝身上，她知道这是苏菲的杰作。</p>",
+      "type": "综合"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>读第②～⑥自然段，公寓里的人是怎样对待苏菲的？请你填一填。</p><table><tr><td>人物</td><td>对待苏菲的态度</td></tr><tr><td>房东太太</td><td><input size=\"30\" readonly=\"readonly\" type=\"underline\"></td></tr><tr><td><input size=\"15\" readonly=\"readonly\" type=\"underline\"></td><td>气呼呼地大骂，用力把苏菲甩了出来</td></tr><tr><td>年轻女人</td><td><input size=\"30\" readonly=\"readonly\" type=\"underline\"></td></tr></table>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "立刻尖叫一声，吓得爬到了屋顶上",
+            "厨师",
+            "微笑地看着苏菲"
+          ]
+        },
+        "solution": "<p>本题考查学生对文章内容的理解和信息提取能力。</p><p>从文中“房东太太看到它，立刻尖叫一声：‘蜘蛛！’然后吓得爬到了屋顶上”可以找到房东太太对待苏菲的态度；从“厨师气呼呼地大骂，‘臭东西。’他用力把苏菲甩了出来”可以知道是厨师这样对待苏菲；从“她抱着宝宝微笑地看着苏菲”可以找到年轻女人对待苏菲的态度。</p>"
+      },
+      {
+        "content": "<p>读第③自然段时，你预测后面会发生什么？请写在文中方框里。</p>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "船长看到苏菲，会大声尖叫并把它赶出去",
+            "苏菲之前为房东太太织窗帘时被赶走，这次为船长织衣服可能也会被赶走"
+          ]
+        },
+        "solution": "<p>本题考查学生的预测能力。</p><p>预测时可以根据前文内容，苏菲为房东太太织窗帘时被赶走，因此可以预测它为船长织衣服时也可能会被赶走。预测的内容要合理，依据要充分。</p>"
+      },
+      {
+        "content": "<p>读第④自然段画“______”的句子时，应读出<input size=\"15\" readonly=\"readonly\" type=\"underline\">的语气。（）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>欣喜</p>",
+          "<p>慌张</p>",
+          "<p>激动</p>"
+        ],
+        "answer": {
+          "choice": "1"
+        },
+        "solution": "<p>本题考查学生对句子语气的把握能力。</p><p>句子“苏菲匆匆忙忙地逃走了，它飞快地爬出衣橱，穿过走廊，钻进厨师的拖鞋里”中，“匆匆忙忙”“飞快地”等词语表现了苏菲逃跑时的慌张，因此应读出慌张的语气。</p>"
+      },
+      {
+        "content": "<p>“苏菲的杰作”指的是什么？这杰作是怎样的呢？请用“～～～”在文中画出相关的句子。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"2\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>“苏菲的杰作”指的是苏菲为宝宝织的毛毯。相关句子：它织啊织啊，终于织出了一条柔软美丽的毯子，上面有月光般银白的光线，有星星般闪亮的光芒。</p>"
+        },
+        "solution": "<p>本题考查学生对文章内容的理解和信息提取能力。</p><p>从文中“年轻女人在篮子里发现了这条毯子，她满怀爱意和惊喜，把毯子盖在熟睡的宝宝身上，她知道这是苏菲的杰作”可以知道“苏菲的杰作”指的是苏菲为宝宝织的毛毯。从“它织啊织啊，终于织出了一条柔软美丽的毯子，上面有月光般银白的光线，有星星般闪亮的光芒”可以找到描述杰作的句子。</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 1,
+    "question": {
+      "content": "<p>请从下面两个题目中任选一个，写一篇作文。</p><p><strong>题目一：</strong></p><p>&nbsp; &nbsp;你最要好的朋友是谁？想起他（她），你心中是否会感到温暖和快乐？</p><p>&nbsp; &nbsp;你们之间发生过哪些让你难以忘怀的瞬间？请你用日记的形式写一写你们之间的趣事。注意不要透露真实的人名、地名和校名等；250字左右。</p><p><strong>题目二：</strong></p><p>&nbsp; &nbsp;请从下面任意选择三个词语，展开想象，编写一个有趣的童话故事。题目自拟；250字左右。</p><table><tr><td>土豆</td><td>小麻雀</td><td>笛子</td><td>头发</td><td>小河边</td><td>月亮</td></tr></table>",
+      "type": "简答",
+      "answer": {
+        "answer": "<p><strong>题目一例文：</strong></p><p style=\"text-align: center;\">10月20日 星期五 晴</p><p>&nbsp; &nbsp;我的好朋友是小明，他有一双明亮的大眼睛和一张爱笑的嘴巴。每次想起他，我心里就暖暖的。</p><p>&nbsp; &nbsp;记得上个星期天，我们一起去公园放风筝。我的风筝是一只漂亮的蝴蝶，可是我怎么也放不起来，急得满头大汗。小明看到了，主动跑过来帮我。他耐心地教我怎么拿线、怎么跑、怎么放线。在他的帮助下，我的蝴蝶风筝终于飞上了天空，越飞越高。我们看着风筝在蓝天上自由自在地飞翔，开心地笑了起来。</p><p>&nbsp; &nbsp;还有一次，我生病了，没能去学校。小明放学后特意来看我，还给我带来了课堂笔记和他画的一幅画。画上是两个手拉手的小男孩，旁边写着：“希望你快点好起来，我们一起去上学。”看到画，我的眼泪都流出来了。</p><p>&nbsp; &nbsp;小明就是这样一个乐于助人、关心朋友的人。能有这样一个好朋友，我感到非常幸福。</p><p><strong>题目二例文：</strong></p><p style=\"text-align: center;\">月亮下的音乐会</p><p>&nbsp; &nbsp;在一个美丽的夜晚，月亮像一个银盘子挂在天上。小河边，一只小麻雀正在伤心地哭着。</p><p>&nbsp; &nbsp;“你为什么哭呀？”一个声音传来。小麻雀抬头一看，是一个圆圆的土豆。小麻雀说：“我想唱歌给大家听，可是我的声音不好听。”土豆说：“别难过，我有一个办法。”</p><p>&nbsp; &nbsp;土豆从土里钻出来，让小麻雀站在它的头上。土豆说：“你看，那里有一根笛子。”小麻雀捡起笛子，吹了起来。奇妙的事情发生了，笛子发出了美妙的声音，小麻雀的歌声也变得好听起来。</p><p>&nbsp; &nbsp;月亮听到了美妙的音乐，笑得更甜了。小河里的鱼儿也跳出水面，好像在为它们鼓掌。小麻雀和土豆开心地笑了，它们在月亮下举办了一场快乐的音乐会。</p>"
+      },
+      "solution": "<p><strong>题目一写作指导：</strong></p><p>这是一篇日记形式的作文，要求写自己最要好的朋友和你们之间的趣事。写作时要注意以下几点：</p><p>1. 格式要正确，日记开头要写清楚日期、星期和天气。</p><p>2. 要写出朋友的特点，可以通过外貌、语言、动作等描写来表现。</p><p>3. 要选择一两件难以忘怀的趣事来写，把事情的经过写清楚，注意描写人物的心情和感受。</p><p>4. 注意不要透露真实的人名、地名和校名等。</p><p>5. 字数控制在250字左右。</p><p><strong>题目二写作指导：</strong></p><p>这是一篇童话故事，要求从给定的词语中任选三个，展开想象编写故事。写作时要注意以下几点：</p><p>1. 要选择自己熟悉的三个词语，如“小麻雀”“笛子”“月亮”等。</p><p>2. 要展开丰富的想象，编写一个有趣的故事，故事要有起因、经过和结果。</p><p>3. 要给故事拟一个合适的题目。</p><p>4. 可以运用拟人、比喻等修辞手法，让故事更加生动有趣。</p><p>5. 字数控制在250字左右。</p>"
+    }
+  }
+]

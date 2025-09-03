@@ -1,0 +1,427 @@
+[
+  {
+    "subjectId": 1,
+    "phaseId": 1,
+    "question": {
+      "content": "<p>请认真听录音朗读短文两遍，然后按要求回答下列问题。</p>",
+      "type": "综合"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>根据你听到的内容填空。</p><p>蚂蚁虽小，但<input size=\"15\" readonly=\"readonly\" type=\"underline\">比例计算，蚂蚁的力气相当于<input size=\"15\" readonly=\"readonly\" type=\"underline\">的60倍，昆虫学家经过研究认为，这与<input size=\"15\" readonly=\"readonly\" type=\"underline\">的构造有直接的关系。</p>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "略",
+            "略",
+            "略"
+          ]
+        },
+        "solution": "<p>本题考查对录音内容的理解和记忆能力。</p>"
+      },
+      {
+        "content": "<p>对录音中“蚂蚁不仅是大力士，还是赫赫有名的‘外科医生’”理解不恰当一项是（）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>这句话在文中起着承上启下的作用。</p>",
+          "<p>这句话写出了蚂蚁神奇的两个方面，整篇文章就是围绕着这两个方面表现蚂蚁神奇的。</p>",
+          "<p>这句话运用一组关联词对上文做了总结同时又引出了下文。</p>",
+          "<p>这句话运用拟人的修辞手法将蚂蚁的特点写得生动形象。</p>"
+        ],
+        "answer": {
+          "choice": "1"
+        },
+        "solution": "<p>本题考查对句子含义及作用的理解能力。</p>"
+      },
+      {
+        "content": "<p>根据录音内容判断对错，对的打“√”，错的打“×”。有的蚂蚁对人类有害，但也有益。______</p>",
+        "type": "判断",
+        "answer": {
+          "choice": "1"
+        },
+        "solution": "<p>本题考查对录音内容的理解和判断能力。</p>"
+      },
+      {
+        "content": "<p>根据录音内容判断对错，对的打“√”，错的打“×”。为了说明蚂蚁的神奇，作者以割叶蚁和大头蚊两种蚂蚁为例子进行了介绍。______</p>",
+        "type": "判断",
+        "answer": {
+          "choice": "0"
+        },
+        "solution": "<p>本题考查对录音内容的理解和判断能力。</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 1,
+    "question": {
+      "content": "<p>读一读，写一写，注意把字写得正确、美观。</p><p>生活中从不缺少美，而是缺少发现美的眼睛。黄昏的空中偶见低飞的白鹭是大自然美丽的ēn huì<input size=\"15\" readonly=\"readonly\" type=\"underline\">；夏夜一家人在liáng tíng<input size=\"15\" readonly=\"readonly\" type=\"underline\">里品尝wài pó<input size=\"15\" readonly=\"readonly\" type=\"underline\">做的gāo bǐng<input size=\"15\" readonly=\"readonly\" type=\"underline\">是美满的场景；村里人tuō xié wǎn kù<input size=\"20\" readonly=\"readonly\" type=\"underline\">，hé xié yǒu xù<input size=\"20\" readonly=\"readonly\" type=\"underline\">地走搭石是美好的画面；yóu lǎn<input size=\"15\" readonly=\"readonly\" type=\"underline\">迷人的háng zhōu<input size=\"15\" readonly=\"readonly\" type=\"underline\">西湖是美妙的体验……让我们一起向美而生，美美与共吧！</p>",
+      "type": "填空",
+      "answer": {
+        "blanks": [
+          "恩惠",
+          "凉亭",
+          "外婆",
+          "糕饼",
+          "脱鞋挽裤",
+          "和谐有序",
+          "游览",
+          "杭州"
+        ]
+      },
+      "solution": "<p>考查了看拼音写词语。根据所学汉语拼音知识进行拼读写出相应的词语即可。拼读时要注意所给音节的声母、韵母及声调。完成此类题目的关键：一是要正确拼读所给音节，二是要会正确书写相应的词语。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 1,
+    "question": {
+      "content": "<p>下列加点字的字音全都正确的一组是（）</p><p>&nbsp; &nbsp;<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">礁</span>石（jiāo） 执<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">拗</span>（niù） 依<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">偎</span>（wēi） 勤<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">俭</span>（jiǎn）</p><p>&nbsp; &nbsp;<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">榨</span>油（zhá） 分<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">岔</span>（chà） 平<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">衡</span>（hén） <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">擅</span>长（sàn）</p><p>&nbsp; &nbsp;鱼<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">鳞</span>（líng） 区<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">域</span>（yù） 小<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">艇</span>（tíng） 波<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">澜</span>（lán）</p><p>&nbsp; &nbsp;抖<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">擞</span>（shǒu） 喉<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">咙</span>（lōng） <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">陷</span>入（xiàn） <span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">廉</span>价（lián）</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>礁石（jiāo） 执拗（niù） 依偎（wēi） 勤俭（jiǎn）</p>",
+        "<p>榨油（zhá） 分岔（chà） 平衡（hén） 擅长（sàn）</p>",
+        "<p>鱼鳞（líng） 区域（yù） 小艇（tíng） 波澜（lán）</p>",
+        "<p>抖擞（shǒu） 喉咙（lōng） 陷入（xiàn） 廉价（lián）</p>"
+      ],
+      "answer": {
+        "choice": "0"
+      },
+      "solution": "<p>本题考查的是辨析字音的能力，正确读准字音，注意区别形近字，多音字的读音，还要注意声调、韵母的区别，平时要多读多练。A.正确。B.有误。“榨油”的“榨”应读“zhà”；“平衡”的“衡”应读“héng”；“擅长”的“擅”应读“shàn”。C.有误。“鱼鳞”的“鳞”应读“lín”；“小艇”的“艇”应读“tǐnɡ”。D.有误。“抖擞”的“擞”应读“sǒu”；“喉咙”的“咙”应读“lóng”。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 1,
+    "question": {
+      "content": "<p>下面句子描述的情景与选项（）表达的意思最相近。</p><p>大家说秦王不过是想把和氏璧骗到手罢了，不能上他的当，可要是不答应，又怕他派兵来进攻。</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>左右逢源</p>",
+        "<p>左右开弓</p>",
+        "<p>左右为难</p>",
+        "<p>左思右想</p>"
+      ],
+      "answer": {
+        "choice": "2"
+      },
+      "solution": "<p>考查了学生对词语的理解与辨析，需要平时生活中多在具体的语言环境中去体会，并且多积累，多总结。A．左右逢源：比喻做事得心应手，非常顺利。B．左右开弓：比喻两只手轮流做同一动作或同时做几项工作。C．左右为难：指处于某一困境中；不易做出决定。D．左思右想：指向左右两边看。形容得意、犹豫等神态。根据句子意思可知“左右为难”更恰当。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 1,
+    "question": {
+      "content": "<p>下列各句中，加点部分不能用括号中的内容替换的一项是（）。</p><p>&nbsp; &nbsp;李林<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">鼻子都气歪了</span>，因为他辛苦一上午画的山水画被妹妹破坏了。（气急败坏）</p><p>&nbsp; &nbsp;狼牙山五壮士最终因<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">寡不敌众</span>，全部选择了从悬崖上跳下去。（一山难容二虎）</p><p>&nbsp; &nbsp;我们要勇于克服前进首路上的种种困难，不能<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">畏首畏尾</span>，遇到一点儿困难就相当“逃”。 （前怕狼后怕虎）</p><p>&nbsp; &nbsp;两人闹矛盾，不要总指责对方，毕竟<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">一个巴掌拍不响</span>。（孤掌难鸣）</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>李林鼻子都气歪了，因为他辛苦一上午画的山水画被妹妹破坏了。（气急败坏）</p>",
+        "<p>狼牙山五壮士最终因寡不敌众，全部选择了从悬崖上跳下去。（一山难容二虎）</p>",
+        "<p>我们要勇于克服前进首路上的种种困难，不能畏首畏尾，遇到一点儿困难就相当“逃”。 （前怕狼后怕虎）</p>",
+        "<p>两人闹矛盾，不要总指责对方，毕竟一个巴掌拍不响。（孤掌难鸣）</p>"
+      ],
+      "answer": {
+        "choice": "1"
+      },
+      "solution": "<p>本题考查了学生对于句中加点词语的理解，要想理解重点词语，就要先理解整个词语或句子的意义，结合平时的学习积累，运用自己喜欢的方法进行理解辨析即可。A、C、D可以替换。B．寡不敌众：人少的一方抵挡不住人多的一方。与“一山难容二虎”不相符。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 1,
+    "question": {
+      "content": "<p>下列句子中，与其他三句的表达手法不同的一项是（）</p><p>&nbsp; &nbsp;它的果实埋在地里，不像桃子、石榴、苹果那样，把鲜红嫩绿的果实高高地挂在枝上，使人一见就生爱慕之心。</p><p>&nbsp; &nbsp;春，是一首歌，抑扬顿挫；秋，是一首诗，清高孤做。</p><p>&nbsp; &nbsp;月光是柔和的，她不似太阳光那般耀眼夺目，但她的宁静之美却深深地吸引着我。</p><p>&nbsp; &nbsp;野菊花并不像海棠一般娇艳动人，它虽不华丽，却有一种朴实的美，而且具有顽强的生命力。</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>它的果实埋在地里，不像桃子、石榴、苹果那样，把鲜红嫩绿的果实高高地挂在枝上，使人一见就生爱慕之心。</p>",
+        "<p>春，是一首歌，抑扬顿挫；秋，是一首诗，清高孤做。</p>",
+        "<p>月光是柔和的，她不似太阳光那般耀眼夺目，但她的宁静之美却深深地吸引着我。</p>",
+        "<p>野菊花并不像海棠一般娇艳动人，它虽不华丽，却有一种朴实的美，而且具有顽强的生命力。</p>"
+      ],
+      "answer": {
+        "choice": "1"
+      },
+      "solution": "<p>考查了文章的表达方法。文章的表达方法有叙述、描写、抒情、议论和说明。一句话的表达方法，需要认真地去体会，抓住句子中关键词语去理解句子的意思进而品味句子的表达作用。A、C、D的表达方法相同，都是通过比较的方式来表现句子的内容。B.这是一个打比方的句子。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 1,
+    "question": {
+      "content": "<p>下列句子中，与其他三项表达的主题不一致的是（）</p><p>&nbsp; &nbsp;为什么我的眼里常含泪水？因为我对这土地爱得深沉……</p><p>&nbsp; &nbsp;黄沙百战穿金甲，不破楼兰终不还。</p><p>&nbsp; &nbsp;洛阳亲友如相问，一片冰心在玉壶。</p><p>&nbsp; &nbsp;人生自古谁无死？留取丹心照汗青。</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>为什么我的眼里常含泪水？因为我对这土地爱得深沉……</p>",
+        "<p>黄沙百战穿金甲，不破楼兰终不还。</p>",
+        "<p>洛阳亲友如相问，一片冰心在玉壶。</p>",
+        "<p>人生自古谁无死？留取丹心照汗青。</p>"
+      ],
+      "answer": {
+        "choice": "2"
+      },
+      "solution": "<p>本题考查的是诗歌情感主旨。做题前应熟悉诗歌大意及诗歌表达的情感，再根据题目要求答题即可。A.出自现代诗人艾青的《我爱这土地》。这句诗表达了诗人那颗真挚、炽热的爱国之心。B.出自唐代王昌龄的《从军行七首•其四》。“黄沙百战穿金甲，不破楼兰终不还”的意思是：守边将士身经百战，铠甲磨穿，壮志不灭，不打败侵犯的敌人，誓不返回家乡。这句诗表达了将士们誓死报国的豪情壮志及其赤诚的爱国热情。C.出自唐朝诗人王昌龄的《芙蓉楼送辛渐》。在分别之际，作者借“冰心”“玉壶”向友人表明自己坚守高尚情操的心志。D.出自宋代文天祥的《过零丁洋》。“人生自古谁无死？留取丹心照汗青”的意思是：人生自古以来有谁能够长生不死？我要留一片爱国的丹心映照史册。这句诗表达了诗人的爱国之情。通过分析可知，A、B、D三个选项表达了诗人浓浓的爱国之情。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 1,
+    "question": {
+      "content": "<p>关于民间故事的特点，下列说法不正确的一项是（）</p><p>&nbsp; &nbsp;年代久远，多以口头形式传播，往往伴随着人类的成长历程传承下去，经久不衰。</p><p>&nbsp; &nbsp;情节夸张，充满幻想，多采用象征形式，内容往往包含超自然的，异想天开的成分。</p><p>&nbsp; &nbsp;从生活本身出发，但又并不局限于实际情况以及人们认为真实和合理范围之内的，大多寄托着人们朴素的愿望，有些具有教育意义。</p><p>&nbsp; &nbsp;因为受众文化水平较低，所以故事内容比较杂乱，没有固定的类型和重复的段落。</p>",
+      "type": "单选",
+      "accessories": [
+        "<p>年代久远，多以口头形式传播，往往伴随着人类的成长历程传承下去，经久不衰。</p>",
+        "<p>情节夸张，充满幻想，多采用象征形式，内容往往包含超自然的，异想天开的成分。</p>",
+        "<p>从生活本身出发，但又并不局限于实际情况以及人们认为真实和合理范围之内的，大多寄托着人们朴素的愿望，有些具有教育意义。</p>",
+        "<p>因为受众文化水平较低，所以故事内容比较杂乱，没有固定的类型和重复的段落。</p>"
+      ],
+      "answer": {
+        "choice": "3"
+      },
+      "solution": "<p>考查了文学常识。广义的文学常识指涵盖文化的各种问题，包括作家、年代、作品、文学中的地理、历史及各种典故、故事，也包括一般的人们众所周知的文学习惯。答题的关键是熟知文学常识，根据自己的积累作答。A、B、C正确。D.有误，民间故事有固定的类型和重复的段落。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 1,
+    "question": {
+      "content": "<p>积累运用</p><p>梁启超先生说：“故今日之责任，<input size=\"20\" readonly=\"readonly\" type=\"underline\">，<input size=\"20\" readonly=\"readonly\" type=\"underline\">。”作为新时代的少年，我们身负重任，因此更要利用好每一分每一秒，让自己成长得更加优秀。正如葛洪所说：“不饱食以终日，<input size=\"20\" readonly=\"readonly\" type=\"underline\">。”亦如陶渊明所说：“盛年不重来，<input size=\"15\" readonly=\"readonly\" type=\"underline\">。”还如岳飞所说：“莫等闲，<input size=\"15\" readonly=\"readonly\" type=\"underline\">，<input size=\"10\" readonly=\"readonly\" type=\"underline\">。”只有如此，当我们回首往事时，才不会因虚度光阴而悔恨，才能匹配梁启超先生对中国少年的称赞：“壮哉，<input size=\"15\" readonly=\"readonly\" type=\"underline\">，<input size=\"15\" readonly=\"readonly\" type=\"underline\">！”</p>",
+      "type": "填空",
+      "answer": {
+        "blanks": [
+          "不在他人",
+          "而全在我少年",
+          "不弃功于寸阴",
+          "一日难再晨",
+          "白了少年头",
+          "空悲切",
+          "我中国少年",
+          "与国无疆"
+        ]
+      },
+      "solution": "<p>考查了古诗文默写、名言警句。诗歌的默写要求熟读熟记，在理解的基础上背诵，并从中明白道理，受到教育。“故今日之责任，不在他人，而全在我少年”这句话选自《少年中国说》，意思是：所以说今天的责任，不在别人身上，全在我们少年身上。“不饱食以终日，不弃功于寸阴”意思是别一天到晚吃饱了没事做，不要浪费一点时间偷懒不用功，饱食伤身，不坚持做一件事，就会一事无成。“盛年不重来，一日难再晨”出自晋代陶渊明的《杂诗》，意思是：青春一旦过去便不可能重来，一天之中永远看不到第二次日出。“莫等闲，白了少年头，空悲切”出自宋代岳飞的《满江红》，意思是：不要虚度年华，花白了少年黑发，只有独自悔恨悲切。“壮哉，我中国少年，与国无疆”这句话选自《少年中国说》，意思是：雄壮啊我的中国少年，将与祖国万寿无疆。</p>"
+    }
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 1,
+    "question": {
+      "content": "<p>能说会道</p><p>在学习《白鹭》时，老师出示了白鹭的相关资料，让同学们讨论学习。下面是课堂上的学习片段。</p><p>白鹭，别名小白鹭、白鹭鸶、白翎鸶、春锄，白鸟等，在中国，白鹭主要分布在长江以南，一般栖息于池塘、湖泊、稻田。以小型动物、昆虫为食。因为白鹭的冠羽和蓑羽可作装饰品，所以不法分子趋之若鹜。再加上白鹭成大群营巢，又无防御能力，致使它的种群数量日趋减少，有些甚至濒于灭绝。</p><p>师：同学们，从这则资料中，你读出了什么信息？</p>",
+      "type": "综合"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>生1：我发现<input size=\"40\" readonly=\"readonly\" type=\"underline\"></p>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "白鹭主要分布在长江以南，一般栖息于池塘、湖泊、稻田。"
+          ]
+        },
+        "solution": "<p>本题考查对材料信息的提取能力。</p>"
+      },
+      {
+        "content": "<p>师：嗯，你了解了白鹭的栖息地。联系我们刚刚讲过的课文内容，你想到了三幅图中的哪一幅呢？</p><p>生2：我想到了<input size=\"30\" readonly=\"readonly\" type=\"underline\"></p>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "白鹭捕鱼图。"
+          ]
+        },
+        "solution": "<p>本题考查对课文内容的理解和联想能力。</p>"
+      },
+      {
+        "content": "<p>师：看来你还是对钓鱼的白鹭念念不忘啊。这则资料中还能读出什么？</p><p>生3：我还读出<input size=\"50\" readonly=\"readonly\" type=\"underline\"></p>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "它的种群数量日趋减少，有些甚至濒于灭绝。这是由于不法分子趋之若鹜，再加上白鹭成大群营巢，又无防御能力。"
+          ]
+        },
+        "solution": "<p>本题考查对材料信息的深入理解能力。</p>"
+      },
+      {
+        "content": "<p>师：你读得很认真，还说出了白鹭濒于灭绝的原因。同学们，谁能为我们喜爱的白鹭设计一条宣传语，让人们都来保护白鹭呢？</p><p>生4：<input size=\"40\" readonly=\"readonly\" type=\"underline\"></p>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "让我们行动起来，一起保护白鹭。"
+          ]
+        },
+        "solution": "<p>本题考查宣传语的设计能力。</p>"
+      },
+      {
+        "content": "<p>师：这个宣传语直截了当。谁再来试试？</p><p>生5：<input size=\"50\" readonly=\"readonly\" type=\"underline\"></p>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "白鹭，优雅的舞者，自然的珍宝。让我们携手，守护这片天空的精灵，让白鹭的舞蹈永不停歇。"
+          ]
+        },
+        "solution": "<p>本题考查宣传语的设计能力。</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 1,
+    "question": {
+      "content": "<p>课内阅读。</p><p style=\"text-align: center;\">（一）桂花雨（节选）</p><p>&nbsp; &nbsp;桂花摇落以后，挑去小枝小叶，晒上几天太阳，收在铁盒子里，可以加在茶叶里泡茶，过年时还可以做糕饼。全年，整个村子都浸在桂花的香气里。</p><p>&nbsp; &nbsp;我念中学的时候，全家到了杭州。杭州有一处小山，全是桂花树，花开时那才是香飘十里。秋天，我常到那儿去赏桂花。回家时，总要捡一大袋桂花给母亲。可是母亲说：“这里的桂花再香，也比不上家乡院子里的桂花。”</p><p>&nbsp; &nbsp;于是，我又想起了在故乡童年时代的“摇花乐”，还有那摇落的阵阵桂花雨。</p><p style=\"text-align: center;\">（二）桂花卤●桂花茶（节选）</p><p>&nbsp; &nbsp;摇下来好多簟的桂花，先装在篓里.然后由母亲和我，还有我的小朋友们，一同把细叶、细枝等拣去，拣净后只剩花，看上去一片金黄。然后将花铺在太阳下，晒去水分。待半干时就用瓦罐装起来，一层糖（或蜂蜜），一层桂花。压紧装满封好，放在阴凉处。一个月后，就是可取食的桂花卤了。过年做糕饼是绝对少不了它的，平常煮汤圆、糯米粥等，挑点一加入也清香提神。桂花卤是越陈越香的。</p><p>&nbsp; &nbsp;母亲总是先将最嫩的明前或雨前的茶叶焙热。然后；在茶叶中和入半干的桂花。将它们装在罐中封紧后，茶叶的热气就把桂花烤干，香味就完全吸收在茶叶中了。这是母亲独有的做法，一般人家从我们家讨了桂花，就只将它掉入干的茶叶中，桂花香就不能被吸收，有的甚至烂了。可见母亲对于桂花还是花心思，有窍门的。……</p><p>&nbsp; &nbsp;<u style=\"text-decoration-style: wavy;\">故乡的桂花、母亲的桂花卤、桂花茶，如今都只能于梦寐中寻求了。</u></p><p>资料袋</p><p>&nbsp; &nbsp;琦君，1917 年生于温州，1949 年迁至台湾，而后50多年没有回过温州。她曾写道：“来到台湾，此心如无根的浮萍，没有了着落，对家乡的苦念，也就与日俱增了。”琦君在自己写的大量散文中，尽情地抒发真挚热烈的情感，比如《水是故乡甜》《粽子里的乡愁》《青灯有味似儿时》……琦君就是用这样一种洗尽铅华的笔调，絮絮地诉说着自己无限的回忆。</p>",
+      "type": "综合"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>联系语段（一）（二）和资料袋，下列说法不正确的一项是（）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>摇落的桂花飘坠如雨丝，成了“我”儿时快乐的回忆。</p>",
+          "<p>语段（一）中母亲说的话表明了她不喜欢杭州小山上的桂花。</p>",
+          "<p>母亲有自己独特的制作窍门，制成的桂花卤和桂花茶令“我”念念不忘。</p>",
+          "<p>远离故土的琦君，宛如无根的浮萍，身处台湾却没有归属感。</p>"
+        ],
+        "answer": {
+          "choice": "1"
+        },
+        "solution": "<p>本题考查选文内容的理解。A．正确，阅读语段（一），从“我又想起了在故乡童年时代的‘摇花乐’，还有那摇落的阵阵桂花雨。”可知“桂花雨”成了“我”儿时的回忆；B．错误，文中母亲说的话，表达的是母亲思念家乡，而不是表明了她不喜欢杭州小山上的桂花；C．正确，从“是母亲独有的做法，一般人家从我们家讨了桂花，就只将它拌入干的茶叶中，桂花香就不能被吸收，有的甚至烂了。可见母亲对于桂花还是花心思，有窍门的。”可以知道；D．正确，从资料袋中“来到台湾，此心如无根的浮萍，没有了着落，对家乡的苦念，也就与日俱增了”可知。</p>"
+      },
+      {
+        "content": "<p>结合语段（二），完成桂花卤和桂花茶的制作流程。</p><p><img src=\"media/image2.png\" width=\"4.147222222222222in\" height=\"1.261111111111111in\" alt=\"桂花卤和桂花茶的制作流程图\"/></p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>桂花卤制作流程：拣净枝叶、晒去水分、封好储存。</p><p>桂花茶制作流程：焙热茶叶、和入桂花、封紧烤干。</p>"
+        },
+        "solution": "<p>考查对选文内容的概括。从语段（二）中“把细叶、细枝等拣去，拣净后只剩花，看上去一片金黄。然后将花铺在太阳下，晒去水分。待半干时就用瓦罐装起来，一层糖（或蜂蜜），一层桂花。压紧装满封好，放在阴凉处。一个月后，就是可取食的桂花卤了”可知，桂花卤的制作流程是：拣净枝叶、晒去水分、封好储存。桂花茶的制作流程是焙热茶叶、和入桂花、赶紧烤干。</p>"
+      },
+      {
+        "content": "<p>阅读语段（一），写写桂花给作者带来了哪些美好回忆？<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>桂花让“我”想到故乡桂花迷人的香气，以及小时候的“摇花乐”和“桂花雨”带给“我”的美好的回忆。</p>"
+        },
+        "solution": "<p>考查对选文内容的理解。通过阅读可知，桂花让“我”想到故乡桂花迷人的香气，以及小时候的“摇花乐”和“桂花雨”带给“我”的美好的回忆。</p>"
+      },
+      {
+        "content": "<p>琦君的散文结尾大多与回忆有关，平实的语言中流露出细腻的情感。依据文中画“～～～”的句子，再结合资料袋，可以推测出《粽子里的乡愁》结尾是哪一项？（）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>每年的端午节来临时，我很少吃粽子，更无从吃到清香的灰汤粽。母亲细致的手艺和琐琐屑屑的事，都只能在不尽的怀念中追寻了。</p>",
+          "<p>挂在门楣上的粽叶已经发出了灰褐色，风飒飒地吹着粽叶，似雨声散在屋檐敲敲打打。</p>",
+          "<p>我那时对屈原的诗一无所知，但我想他一定是个了不起的诗人，因为世上的诗人很多，只有他才会给我们带来节日。</p>",
+          "<p>沿街卖的“粽子”，包得又小又俏，有加枣的，有不加枣的，摆在盒子里齐整可爱，嚼在嘴巴里唇齿留香。</p>"
+        ],
+        "answer": {
+          "choice": "0"
+        },
+        "solution": "<p>考查整体感知能力。根据语段中画波浪线的句子和“资料袋”的内容，可推测出作者在文章结尾会抒发对过去时光的留恋和无法回去的惋惜之情。分析四个选项，A项中“都只能在不尽的怀念中追寻了”最符合琦君的写作习惯。</p>"
+      },
+      {
+        "content": "<p>读琦君的故事，好像在翻阅一本承载着厚重情感的旧相簿，令她魂牵梦萦的桂花中蕴含着怎样的情感呢？请结合资料袋及语段（一）（二）谈谈你的看法。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>我们可以感受到作者对故乡的思念之情以及对故乡生活的怀念。作者笔下的桂花是故乡的象征，由难忘故乡的桂花想到作者难忘故乡，而且“资料袋”中提到作者到台湾以后也在时时刻刻思念故乡。</p>"
+        },
+        "solution": "<p>考查作出评价能力。作者笔下的桂花是故乡的象征，由难忘故乡的桂花想到作者难忘故乡，而且“资料袋”中提到作者到台湾以后也在时时刻刻思念故乡，所以我们可以感受到作者对故乡的思念之情以及对故乡生活的怀念。</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 1,
+    "question": {
+      "content": "<p>课外阅读。</p><p style=\"text-align: center;\">乡村旅游</p><p>材料一：</p><p>&nbsp; &nbsp;乡村旅游是以旅游度假为宗旨，以村庄野外为空间，以人文无干扰、生态无破坏、以游居和野行为特色的村野旅游形式。通过游玩各种项目，来自城市的游客可以体验到不同于平常的生活，因此乡村旅游十分受城市居民的欢迎。</p><p>材料二：第一批全国乡村旅游重点村名单中，下面的村子榜上有名。</p><p>&nbsp; &nbsp;洞下槽村 走在洞下槽村，真的会让人心情变好。日光搭配着蓝天白云，照得整座村子也明亮了许多。村口处蜿蜒盘旋的旅游公路宽阔又整洁，村中万亩茶园一色青碧，一栋栋青瓦、白墙、木门窗的民居点缀在茶图间，炊烟袅袅，美成了一幅画。住特色民居、赏万亩茶园、品恩施玉露，成了来到洞下槽村的游客们必须“打卡”的三件事。</p><p>&nbsp; &nbsp;金岭村 金岭村位于大悟县新城镇，在这里能看到最浓郁的鄂北风情、保存完好的民俗文化。村中有一片小张湾古建筑群，其整体建筑始建于明朝中晚期，豆腐作坊、酿酒作坊内依旧沿用着最传统的制作工艺，游客可以在工作人员的指导下亲自体验制作过程。</p><p>&nbsp; &nbsp;营上村 民宿旅游是营上村最靓丽的一张名片，尤其是村中的休闲度假村，集特色民宿，农业观光园、温泉城、特色烧烤、户外露营基地于一体，多次获得省市级点赞。营上村还有一片约1500亩的梨园，梨子成熟的季节，梨园采摘尤其热闹。</p>",
+      "type": "综合"
+    },
+    "subQuestions": [
+      {
+        "content": "<p>根据材料内容判断对错，对的打“√”，错的打“×”。因为可以体验到不同于平常的生活，所以乡村旅游十分受城乡居民的欢迎。______</p>",
+        "type": "判断",
+        "answer": {
+          "choice": "0"
+        },
+        "solution": "<p>本题考查对材料内容的理解和分析。根据材料一“通过游玩各种项目，来自城市的游客可以体验到不同于平常的生活，因此乡村旅游十分受城市居民的欢迎”可知题干表述错误。</p>"
+      },
+      {
+        "content": "<p>根据材料内容判断对错，对的打“√”，错的打“×”。“打卡”的意思是亲自来到某个景点游玩或在景点拍照留念。______</p>",
+        "type": "判断",
+        "answer": {
+          "choice": "1"
+        },
+        "solution": "<p>本题考查对材料内容的理解和分析。根据材料二中提到的“住特色民居、赏万亩茶园、晶恩施玉露，成了来到洞下槽村的游客们必须‘打卡’的三件事”，可以推断出“打卡”的意思是亲自来到某个景点游玩或在景点拍照留念。</p>"
+      },
+      {
+        "content": "<p>根据材料内容判断对错，对的打“√”，错的打“×”。休闲度假村是洞下槽村旅游的特色。______</p>",
+        "type": "判断",
+        "answer": {
+          "choice": "0"
+        },
+        "solution": "<p>本题考查对材料内容的理解和分析。根据材料二中提到的“民宿旅游是营上村最靓丽的一张名片，尤其是村中的休闲度假村，集特色民宿，农业观光园、温泉城、特色烧烤、户外露营基地于一体”，可知休闲度假村是营上村旅游的特色，而不是洞下槽村。</p>"
+      },
+      {
+        "content": "<p>根据材料内容判断对错，对的打“√”，错的打“×”。乡村旅游最主要的宗旨是人文无干扰、生态无破坏。______</p>",
+        "type": "判断",
+        "answer": {
+          "choice": "0"
+        },
+        "solution": "<p>本题考查对材料内容的理解和分析。根据材料一中的“乡村旅游是以旅游度假为宗旨，以村庄野外为空间，以人文无干扰、生态无破坏、以游居和野行为特色的村野旅游形式”，可知乡村旅游的宗旨是旅游度假，而不是人文无干扰、生态无破坏。</p>"
+      },
+      {
+        "content": "<p>材料二中说洞下槽村“美成了一幅画”，这幅画上的内容不包括哪一项？（）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>沐浴着日光的一色青碧的万亩茶园</p>",
+          "<p>蜿蜒盘旋、宽阔整洁的旅游公路</p>",
+          "<p>一栋栋独具特色的民居</p>",
+          "<p>从豆腐作坊、酿酒作坊中冒出的袅袅炊烟</p>"
+        ],
+        "answer": {
+          "choice": "3"
+        },
+        "solution": "<p>考查了获取材料关键信息的能力。A、B、C正确。D.有误，豆腐作坊、酿酒作坊中冒出的袅袅炊烟是属于金岭村的内容。</p>"
+      },
+      {
+        "content": "<p>下面的广告语对应的是材料二中的<input size=\"15\" readonly=\"readonly\" type=\"underline\">（填村庄名称），朗读这段广告语时应读出对悠久的历史和灿烂的民俗文化的<input size=\"15\" readonly=\"readonly\" type=\"underline\">之情。</p><p>“叮叮咚咚”的器物碰撞声讲述的是悠久的历史和灿烂的民俗文化。穿梭在古建筑群的老屋间，仿佛与旧时光进行了一场无声的对话。</p>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "金岭村",
+            "欣赏、赞美"
+          ]
+        },
+        "solution": "<p>考查对材料内容的理解和分析。根据题目中的广告语“叮叮咚咚”的器物碰撞声讲述的是悠久的历史和灿烂的民俗文化，可以推断出这段广告语对应的是材料二中的金岭村。在朗读这段广告语时，应该读出对悠久的历史和灿烂的民俗文化的欣赏、赞美之情。</p>"
+      },
+      {
+        "content": "<p>关于营上村多次获得省市级点赞理由，下列说法正确的一项是（）</p>",
+        "type": "单选",
+        "accessories": [
+          "<p>营上村有一片约1500亩的梨园。</p>",
+          "<p>梨子成熟的季节梨园采摘尤其热闹吸引了大批游客。</p>",
+          "<p>营上村风景秀丽，成为村里最靓丽的一张名片。</p>",
+          "<p>村中集特色民宿、农业观光园、温泉城、特色烧烤、户外露营基地于一体的休闲度假村很有代表性。</p>"
+        ],
+        "answer": {
+          "choice": "0"
+        },
+        "solution": "<p>考查对材料内容的理解。A.正确。B.有误，根据“营上村还有一片约1500亩的梨园，梨子成熟的季节，梨园采摘尤其热闹”可知，没有提及“吸引了大批游客”。C.有误，根据“民宿旅游是营上村最靓丽的一张名片”可知题干说法错误。D.有误，“民宿旅游是营上村最靓丽的一张名片，尤其是村中的休闲度假村，集特色民宿，农业观光园、温泉城、特色烧烤、户外露营基地于一体，多次获得省市级点赞”可知，没有提及“很有代表性”这一信息。</p>"
+      },
+      {
+        "content": "<p>如果学校要从材料二的村子里选择一个来组织乡村游，你更想去哪一个？请说明理由。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p></p>",
+        "type": "简答",
+        "answer": {
+          "answer": "<p>我会选择金岭村。因为在这里不仅可以欣赏到历史悠久、特色鲜明的古建筑群，还可以体验传统的制作工艺，既有趣，又能增长知识。</p>"
+        },
+        "solution": "<p>考查了语言表达能力。从材料二描述的三个村庄选择一个，根据其特色阐述想去的理由。答案不唯一。如，我更想去洞下槽村。因为那里有美丽的景色和丰富的文化活动，可以欣赏到万亩茶园和特色民居，还可以品尝当地的特色美食。</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 1,
+    "phaseId": 1,
+    "question": {
+      "content": "<p>习作</p><p>&nbsp; &nbsp;同学们，从小到大你应该已经过了好多饮生日了，在你收到的生日礼物中，你最喜欢哪个呢？写写它是什么样子的，你是怎么得到的，为什么会成为你最喜欢的一个生日礼物，写出自己的喜爱之情。</p><p>&nbsp; &nbsp;要求：题目自拟，书写规范，内容具体，不少于400字。</p>",
+      "type": "简答",
+      "answer": {
+        "answer": "<p><p style=\"text-align: center;\">我的心爱之物</p><p>&nbsp; &nbsp;每个人都有自己最钟爱的东西，比如：一支钢笔，几条小鱼，一盆植物等等，而我最心爱的是我的布娃娃。</p><p>&nbsp; &nbsp;这个布娃娃的头上戴着一个紫色的小皇冠，一头土黄色的长发，一双乌黑的大眼睛，可爱极了。我最喜欢的是她那小巧玲珑的鼻子，还有她那个好像涂了蜡似的红嘴唇！她不像我的玩具熊那样大，也不像我的玩具乌龟那样小，她大小适中，而且非常的柔软，抱起来非常舒服。</p><p>&nbsp; &nbsp;这个玩具是我八周岁生日礼物。那天我上完辅导班，急急忙忙地跑回家。我敲了敲门，门开了，我一下子蹦到妈妈的身上，妈妈对我说：“生日快乐呀！宝贝！”我心里暖洋洋的回答：“谢谢您妈妈！”随后，我们一家五口人都到齐了。这时，爸爸拿出一个精美的盒子送给我，我打开一看，原来是一个漂亮的布娃娃。</p><p>&nbsp; &nbsp;自从有了她以后，我天天睡觉都让她陪在我的身旁。</p><p>&nbsp; &nbsp;有一次，我和妈妈吵了一架，我被妈妈给说哭了，我躺在床上很伤心。这时，我一转头，看见了我的布娃娃。她好像在说：“高子萱，别伤心了，我来陪你玩一会儿吧！”我顿时不哭了，反而开心地笑了起来。我和娃娃躺在床上，回忆起了我和她一起快乐游戏时的样子，我非常高兴，越想越开心，因为她的存在，我的许多烦恼都抛到九霄云外了。我真的好喜欢我的布娃娃呀！</p><p>&nbsp; &nbsp;我喜欢我的布娃娃，希望她能一直陪着我长大，永远做我的好朋友，温暖我有时孤独的心。</p></p>"
+      },
+      "solution": "<p>【写作指导】本题为自命题的状物作文，要求写一写自己特别钟爱的生日礼物。在介绍时，也可以结合一定的事例，这样能使作文更具趣味性、画面感、亲近感；最后赋予习作情感，才能起到表情达意的效果，才能让所写之物真正“活”起来。写作时语句要通顺、流畅，运用各种写作手法进行描写，突出你对它的喜爱之情。适当地运用比喻、拟人等修辞手法。</p>"
+    }
+  }
+]
