@@ -1,0 +1,327 @@
+[
+  {
+    "total_number": "1",
+    "module_number": "1",
+    "question_first_sentence": "的相反数为",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "B",
+    "explanation_first_sentence": "本题考查了相反数的定义．",
+    "answer_page": [
+      1
+    ]
+  },
+  {
+    "total_number": "2",
+    "module_number": "2",
+    "question_first_sentence": "围棋是中华民族发明的博弈活动．",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "D",
+    "explanation_first_sentence": "本题考查了中心对称图形和轴对称图形的识别．",
+    "answer_page": [
+      1
+    ]
+  },
+  {
+    "total_number": "3",
+    "module_number": "3",
+    "question_first_sentence": "2025年5月，我国在西昌卫星发射中心成功将行星探测工程天问二号探测器发射升空，",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "B",
+    "explanation_first_sentence": "本题考查用科学记数法表示较大的数．",
+    "answer_page": [
+      1
+    ]
+  },
+  {
+    "total_number": "4",
+    "module_number": "4",
+    "question_first_sentence": "如图①，榫卯是古代中国建筑、家具及其它器械的主要结构方式．",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "A",
+    "explanation_first_sentence": "本题考查三视图．",
+    "answer_page": [
+      1
+    ]
+  },
+  {
+    "total_number": "5",
+    "module_number": "5",
+    "question_first_sentence": "如图，在平面直角坐标系中，点A，B，C都在格点上，",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "A",
+    "explanation_first_sentence": "本题考查了平面直角坐标系中点的变换，熟练掌握点的对称与旋转是解决本题的关键．",
+    "answer_page": [
+      1
+    ]
+  },
+  {
+    "total_number": "6",
+    "module_number": "6",
+    "question_first_sentence": "下列计算正确的是（ ）",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "D",
+    "explanation_first_sentence": "本题考查了合并同类项、同底数幂的乘除法、积的乘方．",
+    "answer_page": [
+      1
+    ]
+  },
+  {
+    "total_number": "7",
+    "module_number": "7",
+    "question_first_sentence": "如图，四边形是 的内接四边形，",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "C",
+    "explanation_first_sentence": "本题考查了圆内接四边形的性质，以及切线定理，需熟练掌握\"弦切角等于它所夹的弧所对的圆周角\"得到的度数是解决本题的关键．",
+    "answer_page": [
+      1
+    ]
+  },
+  {
+    "total_number": "8",
+    "module_number": "8",
+    "question_first_sentence": "如图，在三角形纸片中，",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "A",
+    "explanation_first_sentence": "本题考查了三角形的翻折问题，垂直的定义，等腰三角形的判定与性质以及直角三角形中正弦值的求解，在翻折过程中由边长和角度不变，可求解翻折前后的角度是解决本题的关键．",
+    "answer_page": [
+      1
+    ]
+  },
+  {
+    "total_number": "9",
+    "module_number": "9",
+    "question_first_sentence": "将二次函数的图象在轴下方的部分以轴为对称轴翻折到轴上方，得到如图所示的新函数图象，下列对新函数的描述正确的是（ ）",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "C",
+    "explanation_first_sentence": "本题考查了二次函数的图象与性质，以及图象的翻折变换，图象的翻折变化对函数图象的影响变化，正确分析变换前后点的坐标，函数的最值，以及增减性是解决本题的关键．",
+    "answer_page": [
+      1
+    ]
+  },
+  {
+    "total_number": "10",
+    "module_number": "1",
+    "question_first_sentence": "因式分解",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "3(a+2)(a-2)",
+    "explanation_first_sentence": "本题考查的是综合提公因式与公式法分解因式，先提公因式3，再利用平方差公式分解因式即可．",
+    "answer_page": [
+      1
+    ]
+  },
+  {
+    "total_number": "11",
+    "module_number": "2",
+    "question_first_sentence": "为弘扬传统文化，培养学生的劳动意识，某校在端午节期间举行了包粽子活动，每个粽子的标准质量为．",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "甲",
+    "explanation_first_sentence": "本题考查了方差的意义，理解方差是用来衡量一组数据波动大小的量，方差越大，表明这组数据偏离平均数越大，即波动越大，数据越不稳定；反之，方差越小，表明这组数据分布比较集中，各数据偏离平均数越小，即波动越小，数据越稳定是解题的关键．",
+    "answer_page": [
+      1
+    ]
+  },
+  {
+    "total_number": "12",
+    "module_number": "3",
+    "question_first_sentence": "实数，在数轴上对应点的位置如图所示，则",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "<",
+    "explanation_first_sentence": "本题考查了有理数的大小比较，绝对值，掌握a，b在数轴上对应点的位置得出a距离原点的距离比b距离原点的距离小是关键．",
+    "answer_page": [
+      1
+    ]
+  },
+  {
+    "total_number": "13",
+    "module_number": "4",
+    "question_first_sentence": "如图，正八边形的顶点，，，在坐标轴上，顶点，，，在第一象限．",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "3+2√2",
+    "explanation_first_sentence": "本题考查了正多边形的性质，等腰直角三角形的性质以及反比例函数解析式的求解，求解出点F的纵坐标是解决本题的关键．",
+    "answer_page": [
+      1
+    ]
+  },
+  {
+    "total_number": "14",
+    "module_number": "5",
+    "question_first_sentence": "如图，在扇形中，，点在 上，且．",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "3π-√3",
+    "explanation_first_sentence": "本题考查扇形面积公式，平行四边形性质，含三角形的性质，正确将阴影面积进行组合是解决问题的关键．",
+    "answer_page": [
+      1
+    ]
+  },
+  {
+    "total_number": "15",
+    "module_number": "6",
+    "question_first_sentence": "如图，在正方形中，，分别为，的中点．",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "①④",
+    "explanation_first_sentence": "本题考查了正方形的性质，全等三角形的判定和性质，相似三角形的判定和性质，解直角三角形．",
+    "answer_page": [
+      1
+    ]
+  },
+  {
+    "total_number": "16",
+    "module_number": "1",
+    "question_first_sentence": "已知：如图，是内部一点．求作：等腰，使点，分别在射线，上，且底边经过点．",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "见解析",
+    "explanation_first_sentence": "本题考查了尺规作------角平分线，过一点作已知直线的垂线，全等三角形的判定与性质，等腰三角形的定义，熟练掌握知识点是解题的关键．",
+    "answer_page": [
+      1
+    ]
+  },
+  {
+    "total_number": "17",
+    "module_number": "1",
+    "question_first_sentence": "（1）计算：；",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "（1）7；（2）；",
+    "explanation_first_sentence": "本题考查了二次根式的混合运算，以及一元一次不等式组的求解，需熟练掌握二次根式的化简并正确计算，根据不等式组的解集写出整数解是解决本题的关键．",
+    "answer_page": [
+      1
+    ]
+  },
+  {
+    "total_number": "18",
+    "module_number": "2",
+    "question_first_sentence": "京剧以其独特的艺术魅力和深厚的文化底蕴闻名于世，京剧的角色有生、旦、净、丑等．",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "1/2",
+    "explanation_first_sentence": "本题主要考查了树状图或列表法求解概率，正确画出树状图或列出表格是解题的关键．",
+    "answer_page": [
+      1
+    ]
+  },
+  {
+    "total_number": "19",
+    "module_number": "3",
+    "question_first_sentence": "某校举行科技节，科技小组为了解学生使用智能软件的情况开展了统计活动．",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "（1）72；（2）作图见解析；（3）61；（4）600人",
+    "explanation_first_sentence": "本题考查了频数分布表和频数分布直方图，求中位数，求扇形统计图的圆心角，用样本估计总体等知识点，正确理解题意，读懂统计图是解题的关键．",
+    "answer_page": [
+      1
+    ]
+  },
+  {
+    "total_number": "20",
+    "module_number": "4",
+    "question_first_sentence": "学校综合实践小组测量博学楼的高度．",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "博学楼的高度为9米",
+    "explanation_first_sentence": "本题考查了解直角三角形的实际应用，正确构造直角三角形是解题的关键．",
+    "answer_page": [
+      1
+    ]
+  },
+  {
+    "total_number": "21",
+    "module_number": "5",
+    "question_first_sentence": "某公司成功研发了一款新型产品，接到了首批订单，产品数量为2100件．",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "（1）甲车间每天能生产150件产品，乙车间每天能生产100件产品；（2）安排甲车间生产20天，则乙车间生产10天",
+    "explanation_first_sentence": "本题考查了分式方程和一元一次不等式以及一次函数的实际应用，正确理解题意是解题的关键．",
+    "answer_page": [
+      1
+    ]
+  },
+  {
+    "total_number": "22",
+    "module_number": "6",
+    "question_first_sentence": "如图，在中，为的中点，为延长线上一点，连接，，过点作交的延长线于点，连接．",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "（1）证明见解析；（2）条件①，四边形为矩形；条件②，四边形为菱形，证明见解析",
+    "explanation_first_sentence": "本题考查了全等三角形的判定与性质，平行四边形的判定与性质，菱形和矩形的判定，熟练掌握各四边形的判定与性质是解题的关键．",
+    "answer_page": [
+      1
+    ]
+  },
+  {
+    "total_number": "23",
+    "module_number": "7",
+    "question_first_sentence": "【定义新运算】对正实数，，定义运算\"\"，满足．",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "（1）a；（2）满足，理由见解析；（3）√26",
+    "explanation_first_sentence": "本题考查了新定义运算，涉及完全平方公式变形求值，全等三角形的性质，勾股定理，分式的混合运算，熟练掌握知识点，正确理解题意是解题的关键．",
+    "answer_page": [
+      1
+    ]
+  },
+  {
+    "total_number": "24",
+    "module_number": "8",
+    "question_first_sentence": "小磊和小明练习打网球．在一次击球过程中，小磊从点正上方1.8米的点将球击出．",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "（1）y=-0.1x²+0.8x+1.8；（2）网球被击出后经过4秒达到最大高度，最大高度是5米；（3）k≥-0.2",
+    "explanation_first_sentence": "本题考查了二次函数与一次函数的实际应用，正确理解题意是解题的关键．",
+    "answer_page": [
+      1
+    ]
+  },
+  {
+    "total_number": "25",
+    "module_number": "9",
+    "question_first_sentence": "如图①，在中，，将沿方向平移，得到，过点作，交的延长线于点，为的中点．",
+    "question_page": [
+      1
+    ],
+    "answer_first_sentence": "（1）t=2；（2）S=-t²+10t；（3）t的值为1或3",
+    "explanation_first_sentence": "（1）由题意得，当 时，，求得，再利用三角函数定义求解即可；",
+    "answer_page": [
+      1
+    ]
+  }
+]
