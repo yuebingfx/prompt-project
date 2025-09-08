@@ -2,6 +2,8 @@
   {
     "subjectId": 1,
     "phaseId": 2,
+    "title" : "一、基础运用",
+    "questionNumber" : 1,
     "question": {
       "content": "<p>学校组织编写“城市漫步地”推荐手册，有同学推荐了北京市有代表性的书店，并搜集了相关资料。请你协助整理。</p>",
       "type": "简答",

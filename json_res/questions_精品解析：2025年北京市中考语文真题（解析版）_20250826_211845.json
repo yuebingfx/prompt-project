@@ -2,6 +2,8 @@
   {
     "subjectId": 1,
     "phaseId": 2,
+    "title" : "一、基础运用",
+    "questionNumber" : 1,
     "question": {
       "content": "<p>在资料封面上用正楷字书写标题：“城市漫步地”推荐资料。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"379\"></full-line-blank></p>",
       "type": "填空",
@@ -16,6 +18,8 @@
   {
     "subjectId": 1,
     "phaseId": 2,
+    "title" : "一、基础运用",
+    "questionNumber" : 2,
     "question": {
       "content": "<p><strong>资料一</strong></p><p>&nbsp; &nbsp; 1937年4月，新华书店诞生于延安。1948年12月，毛泽东同志在西柏坡题写了“新华书店”四个大字，中共中央宣传部将其作为平津解放以后全国各地建立的新华书店的招牌用字。经<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">筹</span>（chóu）划，1949年2月，北平第一家新华书店在王府井大街开业。同年10月，全国新华书店第一届出版工作会议在北京<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">召</span>（zhāo）开。七十多年来，北京新华书店始终传承红色基因，<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">砥</span>（dǐ）砺“新华精神”，坚守为人民服务的初心，宣传党的路线方针政策，为广大读者提<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">供</span>（gōng）科学文化知识，极大地满足了人民群众的精神文化需求，促进了首都人民思想道德素质和科学文化素质的提高，在文化建设中发挥了重要作用。</p><p>你审核资料中标注的字音。下列加点字读音标注不正确的一项是（）</p>",
       "type": "单选",
@@ -34,6 +38,8 @@
   {
     "subjectId": 1,
     "phaseId": 2,
+    "title" : "一、基础运用",
+    "questionNumber" : 3,
     "question": {
       "content": "<p><strong>资料二</strong></p><p>&nbsp; &nbsp; 中国书店创立于1952年，主要从事古旧书籍的经营及古籍的复制出版。2008年，中国书店申报的古籍修复技艺被列入国家级非物质文化遗产名录。如今，中国书店既保留了古籍影印复制等传统业务，又担负起文学典籍整理、北京传统文化研究等多项任务，还出版了《北京方志提要》《北京旧志汇刊》及大量新印古籍和研究传统文化的著作。中国书店在中华优秀传统文化的<input size=\"15\" readonly=\"readonly\" type=\"underline\">、<input size=\"15\" readonly=\"readonly\" type=\"underline\">和<input size=\"15\" readonly=\"readonly\" type=\"underline\">等方面做出了积极努力。</p><p>你在文段中的横线处填入一组词语。下列恰当的一项是（）</p>",
       "type": "单选",
@@ -52,6 +58,8 @@
   {
     "subjectId": 1,
     "phaseId": 2,
+    "title" : "一、基础运用",
+    "questionNumber" : 4,
     "question": {
       "content": "<p><strong>资料三</strong></p><p>&nbsp; &nbsp; 在北京市政府的支持下，有些书店迁入古建筑所在的院落。时尚的阅读空间与古树、古建筑<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">相映成趣</span>。这些书店承担着“阅读传承”与“文物活化”的双重使命，除图书外，还收藏老照片、旧报刊、胡同门牌等多种历史资料。图书与历史资料<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">相得益彰</span>，共同讲述着北京作为古城、古都的发展历史。这些书店大多<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">自出心裁</span>，选择具有地域特色的主题陈列图书和其他展品，如“京味文学”“口述历史”“史地民俗”等。读者<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">捕风捉影</span>，可以领略老北京的城市风貌。</p><p>你想知道文段中“活化”的意思。查《现代汉语词典》，“活化”的解释为“使分子或原子的能量增强”。根据词典解释，下列对文段中“活化”的理解<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">不正确</span>的一项是（）</p>",
       "type": "单选",
@@ -70,6 +78,8 @@
   {
     "subjectId": 1,
     "phaseId": 2,
+    "title" : "一、基础运用",
+    "questionNumber" : 5,
     "question": {
       "content": "<p>你检查了文段中成语的使用情况。下列成语使用<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">不恰当</span>的一项是（）</p>",
       "type": "单选",
@@ -88,6 +98,8 @@
   {
     "subjectId": 1,
     "phaseId": 2,
+    "title" : "一、基础运用",
+    "questionNumber" : 6,
     "question": {
       "content": "<p><strong>资料四</strong></p><p>&nbsp; &nbsp; 漫步胡同，胡同尽头有一座独立的四合院，它居然是一家书店。这家书店的院落布局融入了现代元素，房屋主体采用黛色砖瓦，装饰物以红色为主色调，古朴、时尚、喜庆。阅读区域暖黄色的灯光温柔地洒在木质书架上，琳琅满目的书籍散发着墨香。它特有的文化氛围不仅吸引着读者，还吸引着大量游客和摄影爱好者。<u>胡同里的这家书店创新了设计风格，营造了广大群众的文化体验。</u></p><p>文段中的画线句存在问题，请你修改。</p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"1\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
       "type": "填空",
@@ -102,6 +114,8 @@
   {
     "subjectId": 1,
     "phaseId": 2,
+    "title" : "一、基础运用",
+    "questionNumber" : 7,
     "question": {
       "content": "<p><strong>后记</strong></p><p>&nbsp; &nbsp; 赓续红色血脉的新华书店让我们领悟“新华精神”的当代内涵；<input size=\"30\" readonly=\"readonly\" type=\"underline\">；古建筑旁、胡同里的创意书店让我们感受城市文化的地域特色。选择书店作为城市漫步地，你就选择了观察一座城市的独特视角。</p><p>根据语境，你在文段中的横线处补写一个分句。</p>",
       "type": "填空",
@@ -116,6 +130,8 @@
   {
     "subjectId": 1,
     "phaseId": 2,
+    "title" : "二、古诗文阅读",
+    "questionNumber" : 1,
     "question": {
       "content": "<p><strong>默写填空。</strong></p><p>①纷纷暮雪下辕门，<input size=\"20\" readonly=\"readonly\" type=\"underline\">。（岑参《白雪歌送武判官归京》）</p><p>②亭亭净植，<input size=\"25\" readonly=\"readonly\" type=\"underline\">。（周敦颐《爱莲说》）</p><p>③古人常用竹子制作乐器，很多乐器名称使用带“竹字头”的字。如古诗词中的“<input size=\"30\" readonly=\"readonly\" type=\"underline\">”一句，就出现了这样的乐器名称。（本试卷中出现的句子除外）</p>",
       "type": "填空",
@@ -132,6 +148,8 @@
   {
     "subjectId": 1,
     "phaseId": 2,
+    "title" : "二、古诗文阅读",
+    "questionNumber" : 2,
     "question": {
       "content": "<p><strong>阅读《观沧海》，完成下面小题。</strong></p><p style=\"text-align: center;\">观沧海</p><p style=\"text-align: center;\">曹操</p><p style=\"text-align: center;\">东临碣石，以观沧海。</p><p style=\"text-align: center;\">水何澹澹，山岛竦峙。</p><p style=\"text-align: center;\">树木丛生，百草丰茂。</p><p style=\"text-align: center;\">秋风萧瑟，洪波涌起。</p><p style=\"text-align: center;\">日月之行，若出其中；</p><p style=\"text-align: center;\">星汉灿烂，若出其里。</p><p style=\"text-align: center;\">幸甚至哉，歌以咏志。</p>",
       "type": "简答",
@@ -161,6 +179,8 @@
   {
     "subjectId": 1,
     "phaseId": 2,
+    "title" : "三、名著阅读",
+    "questionNumber" : 1,
     "question": {
       "content": "<p><strong>阅读下面一则《论语》，完成下面小题。</strong></p><p>曾子曰：“吾<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">日</span>三省吾身：为人谋而不忠乎？与朋友交而不信乎？传不习乎？”（《学而》）</p>",
       "type": "简答",
