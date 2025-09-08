@@ -39,7 +39,7 @@ import base64
 from io import BytesIO
 from collections import defaultdict
 
-# 新增：特殊格式识别依赖
+# 特殊格式识别依赖
 try:
     from docx import Document
     from docx.enum.text import WD_UNDERLINE
@@ -56,77 +56,97 @@ class PandocWordProcessor:
         self.api_key = "baf9ea42-7e17-4df6-9a22-90127ac8220e"
         self.base_url = "https://ark.cn-beijing.volces.com/api"
         
+        def _check_pandoc(self):
+            """检查pandoc是否可用"""
+            try:
+                result = subprocess.run(['pandoc', '--version'], 
+                                    capture_output=True, text=True, timeout=10)
+                if result.returncode == 0:
+                    print(f"✅ Pandoc可用: {result.stdout.split()[1]}")
+                    return True
+                else:
+                    print(f"❌ Pandoc检查失败: {result.stderr}")
+                    return False
+            except FileNotFoundError:
+                print("❌ 未找到pandoc命令")
+                return False
+            except subprocess.TimeoutExpired:
+                print("❌ Pandoc检查超时")
+                return False
+            except Exception as e:
+                print(f"❌ Pandoc检查异常: {e}")
+                return False
+
         # 检查pandoc是否可用
-        self.pandoc_available = self._check_pandoc()
+        self.pandoc_available = _check_pandoc(self)
         if not self.pandoc_available:
             print("⚠️ 警告: pandoc未安装或不在PATH中")
             print("请访问 https://pandoc.org/installing.html 安装pandoc")
         
-        # 新增：特殊格式识别功能初始化
+        def _init_format_styles(self):
+            """初始化格式样式映射"""
+            if not DOCX_AVAILABLE:
+                return
+            
+            # 下划线样式映射 - 安全地添加下划线样式
+            self.underline_styles = {}
+            styles_to_add = [
+                (getattr(WD_UNDERLINE, 'SINGLE', None), "单下划线"),
+                (getattr(WD_UNDERLINE, 'DOUBLE', None), "双下划线"),
+                (getattr(WD_UNDERLINE, 'THICK', None), "粗下划线"),
+                (getattr(WD_UNDERLINE, 'DOTTED', None), "点状下划线"),
+                (getattr(WD_UNDERLINE, 'DASH', None), "虚线下划线"),
+                (getattr(WD_UNDERLINE, 'DOT_DASH', None), "点划线下划线"),
+                (getattr(WD_UNDERLINE, 'DOT_DOT_DASH', None), "点点划线下划线"),
+                (getattr(WD_UNDERLINE, 'WAVY', None), "波浪线下划线"),
+                (getattr(WD_UNDERLINE, 'DOTTED_HEAVY', None), "粗点状下划线"),
+                (getattr(WD_UNDERLINE, 'DASH_HEAVY', None), "粗虚线下划线"),
+                (getattr(WD_UNDERLINE, 'WAVY_HEAVY', None), "粗波浪线下划线"),
+                (getattr(WD_UNDERLINE, 'WAVY_DOUBLE', None), "双波浪线下划线")
+            ]
+            
+            for style_enum, style_name in styles_to_add:
+                if style_enum is not None:
+                    self.underline_styles[style_enum] = style_name
+            
+            print(f"📋 初始化了 {len(self.underline_styles)} 种下划线样式识别")
+
+        # 特殊格式识别功能初始化
         self.format_detection_enabled = DOCX_AVAILABLE
         self.special_formatted_text = []
         self.format_statistics = defaultdict(int)
         self.paragraph_formatting = []  # 新增：存储段落格式信息
         
         if self.format_detection_enabled:
-            self._init_format_styles()
-    
-    def _check_pandoc(self):
-        """检查pandoc是否可用"""
-        try:
-            result = subprocess.run(['pandoc', '--version'], 
-                                  capture_output=True, text=True, timeout=10)
-            if result.returncode == 0:
-                print(f"✅ Pandoc可用: {result.stdout.split()[1]}")
-                return True
-            else:
-                print(f"❌ Pandoc检查失败: {result.stderr}")
-                return False
-        except FileNotFoundError:
-            print("❌ 未找到pandoc命令")
-            return False
-        except subprocess.TimeoutExpired:
-            print("❌ Pandoc检查超时")
-            return False
-        except Exception as e:
-            print(f"❌ Pandoc检查异常: {e}")
-            return False
-    
-    def _init_format_styles(self):
-        """初始化格式样式映射"""
-        if not DOCX_AVAILABLE:
-            return
-        
-        # 下划线样式映射 - 安全地添加下划线样式
-        self.underline_styles = {}
-        styles_to_add = [
-            (getattr(WD_UNDERLINE, 'SINGLE', None), "单下划线"),
-            (getattr(WD_UNDERLINE, 'DOUBLE', None), "双下划线"),
-            (getattr(WD_UNDERLINE, 'THICK', None), "粗下划线"),
-            (getattr(WD_UNDERLINE, 'DOTTED', None), "点状下划线"),
-            (getattr(WD_UNDERLINE, 'DASH', None), "虚线下划线"),
-            (getattr(WD_UNDERLINE, 'DOT_DASH', None), "点划线下划线"),
-            (getattr(WD_UNDERLINE, 'DOT_DOT_DASH', None), "点点划线下划线"),
-            (getattr(WD_UNDERLINE, 'WAVY', None), "波浪线下划线"),
-            (getattr(WD_UNDERLINE, 'DOTTED_HEAVY', None), "粗点状下划线"),
-            (getattr(WD_UNDERLINE, 'DASH_HEAVY', None), "粗虚线下划线"),
-            (getattr(WD_UNDERLINE, 'WAVY_HEAVY', None), "粗波浪线下划线"),
-            (getattr(WD_UNDERLINE, 'WAVY_DOUBLE', None), "双波浪线下划线")
-        ]
-        
-        for style_enum, style_name in styles_to_add:
-            if style_enum is not None:
-                self.underline_styles[style_enum] = style_name
-        
-        print(f"📋 初始化了 {len(self.underline_styles)} 种下划线样式识别")
-    
+            _init_format_styles(self)
+
     def _analyze_text_formatting(self, run, para_index=0, run_index=0):
-        """分析文本片段的格式"""
+        """工具函数：分析文本片段的格式"""
         if not DOCX_AVAILABLE:
             return []
         
         formats = []
         font = run.font
+
+        def _check_emphasis_mark(self, run):
+            """工具函数：检查着重号（加点字）"""
+            try:
+                run_xml = run._element
+                em_elements = run_xml.xpath('.//w:em', namespaces={'w': 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'})
+                
+                if em_elements:
+                    em_val = em_elements[0].get(qn('w:val'))
+                    emphasis_types = {
+                        'dot': '点',
+                        'comma': '逗号',
+                        'circle': '圆圈',
+                        'underDot': '下点'
+                    }
+                    return emphasis_types.get(em_val, f'着重号({em_val})')
+            except:
+                pass
+            
+            return None
         
         # 下划线检查
         if font.underline:
@@ -191,7 +211,7 @@ class PandocWordProcessor:
             formats.append(f"字体: {font.name}")
         
         # 检查着重号
-        emphasis_mark = self._check_emphasis_mark(run)
+        emphasis_mark = _check_emphasis_mark(self, run)
         if emphasis_mark:
             formats.append(f"着重号: {emphasis_mark}")
         
@@ -209,26 +229,6 @@ class PandocWordProcessor:
             })
         
         return formats
-    
-    def _check_emphasis_mark(self, run):
-        """检查着重号（加点字）"""
-        try:
-            run_xml = run._element
-            em_elements = run_xml.xpath('.//w:em', namespaces={'w': 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'})
-            
-            if em_elements:
-                em_val = em_elements[0].get(qn('w:val'))
-                emphasis_types = {
-                    'dot': '点',
-                    'comma': '逗号',
-                    'circle': '圆圈',
-                    'underDot': '下点'
-                }
-                return emphasis_types.get(em_val, f'着重号({em_val})')
-        except:
-            pass
-        
-        return None
     
     def _analyze_paragraph_formatting(self, paragraph, para_index=0):
         """分析段落的格式，包括首行缩进"""
@@ -369,329 +369,137 @@ class PandocWordProcessor:
         except Exception as e:
             print(f"❌ 格式分析失败: {e}")
             return None
-    
-    # def _save_format_analysis(self, format_analysis, file_path):
-    #     """保存格式分析结果 - 已移除"""
-    #     try:
-    #         # 创建格式分析结果目录
-    #         format_dir = Path("format_analysis")
-    #         format_dir.mkdir(exist_ok=True)
-    #         
-    #         doc_name = Path(file_path).stem
-    #         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    #         
-    #         # 保存格式统计摘要
-    #         summary_file = format_dir / f"format_summary_{doc_name}_{timestamp}.txt"
-    #         with open(summary_file, 'w', encoding='utf-8') as f:
-    #             f.write(f"文档格式分析报告\n")
-    #             f.write(f"文档: {file_path}\n")
-    #             f.write(f"分析时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-    #             f.write(f"=" * 50 + "\n\n")
-    #             
-    #             f.write("格式统计:\n")
-    #             for fmt, count in format_analysis['format_statistics'].items():
-    #                 f.write(f"  {fmt}: {count}次\n")
-    #             
-    #             f.write(f"\n特殊格式文本详情:\n")
-    #             for item in self.special_formatted_text:
-    #                 f.write(f"\n位置{item['paragraph']}-片段{item['run']}: \"{item['text'][:100]}{'...' if len(item['text']) > 100 else ''}\"\n")
-    #                 for fmt in item['formats']:
-    #                     f.write(f"  └─ {fmt}\n")
-    #         
-    #         print(f"📋 格式分析报告已保存: {summary_file}")
-    #         
-    #         # 保存JSON格式的详细数据
-    #         json_file = format_dir / f"format_details_{doc_name}_{timestamp}.json"
-    #         with open(json_file, 'w', encoding='utf-8') as f:
-    #             json.dump({
-    #                 'document_path': file_path,
-    #                 'analysis_summary': format_analysis,
-    #                 'special_formatted_text': self.special_formatted_text,
-    #                 'analysis_time': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    #             }, f, ensure_ascii=False, indent=2)
-    #         
-    #         print(f"📄 详细格式数据已保存: {json_file}")
-    #         
-    #     except Exception as e:
-    #         print(f"⚠️ 保存格式分析结果失败: {e}")
-    #     pass
-    
-    # def _integrate_format_info(self, api_result, format_analysis, file_path):
-    #     """将格式信息整合到API结果中 - 已移除"""
-    #     try:
-    #         # 类型检查
-    #         if not isinstance(api_result, list):
-    #             print(f"⚠️ API结果类型错误，预期为list，实际为{type(api_result).__name__}，跳过格式信息整合")
-    #             return
-    #         
-    #         # 创建格式信息概要
-    #         format_summary = {
-    #             'total_special_formats': len(self.special_formatted_text),
-    #             'format_types': list(format_analysis['format_statistics'].keys()),
-    #             'analysis_enabled': True
-    #         }
-    #         
-    #         # 为每个题目整合格式信息
-    #         for question in api_result:
-    #             if not isinstance(question, dict):
-    #                 continue
-    #                 
-    #             # 添加格式信息
-    #             question['format_info'] = format_summary.copy()
-    #             question['special_formats_in_question'] = []
-    #             
-    #             # 匹配特殊格式文本到当前题目
-    #             question_text = question.get('question', {}).get('content', '')
-    #             for format_item in self.special_formatted_text:
-    #                 if format_item['text'].strip() in question_text:
-    #                     question['special_formats_in_question'].append({
-    #                         'text': format_item['text'],
-    #                         'formats': format_item['formats']
-    #                     })
-    #         
-    #         print("🔗 格式信息已整合到API结果中")
-    #         
-    #     except Exception as e:
-    #         print(f"⚠️ 整合格式信息失败: {e}")
-    #     pass
-    
-    def get_special_format_summary(self):
-        """获取特殊格式摘要信息"""
-        if not self.format_detection_enabled:
-            return "格式检测功能未启用"
+
+    def preprocess(self, docx_path):
+        print("🔍 预处理...")
         
-        summary_lines = []
-        
-        # 统计首行缩进段落、居中段落和居右段落
-        if hasattr(self, 'paragraph_formatting') and self.paragraph_formatting:
-            indent_count = len([p for p in self.paragraph_formatting if p['has_first_line_indent']])
-            centered_count = len([p for p in self.paragraph_formatting if p['is_centered']])
-            right_aligned_count = len([p for p in self.paragraph_formatting if p['is_right_aligned']])
-            summary_lines.append(f"📏 首行缩进段落: {indent_count} 个")
-            summary_lines.append(f"📐 居中对齐段落: {centered_count} 个")
-            summary_lines.append(f"📑 居右对齐段落: {right_aligned_count} 个")
-        
-        # 统计特殊格式文本
-        if self.special_formatted_text:
-            # 统计重点格式（带⚠️标记）
-            format_counts = defaultdict(int)
-            for item in self.special_formatted_text:
-                for fmt in item['formats']:
-                    if '⚠️' in fmt:
-                        format_counts[fmt] += 1
+        try:
+            # 导入预处理器
+            import zipfile
+            import xml.etree.ElementTree as ET
+            import tempfile
+            import shutil
+            import re
             
-            summary_lines.append(f"📊 特殊格式文本: {len(self.special_formatted_text)} 个片段")
-            summary_lines.extend(f"  {fmt}: {count}次" 
-                              for fmt, count in sorted(format_counts.items(), key=lambda x: x[1], reverse=True))
-        
-        if not summary_lines:
-            return "未发现特殊格式或首行缩进"
-        
-        return "\n".join(summary_lines)
-    
-    def get_supported_formats(self):
-        """获取支持的文档格式"""
-        return ['.docx', '.doc', '.rtf', '.odt', '.txt']
-    
-    def is_supported_format(self, file_path):
-        """检查文件格式是否支持"""
-        file_ext = Path(file_path).suffix.lower()
-        return file_ext in self.get_supported_formats()
-    
-    # 注释掉图片提取功能以提高运行效率
-    def extract_images_from_docx(self, docx_path, save_images=False):
-        """从docx文件中提取图片 - 已注释以提高运行效率"""
-        print(f"🖼️  图片处理已禁用以提高运行效率")
-        return []
-        
-        # print(f"🖼️  从docx文件中提取图片...")
-        # 
-        # images = []
-        # if save_images:
-        #     # 创建media文件夹
-        #     media_dir = Path("media")
-        #     media_dir.mkdir(exist_ok=True)
-        #     print(f"📁 创建图片保存目录: {media_dir}")
-        # 
-        # try:
-        #     # docx文件本质上是一个zip文件
-        #     with zipfile.ZipFile(docx_path, 'r') as zip_file:
-        #         # 查找media文件夹中的图片
-        #         for file_info in zip_file.filelist:
-        #             if file_info.filename.startswith('word/media/'):
-        #                 file_name = file_info.filename.split('/')[-1]
-        #                 file_ext = Path(file_name).suffix.lower()
-        #                 
-        #                 # 只处理图片文件
-        #                 if file_ext in ['.png', '.jpg', '.jpeg', '.gif', '.bmp']:
-        #                     try:
-        #                         # 读取图片数据
-        #                         with zip_file.open(file_info.filename) as img_file:
-        #                             img_data = img_file.read()
-        #                         
-        #                         # 转换为PIL Image对象
-        #                         img = Image.open(BytesIO(img_data))
-        #                         
-        #                         # 如果需要保存图片到本地
-        #                         if save_images:
-        #                             img_path = media_dir / file_name
-        #                             with open(img_path, 'wb') as f:
-        #                                 f.write(img_data)
-        #                             print(f"  💾 保存图片: {img_path}")
-        #                         
-        #                         images.append({
-        #                             'filename': file_name,
-        #                             'path': file_info.filename,
-        #                             'image': img,
-        #                             'data': img_data,
-        #                             'size': img.size,
-        #                             'format': img.format
-        #                         })
-        #                         
-        #                         print(f"  📷 提取图片: {file_name} ({img.size[0]}x{img.size[1]})")
-        #                         
-        #                     except Exception as e:
-        #                         print(f"  ⚠️  图片 {file_name} 读取失败: {e}")
-        #                         continue
-        #         
-        #         print(f"✅ 共提取 {len(images)} 张图片")
-        #         return images
-        #         
-        # except Exception as e:
-        #     print(f"❌ 提取图片失败: {e}")
-        #     return []
-    
-    # 注释掉LLM图片分析功能以提高运行效率
-    def analyze_image_with_llm(self, image_data, image_name):
-        """使用LLM分析图片内容 - 已注释以提高运行效率"""
-        print(f"  🤖 图片分析已禁用以提高运行效率: {image_name}")
-        return f"图片内容: {image_name}"
-        
-        # print(f"  🤖 使用LLM分析图片: {image_name}")
-        # 
-        # try:
-        #     # 将图片转换为base64
-        #     img_buffer = BytesIO()
-        #     if isinstance(image_data, bytes):
-        #         # 如果已经是bytes，直接使用
-        #         img_base64 = base64.b64encode(image_data).decode()
-        #     else:
-        #         # 如果是PIL Image，先保存为bytes
-        #         image_data.save(img_buffer, format='PNG')
-        #         img_base64 = base64.b64encode(img_buffer.getvalue()).decode()
-        #     
-        #     # 构建API请求
-        #     headers = {
-        #         "Authorization": f"Bearer {self.api_key}",
-        #         "Content-Type": "application/json"
-        #     }
-        #     
-        #     # 使用vision API分析图片
-        #     data = {
-        #         "model": "doubao-seed-1-6-250615",
-        #         "messages": [
-        #             {
-        #                 "role": "user",
-        #                 "content": [
-        #                     {
-        #                         "type": "text",
-        #                         "text": "请分析这张图片的内容，用简洁的中文描述图片中显示的内容。如果是试卷题目，请描述题目类型和主要内容。"
-        #                     },
-        #                     {
-        #                         "type": "image_url",
-        #                         "image_url": {
-        #                             "url": f"data:image/png;base64,{img_base64}"
-        #                         }
-        #                     }
-        #                 ]
-        #             }
-        #         ],
-        #         "max_tokens": 500,
-        #         "temperature": 0.1
-        #     }
-        #     
-        #     # 调用API
-        #     response = requests.post(
-        #         f"{self.base_url}/v3/chat/completions",
-        #         headers=headers,
-        #         json=data,
-        #         timeout=60
-        #     )
-        #     
-        #     if response.status_code == 200:
-        #         result = response.json()
-        #         if 'choices' in result and len(result['choices']) > 0:
-        #             content = result['choices'][0]['message']['content']
-        #             print(f"  ✅ 图片分析完成: {content[:100]}...")
-        #             return content
-        #         else:
-        #             print(f"  ⚠️  API响应格式异常")
-        #             return f"图片内容: {image_name}"
-        #     else:
-        #         print(f"  ❌ API调用失败: {response.status_code}")
-        #         return f"图片内容: {image_name}"
-        #         
-        # except Exception as e:
-        #     print(f"  ❌ 图片分析异常: {e}")
-        #     return f"图片内容: {image_name}"
-    
-    # 注释掉图片水印替换功能以提高运行效率
-    def replace_image_watermarks(self, content, images):
-        """替换内容中的图片水印为图片内容描述 - 已注释以提高运行效率"""
-        print("🔄 图片水印替换已禁用以提高运行效率")
-        return content
-        
-        # print("🔄 替换图片水印...")
-        # 
-        # if not images:
-        #     print("  ℹ️  没有图片需要处理")
-        #     return content
-        # 
-        # # 查找图片引用模式
-        # # 匹配类似 ![学科网(www.zxxk.com)--教育资源门户...](media/image6.png) 的模式
-        # image_pattern = r'!\[([^\]]+)\]\(([^)]+)\)'
-        # 
-        # def replace_image_ref(match):
-        #     watermark_text = match.group(1)
-        #     image_path = match.group(2)
-        #     
-        #     # 提取图片文件名
-        #     image_filename = Path(image_path).name
-        #     
-        #     # 查找对应的图片
-        #     for img_info in images:
-        #         if img_info['filename'] == image_filename:
-        #             # 使用LLM分析图片内容
-        #             image_description = self.analyze_image_with_llm(img_info['image'], image_filename)
-        #             
-        #             # 替换水印文字为图片描述
-        #             new_text = f"![{image_description}]({image_path})"
-        #             print(f"  🔄 替换: {watermark_text[:50]}... -> {image_description[:50]}...")
-        #             return new_text
-        #     
-        #     # 如果没找到对应图片，保留原样
-        #     print(f"  ⚠️  未找到图片: {image_filename}")
-        #     return match.group(0)
-        # 
-        # # 执行替换
-        # modified_content = re.sub(image_pattern, replace_image_ref, content)
-        # 
-        # # 统计替换次数
-        # original_count = len(re.findall(image_pattern, content))
-        # modified_count = len(re.findall(image_pattern, modified_content))
-        # 
-        # print(f"✅ 水印替换完成，处理了 {len(images)} 张图片")
-        # return modified_content
-    
+            # 创建专门的子文件夹来存储中间文件
+            from pathlib import Path
+            input_path = Path(docx_path)
+            
+            # 如果文件在Chinese文件夹中，创建processed子文件夹
+            if 'Chinese' in str(input_path):
+                # 获取Chinese文件夹的路径
+                chinese_folder = None
+                for parent in input_path.parents:
+                    if parent.name == 'Chinese':
+                        chinese_folder = parent
+                        break
+                
+                if chinese_folder:
+                    processed_folder = chinese_folder / 'processed'
+                    processed_folder.mkdir(exist_ok=True)
+                    filename = input_path.name.replace('.docx', '_dot_processed.docx')
+                    output_path = str(processed_folder / filename)
+                    print(f"中间文件将保存到: processed/{filename}")
+                else:
+                    # 回退到原来的方式
+                    output_path = docx_path.replace('.docx', '_dot_processed.docx')
+            else:
+                # 不在Chinese文件夹中，使用原来的方式
+                output_path = docx_path.replace('.docx', '_dot_processed.docx')
+            
+            # 创建临时目录来解压和重新打包docx
+            with tempfile.TemporaryDirectory() as temp_dir:
+                extract_dir = Path(temp_dir) / "docx_content"
+                extract_dir.mkdir()
+                
+                # 解压docx文件
+                with zipfile.ZipFile(docx_path, 'r') as zip_file:
+                    zip_file.extractall(extract_dir)
+                
+                # 修改document.xml
+                document_xml_path = extract_dir / "word" / "document.xml"
+                if document_xml_path.exists():
+                    with open(document_xml_path, 'r', encoding='utf-8') as f:
+                        xml_content = f.read()
+                    
+                    # 查找并替换加点字标记
+                    run_with_em_pattern = r'(<w:r>.*?<w:rPr>.*?)<w:em w:val="dot"\s*/>(.*?</w:rPr>.*?<w:t>)(.*?)(</w:t>.*?</w:r>)'
+                    
+                    def replace_run_with_em(match):
+                        before_em = match.group(1)
+                        after_em = match.group(2) 
+                        text_content = match.group(3)
+                        after_text = match.group(4)
+                        
+                        # 添加下划线和特殊标记
+                        underline_xml = '<w:u w:val="single"/>'
+                        marked_text = f"[DOT_BELOW]{text_content}[/DOT_BELOW]"
+                        
+                        return f"{before_em}{underline_xml}{after_em}{marked_text}{after_text}"
+                    
+                    # 🌊 安全的波浪线XML预处理（修正版）
+                    modified_content = xml_content
+                    
+                    # 🔧 修复：允许rPr内有其他标签，但确保在同一个w:r内
+                    # 关键：只匹配有xml:space="preserve"的wave格式（真正的填空）
+                    wavy_pattern = r'(<w:r><w:rPr>(?:[^<]|<[^/][^>]*>)*<w:u w:val="wave"/>(?:[^<]|<[^/][^>]*>)*</w:rPr><w:t[^>]*xml:space="preserve"[^>]*>)(\s+)(</w:t></w:r>)'
+                    
+                    def replace_wavy_spaces(match):
+                        before_text = match.group(1)  # <w:r><w:rPr>...<w:t>
+                        spaces = match.group(2)       # 空格内容
+                        after_text = match.group(3)   # </w:t></w:r>
+                        
+                        # 🔍 严格检查：只处理纯空格的波浪线（真正的填空）
+                        if spaces.strip() != '':
+                            # 如果不是纯空格，则不处理，保持原样
+                            return match.group(0)
+                        
+                        space_count = len(spaces)
+                        # 保持XML结构完整，只替换文本内容
+                        marked_text = f"[WAVY_SPACE_{space_count}]"
+                        return f"{before_text}{marked_text}{after_text}"
+                    
+                    # 🔍 调试：检查波浪线匹配和处理过程
+                    test_matches = re.findall(wavy_pattern, modified_content, flags=re.DOTALL)
+                    print(f"  🔍 调试：找到 {len(test_matches)} 个波浪线模式")
+                    for i, match in enumerate(test_matches):
+                        content = match[1]
+                        is_pure_space = content.strip() == ''
+                        print(f"    匹配 {i+1}: 内容长度={len(content)}, 纯空格={is_pure_space}, 内容='{content[:20]}...'")
+                    
+                    # 先处理波浪线（在XML结构完整时）
+                    modified_content, wavy_count = re.subn(wavy_pattern, replace_wavy_spaces, modified_content, flags=re.DOTALL)
+                    
+                    # 再处理加点字
+                    modified_content, dot_count = re.subn(run_with_em_pattern, replace_run_with_em, modified_content, flags=re.DOTALL)
+                    
+                    replacement_count = dot_count + wavy_count
+                    
+                    if replacement_count > 0:
+                        with open(document_xml_path, 'w', encoding='utf-8') as f:
+                            f.write(modified_content)
+                        if dot_count > 0:
+                            print(f"  ✅ 处理了 {dot_count} 个加点字")
+                        if wavy_count > 0:
+                            print(f"  🌊 标记了 {wavy_count} 个波浪线填空（XML预处理）")
+                
+                # 重新打包docx文件
+                with zipfile.ZipFile(output_path, 'w', zipfile.ZIP_DEFLATED) as zip_file:
+                    for file_path in extract_dir.rglob('*'):
+                        if file_path.is_file():
+                            relative_path = file_path.relative_to(extract_dir)
+                            zip_file.write(file_path, relative_path)
+            
+            return output_path
+            
+        except Exception as e:
+            print(f"  ⚠️ 预处理失败: {e}")
+            return None
+
     def convert_word_to_text(self, file_path, output_format='markdown'):
         """使用pandoc将Word文档转换为文本，并增强格式标注"""
         if not self.pandoc_available:
             print("❌ Pandoc不可用，无法处理文档")
-            return None
-        
-        if not self.is_supported_format(file_path):
-            print(f"❌ 不支持的文件格式: {Path(file_path).suffix}")
-            print(f"支持的格式: {', '.join(self.get_supported_formats())}")
             return None
         
         if not os.path.exists(file_path):
@@ -724,11 +532,6 @@ class PandocWordProcessor:
                 # 如果是docx文件，提取图片并替换水印 - 已注释以提高运行效率
                 if file_path.lower().endswith('.docx'):
                      print("检测到docx文件，图片处理已禁用以提高运行效率")
-                     # images = self.extract_images_from_docx(file_path, save_images=True)
-                     # if images:
-                     #     content = self.replace_image_watermarks(content, images)
-                     # else:
-                     #     print("未找到图片或图片处理失败")
                 
                 # 新增：如果有格式分析结果，增强pandoc内容
                 if hasattr(self, 'special_formatted_text') and self.special_formatted_text:
@@ -1267,7 +1070,6 @@ class PandocWordProcessor:
                                     cleaned_line = self._clean_dot_below_markers(line)
                                     print(f"     第{j+1}行清理后: {repr(cleaned_line[:80])}")
         
-        # 第二步：处理文本特殊格式
         # 按文本长度排序，从长到短，避免短文本替换影响长文本
         sorted_formats = sorted(self.special_formatted_text, 
                               key=lambda x: len(x['text']), reverse=True)
@@ -1291,10 +1093,6 @@ class PandocWordProcessor:
             
             # 🛡️ 防重复处理：检查文本是否已经被标记过
             if format_annotation:
-                # 检查原始文本或标准化文本是否已经有格式标记
-                if f"[{text}]{{" in content or f"[{normalized_text}]{{" in content:
-                    print(f"  ⚠️ 跳过已标记文本: \"{text[:30]}{'...' if len(text) > 30 else ''}\"")
-                    continue
                 
                 # 智能匹配：先尝试原始文本，再尝试标准化文本
                 target_text = None
@@ -1376,18 +1174,39 @@ class PandocWordProcessor:
         
         return " ".join(annotations) if annotations else None
     
-    def convert_word_to_markdown(self, file_path):
-        """将Word文档转换为Markdown格式"""
-        return self.convert_word_to_text(file_path, 'markdown')
-    
-    def convert_word_to_plain_text(self, file_path):
-        """将Word文档转换为纯文本格式"""
-        return self.convert_word_to_text(file_path, 'plain')
-    
-    def convert_word_to_html(self, file_path):
-        """将Word文档转换为HTML格式"""
-        return self.convert_word_to_text(file_path, 'html')
-    
+    def _convert_dashes_to_chinese(self, content):
+        """转换连续短横线为中文破折号"""
+        print("🔀 转换连续短横线为中文破折号...")
+        
+        try:
+            import re
+            
+            conversion_count = 0
+            
+            dash_pattern = r'-{3,}'  # 匹配3个或更多连续的短横线
+            
+            def replace_dashes(match):
+                nonlocal conversion_count
+                dashes = match.group(0)
+                dash_count = len(dashes)
+                conversion_count += 1
+                # 每3个短横线替换为一个em dash
+                em_dash_count = dash_count // 3
+                return '—' * em_dash_count
+            
+            content = re.sub(dash_pattern, replace_dashes, content)
+            
+            if conversion_count > 0:
+                print(f"  ✅ 转换了 {conversion_count} 处连续短横线为中文破折号（每3个短横线转换为1个em dash）")
+            else:
+                print("  ℹ️ 未发现需要转换的连续短横线")
+            
+            return content
+            
+        except Exception as e:
+            print(f"  ⚠️ 破折号转换失败: {e}")
+            return content   
+
     def call_llm_api(self, content, prompt_template_path="prompt.md"):
         """调用大模型API解析文档结构"""
         print("开始调用大模型API...")
@@ -1522,101 +1341,164 @@ class PandocWordProcessor:
             print(f"❌ API调用异常: {e}")
             return None
     
-    def process_word_document(self, file_path, output_format='markdown', prompt_template_path="prompt.md", 
-                            enable_dot_below_detection=True, enable_coze_workflow=True):
-        """完整的Word文档处理流程"""
-        print("=" * 60)
-        print("Pandoc Word文档处理工具 - 增强版 (支持加点字)")
-        print("=" * 60)
-        print(f"文档文件: {file_path}")
-        print(f"输出格式: {output_format}")
-        print(f"Prompt模板: {prompt_template_path}")
-        # print(f"格式分析: 已禁用")  # 已移除格式分析功能
-        print(f"加点字标记保留: {'启用' if enable_dot_below_detection else '禁用'}")
-        print(f"Coze工作流: {'启用' if enable_coze_workflow else '禁用'}")
-        print("=" * 60)
+    def afterword_process_json_content(self, data):
+        """
+        JSON内容后处理函数：对解析后的JSON数据进行格式规范化处理
         
-        # 第一步 - 加点字预处理（如果启用且为docx文件）
-        processed_file_path = file_path
-        if enable_dot_below_detection and file_path.lower().endswith('.docx'):
-            processed_file_path = self._preprocess_dot_below_chars(file_path)
-            if not processed_file_path:
-                processed_file_path = file_path  # 回退到原文件
-        
-        # 第二步 - 格式分析（如果启用且为docx文件）
-        format_analysis = None
-        if processed_file_path.lower().endswith('.docx'):
-            format_analysis = self.extract_format_analysis(processed_file_path)
-        
-        # 第三步：使用pandoc转换文档
-        content = self.convert_word_to_text(processed_file_path, output_format)
-        if not content:
-            print("❌ 文档转换失败，无法继续处理")
-            return None
-        
-        # 第四步：转换连续短横线为中文破折号
-        content = self._convert_dashes_to_chinese(content)
-        
-        # 第六步：调用大模型API解析内容
-        llm_response = self.call_llm_api(content, prompt_template_path)
-        if not llm_response:
-            print("❌ API调用失败")
-            return None
-        
-        # 第七步：处理API响应并集成格式信息
-        api_result = self._process_api_response(llm_response, file_path)
-        
-        # 第八步：如果有格式分析结果，将其整合到最终结果中
-        if format_analysis and api_result:
-            print("🔗 格式信息整合完成")
-        
-        # 第九步：调用Coze工作流（如果启用）
-        coze_ids = None
-        if enable_coze_workflow:
-            print("\n" + "=" * 60)
-            print("🔗 Coze工作流处理阶段")
-            print("=" * 60)
+        主要功能：
+        1. 英文引号 → 中文左右引号：智能转换，避免破坏JSON结构
+        2. 英文省略号 → 中文省略号：将连续六个句点......转换为……
+        3. 上角标格式转换：将^内容^形式转换为<sup>内容</sup>HTML标签
+        4. 手动HTML解析确保在标签内部不进行转换
+
+        参数:
+            data: 包含 HTML 内容的 JSON 数据（字典、列表或字符串）
+
+        返回:
+            处理后的 JSON 数据，所有文本内容已完成格式规范化
             
-            if api_result:
-                # 正常情况：使用API解析结果调用Coze
-                coze_ids = self.call_coze_workflow(api_result)
-                
-                if coze_ids:
-                    # 创建coze_res文件夹
-                    coze_res_dir = Path("coze_res")
-                    coze_res_dir.mkdir(exist_ok=True)
-                    
-                    # 将Coze返回的ID列表保存为文本文件
-                    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                    coze_output_file = coze_res_dir / f"coze_ids_{Path(file_path).stem}_{timestamp}.txt"
-                    
-                    with open(coze_output_file, 'w', encoding='utf-8') as f:
-                        f.write(",".join(coze_ids))
-                    
-                    print(f"📁 Coze ID列表已保存到: {coze_output_file}")
-                    
-                    # 可选：将ID列表添加到API结果中
-                    if isinstance(api_result, list):
-                        # 如果API结果是题目列表，可以为每道题添加一个ID
-                        for i, question in enumerate(api_result[:len(coze_ids)]):
-                            if isinstance(question, dict):
-                                question['coze_id'] = coze_ids[i] if i < len(coze_ids) else None
-                    print("✅ Coze ID已整合到题目结果中")
-                else:
-                    print("⚠️ Coze工作流未返回有效数据")
-            else:
-                # API解析失败的情况：提供手动调用指导
-                print("⚠️ 由于JSON解析失败，无法自动调用Coze工作流")
-                print("💡 解决方案：")
-                print("  1. 检查并修复生成的JSON文件格式问题")
-                print("  2. 或者使用手动脚本调用Coze工作流:")
-                print("     python3 manual_coze_call.py")
+        注意：
+            - 引号转换只在HTML内容的文本部分进行，不影响HTML标签
+            - 使用安全的引号转换算法，避免破坏JSON结构
+        """
+
+        def replace_quotes_in_html(html_content, convert_quotes=True):
+            """手动解析 HTML 内容并进行格式转换：引号、省略号、上角标等"""
+            if not html_content:
+                return html_content
+
+            try:
+                result = []
+                i = 0
+                n = len(html_content)
+                single_quote_count = 0  # 用于跟踪引号出现次数
+                double_quote_count = 0  # 用于跟踪引号出现次数
+
+                while i < n:
+                    if html_content[i] == '<':
+                        # 处理标签部分（原样保留）
+                        tag_end = html_content.find('>', i)
+                        if tag_end == -1:
+                            tag_end = n
+                        result.append(html_content[i:tag_end + 1])
+                        i = tag_end + 1
+                    else:
+                        # 处理文本内容
+                        text_end = html_content.find('<', i)
+                        if text_end == -1:
+                            text_end = n
+                        text = html_content[i:text_end]
+
+                        # 处理文本中的引号（交替替换）、省略号和上角标
+                        new_text = []
+                        j = 0
+                        text_len = len(text)
+                        
+                        while j < text_len:
+                            # 检查是否是上角标格式 ^内容^
+                            if text[j] == '^':
+                                # 寻找对应的结束^，确保不越界
+                                if j + 2 < text_len and text[j + 2] == '^':
+                                    content = text[j+1]
+                                    new_text.append(f'<sup>{content}</sup>')
+                                    j = j + 3  # 跳过结束的^
+                                else:
+                                    # 没有找到对应的结束^，保留原样
+                                    new_text.append(text[j])
+                                    j += 1
+                            # 检查是否是六个连续的句点
+                            elif text[j] == '.' and j + 5 < text_len and all(text[j + k] == '.' for k in range(6)):
+                                new_text.append('……')
+                                j += 6  # 跳过这六个句点
+                            else:
+                                # 安全的引号转换：只在纯文本内容中进行，避免破坏HTML属性
+                                char = text[j]
+                                if convert_quotes and char == '"':
+                                    # 检查是否在HTML属性中（简单检查：前后是否有=）
+                                    before_context = ''.join(new_text[-10:]) if len(new_text) >= 10 else ''.join(new_text)
+                                    after_context = text[j+1:j+11] if j+11 < text_len else text[j+1:]
+                                    
+                                    # 如果不是HTML属性（没有 = 符号），则进行引号转换
+                                    if '=' not in before_context and '=' not in after_context:
+                                        double_quote_count += 1
+                                        converted_quote = '“' if double_quote_count % 2 == 1 else '”'
+                                        new_text.append(converted_quote)
+                                    else:
+                                        new_text.append(char)  # 保持原样
+                                elif convert_quotes and char == "'":
+                                    # 类似的单引号处理
+                                    before_context = ''.join(new_text[-10:]) if len(new_text) >= 10 else ''.join(new_text)
+                                    after_context = text[j+1:j+11] if j+11 < text_len else text[j+1:]
+                                    
+                                    if '=' not in before_context and '=' not in after_context:
+                                        single_quote_count += 1
+                                        converted_quote = "‘" if single_quote_count % 2 == 1 else "’"
+                                        new_text.append(converted_quote)
+                                    else:
+                                        new_text.append(char)  # 保持原样
+                                else:
+                                    new_text.append(char)
+                                j += 1
+
+                        result.append(''.join(new_text))
+                        i = text_end
+
+                return ''.join(result)
+            except Exception as e:
+                print(f"⚠️ HTML内容处理失败: {e}")
+                print(f"问题内容: {repr(html_content[:100])}")
+                return html_content  # 出错时返回原始内容
+
+        # 如果是字符串形式的 JSON，先解析为字典
+        if isinstance(data, str):
+            try:
+                data = json.loads(data)
+            except json.JSONDecodeError:
+                return data
+
+        # 定义需要进行引号转换的字段（只对这些字段进行处理）
+        QUOTE_CONVERSION_FIELDS = {
+            'content', 'solution', 'analysis', 'answer', 'explanation', 
+            'title', 'description', 'question_text', 'option_text'
+        }
         
-        return {
-            'questions': api_result,
-            'coze_ids': coze_ids
-        } if enable_coze_workflow else api_result
-    
+        # 递归处理 JSON 中的每个字段
+        def process_item(item):
+            try:
+                if isinstance(item, dict):
+                    for key, value in item.items():
+                        try:
+                            if isinstance(value, str):
+                                # 只对特定字段进行引号转换，其他字段只做省略号和上角标转换
+                                if key.lower() in QUOTE_CONVERSION_FIELDS or any(field in key.lower() for field in QUOTE_CONVERSION_FIELDS):
+                                    item[key] = replace_quotes_in_html(value, convert_quotes=True)
+                                else:
+                                    # 只进行省略号和上角标转换，不进行引号转换
+                                    item[key] = replace_quotes_in_html(value, convert_quotes=False)
+                            elif isinstance(value, (dict, list)):
+                                process_item(value)
+                        except Exception as e:
+                            print(f"⚠️ 处理字段 {key} 失败: {e}")
+                            # 字段处理失败时保留原值，不影响其他字段
+                elif isinstance(item, list):
+                    for i in range(len(item)):
+                        try:
+                            if isinstance(item[i], str):
+                                # 对数组中的字符串进行处理（默认进行引号转换）
+                                item[i] = replace_quotes_in_html(item[i], convert_quotes=True)
+                            elif isinstance(item[i], (dict, list)):
+                                process_item(item[i])
+                        except Exception as e:
+                            print(f"⚠️ 处理数组元素 {i} 失败: {e}")
+                            # 数组元素处理失败时保留原值，不影响其他元素
+            except Exception as e:
+                print(f"⚠️ 处理数据项失败: {e}")
+                # 整体处理失败时什么都不做，保持原始数据
+
+        process_item(data)
+
+        return data 
+
     def _process_api_response(self, llm_content, original_file_path):
         """处理API响应并保存结果，增强健壮性和错误处理"""
         def extract_json_from_codeblock(content):
@@ -1676,11 +1558,9 @@ class PandocWordProcessor:
 
         # 3. 解析JSON并保存结果
         try:
-            # caution: 如果直接使用json.loads(cleaned_content)，会报错，因为cleaned_content是字符串，不是JSON对象   
-            # questions = json.loads(cleaned_content)
             
             # 对questions进行JSON内容后处理：中文引号、省略号、上角标等格式转换
-            questions = post_process_json_content(cleaned_content)
+            questions = self.afterword_process_json_content(cleaned_content)
 
             # 验证解析结果格式
             if not isinstance(questions, list):
@@ -1700,7 +1580,6 @@ class PandocWordProcessor:
         except json.JSONDecodeError as e:
             print(f"❌ JSON解析失败: {e}")
             print(f"错误位置: 第{e.lineno}行第{e.colno}列")
-            print(f"请查看原始响应文件: {raw_filename}")
             return None
         except ValueError as e:
             print(f"❌ 解析结果格式错误: {e}")
@@ -1756,327 +1635,129 @@ class PandocWordProcessor:
         except Exception as e:
             print(f"❌ 调用Coze工作流异常: {e}")
             return None
-    
-    def _preprocess_dot_below_chars(self, docx_path):
-        """预处理docx文件中的加点字，使pandoc能识别"""
-        print("🔍 预处理加点字...")
+
+
+# 主流程函数
+    def process_word_document(self, file_path, output_format='markdown', prompt_template_path="prompt.md", 
+                            enable_dot_below_detection=True, enable_coze_workflow=True):
+
+        """提示性信息"""
+        print("=" * 60)
+        print("Pandoc Word文档处理工具 - 增强版 (支持加点字)")
+        print("=" * 60)
+        print(f"文档文件: {file_path}")
+        print(f"输出格式: {output_format}")
+        print(f"Prompt模板: {prompt_template_path}")
+        # print(f"格式分析: 已禁用")  # 已移除格式分析功能
+        print(f"加点字标记保留: {'启用' if enable_dot_below_detection else '禁用'}")
+        print(f"Coze工作流: {'启用' if enable_coze_workflow else '禁用'}")
+        print("=" * 60)
+        """提示结束"""
         
-        try:
-            # 导入预处理器
-            import zipfile
-            import xml.etree.ElementTree as ET
-            import tempfile
-            import shutil
-            import re
-            
-            # 创建专门的子文件夹来存储中间文件
-            from pathlib import Path
-            input_path = Path(docx_path)
-            
-            # 如果文件在Chinese文件夹中，创建processed子文件夹
-            if 'Chinese' in str(input_path):
-                # 获取Chinese文件夹的路径
-                chinese_folder = None
-                for parent in input_path.parents:
-                    if parent.name == 'Chinese':
-                        chinese_folder = parent
-                        break
-                
-                if chinese_folder:
-                    processed_folder = chinese_folder / 'processed'
-                    processed_folder.mkdir(exist_ok=True)
-                    filename = input_path.name.replace('.docx', '_dot_processed.docx')
-                    output_path = str(processed_folder / filename)
-                    print(f"中间文件将保存到: processed/{filename}")
-                else:
-                    # 回退到原来的方式
-                    output_path = docx_path.replace('.docx', '_dot_processed.docx')
-            else:
-                # 不在Chinese文件夹中，使用原来的方式
-                output_path = docx_path.replace('.docx', '_dot_processed.docx')
-            
-            # 创建临时目录来解压和重新打包docx
-            with tempfile.TemporaryDirectory() as temp_dir:
-                extract_dir = Path(temp_dir) / "docx_content"
-                extract_dir.mkdir()
-                
-                # 解压docx文件
-                with zipfile.ZipFile(docx_path, 'r') as zip_file:
-                    zip_file.extractall(extract_dir)
-                
-                # 修改document.xml
-                document_xml_path = extract_dir / "word" / "document.xml"
-                if document_xml_path.exists():
-                    with open(document_xml_path, 'r', encoding='utf-8') as f:
-                        xml_content = f.read()
-                    
-                    # 查找并替换加点字标记
-                    run_with_em_pattern = r'(<w:r>.*?<w:rPr>.*?)<w:em w:val="dot"\s*/>(.*?</w:rPr>.*?<w:t>)(.*?)(</w:t>.*?</w:r>)'
-                    
-                    def replace_run_with_em(match):
-                        before_em = match.group(1)
-                        after_em = match.group(2) 
-                        text_content = match.group(3)
-                        after_text = match.group(4)
-                        
-                        # 添加下划线和特殊标记
-                        underline_xml = '<w:u w:val="single"/>'
-                        marked_text = f"[DOT_BELOW]{text_content}[/DOT_BELOW]"
-                        
-                        return f"{before_em}{underline_xml}{after_em}{marked_text}{after_text}"
-                    
-                    # 🌊 安全的波浪线XML预处理（修正版）
-                    modified_content = xml_content
-                    
-                    # 🔧 修复：允许rPr内有其他标签，但确保在同一个w:r内
-                    # 关键：只匹配有xml:space="preserve"的wave格式（真正的填空）
-                    wavy_pattern = r'(<w:r><w:rPr>(?:[^<]|<[^/][^>]*>)*<w:u w:val="wave"/>(?:[^<]|<[^/][^>]*>)*</w:rPr><w:t[^>]*xml:space="preserve"[^>]*>)(\s+)(</w:t></w:r>)'
-                    
-                    def replace_wavy_spaces(match):
-                        before_text = match.group(1)  # <w:r><w:rPr>...<w:t>
-                        spaces = match.group(2)       # 空格内容
-                        after_text = match.group(3)   # </w:t></w:r>
-                        
-                        # 🔍 严格检查：只处理纯空格的波浪线（真正的填空）
-                        if spaces.strip() != '':
-                            # 如果不是纯空格，则不处理，保持原样
-                            return match.group(0)
-                        
-                        space_count = len(spaces)
-                        # 保持XML结构完整，只替换文本内容
-                        marked_text = f"[WAVY_SPACE_{space_count}]"
-                        return f"{before_text}{marked_text}{after_text}"
-                    
-                    # 🔍 调试：检查波浪线匹配和处理过程
-                    test_matches = re.findall(wavy_pattern, modified_content, flags=re.DOTALL)
-                    print(f"  🔍 调试：找到 {len(test_matches)} 个波浪线模式")
-                    for i, match in enumerate(test_matches):
-                        content = match[1]
-                        is_pure_space = content.strip() == ''
-                        print(f"    匹配 {i+1}: 内容长度={len(content)}, 纯空格={is_pure_space}, 内容='{content[:20]}...'")
-                    
-                    # 先处理波浪线（在XML结构完整时）
-                    modified_content, wavy_count = re.subn(wavy_pattern, replace_wavy_spaces, modified_content, flags=re.DOTALL)
-                    
-                    # 再处理加点字
-                    modified_content, dot_count = re.subn(run_with_em_pattern, replace_run_with_em, modified_content, flags=re.DOTALL)
-                    
-                    replacement_count = dot_count + wavy_count
-                    
-                    if replacement_count > 0:
-                        with open(document_xml_path, 'w', encoding='utf-8') as f:
-                            f.write(modified_content)
-                        if dot_count > 0:
-                            print(f"  ✅ 处理了 {dot_count} 个加点字")
-                        if wavy_count > 0:
-                            print(f"  🌊 标记了 {wavy_count} 个波浪线填空（XML预处理）")
-                
-                # 重新打包docx文件
-                with zipfile.ZipFile(output_path, 'w', zipfile.ZIP_DEFLATED) as zip_file:
-                    for file_path in extract_dir.rglob('*'):
-                        if file_path.is_file():
-                            relative_path = file_path.relative_to(extract_dir)
-                            zip_file.write(file_path, relative_path)
-            
-            return output_path
-            
-        except Exception as e:
-            print(f"  ⚠️ 预处理失败: {e}")
+        # 第一步 - 加点字和波浪线预处理（如果启用且为docx文件）
+        processed_file_path = file_path
+        if enable_dot_below_detection and file_path.lower().endswith('.docx'):
+            processed_file_path = self.preprocess(file_path)
+            if not processed_file_path:
+                processed_file_path = file_path  # 回退到原文件
+        
+        """打印文本中一些格式信息，例如：缩进信息、对齐方式（debug类型的函数，与功能无关）"""
+        # 第二步 - 格式分析（如果启用且为docx文件）
+        format_analysis = None
+        if processed_file_path.lower().endswith('.docx'):
+            format_analysis = self.extract_format_analysis(processed_file_path)
+        
+        # 第三步：使用pandoc转换文档
+        content = self.convert_word_to_text(processed_file_path, output_format)
+        if not content:
+            print("❌ 文档转换失败，无法继续处理")
             return None
-    
-
-    def _convert_dashes_to_chinese(self, content):
-        """转换连续短横线为中文破折号"""
-        print("🔀 转换连续短横线为中文破折号...")
         
-        try:
-            import re
-            
-            conversion_count = 0
-            
-            dash_pattern = r'-{3,}'  # 匹配3个或更多连续的短横线
-            
-            def replace_dashes(match):
-                nonlocal conversion_count
-                dashes = match.group(0)
-                dash_count = len(dashes)
-                conversion_count += 1
-                # 每3个短横线替换为一个em dash
-                em_dash_count = dash_count // 3
-                return '—' * em_dash_count
-            
-            content = re.sub(dash_pattern, replace_dashes, content)
-            
-            if conversion_count > 0:
-                print(f"  ✅ 转换了 {conversion_count} 处连续短横线为中文破折号（每3个短横线转换为1个em dash）")
-            else:
-                print("  ℹ️ 未发现需要转换的连续短横线")
-            
-            return content
-            
-        except Exception as e:
-            print(f"  ⚠️ 破折号转换失败: {e}")
-            return content
-
-def post_process_json_content(data):
-    """
-    JSON内容后处理函数：对解析后的JSON数据进行格式规范化处理
-    
-    主要功能：
-    1. 英文引号 → 中文左右引号：智能转换，避免破坏JSON结构
-    2. 英文省略号 → 中文省略号：将连续六个句点......转换为……
-    3. 上角标格式转换：将^内容^形式转换为<sup>内容</sup>HTML标签
-    4. 手动HTML解析确保在标签内部不进行转换
-
-    参数:
-        data: 包含 HTML 内容的 JSON 数据（字典、列表或字符串）
-
-    返回:
-        处理后的 JSON 数据，所有文本内容已完成格式规范化
+        # 第四步：转换连续短横线为中文破折号
+        content = self._convert_dashes_to_chinese(content)
         
-    注意：
-        - 引号转换只在HTML内容的文本部分进行，不影响HTML标签
-        - 使用安全的引号转换算法，避免破坏JSON结构
-    """
+        # 第五步：调用大模型API解析内容
+        llm_response = self.call_llm_api(content, prompt_template_path)
+        if not llm_response:
+            print("❌ API调用失败")
+            return None
 
-    def replace_quotes_in_html(html_content, convert_quotes=True):
-        """手动解析 HTML 内容并进行格式转换：引号、省略号、上角标等"""
-        if not html_content:
-            return html_content
+        def read_file_content(file_path):
+            """
+            读取指定文件的内容并返回
+            
+            参数:
+                file_path (str): 文件的路径
+                
+            返回:
+                str: 文件内容，如果出错则返回None
+            """
+            try:
+                with open(file_path, 'r', encoding='utf-8') as file:
+                    content = file.read()
+                    return content
+            except FileNotFoundError:
+                print(f"错误: 文件 '{file_path}' 不存在")
+            except PermissionError:
+                print(f"错误: 没有权限读取文件 '{file_path}'")
+            except UnicodeDecodeError:
+                print(f"错误: 文件 '{file_path}' 不是有效的UTF-8编码文本文件")
+            except Exception as e:
+                print(f"读取文件时发生错误: {str(e)}")
+            return None
 
-        try:
-            result = []
-            i = 0
-            n = len(html_content)
-            single_quote_count = 0  # 用于跟踪引号出现次数
-            double_quote_count = 0  # 用于跟踪引号出现次数
 
-            while i < n:
-                if html_content[i] == '<':
-                    # 处理标签部分（原样保留）
-                    tag_end = html_content.find('>', i)
-                    if tag_end == -1:
-                        tag_end = n
-                    result.append(html_content[i:tag_end + 1])
-                    i = tag_end + 1
-                else:
-                    # 处理文本内容
-                    text_end = html_content.find('<', i)
-                    if text_end == -1:
-                        text_end = n
-                    text = html_content[i:text_end]
-
-                    # 处理文本中的引号（交替替换）、省略号和上角标
-                    new_text = []
-                    j = 0
-                    text_len = len(text)
+        llm_response = read_file_content('raw_api_responses/raw_response_2023-2024学年广东省深圳市福田区五年级（上）期中语文试卷_20250906_203625.txt')
+        
+        # 第六步：处理API响应并集成格式信息
+        api_result = self._process_api_response(llm_response, file_path)
+        
+        # 第七步：调用Coze工作流（如果启用）
+        coze_ids = None
+        if enable_coze_workflow:
+            print("\n" + "=" * 60)
+            print("🔗 Coze工作流处理阶段")
+            print("=" * 60)
+            
+            if api_result:
+                # 正常情况：使用API解析结果调用Coze
+                coze_ids = self.call_coze_workflow(api_result)
+                
+                if coze_ids:
+                    # 创建coze_res文件夹
+                    coze_res_dir = Path("coze_res")
+                    coze_res_dir.mkdir(exist_ok=True)
                     
-                    while j < text_len:
-                        # 检查是否是上角标格式 ^内容^
-                        if text[j] == '^':
-                            # 寻找对应的结束^，确保不越界
-                            if j + 2 < text_len and text[j + 2] == '^':
-                                content = text[j+1]
-                                new_text.append(f'<sup>{content}</sup>')
-                                j = j + 3  # 跳过结束的^
-                            else:
-                                # 没有找到对应的结束^，保留原样
-                                new_text.append(text[j])
-                                j += 1
-                        # 检查是否是六个连续的句点
-                        elif text[j] == '.' and j + 5 < text_len and all(text[j + k] == '.' for k in range(6)):
-                            new_text.append('……')
-                            j += 6  # 跳过这六个句点
-                        else:
-                            # 安全的引号转换：只在纯文本内容中进行，避免破坏HTML属性
-                            char = text[j]
-                            if convert_quotes and char == '"':
-                                # 检查是否在HTML属性中（简单检查：前后是否有=）
-                                before_context = ''.join(new_text[-10:]) if len(new_text) >= 10 else ''.join(new_text)
-                                after_context = text[j+1:j+11] if j+11 < text_len else text[j+1:]
-                                
-                                # 如果不是HTML属性（没有 = 符号），则进行引号转换
-                                if '=' not in before_context and '=' not in after_context:
-                                    double_quote_count += 1
-                                    converted_quote = '“' if double_quote_count % 2 == 1 else '”'
-                                    new_text.append(converted_quote)
-                                else:
-                                    new_text.append(char)  # 保持原样
-                            elif convert_quotes and char == "'":
-                                # 类似的单引号处理
-                                before_context = ''.join(new_text[-10:]) if len(new_text) >= 10 else ''.join(new_text)
-                                after_context = text[j+1:j+11] if j+11 < text_len else text[j+1:]
-                                
-                                if '=' not in before_context and '=' not in after_context:
-                                    single_quote_count += 1
-                                    converted_quote = "‘" if single_quote_count % 2 == 1 else "’"
-                                    new_text.append(converted_quote)
-                                else:
-                                    new_text.append(char)  # 保持原样
-                            else:
-                                new_text.append(char)
-                            j += 1
-
-                    result.append(''.join(new_text))
-                    i = text_end
-
-            return ''.join(result)
-        except Exception as e:
-            print(f"⚠️ HTML内容处理失败: {e}")
-            print(f"问题内容: {repr(html_content[:100])}")
-            return html_content  # 出错时返回原始内容
-
-    # 如果是字符串形式的 JSON，先解析为字典
-    if isinstance(data, str):
-        try:
-            data = json.loads(data)
-        except json.JSONDecodeError:
-            return data
-
-    # 定义需要进行引号转换的字段（只对这些字段进行处理）
-    QUOTE_CONVERSION_FIELDS = {
-        'content', 'solution', 'analysis', 'answer', 'explanation', 
-        'title', 'description', 'question_text', 'option_text'
-    }
-    
-    # 递归处理 JSON 中的每个字段
-    def process_item(item):
-        try:
-            if isinstance(item, dict):
-                for key, value in item.items():
-                    try:
-                        if isinstance(value, str):
-                            # 只对特定字段进行引号转换，其他字段只做省略号和上角标转换
-                            if key.lower() in QUOTE_CONVERSION_FIELDS or any(field in key.lower() for field in QUOTE_CONVERSION_FIELDS):
-                                item[key] = replace_quotes_in_html(value, convert_quotes=True)
-                            else:
-                                # 只进行省略号和上角标转换，不进行引号转换
-                                item[key] = replace_quotes_in_html(value, convert_quotes=False)
-                        elif isinstance(value, (dict, list)):
-                            process_item(value)
-                    except Exception as e:
-                        print(f"⚠️ 处理字段 {key} 失败: {e}")
-                        # 字段处理失败时保留原值，不影响其他字段
-            elif isinstance(item, list):
-                for i in range(len(item)):
-                    try:
-                        if isinstance(item[i], str):
-                            # 对数组中的字符串进行处理（默认进行引号转换）
-                            item[i] = replace_quotes_in_html(item[i], convert_quotes=True)
-                        elif isinstance(item[i], (dict, list)):
-                            process_item(item[i])
-                    except Exception as e:
-                        print(f"⚠️ 处理数组元素 {i} 失败: {e}")
-                        # 数组元素处理失败时保留原值，不影响其他元素
-        except Exception as e:
-            print(f"⚠️ 处理数据项失败: {e}")
-            # 整体处理失败时什么都不做，保持原始数据
-
-    process_item(data)
-
-    return data
-    
-
+                    # 将Coze返回的ID列表保存为文本文件
+                    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                    coze_output_file = coze_res_dir / f"coze_ids_{Path(file_path).stem}_{timestamp}.txt"
+                    
+                    with open(coze_output_file, 'w', encoding='utf-8') as f:
+                        f.write(",".join(coze_ids))
+                    
+                    print(f"📁 Coze ID列表已保存到: {coze_output_file}")
+                    
+                    # 可选：将ID列表添加到API结果中
+                    if isinstance(api_result, list):
+                        # 如果API结果是题目列表，可以为每道题添加一个ID
+                        for i, question in enumerate(api_result[:len(coze_ids)]):
+                            if isinstance(question, dict):
+                                question['coze_id'] = coze_ids[i] if i < len(coze_ids) else None
+                    print("✅ Coze ID已整合到题目结果中")
+                else:
+                    print("⚠️ Coze工作流未返回有效数据")
+            else:
+                # API解析失败的情况：提供手动调用指导
+                print("⚠️ 由于JSON解析失败，无法自动调用Coze工作流")
+                print("💡 解决方案：")
+                print("  1. 检查并修复生成的JSON文件格式问题")
+                print("  2. 或者使用手动脚本调用Coze工作流:")
+                print("     python3 manual_coze_call.py")
+        
+        return {
+            'questions': api_result,
+            'coze_ids': coze_ids
+        } if enable_coze_workflow else api_result
 
 def main():
     """主函数"""
@@ -2086,7 +1767,7 @@ def main():
     if len(sys.argv) > 1:
         word_file_path = sys.argv[1]
     else:
-        word_file_path = "Chinese/2023-2024学年广东省深圳市福田区六年级（上）期中语文试卷.docx"  # 默认文件路径
+        word_file_path = "Chinese/2023-2024学年广东省深圳市福田区五年级（上）期中语文试卷.docx"  # 默认文件路径
      
     output_format = "markdown"  # 可选: markdown, plain, html
     prompt_template_path = "prompt_Chinese.md"
@@ -2103,12 +1784,6 @@ def main():
         print("  Windows: 下载安装包 https://pandoc.org/installing.html")
         return
     
-    # 检查文件格式
-    if not processor.is_supported_format(word_file_path):
-        print(f"❌ 不支持的文件格式: {Path(word_file_path).suffix}")
-        print(f"请使用以下格式之一: {', '.join(processor.get_supported_formats())}")
-        return
-    
     # 处理文档
     result = processor.process_word_document(
         word_file_path, 
@@ -2118,14 +1793,26 @@ def main():
     
     if result:
         print("✅ 文档处理完成！")
-        
-        # 显示特殊格式摘要
-        format_summary = processor.get_special_format_summary()
-        print("\n" + "="*50)
-        print(format_summary)
-        print("="*50)
     else:
         print("❌ 文档处理失败")
 
 if __name__ == "__main__":
     main() 
+
+
+
+
+"""
+
+整体思路：三大模块：
+
+    1. 使用pandoc库以及一些工具函数对传入的word进行各种格式解析和处理，最终返回一个markdown格式的文本（string）
+
+    2. 调用大模型API，传入markdown格式的文本，返回大模型对markdown文本处理后的原始相应内容（string），调用_process_api_response函数
+    
+    对原始响应内容做后处理，处理成最终正确格式的json内容
+
+    3. 把第二步的json信息，传入coze工作流进行处理，得到最终的题目id
+
+
+"""
