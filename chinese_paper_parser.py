@@ -1706,8 +1706,6 @@ class PandocWordProcessor:
                 print(f"读取文件时发生错误: {str(e)}")
             return None
 
-
-        llm_response = read_file_content('raw_api_responses/raw_response_2023-2024学年广东省深圳市福田区五年级（上）期中语文试卷_20250906_203625.txt')
         
         # 第六步：处理API响应并集成格式信息
         api_result = self._process_api_response(llm_response, file_path)
@@ -1749,10 +1747,6 @@ class PandocWordProcessor:
             else:
                 # API解析失败的情况：提供手动调用指导
                 print("⚠️ 由于JSON解析失败，无法自动调用Coze工作流")
-                print("💡 解决方案：")
-                print("  1. 检查并修复生成的JSON文件格式问题")
-                print("  2. 或者使用手动脚本调用Coze工作流:")
-                print("     python3 manual_coze_call.py")
         
         return {
             'questions': api_result,
