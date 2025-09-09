@@ -1,29 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-"""
-Pandoc Word文档处理工具 - 增强版 (支持加点字检测，图片处理已禁用)
-
-使用pandoc将Word文档转换为模型可读的纯文本内容，支持：
-1. 文档文本转换 (Pandoc)
-2. 大模型API调用 (文档结构解析)
-3. 着重号检测 (加点字标记保留)
-4. 连续短横线转中文破折号
-
-注：图片提取和内容分析功能已禁用以提高运行效率
-注：加点字转换为HTML功能已移除，标记保留供后续模型处理
-
-依赖安装：
-1. 确保系统已安装pandoc: https://pandoc.org/installing.html
-2. 安装python-docx: pip install python-docx (仅用于加点字预处理)
-3. 安装其他依赖: pip install requests
-
-使用方法：
-1. 运行脚本处理Word文档
-2. 检测并保留加点字格式标记
-3. 生成最终的解析结果
-"""
-
 import subprocess
 import requests
 import json
@@ -467,8 +444,30 @@ class PandocWordProcessor:
                         is_pure_space = content.strip() == ''
                         print(f"    匹配 {i+1}: 内容长度={len(content)}, 纯空格={is_pure_space}, 内容='{content[:20]}...'")
                     
-                    # 先处理波浪线（在XML结构完整时）
-                    modified_content, wavy_count = re.subn(wavy_pattern, replace_wavy_spaces, modified_content, flags=re.DOTALL)
+                    # 先处理波浪线（在XML结构完整时）- 添加超时保护
+                    import signal
+                    import time
+                    
+                    def timeout_handler(signum, frame):
+                        raise TimeoutError("正则表达式处理超时")
+                    
+                    try:
+                        # 设置30秒超时
+                        signal.signal(signal.SIGALRM, timeout_handler)
+                        signal.alarm(30)
+                        
+                        print(f"  ⏳ 开始处理波浪线模式（30秒超时）...")
+                        modified_content, wavy_count = re.subn(wavy_pattern, replace_wavy_spaces, modified_content, flags=re.DOTALL)
+                        
+                        signal.alarm(0)  # 取消超时
+                        print(f"  ✅ 波浪线处理完成")
+                        
+                    except TimeoutError:
+                        print(f"  ⚠️ 波浪线处理超时，跳过此步骤")
+                        wavy_count = 0
+                    except Exception as e:
+                        print(f"  ⚠️ 波浪线处理失败: {e}")
+                        wavy_count = 0
                     
                     # 再处理加点字
                     modified_content, dot_count = re.subn(run_with_em_pattern, replace_run_with_em, modified_content, flags=re.DOTALL)
@@ -1639,7 +1638,7 @@ class PandocWordProcessor:
 
 # 主流程函数
     def process_word_document(self, file_path, output_format='markdown', prompt_template_path="prompt.md", 
-                            enable_dot_below_detection=True, enable_coze_workflow=True):
+                            enable_dot_below_detection=False, enable_coze_workflow=True):
 
         """提示性信息"""
         print("=" * 60)
@@ -1707,7 +1706,6 @@ class PandocWordProcessor:
             return None
 
 
-        llm_response = read_file_content('raw_api_responses/raw_response_2023-2024学年广东省深圳市福田区五年级（上）期中语文试卷_20250906_203625.txt')
         
         # 第六步：处理API响应并集成格式信息
         api_result = self._process_api_response(llm_response, file_path)
@@ -1767,10 +1765,10 @@ def main():
     if len(sys.argv) > 1:
         word_file_path = sys.argv[1]
     else:
-        word_file_path = "Chinese/精品解析：2025年北京市中考语文真题（解析版）.docx"  # 默认文件路径
+        word_file_path = "math_paper/精品解析：2025年青海省中考数学试题（解析版）.docx"  # 默认文件路径
      
     output_format = "markdown"  # 可选: markdown, plain, html
-    prompt_template_path = "prompt_Chinese.md"
+    prompt_template_path = "prompt_math.md"
     
     # 创建处理器实例
     processor = PandocWordProcessor()
