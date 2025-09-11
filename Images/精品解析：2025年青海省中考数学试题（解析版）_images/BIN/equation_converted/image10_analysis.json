@@ -1,0 +1,71 @@
+{
+  "format": "Microsoft Equation Native",
+  "size": 258,
+  "header": {
+    "signature1": "0x0000001c",
+    "signature2": "0xc2da0002",
+    "version": "0x000000e6",
+    "size_field": 37291220,
+    "unknown1": "0x0054d7f0",
+    "unknown2": "0x00000000",
+    "unknown3": "0x0239048c"
+  },
+  "raw_data": "<258 bytes>",
+  "parsed_content": null,
+  "text_candidates": [
+    "DSMT6",
+    "WinAllBasicCodePages",
+    "Times New Roman",
+    "Symbol Tiger Expert",
+    "MT Extra",
+    "WinAllCodePages",
+    "!/E",
+    "D/AP",
+    "G_AP",
+    "AP",
+    "B_A",
+    "C_A",
+    "*_H",
+    "A*_D_E",
+    "_E",
+    "_A",
+    "6sntaså",
+    "AAAA",
+    "19"
+  ],
+  "elements": [
+    {
+      "type": "numbers",
+      "positions": [
+        14,
+        26,
+        37,
+        249,
+        254
+      ],
+      "values": [
+        "9",
+        "9",
+        "6",
+        "1",
+        "9"
+      ]
+    },
+    {
+      "type": "operators",
+      "positions": [
+        141,
+        145,
+        186,
+        206
+      ],
+      "values": [
+        "/",
+        "/",
+        "*",
+        "*"
+      ]
+    }
+  ],
+  "stream_name": "Equation Native"
+}

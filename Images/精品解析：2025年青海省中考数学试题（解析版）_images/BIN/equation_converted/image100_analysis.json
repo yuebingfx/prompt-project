@@ -1,0 +1,74 @@
+{
+  "format": "Microsoft Equation Native",
+  "size": 318,
+  "header": {
+    "signature1": "0x0000001c",
+    "signature2": "0xc1f10002",
+    "version": "0x00000122",
+    "size_field": 9045124,
+    "unknown1": "0x0054d7f0",
+    "unknown2": "0x00000000",
+    "unknown3": "0x008a0024"
+  },
+  "raw_data": "<318 bytes>",
+  "parsed_content": null,
+  "text_candidates": [
+    "DSMT6",
+    "WinAllBasicCodePages",
+    "Times New Roman",
+    "Symbol",
+    "Courier New",
+    "MT Extra",
+    "WinAllCodePages",
+    "!/'",
+    "_!",
+    "!/G_AP",
+    "AP",
+    "B_A",
+    "C_A",
+    "_D_E",
+    "_E",
+    "_A",
+    "6snlwaså",
+    "AAAAA",
+    "CA",
+    "B+",
+    "B=",
+    "90"
+  ],
+  "elements": [
+    {
+      "type": "numbers",
+      "positions": [
+        37,
+        303,
+        308
+      ],
+      "values": [
+        "6",
+        "9",
+        "0"
+      ]
+    },
+    {
+      "type": "operators",
+      "positions": [
+        142,
+        149,
+        280,
+        282,
+        297,
+        299
+      ],
+      "values": [
+        "/",
+        "/",
+        "+",
+        "+",
+        "=",
+        "="
+      ]
+    }
+  ],
+  "stream_name": "Equation Native"
+}
