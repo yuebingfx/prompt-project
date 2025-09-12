@@ -1,0 +1,539 @@
+[
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "单选",
+      "content": "的值为（ ）",
+      "accessories": [
+        "",
+        "2",
+        "",
+        ""
+      ],
+      "answer": {
+        "choice": "1"
+      },
+      "solution": "<p>本题考查相反数的概念，涉及多重符号的化简，根据相反数的定义可得答案.</p><p>解：∵，</p><p>∴的值是，</p><p>故选：B</p>"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "单选",
+      "content": "下列图形是轴对称图形的是（ ）",
+      "accessories": [
+        "<img src=\"media/image8.png\" width=\"1.2916666666666667in\" height=\"1.15625in\"/>",
+        "<img src=\"media/image9.png\" width=\"1.0729166666666667in\" height=\"1.0520833333333333in\"/>",
+        "<img src=\"media/image10.png\" width=\"1.2604166666666667in\" height=\"1.1770833333333333in\"/>",
+        "<img src=\"media/image11.png\" width=\"1.2083333333333333in\" height=\"1.3229166666666667in\"/>"
+      ],
+      "answer": {
+        "choice": "2"
+      },
+      "solution": "<p>本题考查了轴对称图形的定义，根据沿着某条直线折叠，两边的图形能够重合的图形是轴对称图形，进行逐项判断即可．</p><p>解：A、该图形不是轴对称图形，故该选项不符合题意；</p><p>B、该图形不是轴对称图形，故该选项不符合题意；</p><p>C、该图形是轴对称图形，故该选项符合题意；</p><p>D、该图形不是轴对称图形，故该选项不符合题意；</p><p>故选：C．</p>"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "单选",
+      "content": "年 月 日，全球首次“人机共跑”半程马拉松在北京开跑．本次比赛全程约 公里，这意味着采用双足步态的人形机器人要完成约 万次精密关节运动．将数据“”用科学记数法表示为（ ）",
+      "accessories": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "answer": {
+        "choice": "0"
+      },
+      "solution": "<p>此题考查了科学记数法的表示方法，根据科学记数法的表示形式为的形式，其中，为整数即可求解，确定的值时，要看把原数变成时，小数点移动了多少位，的绝对值与小数点移动的位数相同，当原数绝对值时，是正整数；当原数的绝对值时，是负整数，解题的关键要正确确定的值以及的值．</p><p>解：，</p><p>故选：．</p>"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "单选",
+      "content": "工人师傅常用角尺平分一个任意角．做法如下：如图，是一个任意角，在边，上分别取，移动角尺，使角尺两边相同的刻度分别与点，重合，即，过角尺顶点的射线便是的平分线，这种做法的依据是（ ）<img src=\"media/image39.png\" width=\"1.5in\" height=\"1.4270833333333333in\"/>",
+      "accessories": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "answer": {
+        "choice": "2"
+      },
+      "solution": "<p>本题主要考查了全等三角形的判定，由作图过程可得，，再加上公共边可利用定理判定．</p><p>解：在和中</p><p>，</p><p>∴，</p><p>∴，</p><p>故选：C．</p>"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "单选",
+      "content": "下列计算正确的是（ ）",
+      "accessories": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "answer": {
+        "choice": "3"
+      },
+      "solution": "<p>本题考查了整式的运算，根据合并同类项，同底数幂的乘除法，积的乘方运算法则逐一验证各选项即可，熟练掌握运算法则是解题的关键．</p><p>解：、，原选项运算错误，不符合题意；</p><p>、，原选项运算错误，不符合题意；</p><p>、，原选项运算错误，不符合题意；</p><p>、，原选项运算正确，符合题意</p><p>故选：．</p>"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "单选",
+      "content": "我国明代数学著作《算法统宗》中有这样一个问题：“隔墙听得客分银，不知人数不知银，七两分之多四两，九两分之少半斤．试问各位善算者，多少人分多少银？”译文：“隔着墙壁听见客人在分银两，不知道有多少人，多少银两．若每人分两，则还多两；若每人分两，则还差两．请问：有多少客人？分多少银两？”设客人为人，银两为两．根据题意可列方程组为（ ）",
+      "accessories": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "answer": {
+        "choice": "3"
+      },
+      "solution": "<p>本题考查了二元一次方程组的应用，设客人为人，银两为两，根据题意列出方程即可，读懂题意，找出等量关系，列出方程组是解题的关键．</p><p>解：设客人为人，银两为两，</p><p>根据题意得，</p><p>故选：．</p>"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "单选",
+      "content": "如图，是的直径，，则的度数是（ ）<img src=\"media/image78.png\" width=\"1.1666666666666667in\" height=\"1.0104166666666667in\"/>",
+      "accessories": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "answer": {
+        "choice": "1"
+      },
+      "solution": "<p>本题主要考查了同弧或等弧所对的圆周角相等，直径对的圆周角是直角，熟练掌握同弧或等弧所对的圆周角相等是解题的关键．根据是的直径得出，即可求解．</p><p>解：∵是的直径，</p><p>∴，</p><p>∴，</p><p>∵，</p><p>∴，</p><p>∴，</p><p>故选：B．</p>"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "单选",
+      "content": "如图，甲、乙两车从地出发前往地，在整个行程中，汽车离开地的路程与时刻之间的对应关系如图所示，下列结论错误的是（ ）<img src=\"media/image91.png\" width=\"2.4375in\" height=\"1.4479166666666667in\"/>",
+      "accessories": [
+        "乙车先到达地",
+        "、两地相距",
+        "甲车的平均速度为",
+        "在时，乙车追上甲车"
+      ],
+      "answer": {
+        "choice": "2"
+      },
+      "solution": "<p>本题考查从函数图象获取信息的能力，根据函数图象中的数据，可以先计算出甲、乙两车的速度，然后再根据图象中的数据，逐一判断各个选项中的说法是否正确即可．</p><p>解：由图象可知，A，B两城相距，甲车先出发，乙车先到达B城，</p><p>故选项A、B不符合题意；</p><p>甲的速度为：，</p><p>乙的速度为：，</p><p>故选项C错误，符合题意；</p><p>由交点的横坐标可知，乙车在追上甲车．</p><p>故D不符合题意．</p><p>故选：C．</p>"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "填空",
+      "content": "算术平方根是<input size=\"10\" readonly=\"readonly\" type=\"underline\">",
+      "answer": {
+        "blanks": [
+          ""
+        ]
+      },
+      "solution": "<p>本题考查了算术平方根的定义，根据算术平方根的定义解答即可，掌握算术平方根的定义是解题的关键．</p><p>解：∵，</p><p>∴的算术平方根是，</p><p>故答案为：．</p>"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "填空",
+      "content": "实数，在数轴上对应点的位置如图所示，则<input size=\"10\" readonly=\"readonly\" type=\"underline\">．（填“”“”或“”）<img src=\"media/image106.png\" width=\"1.34375in\" height=\"0.23958333333333334in\"/>",
+      "answer": {
+        "blanks": [
+          ""
+        ]
+      },
+      "solution": "<p>本题主要考查了根据点在数轴上的位置判断式子的正负，根据实数在数轴上对应点的位置，判定出符号以及绝对值的大小，即可进行判断即可，解题的关键是根据实数在数轴上的位置，正确判断出实数的符号和绝对值的大小．</p><p>解：由实数在数轴上对应点的位置可知：，，且，</p><p>∴，</p><p>∴，</p><p>故答案为：．</p>"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "填空",
+      "content": "七名同学一分钟排球垫球个数分别为，，，，，，，这组数据的众数是<input size=\"10\" readonly=\"readonly\" type=\"underline\">",
+      "answer": {
+        "blanks": [
+          ""
+        ]
+      },
+      "solution": "<p>本题考查了众数的定义，根据出现次数最多的数是众数解答即可，掌握众数的定义是解题的关键．</p><p>解：∵这组数据中出现次，出现的次数最多，</p><p>∴这组数据的众数是，</p><p>故答案为：．</p>"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "填空",
+      "content": "若是一元二次方程的一个根，则的值为<input size=\"10\" readonly=\"readonly\" type=\"underline\">",
+      "answer": {
+        "blanks": [
+          ""
+        ]
+      },
+      "solution": "<p>此题考查了一元二次方程的解，把代入方程即可求解，熟练掌握一元二次方程的解是解题的关键．</p><p>解：将代入原方程得：，</p><p>解得：，</p><p>故答案为：．</p>"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "填空",
+      "content": "在平面直角坐标系中，点在第三象限，则的取值范围是<input size=\"20\" readonly=\"readonly\" type=\"underline\">",
+      "answer": {
+        "blanks": [
+          ""
+        ]
+      },
+      "solution": "<p>本题主要考查了平面直角坐标系中第三象限的点的坐标的符号特点，根据平面直角坐标系中第三象限内的点的横坐标小于0，纵坐标小于0，列出关于a的不等式组，求解即可．</p><p>解：点在第三象限，</p><p>，</p><p>解得，</p><p>即的取值范围是，</p><p>故答案为：．</p>"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "填空",
+      "content": "如图，在菱形中，，，分别为，的中点，且，则菱形的面积为<input size=\"10\" readonly=\"readonly\" type=\"underline\"><img src=\"media/image135.png\" width=\"2.4270833333333335in\" height=\"1.2395833333333333in\"/>",
+      "answer": {
+        "blanks": [
+          ""
+        ]
+      },
+      "solution": "<p>本题主要考查了菱形的性质，三角形中位线定理，由，分别为，的中点，得，所以，然后根据菱形的面积为即可求解，掌握相关知识的应用是解题的关键．</p><p>解：∵，分别为，的中点，</p><p>∴，</p><p>∴，</p><p>∵四边形是菱形，</p><p>∴菱形的面积为，</p><p>故答案为：．</p>"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "填空",
+      "content": "如图，在中，，且，，则的值是<input size=\"10\" readonly=\"readonly\" type=\"underline\"><img src=\"media/image146.png\" width=\"1.5in\" height=\"1.2604166666666667in\"/>",
+      "answer": {
+        "blanks": [
+          ""
+        ]
+      },
+      "solution": "<p>本题考查了相似三角形的判定与性质，由，可得，根据相似三角形性质得，然后把，代入即可求解，掌握相似三角形的判定与性质是解题的关键．</p><p>解：∵，</p><p>∴，</p><p>∴，</p><p>∵，，，</p><p>∴，</p><p>故答案为：．</p>"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "填空",
+      "content": "下图是谢尔宾斯基地毯图案的形成过程．按此规律下去，第⑥个图形中黑色三角形的个数是<input size=\"20\" readonly=\"readonly\" type=\"underline\"><img src=\"media/image152.png\" width=\"3.75in\" height=\"0.8854166666666666in\"/>",
+      "answer": {
+        "blanks": [
+          "或243"
+        ]
+      },
+      "solution": "<p>本题考查了图形的变化类问题，找到图形的变化规律，即可得出答案．</p><p>解：∵第1个图案中有个，</p><p>第2个图案中有个，</p><p>第3个图案中有个，</p><p>第4个图案中有个，</p><p>...，</p><p>按此规律，第⑥个图案中有个涂有阴影的三角形．</p><p>故答案为：或243．</p>"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "简答",
+      "content": "计算：<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+      "answer": {
+        "answer": ""
+      },
+      "solution": "<p>本题考查了含特殊角的三角函数值的混合运算，零指数幂，二次根式的运算等知识点，熟练掌握运算法则是解题的关键．</p><p>分别化简二次根式，计算零指数幂，绝对值，代入特殊角的三角函数值并相乘，最后再进行加减计算．</p><p>解：</p><p></p><p>．</p>"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "简答",
+      "content": "先化简，再从，，中选一个合适的数代入求值．<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"4\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+      "answer": {
+        "answer": "，时，值为，时，值为"
+      },
+      "solution": "<p>本题考查了分式的化简求值，分式有意义的条件，熟练掌握分式的混合运算法则是解此题的关键．</p><p>括号内先通分，再将除法转化为乘法，约分即可化简，再代入合适的值进行计算即可．</p><p>解：</p><p></p><p></p><p></p><p></p><p></p><p>由于，</p><p>∴</p><p>把代入</p><p>原式</p><p>；</p><p>把代入</p><p>原式</p><p>．</p>"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "综合",
+      "content": "如图，直线与轴交于点，与轴交于点，与反比例函数（为常数）的图象在第二象限交于点．<img src=\"media/image186.png\" width=\"1.6666666666666667in\" height=\"1.65625in\"/>"
+    },
+    "subQuestions": [
+      {
+        "type": "简答",
+        "content": "求反比例函数的解析式；<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "answer": {
+          "answer": ""
+        },
+        "solution": "<p>先由点代入求出点的坐标为，然后代入即可求解；</p><p>解：把点代入中得，</p><p>∴，</p><p>∴一次函数解析式为，</p><p>把点代入中，</p><p>得，</p><p>∴点的坐标为，</p><p>把代入中，</p><p>得，，</p><p>∴反比例函数解析式为；</p>"
+      },
+      {
+        "type": "简答",
+        "content": "求的面积．<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "answer": {
+          "answer": ""
+        },
+        "solution": "<p>过点作轴于点，然后求出，，再由即可求解．</p><p>解：过点作轴于点，</p><p><img src=\"media/image202.png\" width=\"1.6979166666666667in\" height=\"1.6875in\"/></p><p>∵，</p><p>∴，</p><p>把代入得，，</p><p>∴，</p><p>∴，</p><p>∴．</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "综合",
+      "content": "如图，在中，点O，D分别是边，的中点，过点A作交的延长线于点E，连接，．<img src=\"media/image211.png\" width=\"2.0833333333333335in\" height=\"1.1666666666666667in\"/>"
+    },
+    "subQuestions": [
+      {
+        "type": "简答",
+        "content": "求证：四边形是平行四边形；<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"4\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "answer": {
+          "answer": "见解析"
+        },
+        "solution": "<p>先证明，可得，结合可得结论；</p><p>证明：∵点为的中点</p><p>∴，</p><p>∵</p><p>∴，，</p><p>在和中</p><p></p><p>∴，</p><p>∴</p><p>∵</p><p>∴四边形是平行四边形；</p>"
+      },
+      {
+        "type": "简答",
+        "content": "若，试判断四边形的形状，并证明．<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"4\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "answer": {
+          "answer": "当 时，四边形是矩形，理由见解析"
+        },
+        "solution": "<p>由，点是边上的中点，可得即，结合由（1）得四边形是平行四边形，从而可得结论.</p><p>证明：当 时，四边形是矩形，</p><p>理由如下：</p><p>∵ ，点是边上的中点，</p><p>∴ 即，</p><p>∵ 由（1）得四边形是平行四边形，</p><p>∴ 四边形是矩形.</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "综合",
+      "content": "数学实践<br>【问题背景】<br>中国传统农业智慧遇上现代数学模型．“豇豆不上架，产量少一半”的农谚流传至今，现代科学揭示了其秘密：当支架与地面形成夹角时，既能在早春聚热防冻害，又能在盛夏分散强光，就像给豇豆装了智能遮阳篷．<br>【问题呈现】<br>用两根竹竿交叉，斜插入地面，交叉点在何处会使支架与地面形成夹角？<br>【模型建立】<br>环节一：数据收集<br>两根竹竿长度均为1.8米，插入地下的部分为0.3米，竹竿与地面接触点间距为0.6米且与地面所形成的夹角均为．<br>环节二：数学抽象<br>如图：已知线段与交于点，，与直线分别交于点，，，，，，求的长度．（结果精确到0.1，参考数据：，，）<br>【模型求解】<br>【问题总结】<br>交叉点距顶端长度即为<input size=\"10\" readonly=\"readonly\" type=\"underline\">时，支架与地面形成夹角，这样更贴合作物的生长规律．<img src=\"media/image239.png\" width=\"2.3958333333333335in\" height=\"1.4375in\"/>"
+    },
+    "subQuestions": [],
+    "answer": {
+      "blanks": [
+        "，"
+      ]
+    },
+    "solution": "<p>本题考查的是解直角三角形的应用，如图，过作于，根据等腰三角形的性质可得，结合可得答案；最后由即可得到答案.</p><p>解：数学抽象：如图，过作于，</p><p><img src=\"media/image246.png\" width=\"1.3541666666666667in\" height=\"1.5208333333333333in\"/></p><p>∵，</p><p>∴，</p><p>∵，</p><p>∴，</p><p>∴，</p><p>∴，</p><p>问题总结：∵，，</p><p>∴.</p>"
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "综合",
+      "content": "如图，线段经过圆心，交 于点，，为的弦，连接，．<img src=\"media/image252.png\" width=\"1.84375in\" height=\"1.2291666666666667in\"/>"
+    },
+    "subQuestions": [
+      {
+        "type": "简答",
+        "content": "求证：直线是的切线；<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"4\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "answer": {
+          "answer": "见解析"
+        },
+        "solution": "<p>先由三角形内角和定理得出，再根据得，进而可得，再根据切线的判定可得出结论；</p><p>证明：连接，</p><p><img src=\"media/image267.png\" width=\"1.6458333333333333in\" height=\"1.09375in\"/></p><p>∵，</p><p>∴，</p><p>∵，</p><p>∴，</p><p>∴，</p><p>∴，</p><p>且是的半径，</p><p>∴直线是的切线；</p>"
+      },
+      {
+        "type": "简答",
+        "content": "已知，求的长（结果保留）．<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "answer": {
+          "answer": ""
+        },
+        "solution": "<p>根据含30度角的直角三角形的性质得，设，则，求出，再得，然后根据弧长公式求解即可．</p><p>解：在中，，</p><p>∴，</p><p>设，</p><p>∴，</p><p>解得，</p><p>∵，</p><p>∴的长为：．</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "综合",
+      "content": "为了让学生体验青海民俗文化，某学校开设了特色艺术实践课程，课程分别是：．五谷画，．彩陶，．剪纸，．排灯．现学校要了解学生最感兴趣的课程情况，从全校学生中随机抽取部分学生进行调查（每位学生必选且只能选一个课程），根据调查结果，绘制了如下两幅不完整的统计图：根据提供的信息，解答下列问题：<img src=\"media/image275.png\" width=\"3.5520833333333335in\" height=\"1.75in\"/>"
+    },
+    "subQuestions": [
+      {
+        "type": "填空",
+        "content": "此次被调查的学生总人数为<input size=\"15\" readonly=\"readonly\" type=\"underline\">；扇形统计图中<input size=\"10\" readonly=\"readonly\" type=\"underline\">",
+        "answer": {
+          "blanks": [
+            "",
+            ""
+          ]
+        },
+        "solution": "<p>根据对课程感兴趣的学生人数除以所占百分比即可求出此次被调查的学生总人数，然后通过对课程感兴趣的学生人数除以总人数再乘以即可求出的值；</p><p>解：此次被调查的学生总人数为（人），</p><p>∴，</p><p>∴，</p><p>故答案为：，；</p>"
+      },
+      {
+        "type": "简答",
+        "content": "补全条形统计图；<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"2\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "answer": {
+          "answer": "补全条形统计图见解析"
+        },
+        "solution": "<p>由（1）总人数减去人数，即可得到抽取部分学生对课程感兴趣的学生人数，然后补全条形统计图即可；</p><p>解：抽取部分学生对课程感兴趣的学生有（人），</p><p>补全条形统计图如图，</p><p><img src=\"media/image288.png\" width=\"1.9583333333333333in\" height=\"1.6770833333333333in\"/></p>"
+      },
+      {
+        "type": "简答",
+        "content": "该校有人，请你估计该校对课程感兴趣的学生有多少名？<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "answer": {
+          "answer": "人"
+        },
+        "solution": "<p>用乘以对课程感兴趣的学生所占百分比即可求解；</p><p>解：人，</p><p>答：估计该校对感兴趣的学生有人；</p>"
+      },
+      {
+        "type": "简答",
+        "content": "甲、乙两名同学从、、、四个课程中任选一个，用树状图或列表法求两人恰好选到同一个课程的概率．<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"4\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "answer": {
+          "answer": ""
+        },
+        "solution": "<p>由题意列表或画树状图，然后通过概率公式即可求解．</p><p>解：情况：列表格，</p><table><tr><td>甲</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr></table><p>如树状图所示，共有种等可能结果，而出现甲、乙两人恰好选到同一课程的有种：，，，，</p><p>∴；</p><p>情况：画树状图，</p><p><img src=\"media/image305.png\" width=\"4.229166666666667in\" height=\"1.1666666666666667in\"/></p><p>如树状图所示，共有种等可能结果，而出现甲、乙两人恰好选到同一课程的有种：，，，，</p><p>∴．</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "综合",
+      "content": "在平面直角坐标系中，抛物线与x轴交于A，B两点，点B的坐标为，点在抛物线上．<img src=\"media/image309.png\" width=\"1.4166666666666667in\" height=\"1.4895833333333333in\"/>"
+    },
+    "subQuestions": [
+      {
+        "type": "简答",
+        "content": "求抛物线的解析式；<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "answer": {
+          "answer": ""
+        },
+        "solution": "<p>将、代入得方程组，解方程组即可；</p><p>解：将、代入得，</p><p>，</p><p>解得，</p><p>∴抛物线的解析式为；</p>"
+      },
+      {
+        "type": "综合",
+        "content": ""
+      },
+      {
+        "type": "简答",
+        "content": "①求点A坐标；<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"2\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "answer": {
+          "answer": ""
+        },
+        "solution": "<p>令，则，解方程即可求出点A的坐标；</p><p>解：令，则，</p><p>解得或，</p><p>∴点A的坐标为；</p>"
+      },
+      {
+        "type": "填空",
+        "content": "②当 时，根据图象直接写出x的取值范围<input size=\"20\" readonly=\"readonly\" type=\"underline\">",
+        "answer": {
+          "blanks": [
+            ""
+          ]
+        },
+        "solution": "<p>根据图象可知，当 时，即抛物线在轴下方的部分，根据A，B两点的坐标即可得出结论；</p><p>解：根据图象可知，当 时，x的取值范围为，</p><p>故答案为：；</p>"
+      },
+      {
+        "type": "简答",
+        "content": "连接交y轴于点D，在y轴上是否存在点P，使是以 为直角边的直角三角形，若存在，请直接写出所有符合条件的点P坐标，若不存在，请说明理由．<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"4\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "answer": {
+          "answer": "存在，，"
+        },
+        "solution": "<p>设点P的坐标为，先由两点间的距离公式得，，，再分两种情况讨论：当为斜边时，则；当为斜边时，则；分别解方程即可．</p><p>解：设点P的坐标为，</p><p>∵，，</p><p>∴，，，</p><p>∵是以 为直角边的直角三角形，</p><p>∴分以下两种情况讨论：</p><p>当为斜边时，则，</p><p>∴，</p><p>解得，</p><p>∴；</p><p>当为斜边时，则，</p><p>∴，</p><p>解得，</p><p>∴．</p><p>综上所述，存在符合条件的P点，，．</p>"
+      }
+    ]
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 2,
+    "question": {
+      "type": "综合",
+      "content": "活动与探究<br>解码蜜蜂的“家”——为什么蜂房是正六边形的？<br>蜜蜂的“集体宿舍”是由多个正六边形密铺在一起的，这些密铺的正六边形使得蜂房之间没有空隙，一点儿也不浪费空间．这是数学中的密铺（或镶嵌）问题．平面图形的密铺（或镶嵌）是指用形状、大小完全相同的一种或多种平面图形进行拼接，使彼此之间不留空隙、不重叠地铺成一片．<img src=\"media/image341.png\" width=\"1.375in\" height=\"1.6354166666666667in\"/><br>探究一：若只用一种正多边形，哪些正多边形可以密铺？<table><tr><td>平面图形</td><td>每个内角度数</td><td>能否整除</td><td>能否密铺</td></tr><tr><td>正三角形</td><td></td><td></td><td>能</td></tr><tr><td>正方形</td><td>①________</td><td>②________</td><td>能</td></tr><tr><td>正五边形</td><td></td><td></td><td>不能</td></tr><tr><td>正六边形</td><td></td><td></td><td>能</td></tr><tr><td>正七边形</td><td></td><td></td><td>不能</td></tr><tr><td>正八边形</td><td></td><td>③________</td><td>④________</td></tr><tr><td>．．．</td><td>．．．</td><td>．．．</td><td>．．．</td></tr></table><br>探究二：在能密铺的正多边形中，哪种形状最省材料？<br>数学视角：蜜蜂的身体可近似看成圆柱，若圆柱底面半径为1，当蜂房恰好容纳一只蜜蜂即正多边形的内切圆半径均为1时，比较正三角形，正方形和正六边形周长的大小．<br>观察图1，发现是正三角形的内切圆，与切于点，，，，在中，，则的周长为．<br>探究三：在能密铺的正多边形中，哪种形状可以使蜜蜂的活动空间最大？<br>数学视角：假设蜜蜂建造蜂房的材料总量即周长一定，比较正三角形、正方形和正六边形面积的大小．<img src=\"media/image358.png\" width=\"4.552083333333333in\" height=\"1.8541666666666667in\"/>"
+    },
+    "subQuestions": [
+      {
+        "type": "填空",
+        "content": "（1）请补全上述表格①<input size=\"10\" readonly=\"readonly\" type=\"underline\">；②<input size=\"10\" readonly=\"readonly\" type=\"underline\">；③<input size=\"10\" readonly=\"readonly\" type=\"underline\">；④<input size=\"10\" readonly=\"readonly\" type=\"underline\">",
+        "answer": {
+          "blanks": [
+            "",
+            "",
+            "",
+            "不能"
+          ]
+        },
+        "solution": "<p>根据正方形，正八边形内角性质解答；</p><p>解：∵正方形每个内角为 ，</p><p>∴，</p><p>∴能密铺；</p><p>∵正八边形的每个内角为，</p><p>∴，</p><p>∴不能密铺；</p><p>故答案为：①；② ；③；④不能；</p>"
+      },
+      {
+        "type": "填空",
+        "content": "（2）如图2，正方形的周长为<input size=\"10\" readonly=\"readonly\" type=\"underline\">",
+        "answer": {
+          "blanks": [
+            "8"
+          ]
+        },
+        "solution": "<p>根据正方形内切圆半径为1，得正方形边长为2，即得正方形周长；</p><p>解：设切于点E，连接，</p><p>则交于点O，，</p><p>∵，</p><p>∴，</p><p>∴，</p><p>∴正方形的周长为8；</p><p>故答案：8；</p><p><img src=\"media/image373.png\" width=\"1.25in\" height=\"1.2291666666666667in\"/></p>"
+      },
+      {
+        "type": "简答",
+        "content": "（3）如图3，求出正六边形的周长（写出求解过程）．<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"4\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "answer": {
+          "answer": ""
+        },
+        "solution": "<p>根据正六边形内切圆半径为1，得正六边形边长为，即得正六边形周长；</p><p>解：设切于点G，连接，</p><p>则，</p><p>∴，</p><p>∵，</p><p>∴，</p><p>∴，</p><p>∵，</p><p>∴，</p><p>∴，</p><p>∴正六边形周长为；</p><p><img src=\"media/image383.png\" width=\"1.3645833333333333in\" height=\"1.3229166666666667in\"/></p>"
+      },
+      {
+        "type": "填空",
+        "content": "（4）若正多边形的周长都为12，则正三角形的面积为<input size=\"10\" readonly=\"readonly\" type=\"underline\">；正方形的面积为<input size=\"10\" readonly=\"readonly\" type=\"underline\">；正六边形的面积为<input size=\"10\" readonly=\"readonly\" type=\"underline\">",
+        "answer": {
+          "blanks": [
+            "",
+            "",
+            ""
+          ]
+        },
+        "solution": "<p>在周长都是12的情况下，得正三角形的边长为4，边心距为，积为；正方形的边长为3，面积为9；正六边形的边长为2，边心距为，面积为．</p><p>解：三角形：</p><p>∵，</p><p>∴，</p><p>∵，</p><p>∴，</p><p>∵，</p><p>∴，</p><p>∴；</p><p>正方形：</p><p>∵，</p><p>∴，</p><p>正六边：</p><p>∵，</p><p>∴，</p><p>∴，</p><p>∴，</p><p>∴．</p><p><img src=\"media/image398.png\" width=\"4.552083333333333in\" height=\"1.7395833333333333in\"/></p>"
+      }
+    ]
+  }
+]

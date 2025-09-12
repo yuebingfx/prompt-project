@@ -1,0 +1,933 @@
+![](media/image1.png){width="0.5138888888888888in" height="0.2916666666666667in"}**【居中】[青海省]{.bold .font-16.0pt}[2025]{.bold .font-16.0pt}[年初中学业水平考试]{.bold .font-16.0pt}**
+
+**【居中】[数学]{.bold .font-16.0pt}**
+
+**【居中】[（本试卷满分]{.bold}[[120]{.bold}]{.bold}[分，考试时间]{.bold}120[分钟）]{.bold}**
+
+**[注意事项：]{.bold}**
+
+**1[．本试卷为试题卷，请将答案写在答题卡上，否则无效．]{.bold}**
+
+**2[．答卷前请将密封线内的项目填写清楚．]{.bold}**
+
+**[一、选择题（本大题共]{.bold}8[[小题，每小题]{.bold}]{.bold}3[[分，共]{.bold}]{.bold}[[24]{.bold}]{.bold}[分．在每小题给出的四个选项中，只有一项符合要求）．]{.bold}**
+
+1\. ![](media/image2.wmf)的值为（ ）
+
+A. ![](media/image3.wmf) B. 2 C. ![](media/image4.wmf) D. ![](media/image5.wmf)
+
+[[[[[[[[[[[[[[[[[[[[[[[[[【答案】]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}B
+
+[[[[[[[[[[[[[[[[[[[[[[[[[【解析】]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}]{.color-2E75B6}
+
+【分析】本题考查相反数的概念，涉及多重符号的化简，根据相反数的定义可得答案.
+
+【详解】解：∵![](media/image6.wmf)，
+
+∴![](media/image2.wmf)的值是![](media/image7.wmf)，
+
+故选：B
+
+2\. 下列图形是轴对称图形的是（ ）
+
+A. ![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image8.png){width="1.2916666666666667in" height="1.15625in"} B. ![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image9.png){width="1.0[72]{.bold}9166666666667in" height="1.0520833333333333in"}
+
+C. ![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image10.png){width="1.2604166666666667in" height="1.1770833333333333in"} D. ![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image11.png){width="1.2083333333333333in" height="1.3229166666666667in"}
+
+【答案】C
+
+【解析】
+
+【分析】本题考查了轴对称图形的定义，根据沿着某条直线折叠，两边的图形能够重合的图形是轴对称图形，进行逐项判断即可．
+
+【详解】解：A、该图形不是轴对称图形，故该选项不符合题意；
+
+B、该图形不是轴对称图形，故该选项不符合题意；
+
+C、该图形是轴对称图形，故该选项符合题意；
+
+D、该图形不是轴对称图形，故该选项不符合题意；
+
+故选：C．
+
+3\. ![](media/image12.wmf)年![](media/image13.wmf)月![](media/image14.wmf)日，全球首次"人机共跑"半程马拉松在北京开跑．本次比赛全程约![](media/image15.wmf)公里，这意味着采用双足步态的人形机器人要完成约![](media/image16.wmf)万次精密关节运动．将数据"![](media/image17.wmf)"用科学记数法表示为（ ）
+
+A. ![](media/image18.wmf) B. ![](media/image19.wmf)
+
+C. ![](media/image20.wmf) D. ![](media/image21.wmf)
+
+【答案】A
+
+【解析】
+
+【分析】此题考查了科学记数法的表示方法，根据科学记数法的表示形式为![](media/image22.wmf)的形式，其中![](media/image23.wmf)，![](media/image24.wmf)为整数即可求解，确定![](media/image24.wmf)的值时，要看把原数变成![](media/image25.wmf)时，小数点移动了多少位，![](media/image24.wmf)的绝对值与小数点移动的位数相同，当原数绝对值![](media/image26.wmf)时，![](media/image24.wmf)是正整数；当原数的绝对值![](media/image27.wmf)时，![](media/image24.wmf)是负整数，解题的关键要正确确定![](media/image25.wmf)的值以及![](media/image24.wmf)的值．
+
+【详解】解：![](media/image28.wmf)，
+
+故选：![](media/image29.wmf)．
+
+4\. 工人师傅常用角尺平分一个任意角．做法如下：如图，![](media/image30.wmf)是一个任意角，在边![](media/image31.wmf)，![](media/image32.wmf)上分别取![](media/image33.wmf)，移动角尺，使角尺两边相同的刻度分别与点![](media/image34.wmf)，![](media/image35.wmf)重合，即![](media/image36.wmf)，过角尺顶点![](media/image37.wmf)的射线![](media/image38.wmf)便是![](media/image30.wmf)的平分线，这种做法的依据是（ ）
+
+![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image39.png){width="1.5in" height="1.4270833333333333in"}
+
+A. ![](media/image40.wmf) B. ![](media/image41.wmf) C. ![](media/image42.wmf) D. ![](media/image43.wmf)
+
+【答案】C
+
+【解析】
+
+【分析】本题主要考查了全等三角形的判定，由作图过程可得![](media/image44.wmf)，![](media/image45.wmf)，再加上公共边![](media/image46.wmf)可利用![](media/image42.wmf)定理判定![](media/image47.wmf)．
+
+【详解】解：在![](media/image48.wmf)和![](media/image49.wmf)中
+
+![](media/image50.wmf)，
+
+∴![](media/image51.wmf)，
+
+∴![](media/image52.wmf)，
+
+故选：C．
+
+5\. 下列计算正确的是（ ）
+
+A. ![](media/image53.wmf) B. ![](media/image54.wmf)
+
+C. ![](media/image55.wmf) D. ![](media/image56.wmf)
+
+【答案】D
+
+【解析】
+
+【详解】本题考查了整式的运算，根据合并同类项，同底数幂的乘除法，积的乘方运算法则逐一验证各选项即可，熟练掌握运算法则是解题的关键．
+
+【分析】解：![](media/image29.wmf)、![](media/image57.wmf)，原选项运算错误，不符合题意；
+
+![](media/image58.wmf)、![](media/image59.wmf)，原选项运算错误，不符合题意；
+
+![](media/image60.wmf)、![](media/image61.wmf)，原选项运算错误，不符合题意；
+
+![](media/image62.wmf)、![](media/image63.wmf)，原选项运算正确，符合题意
+
+故选：![](media/image62.wmf)．
+
+6\. 我国明代数学著作《算法统宗》中有这样一个问题："隔墙听得客分银，不知人数不知银，七两分之多四两，九两分之少半斤．试问各位善算者，多少人分多少银？"译文："隔着墙壁听见客人在分银两，不知道有多少人，多少银两．若每人分![](media/image64.wmf)两，则还多![](media/image13.wmf)两；若每人分![](media/image65.wmf)两，则还差![](media/image66.wmf)两．请问：有多少客人？分多少银两？"设客人为![](media/image67.wmf)人，银两为![](media/image68.wmf)两．根据题意可列方程组为（ ）
+
+A. ![](media/image69.wmf) B. ![](media/image70.wmf)
+
+C. ![](media/image71.wmf) D. ![](media/image72.wmf)
+
+【答案】D
+
+【解析】
+
+【分析】本题考查了二元一次方程组的应用，设客人为![](media/image67.wmf)人，银两为![](media/image68.wmf)两，根据题意列出方程![](media/image73.wmf)即可，读懂题意，找出等量关系，列出方程组是解题的关键．
+
+【详解】解：设客人为![](media/image67.wmf)人，银两为![](media/image68.wmf)两，
+
+根据题意得![](media/image73.wmf)，
+
+故选：![](media/image62.wmf)．
+
+7\. 如图，![](media/image74.wmf)是![](media/image75.wmf)的直径，![](media/image76.wmf)，则![](media/image77.wmf)的度数是（ ）
+
+![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image78.png){width="1.1666666666666667in" height="1.0104166666666667in"}
+
+A. ![](media/image79.wmf) B. ![](media/image80.wmf) C. ![](media/image81.wmf) D. ![](media/image82.wmf)
+
+【答案】B
+
+【解析】
+
+【分析】本题主要考查了同弧或等弧所对的圆周角相等，直径对的圆周角是直角，熟练掌握同弧或等弧所对的圆周角相等是解题的关键．根据![](media/image74.wmf)是![](media/image75.wmf)的直径得出![](media/image83.wmf)，即可求解．
+
+【详解】解：∵![](media/image74.wmf)是![](media/image75.wmf)的直径，
+
+∴![](media/image83.wmf)，
+
+∴![](media/image84.wmf)，
+
+∵![](media/image76.wmf)，
+
+∴![](media/image85.wmf)，
+
+∴![](media/image86.wmf)，
+
+故选：B．
+
+8\. 如图，甲、乙两车从![](media/image87.wmf)地出发前往![](media/image88.wmf)地，在整个行程中，汽车离开![](media/image87.wmf)地的路程![](media/image89.wmf)与时刻![](media/image90.wmf)之间的对应关系如图所示，下列结论错误的是（ ）
+
+![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image91.png){width="2.4375in" height="1.4479166666666667in"}
+
+A. 乙车先到达![](media/image88.wmf)地 B. ![](media/image87.wmf)、![](media/image88.wmf)两地相距![](media/image92.wmf)
+
+C. 甲车的平均速度为![](media/image93.wmf) D. 在![](media/image94.wmf)时，乙车追上甲车
+
+【答案】C
+
+【解析】
+
+【分析】本题考查从函数图象获取信息的能力，根据函数图象中的数据，可以先计算出甲、乙两车的速度，然后再根据图象中的数据，逐一判断各个选项中的说法是否正确即可．
+
+【详解】解：由图象可知，*A*，*B*两城相距![](media/image92.wmf)，甲车先出发，乙车先到达*B*城，
+
+故选项*A*、*B*不符合题意；
+
+甲的速度为：![](media/image95.wmf)，
+
+乙的速度为：![](media/image96.wmf)，
+
+故选项C错误，符合题意；
+
+由交点的横坐标可知，乙车在![](media/image94.wmf)追上甲车．
+
+故D不符合题意．
+
+故选：C．
+
+**[二、填空题（本大题共]{.bold}8小题，每小题3分，共24[分）．]{.bold}**
+
+9\. ![](media/image13.wmf)![](media/image97.wmf){width="0.14583333333333334in" height="0.19444444444444445in"}算术平方根是\_\_\_\_\_\_．
+
+【答案】![](media/image7.wmf)
+
+【解析】
+
+【分析】本题考查了算术平方根的定义，根据算术平方根的定义解答即可，掌握算术平方根的定义是解题的关键．
+
+【详解】解：∵![](media/image98.wmf)，
+
+∴![](media/image13.wmf)的算术平方根是![](media/image99.wmf)，
+
+故答案为：![](media/image7.wmf)．
+
+10\. 实数![](media/image25.wmf)，![](media/image100.wmf)在数轴上对应点的位置如图所示，则![](media/image101.wmf)\_\_\_\_\_\_![](media/image102.wmf)．（填"![](media/image103.wmf)""![](media/image104.wmf)"或"![](media/image105.wmf)"）
+
+![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image106.png){width="1.34375in" height="0.23958333333333334in"}
+
+【答案】![](media/image103.wmf)
+
+【解析】
+
+【分析】本题主要考查了根据点在数轴上的位置判断式子的正负，根据实数![](media/image107.wmf)在数轴上对应点的位置，判定出![](media/image107.wmf)符号以及绝对值的大小，即可进行判断即可，解题的关键是根据实数在数轴上的位置，正确判断出实数的符号和绝对值的大小．
+
+【详解】解：由实数![](media/image107.wmf)在数轴上对应点的位置可知：![](media/image108.wmf)，![](media/image109.wmf)，且![](media/image110.wmf)，
+
+∴![](media/image111.wmf)，
+
+∴![](media/image112.wmf)，
+
+故答案为：![](media/image103.wmf)．
+
+11\. 七名同学一分钟排球垫球个数分别为![](media/image113.wmf)，![](media/image114.wmf)，![](media/image115.wmf)，![](media/image115.wmf)，![](media/image116.wmf)，![](media/image115.wmf)，![](media/image117.wmf)，这组数据的众数是\_\_\_\_\_\_．
+
+【答案】![](media/image115.wmf)
+
+【解析】
+
+【分析】本题考查了众数的定义，根据出现次数最多的数是众数解答即可，掌握众数的定义是解题的关键．
+
+【详解】解：∵这组数据中![](media/image115.wmf)出现![](media/image118.wmf)次，出现的次数最多，
+
+∴这组数据的众数是![](media/image115.wmf)，
+
+故答案为：![](media/image115.wmf)．
+
+12\. 若![](media/image119.wmf)是一元二次方程![](media/image120.wmf)的一个根，则![](media/image121.wmf)的值为\_\_\_\_\_\_．
+
+【答案】![](media/image118.wmf)
+
+【解析】
+
+【分析】此题考查了一元二次方程的解，把![](media/image119.wmf)代入方程即可求解，熟练掌握一元二次方程的解是解题的关键．
+
+【详解】解：将![](media/image119.wmf)代入原方程![](media/image120.wmf)得：![](media/image122.wmf)，
+
+解得：![](media/image123.wmf)，
+
+故答案为：![](media/image118.wmf)．
+
+13\. 在平面直角坐标系中，点![](media/image124.wmf)在第三象限，则![](media/image25.wmf)的取值范围是\_\_\_\_\_\_\_\_\_\_．
+
+【答案】![](media/image125.wmf)
+
+【解析】
+
+【分析】本题主要考查了平面直角坐标系中第三象限的点的坐标的符号特点，根据平面直角坐标系中第三象限内的点的横坐标小于0，纵坐标小于0，列出关于*a*的不等式组，求解即可．
+
+【详解】解：![](media/image126.wmf)点![](media/image124.wmf)在第三象限，
+
+![](media/image127.wmf)![](media/image128.wmf)，
+
+解得![](media/image125.wmf)，
+
+即![](media/image25.wmf)的取值范围是![](media/image125.wmf)，
+
+故答案为：![](media/image125.wmf)．
+
+14\. 如图，在菱形![](media/image129.wmf)中，![](media/image130.wmf)，![](media/image131.wmf)，![](media/image132.wmf)分别为![](media/image74.wmf)，![](media/image133.wmf)的中点，且![](media/image134.wmf)，则菱形![](media/image129.wmf)的面积为\_\_\_\_\_\_．
+
+![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image135.png){width="2.4270833333333335in" height="1.2395833333333333in"}
+
+【答案】![](media/image136.wmf)
+
+【解析】
+
+【分析】本题主要考查了菱形的性质，三角形中位线定理，由![](media/image131.wmf)，![](media/image132.wmf)分别为![](media/image74.wmf)，![](media/image133.wmf)的中点，得![](media/image137.wmf)，所以![](media/image138.wmf)，然后根据菱形![](media/image129.wmf)的面积为![](media/image139.wmf)即可求解，掌握相关知识的应用是解题的关键．
+
+【详解】解：∵![](media/image131.wmf)，![](media/image132.wmf)分别为![](media/image74.wmf)，![](media/image133.wmf)的中点，
+
+∴![](media/image137.wmf)，
+
+∴![](media/image138.wmf)，
+
+∵四边形![](media/image129.wmf)是菱形，
+
+∴菱形![](media/image129.wmf)的面积为![](media/image140.wmf)，
+
+故答案为：![](media/image136.wmf)．
+
+15\. 如图，在![](media/image141.wmf)中，![](media/image142.wmf)，且![](media/image143.wmf)，![](media/image144.wmf)，则![](media/image145.wmf)的值是\_\_\_\_\_\_．
+
+![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image146.png){width="1.5in" height="1.2604166666666667in"}
+
+【答案】![](media/image147.wmf)
+
+【解析】
+
+【分析】本题考查了相似三角形的判定与性质，由![](media/image142.wmf)，可得![](media/image148.wmf)，根据相似三角形性质得![](media/image149.wmf)，然后把![](media/image143.wmf)，![](media/image144.wmf)代入即可求解，掌握相似三角形的判定与性质是解题的关键．
+
+【详解】解：∵![](media/image142.wmf)，
+
+∴![](media/image148.wmf)，
+
+∴![](media/image149.wmf)，
+
+∵![](media/image150.wmf)，![](media/image143.wmf)，![](media/image144.wmf)，
+
+∴![](media/image151.wmf)，
+
+故答案为：![](media/image147.wmf)．
+
+16\. 下图是谢尔宾斯基地毯图案的形成过程．按此规律下去，第⑥个图形中黑色三角形的个数是\_\_\_\_\_\_\_\_\_\_．
+
+![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image152.png){width="3.75in" height="0.8854166666666666in"}
+
+【答案】![](media/image153.wmf)或243（两个答案均可得分）
+
+【解析】
+
+【分析】本题考查了图形的变化类问题，找到图形的变化规律，即可得出答案．
+
+【详解】解：∵第1个图案中有![](media/image154.wmf)个，
+
+第2个图案中有![](media/image155.wmf)个，
+
+第3个图案中有![](media/image156.wmf)个，
+
+第4个图案中有![](media/image157.wmf)个，
+
+...，
+
+按此规律，第⑥个图案中有![](media/image158.wmf)个涂有阴影的三角形．
+
+故答案为：![](media/image153.wmf)或243．
+
+**[三、解答题（本大题共]{.bold}9[小题，共]{.bold}72[分．解答应写出必要的文字说明，证明过程或演算步骤）．]{.bold}**
+
+17\. 计算：![](media/image159.wmf)
+
+【答案】![](media/image160.wmf)
+
+【解析】
+
+【分析】本题考查了含特殊角的三角函数值的混合运算，零指数幂，二次根式的运算等知识点，熟练掌握运算法则是解题的关键．
+
+分别化简二次根式，计算零指数幂，绝对值，代入特殊角的三角函数值并相乘，最后再进行加减计算．
+
+【详解】解：![](media/image159.wmf)
+
+![](media/image161.wmf)
+
+![](media/image162.wmf)．
+
+18\. 先化简![](media/image163.wmf)，再从![](media/image4.wmf)，![](media/image102.wmf)，![](media/image164.wmf)中选一个合适的数代入求值．
+
+【答案】![](media/image165.wmf)，![](media/image166.wmf)时，值为![](media/image4.wmf)，![](media/image167.wmf)时，值为![](media/image168.wmf)
+
+【解析】
+
+【分析】本题考查了分式的化简求值，分式有意义的条件，熟练掌握分式的混合运算法则是解此题的关键．
+
+括号内先通分，再将除法转化为乘法，约分即可化简，再代入合适的值进行计算即可．
+
+【详解】解：![](media/image163.wmf)
+
+![](media/image169.wmf)
+
+![](media/image170.wmf)
+
+![](media/image171.wmf)
+
+![](media/image172.wmf)
+
+![](media/image173.wmf)
+
+由于![](media/image174.wmf)，
+
+∴![](media/image175.wmf)
+
+把![](media/image166.wmf)代入
+
+原式![](media/image176.wmf)
+
+![](media/image177.wmf)；
+
+把![](media/image167.wmf)代入
+
+原式![](media/image178.wmf)
+
+![](media/image179.wmf)．
+
+19\. 如图，直线![](media/image180.wmf)与![](media/image67.wmf)轴交于点![](media/image181.wmf)，与![](media/image68.wmf)轴交于点![](media/image88.wmf)，与反比例函数![](media/image182.wmf)（![](media/image183.wmf)为常数![](media/image184.wmf)）的图象在第二象限交于点![](media/image185.wmf)．
+
+![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image186.png){width="1.6666666666666667in" height="1.65625in"}
+
+（1）求反比例函数的解析式；
+
+（2）求![](media/image187.wmf)的面积．
+
+【答案】（1）![](media/image188.wmf)；
+
+（2）![](media/image3.wmf)．
+
+【解析】
+
+【分析】此题考查了一次函数与反比例函数的交点问题，待定系数法求函数解析式，三角形的面积求法，熟练掌握知识点的应用是解题的关键．
+
+（![](media/image164.wmf)）先由点![](media/image181.wmf)代入![](media/image180.wmf)求出点![](media/image37.wmf)的坐标为![](media/image189.wmf)，然后代入![](media/image182.wmf)即可求解；
+
+（![](media/image7.wmf)）过![](media/image37.wmf)点作![](media/image190.wmf)轴于点![](media/image191.wmf)，然后求出![](media/image192.wmf)，![](media/image193.wmf)，再由![](media/image194.wmf)即可求解．
+
+【小问1详解】
+
+解：把点![](media/image181.wmf)代入![](media/image180.wmf)中得![](media/image195.wmf)，
+
+∴![](media/image196.wmf)，
+
+∴一次函数解析式为![](media/image197.wmf)，
+
+把点![](media/image185.wmf)代入![](media/image197.wmf)中，
+
+得![](media/image198.wmf)，
+
+∴点![](media/image37.wmf)的坐标为![](media/image189.wmf)，
+
+把![](media/image199.wmf)代入![](media/image182.wmf)中，
+
+得![](media/image200.wmf)，![](media/image201.wmf)，
+
+∴反比例函数解析式为![](media/image188.wmf)；
+
+【小问2详解】
+
+解：过![](media/image37.wmf)点作![](media/image190.wmf)轴于点![](media/image191.wmf)，
+
+![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image202.png){width="1.6979166666666667in" height="1.6875in"}
+
+∵![](media/image199.wmf)，
+
+∴![](media/image192.wmf)，
+
+把![](media/image203.wmf)代入![](media/image197.wmf)得，![](media/image204.wmf)，
+
+∴![](media/image205.wmf)，
+
+∴![](media/image193.wmf)，
+
+∴![](media/image206.wmf)．
+
+20\. 如图，在![](media/image141.wmf)中，点*O*，*D*分别是边![](media/image74.wmf)，![](media/image133.wmf)的中点，过点*A*作![](media/image207.wmf)交![](media/image208.wmf)的延长线于点*E*，连接![](media/image209.wmf)，![](media/image210.wmf)．
+
+![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image211.png){width="2.0833333333333335in" height="1.1666666666666667in"}
+
+（1）求证：四边形![](media/image212.wmf)是平行四边形；
+
+（2）若![](media/image213.wmf)，试判断四边形![](media/image212.wmf)的形状，并证明．
+
+【答案】（1）见解析 （2）当![](media/image213.wmf)时，四边形![](media/image212.wmf)是矩形，理由见解析
+
+【解析】
+
+【分析】本题考查的是平行四边形的判定与性质，矩形的判定，全等三角形的判定与性质；
+
+（1）先证明![](media/image214.wmf)，可得![](media/image215.wmf)，结合![](media/image216.wmf)可得结论；
+
+（2）由![](media/image213.wmf)，点![](media/image217.wmf)是![](media/image133.wmf)边上的中点，可得![](media/image218.wmf)即![](media/image219.wmf)，结合由（1）得四边形![](media/image212.wmf)是平行四边形，从而可得结论.
+
+【小问1详解】
+
+证明：∵点![](media/image220.wmf)为![](media/image74.wmf)的中点
+
+∴![](media/image221.wmf)，
+
+∵![](media/image207.wmf)
+
+∴![](media/image222.wmf)，![](media/image223.wmf)，
+
+在![](media/image224.wmf)和![](media/image225.wmf)中
+
+![](media/image226.wmf)
+
+∴![](media/image214.wmf)，
+
+∴![](media/image215.wmf)
+
+∵![](media/image216.wmf)
+
+∴四边形![](media/image212.wmf)是平行四边形；
+
+【小问2详解】
+
+证明：当![](media/image213.wmf)时，四边形![](media/image212.wmf)是矩形，
+
+理由如下：
+
+∵ ![](media/image213.wmf)，点![](media/image217.wmf)是![](media/image133.wmf)边上的中点，
+
+∴ ![](media/image218.wmf)即![](media/image219.wmf)，
+
+∵ 由（1）得四边形![](media/image212.wmf)是平行四边形，
+
+∴ 四边形![](media/image212.wmf)是矩形.
+
+21\. 数学实践
+
+【问题背景】
+
+中国传统农业智慧遇上现代数学模型．"豇豆不上架，产量少一半"的农谚流传至今，现代科学揭示了其秘密：当支架与地面形成![](media/image227.wmf)夹角时，既能在早春聚热防冻害，又能在盛夏分散强光，就像给豇豆装了智能遮阳篷．
+
+【问题呈现】
+
+用两根竹竿交叉，斜插入地面，交叉点在何处会使支架与地面形成![](media/image227.wmf)夹角？
+
+【模型建立】
+
+环节一：数据收集
+
+两根竹竿长度均为1.8米，插入地下的部分为0.3米，竹竿与地面接触点间距为0.6米且与地面所形成的夹角均为![](media/image227.wmf)．
+
+环节二：数学抽象
+
+如图：已知线段![](media/image74.wmf)与![](media/image228.wmf)交于点![](media/image220.wmf)，![](media/image74.wmf)，![](media/image228.wmf)与直线![](media/image229.wmf)分别交于点![](media/image131.wmf)，![](media/image132.wmf)，![](media/image230.wmf)![](media/image231.wmf)，![](media/image232.wmf)![](media/image231.wmf)，![](media/image233.wmf)，![](media/image234.wmf)![](media/image231.wmf)，求![](media/image235.wmf)的长度．（结果精确到0.1，参考数据：![](media/image236.wmf)，![](media/image237.wmf)，![](media/image238.wmf)）
+
+【模型求解】
+
+【问题总结】
+
+交叉点![](media/image220.wmf)距顶端![](media/image87.wmf)![](media/image97.wmf){width="0.14583333333333334in" height="0.19444444444444445in"}长度即![](media/image31.wmf)为\_\_\_\_\_\_![](media/image231.wmf)时，支架与地面形成![](media/image227.wmf)夹角，这样更贴合作物的生长规律．
+
+![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image239.png){width="2.3958333333333335in" height="1.4375in"}
+
+【答案】![](media/image240.wmf)，![](media/image241.wmf)
+
+【解析】
+
+【分析】本题考查的是解直角三角形的应用，如图，过![](media/image220.wmf)作![](media/image242.wmf)于![](media/image191.wmf)，根据等腰三角形的性质可得![](media/image243.wmf)，结合![](media/image244.wmf)可得答案；最后由![](media/image245.wmf)即可得到答案.
+
+【详解】解：数学抽象：如图，过![](media/image220.wmf)作![](media/image242.wmf)于![](media/image191.wmf)，
+
+![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image246.png){width="1.3541666666666667in" height="1.5208333333333333in"}
+
+∵![](media/image233.wmf)，
+
+∴![](media/image247.wmf)，
+
+∵![](media/image234.wmf)![](media/image231.wmf)，
+
+∴![](media/image243.wmf)，
+
+∴![](media/image244.wmf)，
+
+∴![](media/image248.wmf)，
+
+问题总结：∵![](media/image230.wmf)![](media/image231.wmf)，![](media/image232.wmf)![](media/image231.wmf)，
+
+∴![](media/image249.wmf).
+
+22\. 如图，线段![](media/image74.wmf)经过圆心![](media/image220.wmf)，交![](media/image75.wmf)于点![](media/image87.wmf)，![](media/image37.wmf)，![](media/image209.wmf)为![](media/image75.wmf)的弦，连接![](media/image250.wmf)，![](media/image251.wmf)．
+
+![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image252.png){width="1.84375in" height="1.2291666666666667in"}
+
+（1）求证：直线![](media/image250.wmf)是![](media/image75.wmf)![](media/image97.wmf){width="0.14583333333333334in" height="0.19444444444444445in"}切线；
+
+（2）已知![](media/image253.wmf)，求![](media/image254.wmf)的长（结果保留![](media/image255.wmf)）．
+
+【答案】（1）见解析 （2）![](media/image256.wmf)
+
+【解析】
+
+【分析】本题主要考查了切线的判定，弧长公式，含30度角的直角三角形的性质．
+
+（1）先由三角形内角和定理得出![](media/image257.wmf)，再根据![](media/image258.wmf)得![](media/image259.wmf)，进而可得![](media/image260.wmf)，再根据切线的判定可得出结论；
+
+（2）根据含30度角的直角三角形的性质得![](media/image261.wmf)，设![](media/image262.wmf)，则![](media/image263.wmf)，求出![](media/image264.wmf)，再得![](media/image265.wmf)，然后根据弧长公式求解即可．
+
+【小问1详解】
+
+证明：连接![](media/image266.wmf)，
+
+![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image267.png){width="1.6458333333333333in" height="1.09375in"}
+
+∵![](media/image251.wmf)，
+
+∴![](media/image268.wmf)，
+
+∵![](media/image258.wmf)，
+
+∴![](media/image259.wmf)，
+
+∴![](media/image269.wmf)，
+
+∴![](media/image270.wmf)，
+
+且![](media/image266.wmf)是![](media/image75.wmf)的半径，
+
+∴直线![](media/image250.wmf)是![](media/image75.wmf)的切线；
+
+【小问2详解】
+
+解：在![](media/image271.wmf)中，![](media/image272.wmf)，
+
+∴![](media/image261.wmf)，
+
+设![](media/image262.wmf)，
+
+∴![](media/image263.wmf)，
+
+解得![](media/image273.wmf)，
+
+∵![](media/image265.wmf)，
+
+∴![](media/image254.wmf)的长为：![](media/image274.wmf)．
+
+23\. 为了让学生体验青海民俗文化，某学校开设了特色艺术实践课程，课程分别是：![](media/image87.wmf)．五谷画，![](media/image88.wmf)．彩陶，![](media/image37.wmf)．剪纸，![](media/image217.wmf)．排灯．现学校要了解学生最感兴趣的课程情况，从全校学生中随机抽取部分学生进行调查（每位学生必选且只能选一个课程），根据调查结果，绘制了如下两幅不完整的统计图：根据提供的信息，解答下列问题：
+
+![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image275.png){width="3.5520833333333335in" height="1.75in"}
+
+（1）此次被调查的学生总人数为\_\_\_\_\_\_\_\_\_\_；扇形统计图中![](media/image276.wmf)\_\_\_\_\_\_\_\_\_\_；
+
+（2）补全条形统计图；
+
+（3）该校有![](media/image277.wmf)人，请你估计该校对课程![](media/image217.wmf)感兴趣的学生有多少名？
+
+（4）甲、乙两名同学从![](media/image87.wmf)、![](media/image88.wmf)、![](media/image37.wmf)、![](media/image217.wmf)四个课程中任选一个，用树状图或列表法求两人恰好选到同一个课程的概率．
+
+【答案】（1）![](media/image278.wmf)，![](media/image279.wmf)；
+
+（2）补全条形统计图见解析；
+
+（3）![](media/image280.wmf)人；
+
+（4）![](media/image281.wmf)．
+
+【解析】
+
+【分析】本题考查了条形统计图和扇形统计图的综合运用，列表法或画树状图法求概率，熟练掌握概率的求法，从不同的统计图中得到必要的信息是解题的关键．
+
+（![](media/image164.wmf)）根据对课程![](media/image87.wmf)感兴趣的学生人数除以所占百分比即可求出此次被调查的学生总人数，然后通过对课程![](media/image37.wmf)感兴趣的学生人数除以总人数再乘以![](media/image282.wmf)即可求出![](media/image25.wmf)的值；
+
+（![](media/image7.wmf)）由（![](media/image164.wmf)）总人数减去![](media/image283.wmf)人数，即可得到抽取部分学生对课程![](media/image88.wmf)感兴趣的学生人数，然后补全条形统计图即可；
+
+（![](media/image118.wmf)）用![](media/image277.wmf)乘以对课程![](media/image217.wmf)感兴趣的学生所占百分比即可求解；
+
+（![](media/image13.wmf)）由题意列表或画树状图，然后通过概率公式即可求解．
+
+【小问1详解】
+
+此次被调查的学生总人数为![](media/image284.wmf)（人），
+
+∴![](media/image285.wmf)，
+
+∴![](media/image286.wmf)，
+
+故答案为：![](media/image278.wmf)，![](media/image279.wmf)；
+
+【小问2详解】
+
+抽取部分学生对课程![](media/image88.wmf)感兴趣的学生有![](media/image287.wmf)（人），
+
+补全条形统计图如图，
+
+![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image288.png){width="1.9583333333333333in" height="1.6770833333333333in"}【小问3详解】
+
+解：![](media/image289.wmf)人，
+
+答：估计该校对![](media/image217.wmf)感兴趣的学生有![](media/image280.wmf)人；
+
+【小问4详解】
+
+情况![](media/image290.wmf)：列表格，
+
++------------------------:+:------------------------+:------------------------+:------------------------+:------------------------+
+| 甲                      | ![](media/image87.wmf)  | ![](media/image88.wmf)  | ![](media/image37.wmf)  | ![](media/image217.wmf) |
+|                         |                         |                         |                         |                         |
+| 乙                      |                         |                         |                         |                         |
++-------------------------+-------------------------+-------------------------+-------------------------+-------------------------+
+| ![](media/image87.wmf)  | ![](media/image291.wmf) | ![](media/image292.wmf) | ![](media/image293.wmf) | ![](media/image294.wmf) |
++-------------------------+-------------------------+-------------------------+-------------------------+-------------------------+
+| ![](media/image88.wmf)  | ![](media/image74.wmf)  | ![](media/image295.wmf) | ![](media/image296.wmf) | ![](media/image297.wmf) |
++-------------------------+-------------------------+-------------------------+-------------------------+-------------------------+
+| ![](media/image37.wmf)  | ![](media/image298.wmf) | ![](media/image133.wmf) | ![](media/image299.wmf) | ![](media/image300.wmf) |
++-------------------------+-------------------------+-------------------------+-------------------------+-------------------------+
+| ![](media/image217.wmf) | ![](media/image209.wmf) | ![](media/image250.wmf) | ![](media/image228.wmf) | ![](media/image301.wmf) |
++-------------------------+-------------------------+-------------------------+-------------------------+-------------------------+
+
+如树状图所示，共有![](media/image302.wmf)种等可能结果，而出现甲、乙两人恰好选到同一课程的有![](media/image13.wmf)种：![](media/image291.wmf)，![](media/image295.wmf)，![](media/image299.wmf)，![](media/image301.wmf)，
+
+∴![](media/image303.wmf)；
+
+情况![](media/image304.wmf)：画树状图，
+
+![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image305.png){width="4.229166666666667in" height="1.1666666666666667in"}
+
+如树状图所示，共有![](media/image302.wmf)种等可能结果，而出现甲、乙两人恰好选到同一课程的有![](media/image13.wmf)种：![](media/image291.wmf)，![](media/image295.wmf)，![](media/image299.wmf)，![](media/image301.wmf)，
+
+∴![](media/image303.wmf)．
+
+24\. 在平面直角坐标系中，抛物线![](media/image306.wmf)与*x*轴交于*A*，*B*两点，点*B*的坐标为![](media/image307.wmf)，点![](media/image308.wmf)在抛物线上．
+
+![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image309.png){width="1.4166666666666667in" height="1.4895833333333333in"}
+
+（1）求抛物线的解析式；
+
+（2）①求点*A*![](media/image97.wmf){width="0.14583333333333334in" height="0.19444444444444445in"}坐标；
+
+②当![](media/image310.wmf)时，根据图象直接写出*x*的取值范围\_\_\_\_\_\_\_\_；
+
+（3）连接![](media/image298.wmf)交*y*轴于点*D*，在*y*轴上是否存在点*P*，使![](media/image311.wmf)是以![](media/image298.wmf)为直角边的直角三角形，若存在，请直接写出所有符合条件的点*P*坐标，若不存在，请说明理由．
+
+【答案】（1）![](media/image312.wmf)
+
+（2）①![](media/image313.wmf)，②![](media/image314.wmf)
+
+（3）存在，![](media/image315.wmf)，![](media/image316.wmf)
+
+【解析】
+
+【分析】本题考查了二次函数综合题，需要综合运用抛物线与*x*轴的交点，待定系数法求二次函数解析式，勾股定理等．
+
+（1）将![](media/image317.wmf)、![](media/image318.wmf)代入![](media/image319.wmf)得方程组，解方程组即可；
+
+（2）①令![](media/image320.wmf)，则![](media/image321.wmf)，解方程即可求出点*A*的坐标；
+
+②根据图象可知，当![](media/image310.wmf)时，即抛物线在![](media/image67.wmf)轴下方的部分，根据*A*，*B*两点的坐标即可得出结论；
+
+（3）设点*P*的坐标为![](media/image322.wmf)，先由两点间的距离公式得![](media/image323.wmf)，![](media/image324.wmf)，![](media/image325.wmf)，再分两种情况讨论：当![](media/image326.wmf)为斜边时，则![](media/image327.wmf)；
+
+当![](media/image328.wmf)为斜边时，则![](media/image329.wmf)；分别解方程即可．
+
+【小问1详解】
+
+解：将![](media/image317.wmf)、![](media/image318.wmf)代入![](media/image319.wmf)得，
+
+![](media/image330.wmf)，
+
+解得![](media/image331.wmf)，
+
+∴抛物线的解析式为![](media/image312.wmf)；
+
+【小问2详解】
+
+解：①令![](media/image320.wmf)，则![](media/image321.wmf)，
+
+解得![](media/image332.wmf)或![](media/image119.wmf)，
+
+∴点*A*的坐标为![](media/image333.wmf)；
+
+②根据图象可知，当![](media/image310.wmf)时，*x*的取值范围为![](media/image314.wmf)，
+
+故答案为：![](media/image314.wmf)；
+
+【小问3详解】
+
+解：设点*P*的坐标为![](media/image322.wmf)，
+
+∵![](media/image313.wmf)，![](media/image318.wmf)，
+
+∴![](media/image334.wmf)，![](media/image335.wmf)，![](media/image336.wmf)，
+
+∵![](media/image311.wmf)是以![](media/image298.wmf)为直角边的直角三角形，
+
+∴分以下两种情况讨论：
+
+当![](media/image326.wmf)为斜边时，则![](media/image327.wmf)，
+
+∴![](media/image337.wmf)，
+
+解得![](media/image338.wmf)，
+
+∴![](media/image315.wmf)；
+
+当![](media/image328.wmf)为斜边时，则![](media/image329.wmf)，
+
+∴![](media/image339.wmf)，
+
+解得![](media/image340.wmf)，
+
+∴![](media/image316.wmf)．
+
+综上所述，存在符合条件的*P*点，![](media/image315.wmf)，![](media/image316.wmf)．
+
+25\. 活动与探究
+
+解码蜜蜂的"家"------为什么蜂房是正六边形的？
+
+蜜蜂的"集体宿舍"是由多个正六边形密铺在一起的，这些密铺的正六边形使得蜂房之间没有空隙，一点儿也不浪费空间．这是数学中的密铺（或镶嵌）问题．平面图形的密铺（或镶嵌）是指用形状、大小完全相同的一种或多种平面图形进行拼接，使彼此之间不留空隙、不重叠地铺成一片．
+
+![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image341.png){width="1.375in" height="1.6354166666666667in"}
+
+探究一：若只用一种正多边形，哪些正多边形可以密铺？
+
+  -------------- ------------------------- ------------------------- -------------------
+  平面图形       每个内角度数              能否整除                  能否密铺
+
+  正三角形       ![](media/image342.wmf)   ![](media/image343.wmf)   能
+
+  正方形         ①\_\_\_\_\_\_\_\_         ②\_\_\_\_\_\_\_\_         能
+
+  正五边形       ![](media/image344.wmf)   ![](media/image345.wmf)   不能
+
+  正六边形       ![](media/image346.wmf)   ![](media/image347.wmf)   能
+
+  正七边形       ![](media/image348.wmf)   ![](media/image349.wmf)   不能
+
+  正八边形       ![](media/image350.wmf)   ③\_\_\_\_\_\_\_\_         ④\_\_\_\_\_\_\_\_
+
+  ．．．         ．．．                    ．．．                    ．．．
+  -------------- ------------------------- ------------------------- -------------------
+
+（1）请补全上述表格①\_\_\_\_\_\_\_\_；②\_\_\_\_\_\_\_\_；③\_\_\_\_\_\_\_\_；④\_\_\_\_\_\_\_\_．
+
+探究二：在能密铺的正多边形中，哪种形状最省材料？
+
+数学视角：蜜蜂的身体可近似看成圆柱，若圆柱底面半径为1，当蜂房恰好容纳一只蜜蜂即正多边形的内切圆半径均为1时，比较正三角形，正方形和正六边形周长的大小．
+
+观察图1，发现![](media/image75.wmf)是正三角形![](media/image351.wmf)的内切圆，与![](media/image298.wmf)切于点![](media/image217.wmf)，![](media/image352.wmf)，![](media/image353.wmf)，![](media/image354.wmf)，在![](media/image355.wmf)中，![](media/image356.wmf)，则![](media/image141.wmf)的周长为![](media/image357.wmf)．
+
+（2）如图2，正方形![](media/image129.wmf)的周长为\_\_\_\_\_\_\_\_\_\_；
+
+（3）如图3，求出正六边形的周长（写出求解过程）．
+
+探究三：在能密铺的正多边形中，哪种形状可以使蜜蜂的活动空间最大？
+
+数学视角：假设蜜蜂建造蜂房的材料总量即周长一定，比较正三角形、正方形和正六边形面积的大小．
+
+（4）若正多边形的周长都为12，则正三角形的面积为\_\_\_\_\_\_\_\_\_\_；正方形的面积为\_\_\_\_\_\_\_\_\_\_；正六边形的面积为\_\_\_\_\_\_\_\_\_\_．
+
+【得出结论】
+
+综上所述：在相同条件下，正六边形结构最省材料，能使蜜蜂的活动空间最大，是建造蜂房的最优方案．
+
+![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image358.png){width="4.552083333333333in" height="1.8541666666666667in"}
+
+【答案】（1）①![](media/image359.wmf)，②![](media/image360.wmf)，③![](media/image361.wmf)，④不能；（2）8；（3）![](media/image362.wmf)；（4）![](media/image362.wmf)，![](media/image65.wmf)，![](media/image357.wmf)
+
+【解析】
+
+【分析】（1）根据正方形，正八边形内角性质解答；
+
+（2）根据正方形内切圆半径为1，得正方形边长为2，即得正方形周长；
+
+（3）根据正六边形内切圆半径为1，得正六边形边长为![](media/image363.wmf)，即得正六边形周长；
+
+（4）在周长都是12的情况下，得正三角形的边长为4，边心距为![](media/image363.wmf)，积为![](media/image362.wmf)；正方形的边长为3，面积为9；正六边形的边长为2，边心距为![](media/image364.wmf)，面积为![](media/image357.wmf)．
+
+【详解】（1）∵正方形每个内角为![](media/image359.wmf) ，
+
+∴![](media/image365.wmf)，
+
+∴能密铺；
+
+∵正八边形的每个内角为![](media/image350.wmf)，
+
+∴![](media/image366.wmf)，
+
+∴不能密铺；
+
+故答案为：①![](media/image359.wmf)；②![](media/image365.wmf) ；③![](media/image366.wmf)；④不能；
+
+（2）设![](media/image74.wmf)切![](media/image75.wmf)于点*E*，连接![](media/image367.wmf)，
+
+则![](media/image368.wmf)交于点*O*，![](media/image369.wmf)，
+
+∵![](media/image221.wmf)，
+
+∴![](media/image370.wmf)，
+
+∴![](media/image371.wmf)，
+
+∴正方形![](media/image129.wmf)的周长为8；
+
+故答案![](media/image372.wmf){width="0.1736111111111111in" height="0.20833333333333334in"}：8；
+
+![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image373.png){width="1.25in" height="1.2291666666666667in"}
+
+（3）设![](media/image74.wmf)切![](media/image75.wmf)于点*G*，连接![](media/image374.wmf)，
+
+则![](media/image375.wmf)，
+
+∴![](media/image376.wmf)，
+
+∵![](media/image377.wmf)，
+
+∴![](media/image378.wmf)，
+
+∴![](media/image379.wmf)，
+
+∵![](media/image380.wmf)，
+
+∴![](media/image381.wmf)，
+
+∴![](media/image382.wmf)，
+
+∴正六边形周长为![](media/image362.wmf)；
+
+![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image383.png){width="1.3645833333333333in" height="1.3229166666666667in"}
+
+（4）三角形：
+
+∵![](media/image384.wmf)，
+
+∴![](media/image385.wmf)，
+
+∵![](media/image386.wmf)，
+
+∴![](media/image387.wmf)，
+
+∵![](media/image388.wmf)，
+
+∴![](media/image389.wmf)，
+
+∴![](media/image390.wmf)；
+
+正方形：
+
+∵![](media/image391.wmf)，
+
+∴![](media/image392.wmf)，
+
+正六边：
+
+∵![](media/image393.wmf)，
+
+∴![](media/image394.wmf)，
+
+∴![](media/image395.wmf)，
+
+∴![](media/image396.wmf)，
+
+∴![](media/image397.wmf)．
+
+![学科网(www.zxxk.com)\--教育资源门户，提供试卷、教案、课件、论文、素材以及各类教学资源下载，还有大量而丰富的教学相关资讯！ 24M3gWmRzDvNAx1ODbqMbQ==](media/image398.png){width="4.552083333333333in" height="1.7395833333333333in"}
+
+【点睛】此题主要考查了平面镶嵌．熟练掌握平面镶嵌的原理，正三角形，正方形，正六边形性质，含30度的直角三角形性质，勾股定理，等腰直角三角形性质，是解题的关键．

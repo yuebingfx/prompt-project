@@ -1,0 +1,571 @@
+[
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "计算",
+      "content": "用你喜欢的方法计算下面各题。",
+      "solution": "（1）根据乘法交换律和结合律，先算12.5×0.8，然后再乘37。（2）把除法算式变成乘法算式，再根据乘法分配律计算简便。（3）先算小括号里面的减法，再算中括号里面的除法，最后算中括号外面的乘法。<br>解：（1）12.5×37×0.8<br>＝12.5×0.8×37<br>＝10×37<br>＝370<br>（2）<br>（）<br>（3）\\[（）\\]<br>\\[\\]<br>小数、分数混合运算的运算顺序与整数混合运算的运算顺序完全相同，都是先算乘除，再算加减，有括号的先算括号里的。能利用简便方法计算的要简便方法计算。"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "计算",
+      "content": "解方程或比例。",
+      "solution": "先计算出方程左边x﹣20%x＝80%x，再根据等式的性质，方程两边同时除以80%。先计算出方程左边4.5×0.8＝3.6，再根据等式的性质，方程两边同时减3.6，再同时除以2。根据比例的性质，两外项之积等于两内项之积，把比例式转化成一般方程2x，再根据等式的性质，方程两边同时除以。<br>解：x﹣20%x＝2.4<br>80%x＝2.4<br>80%x÷80%＝2.4÷80%<br>x＝3<br>4.5×0.8+2x＝8.6<br>3.6+2x＝8.6<br>3.6+2x﹣3.6＝8.6﹣3.6<br>2x＝5<br>2x÷2＝5÷2<br>x＝2.5<br>x：：2<br>2x<br>2x2<br>x<br>解方程的依据是等式的性质。解答过程要注意书写格式：上、下行等号对齐；不能连等。解比例时，先根据比例的性质，两外项之积等于两内项之积，把比例式转化成一般方程，然后再根据解方程的方法解答。"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "填空",
+      "content": "小乐在复习整数、小数和分数加法运算时，写出了下面3个例子进行研究。<br>32+14＝46，表示32个一加上14个一得到46个一，也就是46。<br>0.2+0.6＝0.8，表示2个0.1加上6个0.1得到8个0.1，也就是0.8。<br>，表示2个加上3个得到5个，也就是。"
+    },
+    "subQuestions": [
+      {
+        "type": "填空",
+        "content": "观察以上算式，你认为它们的相同之处都是<input size=\"15\" readonly=\"readonly\" type=\"underline\">。",
+        "answer": {
+          "blanks": [
+            "相同的计数单位相加"
+          ]
+        },
+        "solution": "观察三个例子，整数加法是相同计数单位“一”的累加，小数加法是相同计数单位“0.1”的累加，分数加法是相同计数单位“”的累加，因此它们的相同之处都是相同的计数单位相加。"
+      },
+      {
+        "type": "填空",
+        "content": "不能直接相加的原因是<input size=\"15\" readonly=\"readonly\" type=\"underline\">，必须先转化。请你照上面的样子写出它的计算过程和表示的意义：<input size=\"30\" readonly=\"readonly\" type=\"underline\">。",
+        "answer": {
+          "blanks": [
+            "分数单位不同",
+            "，表示21个加上10个得到31个，也就是"
+          ]
+        },
+        "solution": "的分数单位是，的分数单位是，两者分数单位不同，因此不能直接相加。需要先通分，将它们转化为相同分数单位的分数再相加。"
+      }
+    ]
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "填空",
+      "content": "认真阅读以下信息，再回答问题。<br>海关总署5月9日对外公布，2025年以来，各地各部门同心聚力有效应对外部冲击，推动我国经济持续回升向好，外贸延续了平稳增长态势。前4个月我国货物贸易进出口总值约141400亿元，同比增长2.4%。"
+    },
+    "subQuestions": [
+      {
+        "type": "填空",
+        "content": "141400读作<input size=\"20\" readonly=\"readonly\" type=\"underline\">，改写成以“万”为单位的数是<input size=\"15\" readonly=\"readonly\" type=\"underline\">。",
+        "answer": {
+          "blanks": [
+            "十四万一千四百",
+            "14.14万"
+          ]
+        },
+        "solution": "读数时，从高位到低位，一级一级地读，每一级末尾的0都不读出来，其余数位连续几个0都只读一个零。改写成以“万”为单位的数，就在万位的右下角点上小数点，然后把小数末尾的0去掉，再在数的后面写上“万”字。"
+      },
+      {
+        "type": "填空",
+        "content": "上述信息中的数字，质数有<input size=\"10\" readonly=\"readonly\" type=\"underline\">，既是奇数又是合数的有<input size=\"15\" readonly=\"readonly\" type=\"underline\">。",
+        "answer": {
+          "blanks": [
+            "5",
+            "9、2025"
+          ]
+        },
+        "solution": "只有1和它本身两个因数的数是质数，除了1和它本身还有其它因数的数是合数，不能被2整除的数是奇数。"
+      },
+      {
+        "type": "填空",
+        "content": "2.4%15：<input size=\"10\" readonly=\"readonly\" type=\"underline\">＝<input size=\"10\" readonly=\"readonly\" type=\"underline\">÷250＝<input size=\"10\" readonly=\"readonly\" type=\"underline\">（填小数）",
+        "answer": {
+          "blanks": [
+            "625",
+            "6",
+            "0.024"
+          ]
+        },
+        "solution": "将2.4%改写成分数，再根据分数与除法的关系，百分数化小数的方法进行解答即可。2.4%0.024，3：125＝（3×5）：（125×5）＝15：625，3÷125＝（3×2）÷（125×2）＝6÷250。"
+      }
+    ]
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "填空",
+      "content": "不透明的袋子里有3个红球，7个黄球，从中任意摸一个球，<input size=\"10\" readonly=\"readonly\" type=\"underline\">摸到红球，摸到<input size=\"10\" readonly=\"readonly\" type=\"underline\">球的可能性大一些。",
+      "answer": {
+        "blanks": [
+          "可能",
+          "黄"
+        ]
+      },
+      "solution": "两种颜色的球都有被摸到的可能，数量越多，摸到的可能性越大。7＞3，所以摸到黄球的可能性大一些。"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "填空",
+      "content": "“一纸书来只为墙，让他三尺又何妨。”这句诗源自“六尺巷”的故事，彰显了“以和为贵”“宽容礼让”的中华文化精髓。若一尺约为，那么六尺巷的宽度约为<input size=\"5\" readonly=\"readonly\" type=\"underline\">m；小兰走一步约65cm，六尺巷的宽度大约要走<input size=\"5\" readonly=\"readonly\" type=\"underline\">步。",
+      "answer": {
+        "blanks": [
+          "2",
+          "3"
+        ]
+      },
+      "solution": "根据分数乘法，先求出六尺巷的宽度，再用总长度除以一步的长度即可求解。62（米），2米＝200厘米，200÷65≈3（步）。"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "填空",
+      "content": "某地为迎接新春佳节举行无人机飞行表演活动。表演若无风时，它们的基础飞行速度为500米/分，顺风时，速度提升200米/分，记作+200米/分；逆风时，速度减缓120米/分，记作<input size=\"10\" readonly=\"readonly\" type=\"underline\">米/分，实际速度为<input size=\"10\" readonly=\"readonly\" type=\"underline\">米/分。",
+      "answer": {
+        "blanks": [
+          "﹣120",
+          "380"
+        ]
+      },
+      "solution": "基础飞行速度为500米/分，顺风时，速度提升记作正数，逆风时，速度减缓，记作负数。500﹣120＝380（米/分）。"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "填空",
+      "content": "福建舰是我国首艘完全自主设计建造的弹射型航空母舰，总吨位达到8万吨，全长约320m，宽约78m。如果把福建舰画在图纸上，它的长是16cm，那么这幅图的比例尺是<input size=\"15\" readonly=\"readonly\" type=\"underline\">，宽应画<input size=\"5\" readonly=\"readonly\" type=\"underline\">cm。",
+      "answer": {
+        "blanks": [
+          "1：2000",
+          "3.9"
+        ]
+      },
+      "solution": "根据比例尺＝图上距离：实际距离，用长的图上距离16厘米比上实际长320米，化成最简单的整数比，就是这幅图的比例尺；再根据图上距离＝实际距离×比例尺，用宽78米乘比例尺即可解答。16厘米：320米＝16厘米：32000厘米＝1：2000，78米＝7800厘米，78003.9（厘米）。"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "填空",
+      "content": "小亮从家出发去科技馆，有4条路线可以走，如图：走<input size=\"5\" readonly=\"readonly\" type=\"underline\">号路线最近，理由是<input size=\"30\" readonly=\"readonly\" type=\"underline\">。<br><img src=\"/media/image.png\" width=\"2.7816382327209097in\" height=\"0.7917771216097987in\">",
+      "answer": {
+        "blanks": [
+          "②",
+          "两点之间，线段最短"
+        ]
+      },
+      "solution": "根据两点之间，线段最短，结合题意分析可知，小亮从家出发去科技馆，走②号路线最近。"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "填空",
+      "content": "王老师骑电动车从家出发去小明家进行家访，去时每分钟行驶500m，12分钟到达；按原路返回时，由于逆风，每分钟行驶400m，用了<input size=\"5\" readonly=\"readonly\" type=\"underline\">分钟。",
+      "answer": {
+        "blanks": [
+          "15"
+        ]
+      },
+      "solution": "因为路程＝速度×时间，所以王老师家访的总路程＝12×500＝6000（米），返回时间＝路程÷返回速度，12×500÷400＝6000÷400＝15（分钟）。"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "填空",
+      "content": "在一块三角形空地的三个角种花草，如图中阴影部分。这些花草的种植面积一共是<input size=\"10\" readonly=\"readonly\" type=\"underline\">m²，我的思考过程是<input size=\"40\" readonly=\"readonly\" type=\"underline\">。<br><img src=\"/media/image2.png\" width=\"1.2605927384076991in\" height=\"1.1876662292213473in\">",
+      "answer": {
+        "blanks": [
+          "6.28",
+          "三个半径相同的扇形圆心角度数之和是180°，所以阴影部分的面积是半径为2米的圆面积的一半"
+        ]
+      },
+      "solution": "三角形的内角和是180°，也就是三个半径相同的扇形圆心角的度数和是180°，周角是360°，所以阴影部分的面积是半径为2米的圆面积的一半，根据圆的面积公式：S＝πr²，3.14×2²÷2＝3.14×4÷2＝12.56÷2＝6.28（平方米）。"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "填空",
+      "content": "小华同学分别从前面、上面观察了超市置物架上的三摞杯子，画面如图，那么这三摞杯子最少有<input size=\"5\" readonly=\"readonly\" type=\"underline\">只，最多有<input size=\"5\" readonly=\"readonly\" type=\"underline\">只。<br><img src=\"/media/image3.png\" width=\"2.41667104111986in\" height=\"1.1500021872265966in\">",
+      "answer": {
+        "blanks": [
+          "8",
+          "10"
+        ]
+      },
+      "solution": "通过从前面观察到的可知：左列这一摞有4只杯子，右列这两摞中至少有一摞有3只杯子。所以这三摞杯子最少有4+3+1个，最多有4+3+3个。4+3+1＝8（只），4+3+3＝10（只）。"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "填空",
+      "content": "某市正在体育馆举行中小学生乒乓球比赛。一共有20张乒乓球桌，同时有56人在进行单打和双打比赛，进行单打比赛的有<input size=\"5\" readonly=\"readonly\" type=\"underline\">张桌子，进行双打比赛的有<input size=\"5\" readonly=\"readonly\" type=\"underline\">张桌子。",
+      "answer": {
+        "blanks": [
+          "12",
+          "8"
+        ]
+      },
+      "solution": "假设都是双打，用计算的人数与实际人数的差，除以每个单打与双打人数的差，求单打的桌数，再求双打的桌数即可。（20×4﹣56）÷（4﹣2）＝24÷2＝12（张），20﹣12＝8（张）。"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "单选",
+      "content": "不计算，比较下列各题商的大小，商最大的是（　　）",
+      "accessories": [
+        "3.87÷0.1",
+        "3.87÷0.98",
+        "3.87÷0.5",
+        "3.87÷1.01"
+      ],
+      "answer": {
+        "choice": "0"
+      },
+      "solution": "两个数相除（0除外），被除数相同，除数越小，商越大。0.1＜0.5＜0.98＜1.01，所以3.87÷0.1＞3.87÷0.5＞3.87÷0.98＞3.87÷1.01。"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "单选",
+      "content": "小芳用“珠圆玉润”描写某个图形的特征，与这个词语描述最接近的图形是（　　）",
+      "accessories": [
+        "三棱柱",
+        "球",
+        "长方体",
+        "圆柱"
+      ],
+      "answer": {
+        "choice": "1"
+      },
+      "solution": "根据立体图形的分类及特征解答即可。根据球的特征可知，小芳用“珠圆玉润”描写某个图形的特征，与这个词语描述最接近的图形是球。"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "单选",
+      "content": "结合生活实际，下列说法不合理的是（　　）",
+      "accessories": [
+        "一块橡皮的体积大约是25cm³",
+        "3个草莓约重30g",
+        "穿一双袜子大约需要15分钟",
+        "笑笑走路的速度是60m/分钟"
+      ],
+      "answer": {
+        "choice": "2"
+      },
+      "solution": "根据生活常识，对每个选项中的内容进行合理性判断，分析所给数据与实际生活的契合度。穿一双袜子是比较快速的动作，通常不需要15分钟，一般几分钟甚至更短时间即可，该选项说法不合理。"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "单选",
+      "content": "奶奶榨了一杯纯豆浆，喝了半杯后，觉得有点浓，就兑满了温开水，又喝了杯。下面各图中，阴影部分能表示奶奶第二次喝的纯豆浆有多少的是（　　）",
+      "accessories": [
+        "<img src=\"/media/image4.png\" width=\"0.6667596237970254in\" height=\"0.6771784776902887in\">",
+        "<img src=\"/media/image5.png\" width=\"0.6667596237970254in\" height=\"0.6771784776902887in\">",
+        "<img src=\"/media/image6.png\" width=\"0.6667596237970254in\" height=\"0.6771784776902887in\">",
+        "<img src=\"/media/image7.png\" width=\"0.6667596237970254in\" height=\"0.6771784776902887in\">"
+      ],
+      "answer": {
+        "choice": "3"
+      },
+      "solution": "把这杯豆浆看作单位“1”，奶奶第一次喝的是杯，第二次喝的是半杯的，也就是杯的，所以第二次喝的纯豆浆为：（杯）。奶奶第二次喝了杯的纯豆浆。D选项符合题意。"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "单选",
+      "content": "美国自行车企业普遍依赖进口零部件，尤其是从中国的进口量占比较大。由于美国加征关税后，美国自行车企业的成本大幅增加、价格上涨。一个自行车轮子的成本从原来的10美元飙升至30美元，成本增加了（　　）",
+      "accessories": [
+        "33.3%",
+        "66.7%",
+        "200%",
+        "300%"
+      ],
+      "answer": {
+        "choice": "2"
+      },
+      "solution": "原来成本价是10美元，新成本价是30美元，增长量为（30﹣10）美元，然后再除以10计算即可。（30﹣10）÷10＝20÷10＝200%。"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "单选",
+      "content": "小芳、小刚、小亮和小丽四位同学的三次跳远成绩如图所示。这四位同学中，三次跳远的平均成绩约为1.7m的同学是（　　）<br><img src=\"/media/image8.png\" width=\"1.9273523622047244in\" height=\"1.3126837270341207in\">",
+      "accessories": [
+        "小芳",
+        "小刚",
+        "小亮",
+        "小丽"
+      ],
+      "answer": {
+        "choice": "1"
+      },
+      "solution": "平均数是指在一组数据中所有数据之和再除以数据的个数，结合图示即可判断。小芳的三次跳远的平均成绩小于1.7m，小刚三次跳远的平均成绩约为1.7m，小亮三次跳远的平均成绩大于1.7m，小丽三次跳远的平均成绩小于1.7m，即只有小刚三次跳远的平均成绩约为1.7m。"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "单选",
+      "content": "小学阶段我们学习了很多数学知识，下面图中表示的关系错误的是（　　）",
+      "accessories": [
+        "<img src=\"/media/image9.png\" width=\"0.9700021872265967in\" height=\"0.80333552055993in\">",
+        "<img src=\"/media/image10.png\" width=\"1.2166688538932633in\" height=\"0.82333552055993in\">",
+        "<img src=\"/media/image11.png\" width=\"0.92333552055993in\" height=\"0.676667760279965in\">",
+        "<img src=\"/media/image12.png\" width=\"1.2166688538932633in\" height=\"0.7633344269466317in\">"
+      ],
+      "answer": {
+        "choice": "1"
+      },
+      "solution": "根据等边三角形是特殊的等腰三角形，解答此题即可。等边三角形是特殊的等腰三角形，所以图中表示的关系错误的是第二个选项。"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "单选",
+      "content": "王叔叔将5000元存入银行，存期为二年定期，年利率为1.20%，到期时可取回的钱数是（　　）元。",
+      "accessories": [
+        "60",
+        "120",
+        "5060",
+        "5120"
+      ],
+      "answer": {
+        "choice": "3"
+      },
+      "solution": "根据利息＝本金×利率×存期，代入数值进行计算即可。5000×1.20%×2＝60×2＝120（元），5000+120＝5120（元）。"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "单选",
+      "content": "某快递站点某一天已发送的快递件数是未发送快递件数的，如果再发送196件，那么已发送快递件数与快递总件数的比是5：8，这一天要发送的快递有多少件？解决这个问题，列式正确的是（　　）",
+      "accessories": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "answer": {
+        "choice": "2"
+      },
+      "solution": "根据题意，把快递总件数看作单位“1”，某一天已发送的快递件数是未发送快递件数的，也就是已发送的快递件数占快递总件数的，如果再发送196件，那么已发送快递件数与快递总件数的比是5：8，即已发送的件数占总件数的，由此可知，196件占快递总件数的（），根据已知一个数的几分之几是多少，求这个数，用除法解答。196÷（）＝196÷（）＝196÷（）＝196＝196＝672（件）。"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "单选",
+      "content": "下面的图形分别以虚线为轴旋转一周，所形成的几何体体积最大的是（　　）",
+      "accessories": [
+        "<img src=\"/media/image13.png\" width=\"0.40630686789151355in\" height=\"1.0730664916885388in\">",
+        "<img src=\"/media/image14.png\" width=\"0.4896522309711286in\" height=\"0.9063768591426071in\">",
+        "<img src=\"/media/image15.png\" width=\"0.4633344269466317in\" height=\"1.1366688538932634in\">",
+        "<img src=\"/media/image16.png\" width=\"0.531324365704287in\" height=\"1.0522298775153105in\">"
+      ],
+      "answer": {
+        "choice": "3"
+      },
+      "solution": "根据圆柱的体积公式：V＝πr²h，圆锥的体积公式：Vπr²h，把数据代入公式分别求出它们的体积，然后进行比较即可。A、π×2²×7π×4×7≈9.3π（立方厘米）；B、π×2²×5＝π×20＝20π（立方厘米）；C、π×2²×（7﹣4）+π×2²×4π×4×3+π×16＝4π+16π＝20π（立方厘米）；D、π×2²×7π×2²×（7﹣4）＝28ππ×4×3＝24π（立方厘米）；24π＞20π＝20π＞9.3π，所以D的体积最大。"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "综合",
+      "content": "<img src=\"/media/image17.png\" width=\"5.907075678040245in\" height=\"2.239896106736658in\">"
+    },
+    "subQuestions": [
+      {
+        "type": "填空",
+        "content": "AB是平行四边形ABCD的一边，点A的位置用数对（2，3）表示，点B的位置用数对<input size=\"15\" readonly=\"readonly\" type=\"underline\">表示，点C的位置用数对（4，5）表示，点D的位置可以是<input size=\"15\" readonly=\"readonly\" type=\"underline\">，在图中标出点C和点D的位置，并画出这个平行四边形。",
+        "answer": {
+          "blanks": [
+            "（5，3）",
+            "（7，5）"
+          ]
+        },
+        "solution": "用数对表示位置时，先表示第几列，再表示第几行，结合平行四边形对边平行且相等的特征，AB是平行四边形ABCD的一边，点A的位置用数对（2，3）表示，点B的位置用数对（5，3）表示，点C的位置用数对（4，5）表示，点D的位置可以是（7，5）。"
+      },
+      {
+        "type": "简答",
+        "content": "画出三角形①绕点O顺时针旋转90°后的图形②。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"2\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "answer": {
+          "answer": "根据图形旋转的方法，点O不动，画出三角形①绕点O顺时针旋转90°后的图形②即可。"
+        },
+        "solution": "根据图形旋转的方法，点O不动，画出三角形①绕点O顺时针旋转90°后的图形②即可。"
+      },
+      {
+        "type": "简答",
+        "content": "画出三角形①向左平移4格后的图形③。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"2\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "answer": {
+          "answer": "根据图形平移的方法，画出三角形①向左平移4格后的图形③。"
+        },
+        "solution": "根据图形平移的方法，画出三角形①向左平移4格后的图形③。"
+      },
+      {
+        "type": "简答",
+        "content": "画出三角形①按2：1放大后的图形④。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"2\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "answer": {
+          "answer": "根据图形放大的方法，画出三角形①按2：1放大到原来的2倍后的图形④即可。"
+        },
+        "solution": "根据图形放大的方法，画出三角形①按2：1放大到原来的2倍后的图形④即可。"
+      }
+    ]
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "简答",
+      "content": "共享单车作为一种低碳、绿色的交通工具，已成为市民出行的“新宠”。某公司在甲社区投放315辆共享单车，比乙社区的2倍少45辆，该公司在乙社区投放多少辆共享单车？（先写出等量关系，再用方程解答）<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"4\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+      "answer": {
+        "answer": "该公司在乙社区投放180辆共享单车。"
+      },
+      "solution": "设该公司在乙社区投放x辆共享单车，根据等量关系：该公司在乙社区投放共享单车的辆数×2﹣45辆＝该公司在甲社区投放共享单车的辆数，列方程解答即可。设该公司在乙社区投放x辆共享单车。该公司在乙社区投放共享单车的辆数×2﹣45辆＝该公司在甲社区投放共享单车的辆数，2x﹣45＝315，2x＝360，x＝180。"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "综合",
+      "content": "据报道，2024年中国新能源汽车累计销售量达1286.6万辆，占全球新能源汽车销量的70.5%；年产量突破1288.8万辆，占全球产量的70%，呈现产销两旺态势。如图是我国2024年销往欧洲某地区各季度新能源汽车销售量情况统计图。请你根据信息，回答下列问题。<br><img src=\"/media/image18.png\" width=\"4.563136482939632in\" height=\"1.875262467191601in\">"
+    },
+    "subQuestions": [
+      {
+        "type": "简答",
+        "content": "2024年我国销往该地区的新能源汽车一共有多少万辆？其中第三季度销售多少万辆？<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "answer": {
+          "answer": "2024年我国销往该地区的新能源汽车一共有25万辆，其中第三季度销售6.25万辆。"
+        },
+        "solution": "把2024年我国销往该地区的新能源汽车一共的辆数看作单位“1”，根据已知一个数的百分之几是多少，求这个数，用除法计算，用第一季度销量占单位“1”的百分数即可求出单位“1”即2024年我国销往该地区的新能源汽车一共的辆数；再根据求一个数的百分之几是多少，用乘法计算，用单位“1”的量乘第三季度销量占单位“1”的百分数即可求出第三季度销售的辆数。3.75÷15%＝25（万辆），25×25%＝6.25（万辆）。"
+      },
+      {
+        "type": "简答",
+        "content": "将如图的条形统计图和扇形统计图补充完整。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"2\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "answer": {
+          "answer": "1﹣15%﹣25%﹣40%＝20%，将条形统计图和扇形统计图补充完整。"
+        },
+        "solution": "用单位“1”减去第一季度、第三季度、第四季度销量占单位“1”的百分数即可求出第二季度销量占单位“1”的百分数，据此补充绘制2幅统计图。1﹣15%﹣25%﹣40%＝20%。"
+      },
+      {
+        "type": "简答",
+        "content": "据统计，2025年1～3月份该地区新能源汽车销售量为9万辆，对此你推测该地区2025年全年新能源汽车的销售量可能是多少万辆？将你推测的理由写下来。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "answer": {
+          "answer": "推测该地区2025年全年新能源汽车的销售量可能是60万辆。"
+        },
+        "solution": "2025年1～3月份该地区新能源汽车销售量为9万辆，参考2024年销售数据，根据2024年我国销往该地区的新能源汽车一季度销量占2024年我国销往该地区的新能源汽车一共的辆数的百分数，根据已知一个数的百分之几是多少，求这个数，用除法计算，用2025年1～3月份该地区新能源汽车销售量除以2024年第一季度销量占2024年我国销往该地区的新能源汽车一共的辆数的百分数即可推测2025年该地区全年新能源汽车的销售量。9÷15%＝60（万辆），推测理由：2024年第一季度的销售量占全年销售量的百分比是15%，所以我推测2025年第一季度的销售量也占全年的15%，即全年销量9÷15%＝60（万辆）。"
+      }
+    ]
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "简答",
+      "content": "王阿姨想买一个微波炉，发现这款微波炉在不同的商场价格不一样。王阿姨是丙商场的会员，在哪个商场买更便宜一些？请通过计算说明理由。<br>甲商场：原价510元，打九折出售。<br>乙商场：原价510元，每满200元减30元。<br>丙商场：原价520元，先打九折，会员再享九五折优惠。<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"4\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+      "answer": {
+        "answer": "到丙商场购买最划算。"
+      },
+      "solution": "根据要购买的数量及不同商场的优惠方案进行分析，并分别求出到这三家商场购买所付的钱；最后比较得出答案。甲商场：510×90%＝459（元）；乙商场：510÷200＝2（组）……110（元），510﹣2×30＝510﹣60＝450（元）；丙商场：520×90%×95%＝444.6（元）；444.6＜450＜459，所以到丙商场购买最划算。"
+    },
+    "subQuestions": []
+  },
+  {
+    "subjectId": 2,
+    "phaseId": 1,
+    "question": {
+      "type": "综合",
+      "content": "儿童乐园里有一个底部平整的圆柱形沙坑，如图是小亮收集到的关于这个沙坑的一些信息。请根据要解决的问题选择信息并解答。<br>①沙坑内部的底面直径为4m。<br>②沙坑内部的深度为1m。<br>③沙坑的坑沿为0.3m。<br>④沙坑中沙子的厚度为0.5m。<br>⑤每立方米沙子的质量约为1.5t。<br><img src=\"/media/image19.png\" width=\"1.6564807524059493in\" height=\"0.6042508748906387in\">"
+    },
+    "subQuestions": [
+      {
+        "type": "填空",
+        "content": "算式3.14×4＝12.56（m）解决的问题是<input size=\"30\" readonly=\"readonly\" type=\"underline\">。",
+        "answer": {
+          "blanks": [
+            "沙坑内部的底面周长"
+          ]
+        },
+        "solution": "根据题意，沙坑内部的底面周长＝直径×π，所以算式3.14×4＝12.56（m）解决的问题是沙坑内部的底面周长。"
+      },
+      {
+        "type": "简答",
+        "content": "沙坑中现有的沙子有多少吨？我选择的信息是（填序号）：<input size=\"10\" readonly=\"readonly\" type=\"underline\">，解答过程如下：<input size=\"40\" readonly=\"readonly\" type=\"underline\"><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "answer": {
+          "answer": "沙坑中现有的沙子有9.42吨。"
+        },
+        "solution": "要想求沙坑中现有的沙子有多少吨，先求沙坑中现有的沙子的体积，圆柱的体积＝底面积×高，代入数值即可解答；再用体积乘每立方米沙子的质量即可解答；所以我选择的信息是：①④⑤。3.14×（4÷2）²×0.5×1.5＝3.14×4×0.5×1.5＝12.56×0.5×1.5＝6.28×1.5＝9.42（吨）。"
+      },
+      {
+        "type": "简答",
+        "content": "把这个沙坑的坑沿抹上水泥，抹水泥的面积约是多少？（得数保留整数）选择的信息是（填序号）：<input size=\"10\" readonly=\"readonly\" type=\"underline\">，解答过程如下：<input size=\"40\" readonly=\"readonly\" type=\"underline\"><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"3\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>",
+        "answer": {
+          "answer": "抹水泥的面积约是2平方米。"
+        },
+        "solution": "求坑沿抹水泥的面积，就是外圆面积减内圆面积，据此解答。选择的信息是：①③，解答过程如下：3.14×（）²﹣3.14×（）²＝3.14×（4.6225﹣4）＝3.14×0.6225≈2（平方米）。"
+      }
+    ]
+  }
+]
