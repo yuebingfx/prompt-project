@@ -529,12 +529,17 @@ class PandocWordProcessor:
                 content = result.stdout
                 print(f"✅ 转换成功: {len(content)} 字符")
                 
-                # 如果是docx文件，提取图片并替换水印 - 已注释以提高运行效率
+                # 如果是docx文件，进行格式分析
                 if file_path.lower().endswith('.docx'):
-                     print("检测到docx文件，图片处理已禁用以提高运行效率")
+                    print("检测到docx文件，开始格式分析...")
+                    # 进行格式分析
+                    format_analysis = self.extract_format_analysis(file_path)
+                    if format_analysis:
+                        print(f"✅ 格式分析完成: {len(self.paragraph_formatting)} 个段落格式")
                 
                 # 新增：如果有格式分析结果，增强pandoc内容
-                if hasattr(self, 'special_formatted_text') and self.special_formatted_text:
+                if (hasattr(self, 'special_formatted_text') and self.special_formatted_text) or \
+                   (hasattr(self, 'paragraph_formatting') and self.paragraph_formatting):
                     print("🎨 开始增强格式标注...")
                     content = self._enhance_content_with_format_info(content)
                 
@@ -659,6 +664,18 @@ class PandocWordProcessor:
                 
         return False
     
+    def _find_centered_text_match(self, para_text, content):
+        """专门用于居中文本的匹配方法，优先匹配独立行"""
+        lines = content.split('\n')
+        
+        # 优先匹配独立行
+        for line in lines:
+            if line.strip() == para_text:
+                return line.strip(), "独立行"
+        
+        # 后备：使用原有算法
+        return self._find_best_match_in_content(para_text, content)
+    
     def _normalize_quotes(self, text):
         """标准化引号，用于匹配比较"""
         # 将各种中文引号统一为标准引号
@@ -684,7 +701,7 @@ class PandocWordProcessor:
         # 添加空格处理
         para_text_cleaned = ' '.join(para_text.split())
         
-        # 特殊处理：优先尝试匹配独立行
+        # 特殊处理：优先尝试匹配独立行（特别是标题类文本）
         lines = content.split('\n')
         for line in lines:
             line_stripped = line.strip()
@@ -714,6 +731,14 @@ class PandocWordProcessor:
             both_cleaned_para = ' '.join(self._normalize_quotes(self._clean_dot_below_markers(para_text)).split())
             if both_cleaned_line == both_cleaned_para:
                 return line_stripped, "独立行综合清理"
+            
+            # 🔧 新增：对于短文本（如标题），检查是否作为独立行存在
+            if len(para_text) <= 20:  # 标题通常较短
+                # 检查该文本是否作为独立行存在（前后都是空行或换行）
+                if para_text in line_stripped and len(line_stripped) <= len(para_text) + 5:
+                    # 进一步检查：确保不是包含在长句子中
+                    if line_stripped == para_text or line_stripped.startswith(para_text) and len(line_stripped) - len(para_text) <= 3:
+                        return line_stripped, "独立行短文本"
         
         # 优化长度策略 - 对短文本更灵活
         if len(para_text) <= 8:
@@ -930,7 +955,7 @@ class PandocWordProcessor:
         
         # ⚠️ 注意：删除重复的波浪线处理逻辑，使用通用的格式标注处理机制
         
-        # 🚨 重要：优先处理居右段落，避免被首行缩进误匹配
+        # 🚨 重要：优先处理段落格式（居右、居中、首行缩进），避免被特殊格式文本处理干扰
         # 第一步：处理居右段落
         right_aligned_enhanced_count = 0
         for para_info in self.paragraph_formatting:
@@ -970,13 +995,23 @@ class PandocWordProcessor:
                     print(f"  → 跳过：已有居右标记")
                     continue
                 
-                # 使用改进的匹配算法
-                match_result, match_type = self._find_best_match_in_content(para_text, content)
+                # 🔧 优化：对于居中文本，优先寻找独立行匹配
+                match_result, match_type = self._find_centered_text_match(para_text, content)
                 
                 if match_result:
-                    # 在匹配的文本前添加标记
-                    enhanced_start = f"【居中】{match_result}"
-                    content = content.replace(match_result, enhanced_start, 1)
+                    # 对于独立行，使用行级别替换
+                    if match_type == "独立行":
+                        lines = content.split('\n')
+                        for i, line in enumerate(lines):
+                            if line.strip() == match_result:
+                                lines[i] = f"【居中】{line}"
+                                content = '\n'.join(lines)
+                                break
+                    else:
+                        # 其他情况使用普通替换
+                        enhanced_start = f"【居中】{match_result}"
+                        content = content.replace(match_result, enhanced_start, 1)
+                    
                     centered_enhanced_count += 1
                     print(f"✅ 居中标记({match_type}): \"{match_result[:30]}...\"")
                 else:
@@ -1084,6 +1119,12 @@ class PandocWordProcessor:
             if len(text) < 2:
                 continue
             
+            # 跳过包含居中文本的特殊格式
+            for para_info in self.paragraph_formatting:
+                if para_info['is_centered'] and para_info['text'] in text and para_info['text'] != text:
+                    print(f"  ⏭️ 跳过包含居中文本的特殊格式: \"{text[:30]}...\"")
+                    continue
+            
             # 生成格式标注
             format_annotation = self._generate_format_annotation(formats)
             
@@ -1102,10 +1143,13 @@ class PandocWordProcessor:
                     target_text = normalized_text
                     
                 if target_text:
+                    # 检查是否已被居中标记
+                    if f"【居中】{target_text}" in content:
+                        print(f"  ⏭️ 跳过已被居中标记的文本: \"{target_text[:30]}...\"")
+                        continue
+                    
                     # 创建增强的文本标注
                     enhanced_text = f"[{target_text}]{{{format_annotation}}}"
-                    
-                    # 执行替换（只替换第一个匹配，避免重复替换）
                     content = content.replace(target_text, enhanced_text, 1)
                     format_enhanced_count += 1
                     
