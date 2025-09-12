@@ -511,12 +511,27 @@ class PandocWordProcessor:
         
         try:
             # 构建pandoc命令
+            import shutil
+            from pathlib import Path
+            
+            # 获取试卷名（去掉扩展名）
+            exam_name = Path(file_path).stem
+            exam_media_dir = Path("media") / f"{exam_name}_media"
+            
+            # 如果文件夹存在，清空内容
+            if exam_media_dir.exists():
+                shutil.rmtree(exam_media_dir)
+                print(f"🗑️ 清空现有图片文件夹: {exam_media_dir}")
+            exam_media_dir.mkdir(parents=True, exist_ok=True)
+            print(f"📁 创建图片文件夹: {exam_media_dir}")
+            
             cmd = [
                 'pandoc',
                 file_path,
                 '--to', output_format,
                 '--wrap', 'none',  # 不自动换行
                 '--standalone',  # 生成独立文档
+                '--extract-media', str(exam_media_dir),  # 直接提取到试卷专用文件夹
                 '--quiet'  # 减少输出
             ]
             
@@ -569,72 +584,31 @@ class PandocWordProcessor:
             return None
     
     def _process_image_paths(self, content, file_path):
-        """处理图片路径，创建试卷名子文件夹并更新图片路径"""
+        """更新图片路径到试卷专用文件夹"""
         import re
         from pathlib import Path
         
         # 获取试卷名（去掉扩展名）
         exam_name = Path(file_path).stem
-        print(f"📁 处理图片路径，试卷名: {exam_name}")
+        print(f"📁 更新图片路径，试卷名: {exam_name}")
         
-        # 创建media子文件夹
-        media_dir = Path("media")
-        exam_media_dir = media_dir / f"{exam_name}_media"
-        exam_media_dir.mkdir(parents=True, exist_ok=True)
-        print(f"📁 创建图片子文件夹: {exam_media_dir}")
-        
-        # 查找所有图片引用
-        image_pattern = r'!\[([^\]]*)\]\(media/([^)]+)\)'
+        # 查找所有图片引用并更新路径
+        image_pattern = r'!\[([^\]]*)\]\(([^)]+)\)'
         matches = re.findall(image_pattern, content)
         
         if matches:
             print(f"🖼️ 发现 {len(matches)} 个图片引用")
             
-            # 处理每个图片引用
-            for i, (alt_text, image_name) in enumerate(matches):
-                # 查找对应的实际图片文件
-                actual_image_path = self._find_actual_image_file(image_name, media_dir)
-                
-                if actual_image_path:
-                    # 复制图片到子文件夹
-                    new_image_name = f"image{i+1}_{Path(actual_image_path).suffix}"
-                    new_image_path = exam_media_dir / new_image_name
-                    
-                    try:
-                        import shutil
-                        shutil.copy2(actual_image_path, new_image_path)
-                        print(f"  ✅ 复制图片: {Path(actual_image_path).name} -> {new_image_name}")
-                        
-                        # 更新内容中的图片路径
-                        old_path = f"media/{image_name}"
-                        new_path = f"media/{exam_name}_media/{new_image_name}"
-                        content = content.replace(old_path, new_path)
-                        
-                    except Exception as e:
-                        print(f"  ❌ 复制图片失败: {e}")
-                else:
-                    print(f"  ⚠️ 未找到图片文件: {image_name}")
+            for alt_text, image_path in matches:
+                # 更新图片路径
+                new_path = f"media/{exam_name}_media/{Path(image_path).name}"
+                content = content.replace(image_path, new_path)
+                print(f"  ✅ 更新路径: {Path(image_path).name}")
         else:
             print("ℹ️ 未发现图片引用")
         
         return content
     
-    def _find_actual_image_file(self, image_name, media_dir):
-        """查找实际的图片文件"""
-        import glob
-        
-        # 去掉扩展名，查找所有可能的文件
-        base_name = Path(image_name).stem
-        extensions = ['.png', '.jpg', '.jpeg', '.gif', '.bmp', '.wmf']
-        
-        for ext in extensions:
-            pattern = str(media_dir / f"{base_name}_*{ext}")
-            matches = glob.glob(pattern)
-            if matches:
-                # 返回最新的文件（按修改时间排序）
-                return max(matches, key=lambda x: Path(x).stat().st_mtime)
-        
-        return None
     
     def _clean_dot_below_markers(self, text):
         """清理加点字标记，用于匹配比较"""
@@ -1876,10 +1850,10 @@ def main():
     if len(sys.argv) > 1:
         word_file_path = sys.argv[1]
     else:
-        word_file_path = "English/精品解析：2025年北京市中考英语真题（解析版）.docx"  # 默认文件路径
+        word_file_path = "English/精品解析：2025年山东省泰安市中考英语真题 （解析版）.docx"  # 默认文件路径
      
     output_format = "markdown"  # 可选: markdown, plain, html
-    prompt_template_path = "prompt_English.md"
+    prompt_template_path = "prompt_Chinese.md"
     
     # 创建处理器实例
     processor = PandocWordProcessor()
