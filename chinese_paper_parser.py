@@ -543,6 +543,9 @@ class PandocWordProcessor:
                     print("🎨 开始增强格式标注...")
                     content = self._enhance_content_with_format_info(content)
                 
+                # 处理图片路径：创建试卷名子文件夹并更新图片路径
+                content = self._process_image_paths(content, file_path)
+                
                 # 保存转换结果
                 pandoc_res_dir = Path("pandoc_res")
                 pandoc_res_dir.mkdir(exist_ok=True)
@@ -564,6 +567,74 @@ class PandocWordProcessor:
         except Exception as e:
             print(f"❌ 转换异常: {e}")
             return None
+    
+    def _process_image_paths(self, content, file_path):
+        """处理图片路径，创建试卷名子文件夹并更新图片路径"""
+        import re
+        from pathlib import Path
+        
+        # 获取试卷名（去掉扩展名）
+        exam_name = Path(file_path).stem
+        print(f"📁 处理图片路径，试卷名: {exam_name}")
+        
+        # 创建media子文件夹
+        media_dir = Path("media")
+        exam_media_dir = media_dir / f"{exam_name}_media"
+        exam_media_dir.mkdir(parents=True, exist_ok=True)
+        print(f"📁 创建图片子文件夹: {exam_media_dir}")
+        
+        # 查找所有图片引用
+        image_pattern = r'!\[([^\]]*)\]\(media/([^)]+)\)'
+        matches = re.findall(image_pattern, content)
+        
+        if matches:
+            print(f"🖼️ 发现 {len(matches)} 个图片引用")
+            
+            # 处理每个图片引用
+            for i, (alt_text, image_name) in enumerate(matches):
+                # 查找对应的实际图片文件
+                actual_image_path = self._find_actual_image_file(image_name, media_dir)
+                
+                if actual_image_path:
+                    # 复制图片到子文件夹
+                    new_image_name = f"image{i+1}_{Path(actual_image_path).suffix}"
+                    new_image_path = exam_media_dir / new_image_name
+                    
+                    try:
+                        import shutil
+                        shutil.copy2(actual_image_path, new_image_path)
+                        print(f"  ✅ 复制图片: {Path(actual_image_path).name} -> {new_image_name}")
+                        
+                        # 更新内容中的图片路径
+                        old_path = f"media/{image_name}"
+                        new_path = f"media/{exam_name}_media/{new_image_name}"
+                        content = content.replace(old_path, new_path)
+                        
+                    except Exception as e:
+                        print(f"  ❌ 复制图片失败: {e}")
+                else:
+                    print(f"  ⚠️ 未找到图片文件: {image_name}")
+        else:
+            print("ℹ️ 未发现图片引用")
+        
+        return content
+    
+    def _find_actual_image_file(self, image_name, media_dir):
+        """查找实际的图片文件"""
+        import glob
+        
+        # 去掉扩展名，查找所有可能的文件
+        base_name = Path(image_name).stem
+        extensions = ['.png', '.jpg', '.jpeg', '.gif', '.bmp', '.wmf']
+        
+        for ext in extensions:
+            pattern = str(media_dir / f"{base_name}_*{ext}")
+            matches = glob.glob(pattern)
+            if matches:
+                # 返回最新的文件（按修改时间排序）
+                return max(matches, key=lambda x: Path(x).stat().st_mtime)
+        
+        return None
     
     def _clean_dot_below_markers(self, text):
         """清理加点字标记，用于匹配比较"""
@@ -1805,7 +1876,7 @@ def main():
     if len(sys.argv) > 1:
         word_file_path = sys.argv[1]
     else:
-        word_file_path = "Chinese/精品解析：2025年北京市中考语文真题（解析版）.docx"  # 默认文件路径
+        word_file_path = "Chinese/精品解析：2025年浙江省中考语文真题（解析版）.docx"  # 默认文件路径
      
     output_format = "markdown"  # 可选: markdown, plain, html
     prompt_template_path = "prompt_Chinese.md"
