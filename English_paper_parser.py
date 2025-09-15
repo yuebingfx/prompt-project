@@ -1853,7 +1853,7 @@ def main():
         word_file_path = "English/精品解析：2025年山东省泰安市中考英语真题 （解析版）.docx"  # 默认文件路径
      
     output_format = "markdown"  # 可选: markdown, plain, html
-    prompt_template_path = "prompt_Chinese.md"
+    prompt_template_path = "prompt_English.md"
     
     # 创建处理器实例
     processor = PandocWordProcessor()
