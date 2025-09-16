@@ -973,6 +973,7 @@
 - score: 题目分数
 
 **填空题示例**
+```json
 {
   "question": {
     "content": "<p>根据课文内容填空。</p><p>《春》一文中，作者朱自清写道：\"<input size=\"8\" readonly=\"readonly\" type=\"underline\">，<input size=\"8\" readonly=\"readonly\" type=\"underline\">，<input size=\"8\" readonly=\"readonly\" type=\"underline\">，春天像<input size=\"8\" readonly=\"readonly\" type=\"underline\">的姑娘，<input size=\"8\" readonly=\"readonly\" type=\"underline\">着，<input size=\"8\" readonly=\"readonly\" type=\"underline\">着，笑着，向我们走来。\"</p>",
@@ -991,11 +992,12 @@
     "score": 6
   }
 }
-
+```
 
 **语文学科特色题型示例：**
 
 **默写填空题示例**
+```json
 {
   "question": {
     "content": "<p><strong>默写</strong></p><p>默写填空。</p>",
@@ -1028,9 +1030,10 @@
     }
   ]
 }
-
+```
 
 **包含子题的阅读题示例**
+```json
 {
   "question": {
     "content": "<p>阅读下面一则《论语》，完成下面小题。</p><p>曾子曰：\"吾日三省吾身：为人谋而不忠乎？与朋友交而不信乎？传不习乎？\"（《学而》）</p>",
@@ -1051,8 +1054,7 @@
     }
   ]
 }
-
-
+```
 
 
 多个问题的题目：
@@ -1452,6 +1454,7 @@
 - type: 固定为"单选"
 - score: 题目分数
 - 如果包含图片，则按照对应格式写明
+
 - **🚨🚨🚨 单选题类型区分规则（极其重要）🚨🚨🚨**：
 
 **🔥🔥🔥 普通单选题（90%的情况）🔥🔥🔥**：

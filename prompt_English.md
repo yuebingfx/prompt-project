@@ -1,4 +1,225 @@
-一套试卷有三级结构，1. 分题型/类型的大模块 2.完整的一道题 3. 完整的一道题中的多个小题。你需要解析后两级结构。
+# 英语学科试卷解析系统
+**核心说明**
+一套试卷有三级结构，1. 题组名（分题型/类型的大模块） 2.题目 3. 子题（可能有，可能没有）。你需要解析和拆分出试卷中的每一道题。
+试卷中题组名、题目和子题的关系阐述如下：
+1.题组名和题目是1对n的关系：一个题组名可能对应一道题目，也可能对应多道题目，如果对应一道题目，则题组名通常被放在对应的题目的content中去，如果对应的是多道题目，且每个题目之间相对独立（例如题组名是：三、阅读理解，题组名下包含若干题目），则每道题目都需要被拆分成一道题（每道题可能包含若干子题），此时题组名不需要放在题目的content中去，除非题组名对做题有影响。
+2.题目可能有子题，也可能没有子题：有的题目是嵌套结构，则包含子题，如阅读题、语文综合实践题，有的题目则没有子题。后面有关于子题的详细判断标准供你参考。
+3.你的重要工作就是从试卷中识别和判断出题组名、题目和子题，根据要求和实际情况判断其是什么题型、是否包含子题，保证题目的结构拆解正确。
+
+**学科和学段信息处理要求**：
+- **必须为每个题目JSON添加四个参数**：`subjectId`、`phaseId`、`module` 和 `questionNumber`
+- **学科信息（subjectId）**：根据试卷内容分析确定学科类型
+  * 语文：1
+  * 数学：2
+  * 英语：3
+  * 物理：4
+  * 化学：5
+  * 生物：6
+  * 政治：7
+  * 历史：8
+  * 地理：9
+  * 音乐：11
+  * 体育：12
+  * 美术：13
+  * 信息技术：14
+  * 综合实践：15
+- **学段信息（phaseId）**：根据试卷内容分析确定学段类型
+  * 学前：4
+  * 小学：1
+  * 初中：2
+  * 高中：3
+  * 高等教育：5
+- **分析依据**：通过试卷标题、题目内容、难度水平、知识点等综合分析确定
+- **模块名称信息（module）**：根据试卷中的题组名称确定
+  * 如"一、听力"、"二、阅读理解"、"三、完形填空"、"四、作文"等
+  * 保持原试卷中题组的完整名称，包括序号和中文名称
+  * 如果试卷没有明确的题组划分，可以根据题目内容归类（如"选择题"、"阅读理解题"、"填空题"等）
+- **题目序号信息（questionNumber）**：该题目在对应模块中的序号
+  * 从1开始计数，表示该题目是该模块中的第几题
+  * 例如："一、基础运用"模块中的第1题、第2题、第3题等
+  * 每个模块内部独立计数，不跨模块累计
+- **🚨🚨🚨 关键结构要求**：`subQuestions`必须与`question`并列，绝对不能嵌套在`question`内部！
+- **示例格式**：
+  ```json
+  {
+    "subjectId": 3,
+    "phaseId": 2,
+    "module": "一、听力",
+    "questionNumber": 1,
+    "question": {
+      // 题目内容
+    },
+    "subQuestions":[  // ← 注意：与question并列！
+      {}
+    ]// 子题（不一定有）
+  }
+  ```
+- **重要**：每个题目对象都必须包含这四个参数，不能遗漏
+
+
+**文档格式标记处理要求**（非常重要）：
+  **核心要求**：务必要把文档标记替换为正确的html标签，绝对不能保留文档格式标记
+   - **【首行缩进】标记处理**：
+     * **识别**：遇到`【首行缩进】`标记时，表示该段落在原Word文档中设置了首行缩进
+     * **处理**：移除`【首行缩进】`标记，并确保该段落使用`<p>&nbsp; &nbsp;`开头进行首行缩进
+     * **示例**：
+       - 原文：`【首行缩进】1937年4月，新华书店诞生于延安...`
+       - 转换：`<p>&nbsp; &nbsp;1937年4月，新华书店诞生于延安...</p>`
+   - **【居中】标记处理**：
+     * **识别**：遇到`【居中】`标记时，表示该内容在原Word文档中是居中对齐的
+     * **处理**：移除`【居中】`标记，并使用`style=\"text-align: center;\"`使内容居中
+     * **示例**：
+       - 原文：`<p><strong>【居中】资料一</strong></p>`
+       - 转换：`<p style=\"text-align: center;\">资料一</p>`
+       - 原文：`<p><strong>【居中】成长的足迹</strong></p>`
+       - 转换：`<p style=\"text-align: center;\"><strong>成长的足迹</strong></p>`
+   - **【居右】标记处理**：
+     * **识别**：遇到`【居右】`标记时，表示该内容在原Word文档中是右对齐的
+     * **处理**：移除`【居右】`标记，并使用`style=\"text-align: right;\"`使内容右对齐
+     * **示例**：
+       - 原文：`【居右】（取材于朱熹《与长子受之》）`
+       - 转换：`<p style=\"text-align: right;\">（取材于朱熹《与长子受之》）</p>`
+   - **⚠️ 重要注意事项**：
+     * 这些标记是Word文档格式的精确还原，必须严格按照上述方式处理
+     * 处理优先级：首先识别标记类型，然后对排版标记应用相应的HTML样式
+     * 如果同一段落同时有多种格式（如加粗+居中），需要同时应用多种样式（重要）
+
+
+**特殊格式处理要求（重要）**：
+
+  **波浪线强调**：`<u style=\"text-decoration-style: wavy;\">内容</u>`
+  **单下划线强调**：`<u>内容</u>`
+  **粗体强调**：`<strong>内容</strong>`
+- **🚨 单下划线格式转换实例**：
+  **严重错误**：`[[卒中往往语，皆指目陈胜。]{.single-underline}]{.underline}`
+  **必须转换为**：`<u>卒中往往语，皆指目陈胜。</u>`
+- **加点字格式（优先处理）** ：`[\[DOT_BELOW\]内容\[/DOT_BELOW\]]{.underline}` **必须立即识别并转换为加点字标签**：`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">内容</span>`
+  * **超级重要**：DOT_BELOW是加点字的专用标记，绝对不能转换为波浪线！！！
+  * **具体示例**：
+    - `[\[DOT_BELOW\]相映成趣\[/DOT_BELOW\]]{.underline}` → `<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">相映成趣</span>`
+    - `[\[DOT_BELOW\]相得益彰\[/DOT_BELOW\]]{.underline}` → `<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">相得益彰</span>`
+
+**🔥🔥🔥 下划线转换规则（超最高优先级，绝对严格执行）🔥🔥🔥**：
+
+**⚠️ 核心判断原则**：先判断题目结构，再决定是否转换下划线
+
+**🎯 三步判断法**：
+1. **第一步**：题目是否包含subQuestions？
+2. **第二步**：如果有subQuestions，当前处理的是主题目还是子题？
+3. **第三步**：子题的type类型是什么？
+
+**🔥🔥🔥 关键规则（绝对不可违反）🔥🔥🔥**：
+
+**规则1: 主题目下划线保持原样**
+- **适用场景**：题目包含subQuestions数组的情况
+- **处理方式**：主题目content中所有`______`必须保持原始格式
+- **🚨 绝对禁止**：将主题目中的`______`转换为`<input>`标签
+- **原理说明**：主题目中的下划线只是材料展示，不是真正的填空位置
+
+**规则2: 子题填空转换为input标签**
+- **适用场景**：subQuestions中type="填空"的子题
+- **处理方式**：子题content中所有`______`必须转换为`<input size="XX" readonly="readonly" type="underline">`
+- **🚨 绝对禁止**：子题填空保留原始`______`格式
+- **原理说明**：子题是真正的答题位置，必须提供可操作的填空框
+
+**规则3: 独立填空题转换为input标签**
+- **适用场景**：没有subQuestions且type="填空"的独立题目
+- **处理方式**：题目content中所有`______`必须转换为`<input>`标签
+
+**规则4: 选择题下划线保持原样**
+- **适用场景**：type="单选"或"多选"的题目
+- **处理方式**：所有`______`和`（）`保持原样（这些是选择题的答题标记）
+- **🚨 重要**：单选题content中必须包含`（）`答题标记
+
+**规则5: 简答题使用专用标签**
+- **适用场景**：type="简答"的题目
+- **处理方式**：不转换`______`，而是添加`<full-line-blank>`标签
+
+**规则6: 判断题删除作答空**
+- **适用场景**：type="判断"的题目
+- **处理方式**：删除所有下划线`______`和括号`（）`作答空
+- **删除原因**：后续系统会自动给判断题添加括号作答空
+- **🚨 重要**：判断题内容中不能包含任何答题标记
+
+**🚨🚨🚨 规则7: 文章填空题的特殊处理（新增规则）**：
+- **适用场景**：主题目包含带填空的阅读文章，子题是关于这些填空的题目
+- **识别标志**：主题目content包含文章和填空位置，子题type="填空"但content只有题目描述
+- **正确处理方式**：
+  1. **主题目**：保持原始`______`格式（因为这是阅读材料）
+  2. **子题**：在content中补充input标签的填空位置
+- **🔥🔥🔥 错误示例**：
+  ```json
+  // ❌ 错误：子题只有描述，没有具体填空
+  "subQuestions": [{
+    "content": "<p>选择恰当的词语填入文中的横线上。</p>",
+    "type": "填空",
+    "answer": {"blanks": ["津津有味", "纹丝不动", "气喘吁吁"]}
+  }]
+  ```
+- **🔥🔥🔥 正确示例**：
+  ```json
+  "subQuestions": [
+      {
+        "content": "<p>选择恰当的词语填入文中的横线上。第一个空：<input size=\"15\" readonly=\"readonly\" type=\"underline\">第二个空：<input size=\"15\" readonly=\"readonly\" type=\"underline\">第三个空<input size=\"15\" readonly=\"readonly\" type=\"underline\"></p><p>A.气喘吁吁</p><p>B.津津有味</p><p>C.纹丝不动</p>",
+        "type": "填空",
+        "answer": {
+          "blanks": [
+            "津津有味",
+            "纹丝不动",
+            "气喘吁吁"
+          ]
+        },
+        "solution": "<p>考查了选词填空。A.气喘吁吁：形容人劳累到极点时的样子。B.津津有味：形容趣味特别浓厚。C.纹丝不动：一点儿也不动。形容动作没有丝毫改变。结合语境和词义，依次应填：津津有味、纹丝不动、气喘吁吁。</p>"
+      }
+  ```
+- **🔥 关键原则**：如果文章中有N个填空，必须创建N个独立的填空子题，每个子题包含上下文和一个input标签
+
+**🔥 基于题型的转换示例**：
+
+**填空题（type="填空"）转换示例**：
+- ❌ 错误：`①______`（保留了下划线）
+- ✅ 正确：`①<input size="15" readonly="readonly" type="underline">`
+- ❌ 错误：`"______"`（保留了下划线）
+- ✅ 正确：`"<input size="20" readonly="readonly" type="underline">"`
+- ❌ 错误：`营造了 ②______的意境`（保留了下划线）
+- ✅ 正确：`营造了 ②<input size="15" readonly="readonly" type="underline">的意境`
+
+**单选题（type="单选"）保持示例**：
+- ✅ 正确：`______`（保持下划线）
+- ✅ 正确：`（）`（保持括号）
+- 🚨 **必须要求**：单选题content必须包含 `（）` 答题标记
+- ❌ 错误：`<input size="15" readonly="readonly" type="underline">`（错误转换）
+- ❌ 错误：单选题content中没有 `（）` 括号
+
+**判断题（type="判断"）删除示例**：
+- ✅ 正确：删除原文中的 `______` 和 `（）` 
+- ✅ 正确：`<p>唐代服饰用色浓烈大方，呈现出雍容华美的特点。</p>`
+- ❌ 错误：`<p>唐代服饰用色浓烈大方______。</p>`（保留了下划线）
+- ❌ 错误：`<p>唐代服饰用色浓烈大方（）。</p>`（保留了括号）
+- 🚨 **重要原因**：系统会自动添加答题括号，无需手动保留
+
+**答题区域格式要求（重要）**：
+
+**🚨🚨🚨 强制要求（🔥🔥🔥绝对不能违反，最高优先级）**：
+- **🔥 填空题必须有作答空**：所有type="填空"的题目，无论是独立题目还是子题，其content中必须包含`<input size=\"X\" readonly=\"readonly\" type=\"underline\">`标签，绝对不能保留`______`格式
+- **🔥 简答题必须有作答空**：所有type="简答"的题目，其content中必须包含`<full-line-blank>`标签作为作答区域
+- **🔥 强制自动添加**：如果原题没有下划线或作答空间，必须强制在题目最后自动添加作答区域标签
+- **🔥 绝对不允许空白**：简答题content字段中绝对不能只有题目描述，必须包含明确的作答区域
+- **❌ 严重错误示例**：
+  * ❌ 填空题content中只有题目描述而没有input标签
+  * ❌ 简答题content中只有题目描述而没有作答区域标签  
+  * ❌ 简答题没有任何作答空间，学生无法填写答案
+  * ❌ 书写题、分析题、解释题等简答题没有作答空
+
+  ```
+
+**具体格式要求**：
+- **普通简答题**：使用 `<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"X\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>` 标签
+- **书面表达题（作文）**：使用 `<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"8\" data-punctuation=\"\" data-first-line-width=\"379\"></full-line-blank></p>` 标签
+- **填空题真正的填空处**：使用 `<input size=\"X\" readonly=\"readonly\" type=\"underline\">` 标签
+
+**标签使用区分（重要）**：
+- **使用 `<full-line-blank>` 的情况**：简答题的作答区域需要将下划线用该标签来替代 `<p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"X\" data-punctuation=\"\" data-first-line-width=\"651\"></full-line-blank></p>`
 
 **🚨 重要警告 - JSON格式问题**：
 - **⚠️ 双引号转义问题**：解析中出现的双引号（如 `fall"跌落"`）会导致JSON解析失败
@@ -6,9 +227,9 @@
 - **⚠️ 必须检查**：每次输出前都要检查所有solution和answer字段，确保没有未转义的双引号
 
 **🚨 关键警告 - 特殊字符保留**：
-- **⚠️ 严禁删除特殊字符**：下划线(_)、星号(*)、井号(#)、斜杠(/)等所有特殊字符必须完整保留
+- **⚠️ 严禁删除特殊字符**：下划线(_)、星号(*)、井号(#)等特殊字符必须完整保留
 - **⚠️ ##格式严格保留**：当pandoc结果是`to##with`时，JSON中必须完整保留为`"to##with"`，绝不能只保留`"to"`！
-- **⚠️ 正确处理**：pandoc输出什么格式，JSON中就必须保持什么格式，绝不能修改
+
 
 
 **⚠️ 最重要要求 - 题号处理**：
@@ -17,7 +238,7 @@
 - **必须删除**解析和答案中的题号，如"31."、"32."、"33."等
 - **必须删除**阅读理解中的篇目标号，如"A"、"B"、"C"、"D"等
 - **示例**：
-  * ❌ 错误：`<p><strong>A</strong></p>` 或 `<p>A. 文章内容</p>`
+  * ❌ 错误：`<p>A. 文章内容</p>`
   * ✅ 正确：`<p>文章内容</p>` （去掉A.和strong标签）
 - **错误示例**：`<p>8. What's the main idea of this passage?</p>`
 - **正确示例**：`<p>What's the main idea of this passage?</p>`
@@ -45,7 +266,7 @@
 
 **🚨 表格处理特别说明（最重要）**：
 - **⚠️ 关键原则：必须保留表格结构！绝对不能将表格内容转换为连续段落！**
-- **表格结构保留**：对于任何表格（包括Lost & Found、广告、信息展示等），必须保持表格的行列结构
+- **表格结构保留**：对于任何表格，必须保持表格的行列结构
 - **表格转换规则**：
   * **必须保持**原始表格的行列布局
   * **必须使用**HTML表格标签：`<table>`, `<tr>`, `<td>`, `<th>`
@@ -73,67 +294,25 @@
   </table>
   ```
 
-**⚠️ 学科和学段信息处理要求（重要）**：
-- **必须为每个题目JSON添加两个参数**：`subjectId` 和 `phaseId`
-- **学科信息（subjectId）**：根据试卷内容分析确定学科类型
-  * 语文：1
-  * 数学：2
-  * 英语：3
-  * 物理：4
-  * 化学：5
-  * 生物：6
-  * 政治：7
-  * 历史：8
-  * 地理：9
-  * 音乐：11
-  * 体育：12
-  * 美术：13
-  * 信息技术：14
-  * 综合实践：15
-- **学段信息（phaseId）**：根据试卷内容分析确定学段类型
-  * 学前：4
-  * 小学：1
-  * 初中：2
-  * 高中：3
-  * 高等教育：5
-- **分析依据**：通过试卷标题、题目内容、难度水平、知识点等综合分析确定
-- **示例格式**：
-  ```json
-  {
-    "subjectId": 3,
-    "phaseId": 2,
-    "question": {
-      // 题目内容
-    },
-    "subQuestions":[
-      {}
-    ]// 子题（不一定有）
-  }
-  ```
-- **⚠️ 重要**：每个题目对象都必须包含这两个参数，不能遗漏
 
-**重要说明**：请忽略试卷中所有题目的题目序号（如1、2、3...70）。
-- ❌ 错误示例：`<p>12. Students have a singing competition in October.</p>`
-- ✅ 正确示例：`<p>Students have a singing competition in October.</p>`
-
-**阅读理解篇目标号处理**：
-- ❌ 错误示例：`<p><strong>A</strong></p>` 或 `<p>A. 文章内容</p>`
-- ✅ 正确示例：`<p>文章内容</p>` （去掉A.和strong标签）
-- ❌ 错误示例：`<p>B. 阅读下面短文...</p>`
-- ✅ 正确示例：`<p>阅读下面短文...</p>` （去掉B.）
-
-**⚠️ 填空格式要求（重要修正）**：
-- **必须使用标准HTML标签**：pandoc转换出的`[_____]{.underline}`类似格式必须替换为HTML形式
-- **下划线填空**：使用 `<input type="underline" size="X" />` 标签
-- **禁止保留pandoc的中括号填空格式**：
-  * ❌ 禁止保留：`[_____]{.underline}`
-  * ❌ 禁止保留：`[___1___]{.underline}`
-- **正确替换格式示例**：
-  * 下划线填空：`<input type="underline" size="8" />`
+- **特殊格式处理规则**：
+  * `[内容]{.underline}` 如果内容有变量（如甲、乙、①、②等），转换为`<span style="border-bottom: 1px #000 solid; padding-left: 20px; padding-right: 20px">甲</span>`
+  * 🌊 **波浪线填空**：`[&nbsp;&nbsp;&nbsp;...]{.wavy-underline}` 转换为：`<span style="text-decoration: underline wavy; text-underline-position: under;" data-mce-style="text-decoration: underline wavy; text-underline-position: under;">&nbsp;&nbsp;&nbsp;...</span>`
+  * ⚠️ **关键区分**：如果内容是纯&nbsp;，这是填空，必须用span标签；如果内容是文字，这是强调，用u标签  
+  * `[文字内容]{.wavy-underline}` 转换为波浪线强调：`<u style=\"text-decoration-style: wavy;\">文字内容</u>`
+  * `[内容]{.single-underline}` 转换为下划线强调：`<u>内容</u>`
+  * `[内容]{.bold}` 转换为粗体：`<strong>内容</strong>`
+  * `[内容]{.color-XXXXXX}` 忽略颜色，直接保留内容，如果内容重要则加粗：`<strong>内容</strong>`
+  * 多层嵌套格式如 `[[[[内容]{.color-A}]{.color-B}]{.color-C}]{.color-D}` 简化为：`<strong>内容</strong>`
+  * 嵌套格式如 `[[内容]{.single-underline}]{.underline}` 只保留最外层效果：`<u>内容</u>`
+  * **加点内容格式** `[\[DOT_BELOW\]内容\[/DOT_BELOW\]]{.underline}` 转换为加点标签：`<span style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\" data-mce-style=\"text-emphasis: filled dot black; text-emphasis-position: under right;\">内容</span>`
+- **标识符保留规则**：
+  * 如果原文是 `[甲]{.underline}`，转换为 `<span style="border-bottom: 1px #000 solid; padding-left: 20px; padding-right: 20px">甲</span>`
+  * 如果原文是 `[乙]{.underline}`，转换为 `<span style="border-bottom: 1px #000 solid; padding-left: 20px; padding-right: 20px">乙</span>`
 - **size设置规则**：
-  * 单词填空：size="8-12"
-  * 短语填空：size="15-20"
-  * 句子填空：size="25-35"
+  * 单词填空：size=\"8-12\"
+  * 短语填空：size=\"15-20\"
+  * 句子填空：size=\"25-35\"
 
 
 **⚠️ 答题区域格式要求（重要）**：
@@ -155,17 +334,11 @@
 - **使用 `<input type="underline">` 的情况**：
   * 填空题（只需要填单词或短语）
   * 语法填空题（填入适当形式）
-  * 补全句子题（填入缺失部分）
+
 
 注意普通简答题和书面表达题都需要有<p style=\"overflow: hidden;\"></p>这个标签，后面有具体示例
 
 
-**⚠️ 填空形式选择规则（重要）**：
-- **优先使用下划线形式**：`<input type="underline" size="X" />`
-- **仅在以下情况使用括号形式**：
-  * 原文明确显示为括号 `()` 形式的填空
-  * 题目要求从选项中选择填入括号中
-- **常见错误**：不要将原文中的下划线填空错误地转换为括号形式
 
 请分析以下试卷内容，提取出试卷的二级结构（完整的一道题），返回JSON格式的数组，每个对象的格式要求如下：
 
@@ -250,7 +423,7 @@
 }
 
 **单选题示例**
-
+```json
 {
   "question": {
     "content": "<p>从题中所给的A、B、C、D四个选项中, 选出一个最佳答案。</p><p>——Sally, we should include <input type=\"underline\" size=\"8\" /> of our members in the group activity.</p><p>——Yes, nobody should be left out.</p>",
@@ -268,7 +441,7 @@
     "score": 2
   }
 }
-
+```
 
 完形填空题：
 - question: 主题目对象，包含：
@@ -283,6 +456,7 @@
   - solution: 解析过程（如果有的话）
 
 **完形填空题示例**
+```json
 {
   "question": {
       "content": "<p>阅读下面的短文，掌握其大意，然后从短文后各题所给的A、B、C、D四个选项中，选择最佳选项。</p><p>Mulan is one of the most famous women in Chinese history. The <input size=\"8\" readonly=\"readonly\" type=\"underline\"> record (记录) of Mulan was in the <em>Ballad of Mulan</em> (《木兰诗》). The song was finished in the Northern Wei Dynasty. Over hundreds of years, people then turned her story into operas, books, movies <input size=\"8\" readonly=\"readonly\" type=\"underline\">.</p><p>What did Mulan do? Her father was <input size=\"8\" readonly=\"readonly\" type=\"underline\"> old that he couldn't fight in the army, so Mulan dressed up like a man to take his place. <input size=\"8\" readonly=\"readonly\" type=\"underline\"> knew she was a woman until (直到) she finally came back to her home town and dressed herself in her old clothes.</p><p>The live-action (真人版) Disney movie<em> Mulan</em> was made by Disney. This is not the first time that Disney has <input size=\"8\" readonly=\"readonly\" type=\"underline\"> a movie about Mulan. In 1998, the cartoon film with the same name made Mulan one of the most popular Disney princesses. And <input size=\"8\" readonly=\"readonly\" type=\"underline\"> the film, many people began to learn about and even fall in love with Chinese culture.</p><p>Why can Mulan <input size=\"8\" readonly=\"readonly\" type=\"underline\"> people's hearts? In the past, most women in China could only stay at home with their family. But Mulan tells us that women can do <input size=\"8\" readonly=\"readonly\" type=\"underline\"> men in the battlefield (战场). <input size=\"8\" readonly=\"readonly\" type=\"underline\">, it shows the traditional values (价值观) of Chinese people and their care for the family and country.</p><p>In the latest live-action movie, over 1,000 girls tried for the role. A(n) <input size=\"8\" readonly=\"readonly\" type=\"underline\"> stood out from them. She is good at kung fu and is able to speak English very well.</p>",
@@ -431,7 +605,7 @@
       }
     ]
 }
-
+```
 m选n题型：
 - question: 主题目对象，包含：
   - content: 包含除了选项内容外的完整对话或材料内容，一定要有作答区域，空白处使用<input size="8" readonly="readonly" type="underline">表示
@@ -446,6 +620,7 @@ m选n题型：
   - solution: 解析过程（如果有的话）
 
 **m选n题示例**
+  ```json
 {
   "question": {
     "content": "<p>下列每个图片代表一处旅游目的地，请根据人物的旅行计划匹配最适合的图片，并将图片所对应的选项（A、B、C、D）填在相应位置上，其中一个选项为多余选项。</p><p><img src=\"media/image7.png\" alt=\"Tina头像\" /> I want to travel to Africa and see the animals. I'd love to take lots of photos of elephants, giraffes and other animals. I'd like to try sleeping in a tent in the wild.</p><p><input size=\"8\" readonly=\"readonly\" type=\"underline\" /></p><p><img src=\"media/image8.png\" alt=\"Mike头像\" /> I prefer city breaks. I enjoy visiting museums, art galleries and trying local restaurants. I also like shopping for souvenirs.</p><p><input size=\"8\" readonly=\"readonly\" type=\"underline\" /></p><p><img src=\"media/image9.png\" alt=\"Sarah头像\" /> I love outdoor activities like hiking and mountain climbing. I want to challenge myself and enjoy the beautiful mountain scenery.</p><p><input size=\"8\" readonly=\"readonly\" type=\"underline\" /></p>",
@@ -487,6 +662,7 @@ m选n题型：
     }
   ]
 }
+  ```
 
 书面表达题/文段表达题/作文题：
 - question: 主题目对象，包含：
@@ -501,6 +677,7 @@ m选n题型：
 
 
 **作文类题目示例**
+  ```json
 {
   "question": {
         "content": "<p>某英文网站正在开展以 \"体质健康提升\"为主题的征文活动。请你以 \"How I Improve My Physical Health\"为题,用英语写一篇短文投稿,谈谈你在体质健康提升方面的做法和理由。</p><p>提示:1. What kind of exercise do you usually do?</p><p>2. How do you do exercise?</p><p>3. What else can help you to improve your physical health? Give your reasons.</p><p>要求:1.词数不少于$80$,开头已经写好,不计入总词数;</p><p>2.语言通顺,条理清楚,书写规范;</p><p>3.文中不要出现任何真实人名、校名及其他相关信息,否则不予评分。</p><p style='text-align: center;'><strong>How I Improve My Physical Health</strong></p><p>&nbsp; &nbsp; Nowadays, people pay much more attention to physical health. For me, </p><p style=\"overflow: hidden;\"><full-line-blank id=\"mce_1\" style=\"display: inline; position: static;\" contenteditable=\"false\" data-lines=\"8\" data-punctuation=\"\" data-first-line-width=\"379\">&nbsp;</full-line-blank></p>",
@@ -512,6 +689,7 @@ m选n题型：
         "type": "简答"
     }
 }
+  ```
 
 填空题：
 - content: 题目内容（包含题干）
@@ -523,6 +701,7 @@ m选n题型：
 - score: 题目分数
 
 **填空题示例**
+ ```json
 {
   "question": {
     "content": "<p>计算$24{\\times}3$时，可以这样想：$20{\\times}3=$<input size=\"5\" readonly=\"readonly\" type=\"bracket\">，$4{\\times}3=$<input size=\"5\" readonly=\"readonly\" type=\"bracket\">，<input size=\"5\" readonly=\"readonly\" type=\"bracket\">$+$<input size=\"5\" readonly=\"readonly\" type=\"bracket\">$=$<input size=\"5\" readonly=\"readonly\" type=\"bracket\">。</p>",
@@ -540,7 +719,7 @@ m选n题型：
     "score": 6
   }
 }
-
+  ```json
 
 多个问题的题目：
 
@@ -717,6 +896,7 @@ m选n题型：
 ```
 
 **示例1：包含多个子问题的简答题**
+ ```json
 {
   "question": {
     "content": "<p>阅读下面短文，从每题所给的A、B、C、D四个选项中选出最佳选项。<br>&nbsp; &nbsp; A lot of excellent straw-made miniatures (稻草微缩模型) of classic ancient buildings make Xu Jian's home more beautiful. They include models from the Yellow Crane Tower in Hubei Province to the Forbidden City's turrets (角楼) in Beijing. They are all full of details and carefully crafted (手工制成的), tied and placed by Xu's skillful hands.</p><p>&nbsp; &nbsp; \"All the doors and windows and everything else are made of sorghum stalks (高粱秆),\" Xu points to the Yellow Crane Tower that is $1$ meter high at his base in Yongqing County, Langfang City, Hebei Province. This special piece was made out of hundreds of thousands of sorghum stalks and took him two years to complete without the use of any nails (钉子) or glue. It completely depends on interlocking, tenon-and-mortise structures (榫卯结构),\" the man in his $30$s explains.</p><p>&nbsp; &nbsp; The sorghum straw art requires lots of patience, especially for works showing images of ancient buildings. They usually take several months or even one to two years to complete. Additionally, all the beams and columns (横梁和立柱) are straightened after being heated over a lamp. It's the only way that every door and window can open and close properly.</p><p>&nbsp; &nbsp; The sorghum straw art follows strict standards from choosing material to making the work. Xu has grown sorghum in his farmland, and chooses those of the highest quality to create straw works.</p><p>&nbsp; &nbsp; The sorghum stalks go from the thinnest at $1.8$ millimeters to the thickest at $12$ millimeters. Almost every piece includes hundreds of crafting steps. Xu doesn't waste the leftover stalks, either, as he turns them into windmills (风车).</p><p>&nbsp; &nbsp; \"Nothing is useless if we put our heart into it,\" says Xu. In the eyes of many, sorghum straw is only agricultural (农业的) waste, but through the creativity of craftsmen, it can be turned into a treasure.</p>",
@@ -761,7 +941,9 @@ m选n题型：
     }
   ]
 }
+ ```
 **示例1：包含子问题的简答题**
+ ```json
 {
   "question": {
     "content": "<p>如图$4 - ZT - 3\\circled{1}$所示，在$\\triangle ABC$中，$\\angle ACB = 90\\degree，AC = BC$，过点$C$在$\\triangle ABC$外作直线$MN，AM\\perp MN$于点$M，BN\\perp MN$于点$N$。</p><p><img src=\"page_1_img_1.png\" alt=\"几何图形\"/><img src=\"page_1_img_2.png\" alt=\"数学图表\"/></p><p>图$4 - ZT - 3$</p>",
@@ -779,9 +961,10 @@ m选n题型：
     }
   ]
 }
-
+ ```
 
 **示例：单一问题的简答题**
+ ```json
 {
   "question": {
     "content": "<p>&nbsp; &nbsp; In $2023$, the global production of renewable energy reached $3,372$ terawatt-hours (TWh), representing an $11$% increase from the previous year. Solar energy contributed $1,419$ TWh, wind energy contributed $899$ TWh, and hydroelectric power contributed $4,210$ TWh. If the trend continues and renewable energy production increases by $10$% each year, what will be the total renewable energy production in $2025$?</p><p>Show your calculation steps and give your answer in TWh.</p><p><input type=\"underline\" size=\"80\" /></p>",
@@ -794,8 +977,7 @@ m选n题型：
     "score": 5
   }
 }
-
-**示例：包含多个选择题的题目**
+ ```
 
 **严格JSON输出格式规范：**
 
@@ -868,13 +1050,79 @@ m选n题型：
 - 如果包含图片，则按照对应格式写明
 - 只要涉及选项的内容，都放到accessory的options中，不要放在content中，包括选项中的图片，也要放在accessory中。
 - 题干和选项中如果出现括号答题区，例如（）（而不是普通括号，即不是答题区的，例如（8）），则用<input type="bracket" size="8" />，而不能用文字表示括号，默认size为8，需要更大篇幅可以修改。
-- 如果出现**下划线填空**（无论长短），都用<input type="underline" size="X" />表示，size根据预期答案长度调整：
-  * **单词填空**：size="8-12"（如invention, beautiful）
-  * **短语填空**：size="15-20"（如in the past, look forward to）
-  * **句子填空**：size="25-35"（如完整的句子回答）
-  * **长文本填空**：size="40-50"（如简答题类答案）
+
+
 - **重要**：如果原文中填空处有提示信息（如括号内的词根提示），必须保留在title属性中，例如：`<input type="underline" size="12" title="invent">`
 
+
+
+**🚨🚨🚨 题型识别和格式转换流程（绝对严格执行，最高优先级）**：
+
+**🔥 第零步：序号删除（必须首先执行）**：
+- **删除所有题目序号**：主题目序号"1."、"2."、"19."等必须删除
+- **删除所有子题序号**：子题序号"（1）"、"（2）"、"（3）"等必须删除  
+- **删除所有大题序号**：大题序号"一、"、"二、"、"三、"等必须删除
+
+**🔥 第一步：题型识别优先级顺序**：
+1. **最高优先级**：有accessories选项列表 → **"单选"或"多选"题**
+2. **第二优先级**：根据题目内容特征判断：
+   - 需要填入具体词语/短语/句子 → **"填空"题**
+   - 需要写一段话/分析/解答 → **"简答"题**
+   - 需要判断对错 → **"判断"题**
+3. **第三优先级**：有subQuestions但主题目无明确答题要求 → **"综合"题**
+
+**🔥 第二步：根据题型决定格式转换**：
+
+**单选/多选题的格式转换**：
+- ✅ 下划线保持为 `______` 格式（选择题的空白标记）
+- ✅ 括号保持为 `（）` 格式（选择题的答题标记）
+- 🚨 **强制要求**：单选题content中必须包含答题括号 `（）`
+- ❌ **绝对禁止**：将 `______` 转换为 `<input>` 标签
+
+**填空题的格式转换**：
+- ✅ 将 `______` 转换为 `<input size="XX" readonly="readonly" type="underline">` 标签
+- ✅ 根据填空内容确定合适的size值
+
+**简答题的格式转换**：
+- ✅ 添加 `<full-line-blank>` 标签作为作答区域
+- ✅ 如果原题没有作答空间，强制添加
+
+**🚨🚨🚨 题型一致性验证（题型确定后必须执行）**：
+
+执行完题型识别后，必须验证每道题的一致性：
+
+**填空题一致性检查**：
+- ✅ type="填空" → content必须有 `<input>` 标签（由 `______` 转换而来）
+- ✅ type="填空" → 不能有accessories字段  
+- ✅ type="填空" → answer必须是 `{"blanks": [...]}` 格式
+
+**单选题一致性检查**：
+- ✅ type="单选" → 必须有accessories字段
+- ✅ type="单选" → content中必须包含答题括号 `（）`
+- ✅ type="单选" → content中的 `______` 和 `（）` 保持原样，不转换为 `<input>` 标签
+- ✅ type="单选" → answer必须是 `{"choice": "0"}` 格式
+
+**判断题一致性检查**：
+- ✅ type="判断" → content中必须删除所有 `______` 和 `（）` 作答空
+- ✅ type="判断" → 不能有accessories字段
+- ✅ type="判断" → answer必须是 `{"choice": "1"}` 或 `{"choice": "0"}` 格式
+- 🚨 **特别检查**：多个判断小题必须拆分为subQuestions，不能使用"1,0,1"格式答案
+- 🚨 **作答空删除检查**：判断题content中不能包含任何答题标记，因为系统会自动添加
+
+**简答题一致性检查**：
+- ✅ type="简答" → content必须有 `<full-line-blank>` 标签
+- ✅ type="简答" → 不能有accessories字段
+- ✅ type="简答" → answer必须是 `{"answer": "..."}` 格式
+
+**🚨 执行检查清单**：
+解析每道题时必须按顺序执行：
+1. [ ] **🔥 序号删除检查**：删除所有题目和子题的序号（"1."、"2."、"（1）"、"（2）"等）
+2. [ ] 先识别题型（优先看accessories，再看内容特征）
+3. [ ] 根据题型决定格式转换（单选保持下划线+括号，填空转换为input）
+4. [ ] **单选/多选题特别检查**：确保content中包含答题括号 `（）`
+5. [ ] 验证answer格式与type的匹配性  
+6. [ ] 确保字段完整性（单选有accessories，填空无accessories）
+7. [ ] 执行最终一致性检查
 
 
 8. **完形填空题特殊要求**：
@@ -934,27 +1182,13 @@ m选n题型：
    - 主题目的type固定为"m选n"
    - 主题目的accessories包含所有可选项，每个选项使用<p>选项内容</p>格式，按A、B、C、D...顺序排列
    - 使用subQuestions结构，每个子题目对应一个空白处
-   - **重要**：主题目中的空白处数量必须与subQuestions数量完全一致，如果发现数量不符，需要重新检查OCR结果，确保没有遗漏空白处
+   - **重要**：主题目中的空白处数量必须与subQuestions数量完全一致，如果发现数量不符，需要重新检查原文，确保没有遗漏空白处
    - **关键要求**：每个子题目的content必须在主题目content中完整出现，因为子题content不会被平台展示给用户
    - 每个子题目的content包含具体的填空语境，空白处使用<input type="bracket" size="8" />表示
    - 每个子题目的answer.choice使用字符串索引（"0"表示第一个选项，"1"表示第二个选项，依此类推）
    - 每个子题目的accessories为空数组[]
    - 每个子题目的type固定为"单选"
    - 注意：主题目accessories中的选项顺序要与子题目answer.choice的索引对应
-
-
-12. **格式一致性检查要求**：
-   - **段落格式**：所有段落开头使用`&nbsp; &nbsp;`进行首行缩进（阅读材料尤其重要）
-   - **居中格式**：题目标题、作文标题等需要居中的内容使用`style="text-align: center;"`
-   - **图片对齐**：根据原PDF中的图片位置设置对齐方式，重要图表通常需要居中显示
-   - **列表格式**：如有编号列表或要点，使用适当的HTML列表标签`<ol>`或`<ul>`
-   - **引用格式**：对话或引文部分保持原有的缩进和格式
-   - **段落首行缩进检查**：
-     * **重要**：务必检查所有题干中的段落是否正确添加了首行缩进
-     * 阅读理解材料的每个段落必须以`<p>&nbsp; &nbsp;`开头
-     * 完形填空文章的每个段落必须以`<p>&nbsp; &nbsp;`开头
-     * 语法填空材料的每个段落必须以`<p>&nbsp; &nbsp;`开头
-     * 如果发现段落没有首行缩进，必须添加`&nbsp; &nbsp;`（两个全角空格）
 
 
 
@@ -993,6 +1227,7 @@ m选n题型：
    - **⚠️ 常见错误**：`fall"跌落"` 必须改为 `fall（跌落）` 或 `fall\"跌落\"`
 
    - **⚠️ 检查方法**：搜索所有solution和answer字段，确保没有未转义的双引号
+
 
 3. **🎯 听力题总体说明识别规则**：
 以下内容必须被识别为听力题的主题目content，绝对不能拆分：

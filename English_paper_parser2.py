@@ -1491,7 +1491,8 @@ class PandocWordProcessor:
 
         # 3. 解析JSON并保存结果
         try:
-            questions = cleaned_content
+            # 解析JSON字符串为Python对象
+            questions = json.loads(cleaned_content)
 
             # 验证解析结果格式
             if not isinstance(questions, list):
