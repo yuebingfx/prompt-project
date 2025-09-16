@@ -2,26 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """
-Pandoc Word文档处理工具 - 增强版 (支持加点字检测，图片处理已禁用)
+Pandoc Word文档处理工具 ：使用pandoc将Word文档转换为模型可读的markdown格式的纯文本内容
 
-使用pandoc将Word文档转换为模型可读的纯文本内容，支持：
-1. 文档文本转换 (Pandoc)
-2. 大模型API调用 (文档结构解析)
-3. 着重号检测 (加点字标记保留)
-4. 连续短横线转中文破折号
-
-注：图片提取和内容分析功能已禁用以提高运行效率
-注：加点字转换为HTML功能已移除，标记保留供后续模型处理
-
-依赖安装：
-1. 确保系统已安装pandoc: https://pandoc.org/installing.html
-2. 安装python-docx: pip install python-docx (仅用于加点字预处理)
-3. 安装其他依赖: pip install requests
-
-使用方法：
-1. 运行脚本处理Word文档
-2. 检测并保留加点字格式标记
-3. 生成最终的解析结果
 """
 
 import subprocess
